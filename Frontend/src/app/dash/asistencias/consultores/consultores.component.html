@@ -1,0 +1,62 @@
+<app-pasos></app-pasos>
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center no-print"><i class="fa fa-cog"></i></th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Empresa</th>
+                                <th>Departamento</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                                <th>Especialidad</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="consultores.length <= 0"><span class="label label-info">Cargando...</span></td>
+                            </tr>
+                            
+                            <tr *ngFor=" let consultor of consultores">
+                                
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-xs" role="group" style="width:50px;">
+                                        <button type="button" class="btn btn-default" (click)="onDelete(especialidad)" data-toggle="tooltip" title="Editar">
+                                        <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>  
+                                </td>
+                                
+                                <td>{{consultor.id}}</td>
+                                <td>{{consultor.consultor.nombre}}</td>
+                                <td>{{consultor.consultor.empresa}}</td>
+                                <td>{{consultor.consultor.departamento}}</td>
+                                <td>{{consultor.consultor.telefono}}</td>
+                                <td>{{consultor.consultor.correo}}</td>
+                                <td>{{consultor.especialidad.nombre}}</td>
+                                <td>
+                                    <input type="checkbox" [(ngModel)]="consultor.enviar" name="enviar"/>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="panel-footer">
+                <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Enviar</span>
+                    <span *ngIf="loading">Enviando...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

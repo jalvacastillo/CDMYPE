@@ -1,0 +1,138 @@
+<app-pasos></app-pasos>
+
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="nombre"> * Nombre:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.nombre" name="nombre" placeholder="Nombre" required autofocus />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label for="nombre"> NIT:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.nit" name="nit" placeholder="Nit"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label for="nombre"> IVA:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.iva" name="registro_iva" placeholder="Nit" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label for="fundacion"> Fundación:</label>
+                            <input type="date" class="form-control" [(ngModel)]="empresa.fundacion" name="fundacion" placeholder="actividad"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label for="contabilidad"> Contabilidad:</label>
+                            <input type="checkbox" class="form-control checkbox" [(ngModel)]="empresa.contabilidad" value="1" name="contabilidad"/>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <label> Clasificación:</label>
+                            <input list="clasificaciones" class="form-control" [(ngModel)]="empresa.tamano" name="clasificacion" placeholder="Clasificación"/>
+                            <datalist id="clasificaciones">
+                                <option value="Emprendedor">
+                                <option value="Micro-empresa">
+                                <option value="Micro-empresa de Subsistencia">
+                                <option value="Grupo Asociativo Empresas">
+                                <option value="No definido">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <label> Constitucion:</label>
+                            <input list="constituciones" class="form-control" [(ngModel)]="empresa.constitucion" name="constitucion" placeholder="constitucion"/>
+                            <datalist id="constituciones">
+                              <option value="Persona Natural">
+                              <option value="Persona Juridica">
+                              <option value="Grupo de empresas">
+                              <option value="Grupo de Emprendedores">
+                              <option value="UDP">
+                              <option value="Informal Natural">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <label> Sector Economico:</label>
+                            <input list="sectores" class="form-control" [(ngModel)]="empresa.sector" name="sector_economico" placeholder="Sector"/>
+                            <datalist id="sectores">
+                              <option value="Artesanias">
+                              <option value="Agroindustrias Alimentaria">
+                              <option value="Calzado">
+                              <option value="Comercio">
+                              <option value="Construcción">
+                              <option value="Química Farmaceutica">
+                              <option value="Tecnología de Información y Comunicación">
+                              <option value="Textiles y Confección">
+                              <option value="Turismo">
+                              <option value="Otros">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <label for="actividad"> Actividad Economica:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.actividad" name="actividad" placeholder="actividad"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label for="municipio"> Municipio:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.municipio" name="municipio" placeholder="Municipio" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label for="departamento"> Departamento:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.departamento" name="departamento" placeholder="Municipio" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="form-group">
+                            <label> Ubicación:</label>
+                            <input list="ubicaciones" class="form-control" [(ngModel)]="empresa.ubicacion" name="ubicacion" placeholder="Clasificación"/>
+                            <datalist id="ubicaciones">
+                                <option value="Rural">
+                                <option value="Urbana">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="direccion"> Dirección:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.direccion" name="direccion" placeholder="Lugar, Calle etc..." />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="nombre"> Descripción:</label>
+                            <textarea cols="30" rows="3" class="form-control" [(ngModel)]="empresa.descripcion" name="descripcion" placeholder="Detalle"></textarea>
+                        </div>
+                    </div>
+                </div>
+            <div class="panel-footer">
+                <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Guardar</span>
+                    <span *ngIf="loading">Guardando...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

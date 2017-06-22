@@ -1,0 +1,88 @@
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        <h2 class="no-margin">Salidas</h2>
+        <div class="toolbar pull-right">
+            <div class="btn-group pull-left">
+                <!-- Search -->
+                <div class="pull-left">
+                    <input type="text" class="form-control">
+                </div>
+                <!-- Buscar -->
+                <button class="btn btn-default" tooltip="Actualizar" ng-click="cargar();">
+                    <i class="fa fa-search"></i>
+                </button>
+                <!-- Refresh -->
+                <button class="btn btn-default" tooltip="Actualizar" ng-click="cargar();">
+                    <i class="fa fa-refresh"></i>
+                </button>
+                <a class="btn btn-default" tooltip="Crear" [routerLink]="['/salida/crear']"> 
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Salida</th>
+                    <th>Regreso</th>
+                    <th>Encargado</th>
+                    <th>Estado</th>
+                    <th class="text-center"><i class="fa fa-cog"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="10" class="text-center" *ngIf="salidas.length <= 0"><span class="label label-info">Cargando...</span></td>
+                </tr>
+
+                <tr *ngFor=" let salidas of salidas.data">
+
+                    <td class="text-center">{{salidas.id}}</td>
+                    <td>{{salidas.fecha | date:"dd/MM/yyyy"}}</td>
+                    <td>{{salidas.lugar}}</td>
+                    <td>{{salidas.hora_salida}}</td>
+                    <td>{{salidas.hora_regreso}}</td>
+                    <td>{{salidas.encargado}}</td>
+                    <td>{{salidas.estado}}</td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs" role="group" style="width:50px;">
+                            <button type="button" class="btn btn-default" [routerLink]="['/salida/', salidas.id]">
+                            <i class="fa fa-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-default" (click)="delete(salidas.id)">
+                            <i class="fa fa-trash"></i></button>
+                        </div>  
+                    </td>
+
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="salidas.last_page > 1">
+                    <td colspan="10" class="text-center">
+                        <nav>
+                        <ul class="pagination">
+                            <li class="page-item" [ngClass]="{'disabled': salidas.current_page == 1}">
+                                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(salidas.current_page - 1)" >Previous</a>
+                            </li>
+                            
+                            <li class="page-item" [ngClass]="{'active': page == salidas.current_page}" *ngFor="let page of paginacion" >
+                                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(page)">{{page}} </a>
+                            </li>
+
+                            <li class="page-item" [ngClass]="{'disabled': salidas.current_page == salidas.last_page}">
+                                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(salidas.current_page + 1)">Next</a>
+                            </li>
+                        </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

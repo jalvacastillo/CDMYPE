@@ -1,0 +1,52 @@
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['dashboard']" routerLinkActive="active">{{name}}</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- <a class="navbar-brand" href="#">{{name}}</a> -->
+        <ul class="nav navbar-nav">
+            <li [ngClass]="{'nav-item' : !item.parts, 'dropdown': item.parts}" routerLinkActive="active" *ngFor="let item of routes">
+                <a *ngIf="!item.parts" class="nav-link" [routerLink]="[item.path]">
+                    <i class="fa fa-{{item.icon}}" aria-hidden="true"></i> {{item.title}}
+                </a>
+                <a *ngIf="item.parts" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-{{item.icon}}" aria-hidden="true"></i> {{item.title}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" *ngIf="item.parts">
+                    <li *ngFor="let part of item.parts">
+                        <a [routerLink]="[part.path]">
+                            <i class="fa fa-{{part.icon}}" aria-hidden="true"></i> {{part.title}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jesus Alvarado<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Mi perfil</a></li>
+                <li><a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Mis Empresas</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a [routerLink]="['/login']"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</a></li>
+              </ul>
+            </li>
+            <li>
+                <img alt="Brand" style="margin: 10px 0 0 0; width: 80%;" class="img-circle img-responsive" src="https://scontent-mia1-2.xx.fbcdn.net/v/t1.0-1/p40x40/14581372_1126398604102841_5183643142774552759_n.jpg?oh=b983f6218eb0e8a96ccf461f6dc88ae5&oe=59D7C8C4">
+            </li>
+        </ul>
+
+    </div>
+  </div>
+</nav>

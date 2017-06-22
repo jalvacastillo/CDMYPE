@@ -1,0 +1,53 @@
+<form name="form" (ngSubmit)="onSubmit()">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h2 class="no-margin">Crear noticia</h2>
+        </div>
+        <div class="panel-body">
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="titulo"> Titulo:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" [(ngModel)]="noticia.titulo" name="titulo" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="tipo"> * Tipo:</label>
+                        <div class="controls">
+                            <select name="tipo" [(ngModel)]="noticia.tipo" class="form-control">
+                                <option value="Tips">Tips</option>
+                                <option value="Asesoria">Asesoria</option>
+                                <option value="Caso de Exito">Caso de Exito</option>
+                                <option value="Eventos">Eventos</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="descripcion"> Descripción:</label>
+                        <div class="controls">
+                            <textarea name="descripcion" [(ngModel)]="noticia.descripcion" class="form-control" cols="30" rows="7" [froalaEditor]>
+                                
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div [froalaEditor]>Hello, Froala!</div> -->
+
+        </div>
+        <div class="panel-footer">
+            <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+            <button [disabled]="loading" class="btn btn-primary pull-right">
+                <span *ngIf="!loading">Guardar</span>
+                <span *ngIf="loading">Guardando...</span>
+            </button>
+        </div>
+    </div>
+</form>

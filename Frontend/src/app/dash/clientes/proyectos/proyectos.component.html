@@ -1,0 +1,96 @@
+<app-pasos></app-pasos>
+
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label for="nombre"> Nombre proyecto:</label>
+                        <input type="text" class="form-control" [(ngModel)]="proyecto.nombre" name="nombre" placeholder="nombre"/>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="fecha_fin"> Fecha finaliación:</label>
+                        <input type="date" class="form-control" [(ngModel)]="proyecto.fecha_fin" name="fecha_fin"/>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center no-print"><i class="fa fa-cog"></i></th>
+                            <th>Acción</th>
+                            <th>Responsable</th>
+                            <th class="text-center">Inicio</th>
+                            <th class="text-center">Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="8" class="text-center" *ngIf="acciones.lenght <= 0"><span class="label label-info">Cargando...</span></td>
+                        </tr>
+
+                        <tr *ngFor=" let accion of acciones">
+                            <td class="text-center">
+                                <div class="btn-group btn-group-xs" role="group" style="width:50px;">
+                                    <button type="button" class="btn btn-default" (click)="onSelect(accion)" data-toggle="tooltip" title="Editar">
+                                    <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default" (click)="onDelete(accion)" data-toggle="tooltip" title="Eliminar">
+                                    <i class="fa fa-trash"></i></button>
+                                </div>  
+                            </td>
+                            <td>{{accion.actividad}}</td>
+                            <td>{{accion.responsable}}</td>
+                            <td class="text-center">{{accion.inicio}}</td>
+                            <td class="text-center">{{accion.fin}}</td>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="text" class="form-control" [(ngModel)]="accion.actividad" name="actividad"></td>
+                            <td>
+                                <select class="form-control" [(ngModel)]="accion.responsable" name="responsable">
+                                    <option value="Asesor">Asesor</option>
+                                    <option value="Empresario">Empresario</option>
+                                    <option value="Consultor">Consultor</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                </select>
+                            </td>
+                            <td width="60"><input type="date" class="form-control" [(ngModel)]="accion.inicio" name="inicio"></td>
+                            <td width="60"><input type="date" class="form-control" [(ngModel)]="accion.fin" name="fin"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="text-center">
+                            <td colspan="5">
+                                <button type="button" (click)="addAccion(accion)" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="impacto"> Impacto:</label>
+                        <textarea rows="3" class="form-control" [(ngModel)]="proyecto.impacto" name="impacto"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Guardar</span>
+                    <span *ngIf="loading">Guardando...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

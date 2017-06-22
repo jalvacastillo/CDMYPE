@@ -1,0 +1,69 @@
+<app-pasos></app-pasos>
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="lugar_firma"> * Lugar:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" [(ngModel)]="contrato.lugar_firma" name="lugar_firma" placeholder="Nombre" required autofocus />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="inicio"> Fecha:</label>
+                        <div class="controls">
+                            <input type="date" class="form-control" [(ngModel)]="contrato.inicio" name="inicio" placeholder="Nombre"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="duracion"> Duración:</label>
+                        <div class="controls">
+                            <input type="number" class="form-control" [(ngModel)]="contrato.duracion" name="duracion"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="pago"> Pago:</label>
+                        <div class="controls">
+                            <input type="number" class="form-control" [(ngModel)]="contrato.pago" name="pago"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="aporte"> % CDMYPE:</label>
+                        <div class="controls">
+                            <input type="number" class="form-control" [(ngModel)]="contrato.aporte" name="aporte"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="aporte"> % Empresarial:</label>
+                        <div class="controls">
+                            <input type="number" class="form-control" [(ngModel)]="contrato.aporte" name="aporte_empresario"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Guardar</span>
+                    <span *ngIf="loading">Guardando...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+

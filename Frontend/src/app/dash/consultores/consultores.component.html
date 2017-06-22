@@ -1,0 +1,86 @@
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        <h2 class="no-margin">Consultores</h2>
+        <div class="toolbar pull-right">
+            <div class="btn-group pull-left">
+                <!-- Buscar -->
+                <div class="pull-left"> <input type="text" class="form-control"> </div>
+                <button class="btn btn-default" tooltip="Actualizar" ng-click="cargar();">
+                    <i class="fa fa-search"></i>
+                </button>
+                <!-- Actualizar -->
+                <button class="btn btn-default" tooltip="Actualizar" (click)="loadAll();">
+                    <i class="fa fa-refresh"></i>
+                </button>
+                <!-- Crear -->
+                <a class="btn btn-primary" tooltip="Crear" [routerLink]="['/consultor/crear']"> 
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Tipo</th>
+                    <th>Municipio</th>
+                    <th>Departamento</th>
+                    <th>Sexo</th>
+                    <th class="text-center"><i class="fa fa-cog"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="8" class="text-center" *ngIf="consultores.length <= 0"><span class="label label-info">Cargando...</span></td>
+                </tr>
+
+                <tr *ngFor=" let consultor of consultores.data">
+                    
+                    <td class="text-center">{{consultor.id}}</td>
+                    <td>{{consultor.nombre}}</td>
+                    <td>{{consultor.correo}}</td>
+                    <td class="text-center">
+                        <span class="label" [ngClass]="{'label-primary': consultor.tipo =='Interno', 'label-success': consultor.tipo =='Externo' }">
+                        {{consultor.tipo}}</span>
+                    </td>
+                    <td>{{consultor.municipio}}</td>
+                    <td>{{consultor.departamento}}</td>
+                    <td>{{consultor.sexo}}</td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs" role="group" style="width:50px;">
+                            <a class="btn btn-default" [routerLink]="['/consultor/', consultor.id]">
+                            <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-default" (click)="delete(consultor.id)">
+                            <i class="fa fa-trash"></i></a>
+                        </div>  
+                    </td>
+
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+    <div class="panel-footer text-center">
+        <nav *ngIf="consultores.last_page > 1">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled': consultores.current_page == 1}">
+                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(consultores.current_page - 1)" >Previous</a>
+            </li>
+            
+            <li class="page-item" [ngClass]="{'active': page == consultores.current_page}" *ngFor="let page of paginacion" >
+                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(page)">{{page}} </a>
+            </li>
+
+            <li class="page-item" [ngClass]="{'disabled': consultores.current_page == consultores.last_page}">
+                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(consultores.current_page + 1)">Next</a>
+            </li>
+        </ul>
+        </nav>
+    </div>
+</div>

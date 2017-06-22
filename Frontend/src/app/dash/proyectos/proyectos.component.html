@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        <h2 class="no-margin">Proyectos</h2>
+        <div class="toolbar pull-right">
+            <div class="btn-group pull-left">
+                <!-- Buscar -->
+                <div class="pull-left"> <input type="text" class="form-control"> </div>
+                <button class="btn btn-default" tooltip="Actualizar" ng-click="cargar();">
+                    <i class="fa fa-search"></i>
+                </button>
+                <!-- Actualizar -->
+                <button class="btn btn-default" tooltip="Actualizar" (click)="loadAll();">
+                    <i class="fa fa-refresh"></i>
+                </button>
+                <!-- Crear -->
+                <a class="btn btn-primary" tooltip="Crear" [routerLink]="['/proyecto/crear']"> 
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Fecha</th>
+                    <th>Titulo</th>
+                    <th>Tipo</th>
+                    <th>Especialidad</th>
+                    <th>Autor</th>
+                    <th class="text-center"><i class="fa fa-cog"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="8" class="text-center" *ngIf="proyectos.length <= 0"><span class="label label-info">Cargando...</span></td>
+                </tr>
+
+                <tr *ngFor=" let proyecto of proyectos.data">
+                    
+                    <td class="text-center">{{proyecto.id}}</td>
+                    <td>{{proyecto.created_at | date:"dd/MM/yyyy"}}</td>
+                    <td>{{proyecto.titulo}}</td>
+                    <td>{{proyecto.tipo}}</td>
+                    <td>{{proyecto.especialidad}}</td>
+                    <td>{{proyecto.asesor}}</td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs" role="group" style="width:50px;">
+                            <a class="btn btn-default" [routerLink]="['/proyecto/', proyecto.id]" data-toggle="tooltip" title="Editar">
+                            <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-default" (click)="delete(proyecto.id)" data-toggle="tooltip" title="Eliminar">
+                            <i class="fa fa-trash"></i></a>
+                        </div>  
+                    </td>
+
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="proyectos.last_page > 1">
+                    <td colspan="8" class="text-center">
+                        <nav>
+                        <ul class="pagination">
+                            <li class="page-item" [ngClass]="{'disabled': proyectos.current_page == 1}">
+                                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(proyectos.current_page - 1)" >Previous</a>
+                            </li>
+                            
+                            <li class="page-item" [ngClass]="{'active': page == proyectos.current_page}" *ngFor="let page of paginacion" >
+                                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(page)">{{page}} </a>
+                            </li>
+
+                            <li class="page-item" [ngClass]="{'disabled': proyectos.current_page == proyectos.last_page}">
+                                <a class="page-link" href="javascript:void(0)" (click)="setPaginacion(proyectos.current_page + 1)">Next</a>
+                            </li>
+                        </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

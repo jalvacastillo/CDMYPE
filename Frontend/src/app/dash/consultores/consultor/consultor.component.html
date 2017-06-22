@@ -1,0 +1,117 @@
+<app-pasos></app-pasos>
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="nombre"> * Nombre:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="nombre" [(ngModel)]="consultor.nombre" placeholder="Nombre" required autofocus />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                    <div class="form-group">
+                        <label for="sexo"> Sexo:</label>
+                        <div class="controls">
+                            <label class="radio-inline"><input type="radio" name="sexo" [(ngModel)]="consultor.sexo" value="Hombre">Hombre</label>
+                            <label class="radio-inline"><input type="radio" name="sexo" [(ngModel)]="consultor.sexo" value="Mujer">Mujer</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                    <div class="form-group">
+                        <label for="tipo"> Tipo:</label>
+                        <div class="controls">
+                            <label class="radio-inline"><input type="radio" name="tipo" [(ngModel)]="consultor.tipo" value="Interno">Interno</label>
+                            <label class="radio-inline"><input type="radio" name="tipo" [(ngModel)]="consultor.tipo" value="Externo">Externo</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="empresa"> Empresa:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="empresa" [(ngModel)]="consultor.empresa" placeholder="Nombre"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <label for="nit"> NIT:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="nit" [(ngModel)]="consultor.nit" placeholder="XXX-XXXXX-XX-X" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <label for="nombre"> DUI:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="dui" [(ngModel)]="consultor.dui" placeholder="XXX-XXXXX-XX-X" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <label for="municipio"> Municipio:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="municipio" [(ngModel)]="consultor.municipio" placeholder="Municipio" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <label for="departamento"> Departamento:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="departamento" [(ngModel)]="consultor.departamento" placeholder="Municipio" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="direccion"> Dirección:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="direccion" [(ngModel)]="consultor.direccion" placeholder="Lugar, Calle etc..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="correo"> * Correo:</label>
+                        <div class="controls">
+                            <input type="email" class="form-control" name="correo" [(ngModel)]="consultor.correo" placeholder="Correo" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="telefono"> Teléfono:</label>
+                        <div class="controls">
+                            <input type="tel" class="form-control" name="telefono" [(ngModel)]="consultor.telefono" placeholder="XXXX-XXXX" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label for="nombre"> Celular:</label>
+                        <div class="controls">
+                            <input type="tel" class="form-control" name="celular" [(ngModel)]="consultor.celular" placeholder="XXXX-XXXX"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Guardar</span>
+                    <span *ngIf="loading">Guardando...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

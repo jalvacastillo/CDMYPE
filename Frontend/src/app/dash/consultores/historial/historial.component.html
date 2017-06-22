@@ -1,0 +1,48 @@
+<app-pasos></app-pasos>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="con-xs-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center no-print"><i class="fa fa-cog"></i></th>
+                                <th>ID</th>
+                                <th>Tema</th>
+                                <th>Estado</th>
+                                <th>Evaluacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="historial.length <= 0"><span class="label label-info">Cargando...</span></td>
+                            </tr>
+
+                            <tr *ngFor=" let at of historial.ats">
+                                
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-xs" role="group" style="width:50px;">
+                                        <button type="button" class="btn btn-default" (click)="onDelete(especialidad)" data-toggle="tooltip" title="Editar">
+                                        <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>  
+                                </td>
+                                
+                                <td>{{at.id}}</td>
+                                <td>{{at.tema}}</td>
+                                <td>{{at.estado}}</td>
+                                <td>{{at.evaluacion}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
