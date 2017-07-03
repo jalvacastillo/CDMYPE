@@ -30,6 +30,12 @@ export class AtTerminoComponent implements OnInit {
             
             if(isNaN(params['id'])){
                 this.termino = {};
+                this.termino.cliente_id = 1;
+                this.termino.tema = "Hola";
+                this.termino.obj_general = "Hola";
+                this.termino.obj_especifico = "Hola";
+                this.termino.productos = "Hola";
+                this.termino.especialidad_id = 1;
             }
             else{
                 this.apiService.read('attermino/', params['id']).subscribe(termino => {
@@ -45,8 +51,14 @@ export class AtTerminoComponent implements OnInit {
     onSubmit() {
         this.loading = true;
         console.log(this.termino);
-        this.apiService.store('attermino', this.termino).subscribe(data => {
+        this.termino.asesor_id = JSON.parse(localStorage.getItem('currentUser')).user.id;
+
+        this.apiService.store('attermino', this.termino).subscribe(termino => {
             this.alertService.success("Guardado");
+            if(!this.termino.id) {
+                this.router.navigate(['/asistencia/consultores/', termino.id]);
+            }
+            this.termino = termino;
             this.loading = false;
         },error => {
             this.alertService.error(error._body);

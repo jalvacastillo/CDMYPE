@@ -26,8 +26,8 @@ class CreateAtTerminosTable extends Migration
             $table->enum('estado', ['Creada', 'Enviada', 'Contratada', 'Finalizada']);
             $table->integer('especialidad_id');
             $table->integer('asesor_id');
-            $table->string('informe');
-            $table->date('fecha_aprobacion');
+            $table->string('informe')->nullable();
+            $table->date('fecha_aprobacion')->nullable();
 
             $table->integer('cdmype_id')->default(1);
             

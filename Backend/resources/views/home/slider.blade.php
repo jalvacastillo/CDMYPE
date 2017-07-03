@@ -24,8 +24,8 @@
         <div class="item" style="background-image: url('assets/images/slider/bg2.jpg');">
             <div class="slider-content">
                 <div class="col-md-12 text-center">
-                    <h2 class="animated4"> <span>Contamos con muchos <strong>servicos</strong></span> </h2>
-                    <h3 class="animated5"> <span>Todos son de forma gratuita</span> </h3>
+                    <h2 class="animated4"> <span>Todos nuestros <strong>servicios</strong></span> </h2>
+                    <h3 class="animated5"> <span>Son de forma gratuita</span> </h3>
                     <p class="animated6"><a href="{{ url('servicio') }}" class="slider btn btn-system btn-large">Conoce nuestros servicio</a> </p>
                 </div>
             </div>

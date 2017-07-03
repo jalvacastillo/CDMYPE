@@ -41,7 +41,7 @@ export class CapacitacionesComponent implements OnInit {
     }
 
     private setPaginacion(page:number) {
-        this.apiService.getAll('capacitaciones?page='+ page).subscribe(capacitaciones => { this.capacitaciones = capacitaciones; });
+        this.apiService.getAll('capterminos?page='+ page).subscribe(capacitaciones => { this.capacitaciones = capacitaciones; });
     }
 
 }

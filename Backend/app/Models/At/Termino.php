@@ -4,9 +4,6 @@ namespace App\Models\At;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Validator;
-use Carbon\Carbon;
-use Auth;
 
 class Termino extends Model {
 
@@ -14,7 +11,6 @@ class Termino extends Model {
     use SoftDeletes;
     protected $table = 'at_terminos';
     protected $fillable = [
-        'proyecto_id',
         'cliente_id',
         'tema',
         'obj_general',
@@ -77,6 +73,7 @@ class Termino extends Model {
     {
         return $this->especialidad()->pluck('nombre')->first();
     }
+
         //
         public function asesor()
         {

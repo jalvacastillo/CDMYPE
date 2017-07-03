@@ -13,7 +13,7 @@ class CapTerminosSeeder extends Seeder
             for($i = 1; $i <= 20 ; $i++)
             {
                 $table = new Termino;
-                $table->encabezado      = $faker->text;
+                $table->encabezado      = $faker->word;
                 $table->tema            = $faker->word;
                 $table->categoria       = $faker->text;
                 $table->descripcion     = $faker->text;

@@ -17,12 +17,12 @@
 <br/>
 <a href="{{ url('/docs/F7.docx') }}" target="_blank"> FORMATO OFERTA TÉCNICA Y ECONÓMICA (WORD) </a>
 <br>
-<a href="{{ url('/oferta-at/' . $consultor['id']) }}" target="_blank"> Subir Oferta </a>
+<a href="{{ url('/oferta-at/' . Crypt::encrypt($atconsultor['id'])) }}" target="_blank"> Subir Oferta </a>
 <br>
 <hr>
 <br>
-<img src="{{ url('/img/conamype-logo.jpg') }}" width="100px"/>
-<img src="{{ url('/img/unicaes-logo.jpg') }}" width="70px"/>
-<img src="{{ url('/img/cdmype-logo.jpg') }}" width="70px"/>
+<img src="{{ url('assets/images/conamype-logo.jpg') }}" width="100px"/>
+<img src="{{ url('assets/images/unicaes-logo.jpg') }}" width="70px"/>
+<img src="{{ url('assets/images/cdmype-logo.jpg') }}" width="70px"/>
 <br>
 <b>Teléfono:</b> 2378-1500 Ext: (136)

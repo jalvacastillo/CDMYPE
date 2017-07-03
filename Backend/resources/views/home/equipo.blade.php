@@ -4,10 +4,10 @@
         <div class="row text-center">
             <div class="big-title" data-animation="fadeInDown" data-animation-delay="01" style="margin: 0;">
                 <h1 style="margin: 0;">Nuestro Fabuloso <strong>Equipo</strong></h1>
-                <p class="title-desc" style="margin: 0;">Contamos con asesores especialisados en diferentes areas</p>
+                <p class="title-desc" style="margin: 0;">Contamos con asesores especialisados en diferentes áreas</p>
             </div>
 
-            <div class="col-xs-12">
+            <div class="col-xs-6 col-xs-offset-3">
                 <img src="assets/images/team/team.jpg" class="img-responsive" alt="" style="margin: auto;">
             </div>
         </div>

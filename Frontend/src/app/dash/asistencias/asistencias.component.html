@@ -62,7 +62,7 @@
                     </td>
                     <td class="text-center">
                         <div class="btn-group btn-group-xs" role="group" style="width:50px;">
-                            <a class="btn btn-default" [routerLink]="['/asistencia/termino/', asistencia.id]" data-toggle="tooltip" title="Editar">
+                            <a class="btn btn-default" (click)="onUpdate(asistencia)" data-toggle="tooltip" title="Editar">
                             <i class="fa fa-pencil"></i>
                             </a>
                             <a class="btn btn-default" (click)="delete(asistencia.id)" data-toggle="tooltip" title="Eliminar">

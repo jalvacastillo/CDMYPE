@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
 import { ApiService } from '../../services/api.service';
 
@@ -13,7 +14,7 @@ export class AsistenciasComponent implements OnInit {
     public asistencias: any[] = [];
     public paginacion = [];
 
-    constructor(private apiService: ApiService, private alertService: AlertService){ }
+    constructor(private apiService: ApiService, private router: Router, private alertService: AlertService){ }
 
     ngOnInit() {
         this.loadAll();
@@ -40,8 +41,31 @@ export class AsistenciasComponent implements OnInit {
 
     }
 
+    private onUpdate(termino){ 
+
+        console.log(termino.estado);
+        switch(termino.estado){
+            case 'Creada':
+                 this.router.navigate(['/asistencia/consultores/' + termino.id]);
+                break
+            case 'Enviada':
+                 this.router.navigate(['/asistencia/ofertas/' + termino.id]);
+                break
+            case 'Seleccionada':
+                 this.router.navigate(['/asistencia/contrato/' + termino.id]);
+                break
+            case 'Contratada':
+                 this.router.navigate(['/asistencia/acta/' + termino.id]);
+                break
+            case 'Finalizada':
+                 this.router.navigate(['/asistencia/final/' + termino.id]);
+                break
+
+        }
+    };
+
     private setPaginacion(page:number) {
-        this.apiService.getAll('asistencias?page='+ page).subscribe(asistencias => { this.asistencias = asistencias; });
+        this.apiService.getAll('atterminos?page='+ page).subscribe(asistencias => { this.asistencias = asistencias; });
     }
 
 }

@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row footer-widgets">
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-4 col-xs-12">
           <div class="footer-widget mail-subscribe-widget">
             <h4>Sobre nosotros<span class="head-line"></span></h4>
             <p>
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="col-md-3 col-xs-12">
+        <div class="col-md-4 col-xs-12">
           <div class="footer-widget social-widget">
             <h4>Siguenos<span class="head-line"></span></h4>
             <ul class="social-icons">
@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <div class="col-md-3 col-xs-12">
+        <div class="col-md-4 col-xs-12">
           <div class="footer-widget contact-widget">
             <h4>Contactanos<span class="head-line"></span></h4>
              <ul>

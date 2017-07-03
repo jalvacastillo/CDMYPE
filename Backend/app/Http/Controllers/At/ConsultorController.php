@@ -83,20 +83,22 @@ class ConsultorController extends Controller
     public function enviartdr(Request $request) {
         try {
 
-            if ($request->consultores != []) {
+            if ($request['consultores'] != []) {
 
 
                 foreach ($request->consultores as $consultor) {
                     // Si y existe el consultor
                     if ($consultor['consultor']['correo']){
-                        if ($this->correo($request, $consultor['consultor'])) {
-                            $c = Consultor::where('consultor_id', $consultor['consultor_id'])->first();
-                            if (!$c) {
-                                $atconsultor = new Consultor;
-                                $atconsultor->termino_id = $request->id;
-                                $atconsultor->consultor_id = $consultor['consultor_id'];
-                                $atconsultor->save();
-                            }
+                        $atconsultor = Consultor::where('termino_id', $request->id)->where('consultor_id', $consultor['consultor_id'])->first();
+                        if (!$atconsultor) {
+                            $atconsultor = new Consultor;
+                            $atconsultor->termino_id = $request->id;
+                            $atconsultor->consultor_id = $consultor['consultor_id'];
+                            $atconsultor->save();
+                            
+                            if ($this->correo($request, $consultor['consultor'], $atconsultor)) {}
+                        }else{
+                            if ($this->correo($request, $consultor['consultor'], $atconsultor)) {}
                         }
                     }
                 }
@@ -110,9 +112,9 @@ class ConsultorController extends Controller
         }
     }
 
-    public function correo($at, $consultor){
+    public function correo($at, $consultor, $atconsultor){
         try {
-            Mail::send('dash.emails.tdr', ['at' => $at, 'consultor' => $consultor], function ($m) use ($at, $consultor) {
+            Mail::send('dash.emails.tdr', ['at' => $at, 'atconsultor' => $atconsultor], function ($m) use ($at, $consultor, $atconsultor) {
                 $m->to($consultor['correo'], $consultor['nombre'])->subject('TDR - ' . $at->tema);
             });
             return true;
@@ -142,7 +144,7 @@ class ConsultorController extends Controller
 
             if ($request->hasFile('file')) {
                 $consultor = Consultor::Find($request->consultor_id);
-
+                
                 if ($consultor) {
                     $file = $request->file;
                     $ruta = base_path() . '/public/ofertas/';

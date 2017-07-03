@@ -8,41 +8,41 @@
 
     @include('pasantias.title')
 
-
-        <!-- Start Content -->
         <div id="content">
           <div class="container">
             <div class="page-content">
 
 
-              <div class="row">
+                <div class="row list-group">
+                
+                @foreach($pasantias as $pasantia)
+                    <a href="#" class="list-group-item">
+                        <div class="media col-sm-3 hidden-xs">
+                          <figure class="pull-left">
+                              <img class="media-object img-rounded img-responsive"  src="http://placehold.it/350x250" alt="" >
+                          </figure>
+                        </div>
+                        <div class="col-sm-6">
+                          <h2 class="list-group-item-heading"> {{ $pasantia->titulo }} </h2>
+                          <p class="label label-info">{{ $pasantia->tipo }}</p>
+                          <p class="label label-success">{{ $pasantia->especialidad }}</p>
+                          <p class="list-group-item-text"> {{ $pasantia->descripcion }} </p>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                          <h4> {{ $pasantia->finalizacion }} <br><small>Fecha límite</small></h4>
+                          
+                          <h4> {{ $pasantia->duracion }} <br><small>Duración</small></h4>
+                          
+                          {{-- <button type="button" class="btn btn-default btn-block"> Más información </button> --}}
+                          <button type="button" class="btn btn-primary btn-block"> Aplicar </button>
+                        </div>
+                    </a>
+                @endforeach
 
-                <!-- Start Image Service Box 1 -->
-                <div class="col-md-4 image-service-box">
-                  <img class="img-thumbnail" src="assets/images/service-01.jpg" alt="" />
-                  <h4>Clean Modern Code</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
                 </div>
-                <!-- End Image Service Box 1 -->
-
-                <!-- Start Image Service Box 2 -->
-                <div class="col-md-4 image-service-box">
-                  <img class="img-thumbnail" src="assets/images/service-02.jpg" alt="" />
-                  <h4>Great Support</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
-                </div>
-                <!-- End Image Service Box 2 -->
-
-                <!-- Start Image Service Box 3 -->
-                <div class="col-md-4 image-service-box">
-                  <img class="img-thumbnail" src="assets/images/service-03.jpg" alt="" />
-                  <h4>High Quality Theme</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
-                </div>
-                <!-- End Image Service Box 3 -->
-
+              <div class="text-center">
+                {{ $pasantias->links() }}
               </div>
-              
 
             </div>
           </div>

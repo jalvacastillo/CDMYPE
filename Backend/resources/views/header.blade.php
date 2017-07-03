@@ -4,7 +4,7 @@
       <div class="top-bar">
         <div class="container">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
               <ul class="contact-details">
                 <li><a href="#"><i class="fa fa-map-marker"></i> Km. 51 1/2 Cantón Agua Zarca, Cabañas, El Salvador</a>
                 </li>
@@ -14,7 +14,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <ul class="social-list">
                 <li>
                   <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -54,7 +54,7 @@
               </div>
             </div> --}}
             <ul class="nav navbar-nav navbar-right">
-              <li><a class="{{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a> </li>
+              <li><a class="{{ Request::is('/') ? 'active' : '' }} hidden-sm" href="{{ url('/') }}">Inicio</a> </li>
               <li><a class="{{ Request::is('nosotros') ? 'active' : '' }}" href="{{ url('/nosotros') }}">Nosotros</a> <li>
               <li><a class="{{ Request::is('servicios') ? 'active' : '' }}" href="{{ url('/servicios') }}">Servicios</a> <li>
               <li><a class="{{ Request::is('clientes') ? 'active' : '' }}" href="{{ url('/clientes') }}">Clientes</a> <li>

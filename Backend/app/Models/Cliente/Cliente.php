@@ -15,11 +15,11 @@ class Cliente extends Model {
 
 
     public function getEmpresaAttribute(){
-        return $this->empresa()->pluck('nombre')->first();;
+        return $this->empresa()->pluck('nombre')->first();
     }
 
     public function getEmpresarioAttribute(){
-        return $this->empresario()->pluck('nombre')->first();;
+        return $this->empresario()->pluck('nombre')->first();
     }
 
 

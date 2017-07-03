@@ -13,8 +13,9 @@ class Noticia extends Model
         'titulo',
         'slug',
         'descripcion',
-        'imagen',
+        'recurso',
         'tipo',
+        'categoria',
         'asesor_id',
         'cdmype_id'
     ];

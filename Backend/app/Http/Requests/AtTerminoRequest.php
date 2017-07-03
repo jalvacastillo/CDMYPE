@@ -24,8 +24,18 @@ class AtTerminoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cliente_id' => 'required|numeric',
-            'tema' => 'required'
+            'cliente_id' =>'required|numeric',
+            'tema' => 'required',
+            'obj_general' => 'required',
+            'obj_especifico' => 'required',
+            'productos' => 'required',
+            'tiempo_ejecucion' =>'required|numeric',
+            'trabajo_local' =>'required|numeric',
+            'fecha' => 'required',
+            'financiamiento' =>'required|numeric',
+            'aporte' =>'required|numeric',
+            'especialidad_id'=> 'required',
+            'asesor_id'=> 'required'
         ];
     }
 }

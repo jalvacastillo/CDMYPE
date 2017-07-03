@@ -8,11 +8,10 @@
                     <div class="form-group">
                         <label for="tipo"> * Estado:</label>
                         <div class="controls">
-                            <input list="estado" class="form-control" [(ngModel)]="acta.tipo" name="tipo" placeholder="Nombre" required autofocus />
-                            <datalist id="estado">
-                                <option value="Conformidad">
-                                <option value="Rechazo">
-                            </datalist>
+                            <select class="form-control" [(ngModel)]="acta.tipo" name="tipo" required>
+                                <option value="Conformidad">Conformidad</option>
+                                <option value="Rechazo">Rechazo</option>
+                            </select>
                         </div>
                     </div>
                 </div>

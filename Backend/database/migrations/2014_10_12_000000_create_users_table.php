@@ -20,7 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->enum('tipo', array('Administrador','Asesor','Compras','Director'));
+            $table->string('cargo');
             $table->string('imagen')->nullable();
+            $table->text('descripcion')->nullable();
 
             $table->integer('cdmype_id')->default(1);
 

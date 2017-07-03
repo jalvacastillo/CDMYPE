@@ -28,6 +28,9 @@ class ProyectoRequest extends FormRequest
             'descripcion' => 'required',
             'slug' => 'required',
             'tipo' => 'required',
+            'finalizacion' => 'required',
+            'estado' => 'required',
+            'duracion' => 'required',
             'especialidad' => 'required'
         ];
     }

@@ -15,11 +15,11 @@
 
             @include('nosotros.intro')
 
-            <div class="hr1" style="margin-bottom:50px;"></div>
+            <div class="hr5" style="margin:50px 0px;"></div>
 
             @include('nosotros.misionvision')
 
-            <div class="hr1" style="margin-bottom:50px;"></div>
+            <div class="hr5" style="margin:50px 0px;"></div>
 
             @include('nosotros.equipo')
          

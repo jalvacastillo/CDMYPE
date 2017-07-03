@@ -1,5 +1,9 @@
 @media (max-width: 1200px) {
 	
+	.slider-content p{
+		margin-top: 50px;
+	}
+	
 	.navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 		background: #fff;
 		padding: 8px 5px 6px 5px;
@@ -176,7 +180,11 @@
 }
 
 @media (max-width: 768px) {
-  
+  	
+  	.slider-content p{
+  		margin-top: 100px;
+  	}
+
 	.tp-leftarrow,
 	.tp-rightarrow {
 		display: none!important;
@@ -416,13 +424,13 @@
 }
 
 
-@media (max-width : 479px) {
+/*@media (max-width : 479px) {
     
     #main-slide .item .slider-content{
 		display: none;
 	}
     
-}
+}*/
 
 @media screen and (max-width: 767px) {
 	.navbar-toggle{

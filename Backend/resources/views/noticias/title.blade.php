@@ -1,18 +1,15 @@
-    <!-- Start Page Banner -->
-    <div class="page-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h2>Noticias</h2>
-            <p>Conoce lo que estamos haciendo</p>
-          </div>
-          <div class="col-md-6">
-            <ul class="breadcrumbs">
-              <li><a href="#">Home</a></li>
-              <li>Noticias</li>
-            </ul>
-          </div>
-        </div>
+<div class="page-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Noticias</h2>
+      </div>
+      <div class="col-md-6">
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li>Noticias</li>
+        </ul>
       </div>
     </div>
-    <!-- End Page Banner -->
+  </div>
+</div>

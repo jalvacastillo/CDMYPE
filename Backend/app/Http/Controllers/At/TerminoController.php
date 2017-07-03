@@ -72,6 +72,7 @@ class TerminoController extends Controller
 
             if($request->id){
                 $termino = Termino::find($request->id);
+                $termino->estado = 'Creada';
             }
             else{
                 $termino = new Termino;

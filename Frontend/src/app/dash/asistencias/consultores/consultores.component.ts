@@ -53,7 +53,8 @@ export class AtConsultoresComponent implements OnInit {
         console.log(this.termino);
         this.apiService.store('atconsultores/enviartdr/', this.termino).subscribe(consultores => {
             console.log(this.consultores);
-            this.alertService.success("Guardado");
+            this.alertService.success("Enviado");
+            this.router.navigate(['/asistencia/enviados/', this.termino.id]);
             this.loading = false;
         }, error => {
             this.alertService.error(error._body);

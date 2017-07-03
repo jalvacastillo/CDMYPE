@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="es">
-
 <head>
 
   <!-- Basic -->
@@ -61,10 +60,13 @@
 </head>
 
 <body>
-
     <div id="container">
 
         @include('header')
+        <div class="alert alert-warning" style="position: absolute; right: 0; left: 0; width: 210px; margin: 10px auto; z-index: 999999999;">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          Página en <strong>construcción.</strong>
+        </div>
         
         @yield('content')
 

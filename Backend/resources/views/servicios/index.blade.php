@@ -12,14 +12,19 @@
         <div class="container">
             <div class="page-content">
 
-                @include('servicios.servicios')
-
+                <div class="row text-center">
+                    @include('servicios.servicios-asesorias')
+                    @include('servicios.servicios-otros')
+                </div>
                 <div class="hr1" style="margin-bottom:45px;"></div>
                 
                 <div class="row">
-                    {{-- @include('servicios.ventajas') --}}
-                    @include('servicios.caracteristicas')
-
+                    <div class="col-sm-6">
+                        @include('servicios.atencion')
+                    </div>
+                    <div class="col-sm-6">
+                        @include('servicios.requisitos')
+                    </div>
                 </div>
 
             </div>

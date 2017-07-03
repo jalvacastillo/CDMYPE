@@ -25,11 +25,9 @@
                             <tr *ngFor=" let consultor of consultores">
                                 
                                 <td class="text-center">
-                                    <div class="btn-group btn-group-xs" role="group" style="width:50px;">
-                                        <button type="button" class="btn btn-default" (click)="onDelete(especialidad)" data-toggle="tooltip" title="Editar">
+                                    <button type="button" class="btn btn-default btn-xs" (click)="onDelete(especialidad)" data-toggle="tooltip" title="Editar">
                                         <i class="fa fa-trash"></i>
-                                        </button>
-                                    </div>  
+                                    </button>
                                 </td>
                                 
                                 <td>{{consultor.id}}</td>
@@ -41,7 +39,7 @@
                                         <input type="file" name="file" id="file" class="inputfile" [ngModel]="doc" (change)="uploadFile(consultor, $event)">
                                         <label for="file">Subir</label>
                                     </div>
-                                    <button class="btn btn-danger" *ngIf="consultor.doc_oferta" (click)="eliminarDoc(consultor);">
+                                    <button class="btn btn-danger btn-xs" *ngIf="consultor.doc_oferta" (click)="eliminarDoc(consultor);">
                                         Eliminar
                                     </button>
                                 </td>

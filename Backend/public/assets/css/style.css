@@ -1009,7 +1009,7 @@ ul.social-list li:last-child a i {
 
 .page-banner {
     padding: 30px 0;
-    background: url(../images/slide-02-bg.jpg) center;
+    background: url(../images/slide-01-bg.jpg) center;
 	border-bottom: 1px solid #eee;
 }
 
@@ -2671,6 +2671,7 @@ ul.icons-list li i {
 	font-size: 14px;
 	font-weight: 700;
 	padding: 5px 14px;
+    width: 75px;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -2681,9 +2682,11 @@ ul.icons-list li i {
 
 .team-member .member-photo .member-name span {
 	position: absolute;
+    text-align: right;
 	top: 90%;
 	right: 0;
 	color: #fff;
+    width: 150px;
 	font-size: 13px;
 	font-weight: 300;
 	padding: 1px 10px;
@@ -2698,7 +2701,7 @@ ul.icons-list li i {
 }
 
 .team-member .member-socail {
-	//text-align: center;
+	text-align: center;
 }
 
 .team-member .member-socail a i {
@@ -4123,16 +4126,16 @@ footer a:hover {
 
 .social-widget ul.social-icons li {
 	display: inline-block;
-	margin-right: 4px;
+	margin-right: 10px;
 	margin-bottom: 4px;
 }
 
 .social-widget ul.social-icons li a i {
-	font-size: 1.4em;
-	width: 36px;
-	height: 36px;
+	font-size: 2em;
+	width: 50px;
+	height: 50px;
 	color: #fff;
-	line-height: 36px;
+	line-height: 50px;
 	text-align: center;
 	display: block;
 	border-radius: 2px;
@@ -5641,7 +5644,7 @@ ul.footer-nav li a:hover {
 
 .over:after{
     content: "";
-    background-color: rgba(0, 175, 209, .6);
+    background-color: rgba(0, 175, 209, .8);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -5654,4 +5657,40 @@ ul.footer-nav li a:hover {
 
 .counter-item > i, .timer, .counter-item > h5{
     color: #ffffff !important;
+}
+
+.thumbnail > .panel-footer p{
+    font-size: 1em;
+    margin: 0px;
+}
+
+.thumbnail > .panel-footer p i{
+    margin-right: 10px;
+}
+
+a.list-group-item {
+    height:auto;
+    min-height:200px;
+}
+
+.service-icon.img-thumbnail{
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.service-icon.img-thumbnail:hover{
+    background: #21b8d5;
+    color: #ffffff;
+}
+
+@media(max-width:767px){
+    .service-icon.img-thumbnail{
+        width: 75%;
+        font-size: 1em;
+        padding: 15px;
+        margin-bottom: 10px;
+    }
 }

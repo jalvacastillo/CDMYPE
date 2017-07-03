@@ -26,7 +26,9 @@ class NoticiaRequest extends FormRequest
         return [
             'titulo' => 'required',
             'descripcion' => 'required',
-            'tipo' => 'required'
+            'recurso' => 'required',
+            'tipo' => 'required',
+            'categoria' => 'required',
         ];
     }
 }
