@@ -16,12 +16,11 @@ class Proyectos extends Seeder
                 $table->titulo          = $faker->realText(30,2);
                 $table->slug            = $faker->slug;
                 $table->descripcion     = $faker->text;
-                $table->imagen          = 'default.png';
                 $table->finalizacion    = $faker->date;
                 $table->tipo            = $faker->numberBetween(1,3);
                 $table->especialidad_id = $faker->numberBetween(1,5);
                 $table->estado          = $faker->numberBetween(1,3);
-                $table->duracion        = $faker->numberBetween(1,20) + ' Semanas';
+                $table->duracion        = '5 Semanas';
                 $table->asesor_id       = $faker->numberBetween(1,3);
 
                 $table->save();

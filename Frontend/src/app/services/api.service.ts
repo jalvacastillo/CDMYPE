@@ -33,7 +33,7 @@ export class ApiService {
  
             let headers = new Headers();
             headers.append('Accept', 'application/json');
-            headers.append('Authorization','Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token );
+            headers.append('Authorization','Bearer ' + JSON.parse(sessionStorage.getItem('currentUser')).token );
 
             let options = new RequestOptions({ headers: headers });
 
@@ -63,7 +63,7 @@ export class ApiService {
 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });

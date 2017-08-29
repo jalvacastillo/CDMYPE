@@ -39,6 +39,7 @@ export class NoticiaComponent implements OnInit {
     onSubmit() {
         this.loading = true;
         console.log(this.noticia);
+        this.noticia.asesor_id = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
         this.apiService.store('noticia', this.noticia).subscribe(noticia => {
            this.noticia = noticia;
             this.alertService.success("Guardado");

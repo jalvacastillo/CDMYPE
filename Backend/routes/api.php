@@ -21,7 +21,7 @@
 
 Route::post('/login', 'AuthController@login');
 
-// Route::group(['middleware' => ['jwt.auth']], function () {
+Route::group(['middleware' => ['jwt.auth']], function () {
 
     Route::get('/users', 'UserController@index');
 
@@ -34,4 +34,4 @@ Route::post('/login', 'AuthController@login');
     require base_path('routes/ApiGroup/asistencias.php');
     require base_path('routes/ApiGroup/capacitaciones.php');
     
-// });
+});

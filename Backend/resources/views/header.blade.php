@@ -41,7 +41,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="{{ url('/') }}" style="width: 120px;">
-              <img alt="" src="assets/images/cdmype-logo.jpg">
+              <img alt="" src="/assets/images/cdmype-logo.jpg">
             </a>
           </div>
           <div class="navbar-collapse collapse">

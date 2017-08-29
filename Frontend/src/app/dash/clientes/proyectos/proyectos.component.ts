@@ -55,7 +55,7 @@ export class CProyectosComponent implements OnInit {
     onSubmit() {
         this.loading = true;
         if(!this.proyecto.id) {
-            this.proyecto.asesor_id = JSON.parse(localStorage.getItem('currentUser')).user.id;
+            this.proyecto.asesor_id = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
             this.proyecto.cliente_id = this.cliente.id;
         }
         this.apiService.store('proyecto', this.proyecto).subscribe(proyecto => {

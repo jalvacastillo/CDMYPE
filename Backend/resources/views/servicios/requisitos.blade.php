@@ -8,7 +8,7 @@
     </div>
     <div class="service-content">
       <h4>Domicilio</h4>
-      <p>La empresa debe estar operando en los municipios de cabañas o cuscatlán.</p>
+      <p>La empresa debe estar operando en los municipios de Cabañas o Cuscatlán.</p>
     </div>
   </div>
 

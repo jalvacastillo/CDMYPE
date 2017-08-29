@@ -10,7 +10,7 @@
 
         <div id="content">
           <div class="container">
-            <div class="page-content">
+            <div class="page-content" id="pasantias">
 
 
                 <div class="row list-group">

@@ -45,7 +45,7 @@
           <div class="footer-widget contact-widget">
             <h4>Contactanos<span class="head-line"></span></h4>
              <ul>
-              <li><a class="wite-text" href="#"><i class="fa fa-map-marker"></i> Km. 51 1/2 Cantón Agua Zarca, Cabañas, El Salvador</a>
+              <li><a class="wite-text" target="blank" href="https://goo.gl/maps/tW4oEw5XdP52"><i class="fa fa-map-marker"></i> Km. 51 1/2 Cantón Agua Zarca, Cabañas, El Salvador</a>
               </li>
               <li><a class="wite-text" href="mailto:cdmype.unicaes@gmail.com"><i class="fa fa-envelope-o"></i> cdmype.unicaes@gmail.com</a>
               </li>

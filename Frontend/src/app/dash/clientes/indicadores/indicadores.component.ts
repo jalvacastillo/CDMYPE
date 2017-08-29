@@ -59,7 +59,7 @@ export class IndicadoresComponent implements OnInit {
         // Si el indicador no existe
         if(!this.indicador.id) {
             this.indicador.cliente_id = this.cliente.id;
-            this.indicador.asesor_id = JSON.parse(localStorage.getItem('currentUser')).user.id;
+            this.indicador.asesor_id = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
         }
 
         this.apiService.store('indicador', this.indicador).subscribe(indicador => {

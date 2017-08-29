@@ -51,7 +51,7 @@ export class AtTerminoComponent implements OnInit {
     onSubmit() {
         this.loading = true;
         console.log(this.termino);
-        this.termino.asesor_id = JSON.parse(localStorage.getItem('currentUser')).user.id;
+        this.termino.asesor_id = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
 
         this.apiService.store('attermino', this.termino).subscribe(termino => {
             this.alertService.success("Guardado");
