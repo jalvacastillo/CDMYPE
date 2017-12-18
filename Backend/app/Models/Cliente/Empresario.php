@@ -9,7 +9,6 @@ class Empresario extends Model {
 
     use SoftDeletes;
     protected $table = 'empresarios';
-    public $errores;
     protected $fillable = array(
         'nombre', 'apellido',
         'nit', 'dui', 'edad',
