@@ -16,81 +16,81 @@ class UsersTableSeeder extends Seeder
 
             $user = new User;
             $user->name = 'Aminta Rodas';
-            $user->email = 'admin@admin.com';
+            $user->email = 'aminta@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor Empresarial';
             $user->descripcion = $faker->text;
-            $user->imagen = 'aminta.jpg';
+            $user->avatar = 'aminta.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Jesus Alvarado';
-            $user->email = 'admin@admin.com';
+            $user->email = 'jesus@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor TIC';
             $user->descripcion = $faker->text;
-            $user->imagen = 'jesus.jpg';
+            $user->avatar = 'jesus.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Ingrid Hernandez';
-            $user->email = 'admin@admin.com';
+            $user->email = 'ingrid@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor Empresarial';
             $user->descripcion = $faker->text;
-            $user->imagen = 'ingrid.jpg';
+            $user->avatar = 'ingrid.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Natalia Calderon';
-            $user->email = 'admin@admin.com';
+            $user->email = 'natalia@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor Empresarial';
             $user->descripcion = $faker->text;
-            $user->imagen = 'natalia.jpg';
+            $user->avatar = 'natalia.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Walter Cuellar';
-            $user->email = 'admin@admin.com';
+            $user->email = 'walter@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor Empresarial';
             $user->descripcion = $faker->text;
-            $user->imagen = 'walter.jpg';
+            $user->avatar = 'walter.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Gustavo Jovel';
-            $user->email = 'admin@admin.com';
+            $user->email = 'gustavo@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor Financiero';
             $user->descripcion = $faker->text;
-            $user->imagen = 'gustavo.jpg';
+            $user->avatar = 'gustavo.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Rhina Molina';
-            $user->email = 'admin@admin.com';
+            $user->email = 'rhina@admin.com';
             $user->tipo = 'Asesor';
             $user->cargo = 'Asesor EFE';
             $user->descripcion = $faker->text;
-            $user->imagen = 'rhina.jpg';
+            $user->avatar = 'rhina.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Carmen Mercado';
-            $user->email = 'admin@admin.com';
+            $user->email = 'carmen@admin.com';
             $user->tipo = 'Compras';
             $user->cargo = 'Técnico de Compras';
             $user->descripcion = $faker->text;
-            $user->imagen = 'carmen.jpg';
+            $user->avatar = 'carmen.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 

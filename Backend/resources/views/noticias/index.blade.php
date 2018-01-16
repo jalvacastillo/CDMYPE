@@ -16,14 +16,14 @@
 
                     @foreach($noticias as $noticia)
                         
-                        @if($noticia->categoria == 'Imagen')
+                        @if($noticia->tipo == 'Imagen')
 
                         <div class="blog-post image-post">
                           <!-- Post Thumb -->
                           <div class="post-head">
-                            <a class="lightbox" title="{{ $noticia->titulo }}" href="assets/images/{{ $noticia->recurso }}">
+                            <a class="lightbox" title="{{ $noticia->titulo }}" href="{{ asset('/img/'. $noticia->recurso) }}">
                               <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
-                              <img alt="" src="assets/images/{{ $noticia->recurso }}">
+                              <img alt="" src="{{ asset('/img/'. $noticia->recurso) }}">
                             </a>
                           </div>
                           <!-- Post Content -->
@@ -40,7 +40,7 @@
                           </div>
                         </div>
 
-                        @elseif($noticia->categoria == 'Video')
+                        @elseif($noticia->tipo == 'Video')
 
                         <div class="blog-post video-post">
                           <!-- Post Video -->

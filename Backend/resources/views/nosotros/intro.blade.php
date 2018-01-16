@@ -14,9 +14,9 @@
   <div class="col-md-6">
 
     <div class="touch-slider" data-slider-navigation="true" data-slider-pagination="true">
-      <div class="item"><img alt="" src="assets/images/cdmype.jpg"></div>
-      <div class="item"><img alt="" src="assets/images/conamype.jpg"></div>
-      <div class="item"><img alt="" src="assets/images/unicaes.jpg"></div>
+      <div class="item"><img alt="" src="{{ asset('/img/cdmype.jpg') }}"></div>
+      <div class="item"><img alt="" src="{{ asset('/img/conamype.jpg') }}"></div>
+      <div class="item"><img alt="" src="{{ asset('/img/unicaes.jpg') }}"></div>
     </div>
 
   </div>

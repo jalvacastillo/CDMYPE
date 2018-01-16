@@ -11,11 +11,6 @@ class CreatePasswordResetsTable extends Migration
      *
      * @return void
      */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-    }
-    
     public function up()
     {
         Schema::create('password_resets', function (Blueprint $table) {

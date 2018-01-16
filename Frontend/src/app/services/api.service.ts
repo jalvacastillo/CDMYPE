@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import 'rxjs/add/operator/retry';
 
 @Injectable()
 export class ApiService {
 
-    // public baseUrl: string = 'http://cri.catolica.edu.sv/cdmype/api/';
-    public baseUrl: string = 'http://localhost:8000/api/';
+    public baseUrl: string = 'http://cri.catolica.edu.sv/cdmype/api/';
+    // public baseUrl: string = 'http://localhost:8000/api/';
 
     constructor(private http: Http) { }
 
     getAll(url:string) {
-        return this.http.get(this.baseUrl + url, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.baseUrl + url, this.jwt()).retry(3).map((response: Response) => response.json());
     }
 
     read(url:string, id: number) {
-        return this.http.get(this.baseUrl + url + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.baseUrl + url + id, this.jwt()).retry(3).map((response: Response) => response.json());
     }
 
     store(url:string, model:any) {
-        return this.http.post(this.baseUrl + url, model, this.jwt()).map((response: Response) => response.json());
+        return this.http.post(this.baseUrl + url, model, this.jwt()).retry(3).map((response: Response) => response.json());
     }
 
     delete(url:string, id: number) {
-        return this.http.delete(this.baseUrl + url + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete(this.baseUrl + url + id, this.jwt()).retry(3).map((response: Response) => response.json());
     }
 
     upload (url: string, consultor: any, oferta:any) {
@@ -37,7 +38,7 @@ export class ApiService {
 
             let options = new RequestOptions({ headers: headers });
 
-            return this.http.post(this.baseUrl + url, formData, options).map(res => res.json());
+            return this.http.post(this.baseUrl + url, formData, options).retry(3).map(res => res.json());
 
     }
 
@@ -59,13 +60,21 @@ export class ApiService {
 
     }
 
+    auth_user(){
+        return JSON.parse(sessionStorage.getItem('auth_user'));
+    }
+
+    auth_token(){
+        return JSON.parse(sessionStorage.getItem('token'));
+    }
+
     // private helper methods
 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        let token = JSON.parse(sessionStorage.getItem('token'));
+        if (token) {
+            let headers = new Headers({ 'Authorization': 'Bearer ' + token });
             return new RequestOptions({ headers: headers });
         }
     }

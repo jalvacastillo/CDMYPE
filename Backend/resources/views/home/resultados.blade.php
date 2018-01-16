@@ -1,4 +1,4 @@
-<div id="parallax-one" class="parallax" style="background-image:url(assets/images/parallax/results.jpg);">
+<div id="parallax-one" class="parallax" style="background-image:url(img/parallax/results.jpg);">
     <div class="over"></div>
     <div class="parallax-text-container-1">
         <div class="parallax-text-item">

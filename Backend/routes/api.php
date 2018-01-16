@@ -1,6 +1,6 @@
 <?php
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,25 +13,25 @@
 |
 */
 
-// Route::middleware('api')->get('/user', function (Request $request) {
-// // Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::get('/prueba', function(){ return Response()->json(['message' => 'Success'], 200); });
 
-//     return "hola";
-//     return $request->user();
+Route::post('/login', 'Auth\AuthJWTController@login');
+Route::post('/register', 'Auth\AuthJWTController@register');
 
-Route::post('/login', 'AuthController@login');
 
-Route::group(['middleware' => ['jwt.auth']], function () {
+// Route::group(['middleware' => ['jwt.auth']], function () {
 
-    Route::get('/users', 'UserController@index');
+	// Dashboard
+		require base_path('routes/modulos/dash.php');
+	
+		require base_path('routes/modulos/noticias.php');
+		// require base_path('routes/modulos/compras.php');
+		// require base_path('routes/modulos/clientes.php');
+		// require base_path('routes/modulos/proveedores.php');
+		// require base_path('routes/modulos/productos.php');
+		
+		// require base_path('routes/modulos/usuarios.php');
+		// require base_path('routes/modulos/empresa.php');
+		
 
-    require base_path('routes/ApiGroup/clientes.php');
-    require base_path('routes/ApiGroup/consultores.php');
-    require base_path('routes/ApiGroup/salidas.php');
-    require base_path('routes/ApiGroup/especialidades.php');
-    require base_path('routes/ApiGroup/noticias.php');
-    require base_path('routes/ApiGroup/proyectos.php');
-    require base_path('routes/ApiGroup/asistencias.php');
-    require base_path('routes/ApiGroup/capacitaciones.php');
-    
-});
+// });

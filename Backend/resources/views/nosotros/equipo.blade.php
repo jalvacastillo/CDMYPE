@@ -7,7 +7,7 @@
       <div class="team-member">
         <!-- Memebr Photo, Name & Position -->
         <div class="member-photo">
-          <img alt="" src="assets/images/team/{{ $asesor->imagen }}" style="height:200px; width:280px;" />
+          <img alt="" src="{{ asset('/img/team/'. $asesor->avatar) }}" style="height:200px; width:280px;" />
           <div class="member-name">{{ $asesor->nombre }} <span>{{ $asesor->cargo }}</span></div>
         </div>
         <!-- Memebr Words -->

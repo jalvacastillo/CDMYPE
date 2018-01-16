@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" [routerLink]="['/']"> Dashboard </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+
+                <li routerLinkActive="active"><a [routerLink]="['/ventas']">Ventas</a></li>              
+                <li routerLinkActive="active"><a [routerLink]="['/compras']">Compras</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/clientes']">Clientes</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/proveedores']">Proveedores</a></li>              
+                <li routerLinkActive="active"><a [routerLink]="['/noticias']">Noticias</a></li>              
+                <li routerLinkActive="active"><a [routerLink]="['/contabilidad']">Contabilidad</a></li>              
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown user user-menu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="assets/img/usuarios/{{usuario.avatar}}" class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{ usuario.name }}</span>
+                    <i class="caret"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                      <img src="assets/img/usuarios/{{usuario.avatar}}" class="img-circle" alt="User Image">
+                      <p style="color: black;">
+                        {{ usuario.name }}
+                        <small>{{usuario.tipo }}</small>
+                      </p>
+                    </li>
+                    <li class="user-body" *ngIf="usuario.tipo == 'Administrador'">
+                        <div class="col-xs-4 text-center no-padding">
+                          <a class="btn bg-default btn-block" [routerLink]="['/admin/empresa']">Empresa</a>
+                        </div>
+                        <div class="col-xs-4 text-center no-padding">
+                          <a class="btn bg-default btn-block" [routerLink]="['/admin/reportes']">Reportes</a>
+                        </div>
+                        <div class="col-xs-4 text-center no-padding">
+                          <a class="btn bg-default btn-block" [routerLink]="['/admin/usuarios']">Usuarios</a>
+                        </div>
+                    </li>
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a [routerLink]="['/admin/perfil']" class="btn btn-default btn-flat">Perfil</a>
+                      </div>
+                      <div class="pull-right">
+                        <a [routerLink]="['/login']" class="btn btn-default btn-flat">Salir</a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style="padding-bottom: 50px;"></div>

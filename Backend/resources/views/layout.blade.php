@@ -15,43 +15,45 @@
   <meta name="description" content="Somos un Centro de Desarrollo de la Micro y Pequeña Empresa que atiende cabañas y cuscatlán.">
   <meta name="author" content="Jesus Alvarado - Asesor TIC">
 
+  <link rel="shortcut icon" href="favicon.ico">
+
   <!-- Bootstrap CSS  -->
-  <link rel="stylesheet" href="/assets/css/bootstrap.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="/assets/css/font-awesome.min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
 
   <!-- Slicknav -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/slicknav.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/slicknav.css" media="screen">
 
   <!-- Margo CSS Styles  -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 
   <!-- Responsive CSS Styles  -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
 
   <!-- Css3 Transitions Styles  -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/animate.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
 
   <!-- Color CSS Styles  -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/colors/blue.css" title="blue" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen" />
 
   <!-- Margo JS  -->
-  <script type="text/javascript" src="/assets/js/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.migrate.js"></script>
-  <script type="text/javascript" src="/assets/js/modernizrr.js"></script>
-  <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-  <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="/assets/js/nivo-lightbox.min.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.isotope.min.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.appear.js"></script>
-  <script type="text/javascript" src="/assets/js/count-to.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.textillate.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.lettering.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.easypiechart.min.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.nicescroll.min.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.parallax.js"></script>
-  <script type="text/javascript" src="/assets/js/mediaelement-and-player.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery.slicknav.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/jquery.migrate.js"></script>
+  <script type="text/javascript" src="js/modernizrr.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="js/nivo-lightbox.min.js"></script>
+  <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="js/jquery.appear.js"></script>
+  <script type="text/javascript" src="js/count-to.js"></script>
+  <script type="text/javascript" src="js/jquery.textillate.js"></script>
+  <script type="text/javascript" src="js/jquery.lettering.js"></script>
+  <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
+  <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+  <script type="text/javascript" src="js/jquery.parallax.js"></script>
+  <script type="text/javascript" src="js/mediaelement-and-player.js"></script>
+  <script type="text/javascript" src="js/jquery.slicknav.js"></script>
   
 
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -187,7 +189,7 @@
     </ul>
   </div> --}}
 
-  <script type="text/javascript" src="/assets/js/script.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
 
 </body>
 

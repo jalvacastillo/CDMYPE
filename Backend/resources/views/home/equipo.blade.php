@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-xs-6 col-xs-offset-3">
-                <img src="assets/images/team/team.jpg" class="img-responsive" alt="" style="margin: auto;">
+                <img src="{{ asset('img/team/team.jpg') }}" class="img-responsive" alt="" style="margin: auto;">
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
       <!-- Start Recent Projects Carousel -->
       <ul id="portfolio-list" data-animated="fadeIn">
         <li>
-          <img src=assetsimages/portfolio-1/1.png" alt="" />
+          <img src="img/portfolio-1/1.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Marketing Digital</span>
             <p class="body">Asesoria Técnologia</p>
@@ -20,7 +20,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/2.png" alt="" />
+          <img src="img/portfolio-1/2.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Patronato de Uniformes</span>
             <p class="body">Capacitación</p>
@@ -29,7 +29,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/3.png" alt="" />
+          <img src="img/portfolio-1/3.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Gestion de Creditos</span>
             <p class="body">Asesoria Financiera</p>
@@ -38,7 +38,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/4.png" alt="" />
+          <img src="img/portfolio-1/4.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Shitamachi Rocket</span>
             <p class="body">web develpment, design</p>
@@ -47,7 +47,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/5.png" alt="" />
+          <img src="img/portfolio-1/5.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Majesty express vol. 01</span>
             <p class="body">web develpment, design</p>
@@ -56,7 +56,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/6.png" alt="" />
+          <img src="img/portfolio-1/6.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Monocle issue 69</span>
             <p class="body">web develpment, design</p>
@@ -65,7 +65,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/7.png" alt="" />
+          <img src="img/portfolio-1/7.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Monocle issue 69</span>
             <p class="body">web develpment, design</p>
@@ -74,7 +74,7 @@
 
         </li>
         <li>
-          <img src="assets/images/portfolio-1/8.png" alt="" />
+          <img src="img/portfolio-1/8.png" alt="" />
           <div class="portfolio-item-content">
             <span class="header">Monocle issue 69</span>
             <p class="body">web develpment, design</p>

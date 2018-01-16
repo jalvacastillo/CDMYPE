@@ -14,7 +14,7 @@
 
           <div class="row well">
               <div class="col-sm-6 col-md-4">
-                  <img src="/assets/images/clientes/{{ $cliente->imagen}}" alt="" class="img-rounded img-responsive" />
+                  <img src="{{ asset('/img/clientes/'. $cliente->imagen) }}" alt="" class="img-rounded img-responsive" />
               </div>
               <div class="col-sm-6 col-md-8">
                   <h2>

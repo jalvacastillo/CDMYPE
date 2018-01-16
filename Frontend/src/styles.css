@@ -1,50 +1,47 @@
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  padding-top: 7rem;
-}
-
-.no-margin{
-  margin: 0;
-}
-
-footer {
-  height: 60px;
-  line-height: 60px;
-  background-color: #f5f5f5;
-}
-
-.navbar-default {background-color: #2c3e50; border-color: transparent; }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #eed64e; background-color: transparent; }
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {color: #ffffff; background-color: #1a242f; }
-.navbar-default .navbar-nav > li > a {color: #ffffff; }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {color: #ffffff; background-color: #1a242f; }
-.navbar-default .navbar-brand {color: #ffffff; }
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {color: #eed64e; background-color: transparent; }
-.navbar {margin-bottom: 5px; }
-.breadcrumb {
-    margin-bottom: 0px;
-    background-color: transparent;
-}
-
-.panel{
-  position: relative;
-}
-
-
-.toolbar{
-    position: absolute;
-    top: 10px;
-    right: 15px;
-}
-
-.checkbox{
-    box-shadow: none !important;
-    margin-top: 0 !important;
-}
-
+/* You can add global styles to this file, and also import other style files */
+/*body{
+	min-height: 700px;
+}*/
 .pagination {
-    margin: 10px 0 10px 0;
+    margin: 0px;
+}
+.buscador{
+	position: absolute;
+	z-index: 1000;
+}
+
+.mr{
+    margin-left: 20px;
+}
+
+.box-header .box-title {
+    font-size: 21px;
+    font-weight: bold;
+}
+.box{
+    margin-bottom: 0px;
+}
+.box-header {
+    min-height: 45px;
+}
+
+.loading {
+    position: absolute;
+    right: 50%;
+    left: 47%;
+    top: 30%;
+}
+
+.thumbler{
+	min-height: 200px;
+	padding: 50px;
+}
+
+.progress{
+    margin-bottom: 5px;
+}
+
+/* Editor */
+.fr-toolbar{
+    border-top: 0px !important;
 }

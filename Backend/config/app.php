@@ -10,6 +10,7 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+    |
     */
 
     'name' => env('APP_NAME', 'Laravel'),
@@ -64,7 +65,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // 'timezone' => 'UTC',
+    'timezone' => 'America/El_Salvador',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +79,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +92,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +168,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -177,9 +178,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // Backend
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+         // Backend
         Barryvdh\Cors\ServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
@@ -231,9 +232,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Backend
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
-
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],

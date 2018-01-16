@@ -8,42 +8,42 @@
 
               <!-- Client 1 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c1.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c1.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 2 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c2.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c2.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 3 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c3.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c3.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 4 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c4.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c4.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 5 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c5.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c5.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 6 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c6.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c6.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 7 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c7.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c7.png') }}" alt="" /></a>
               </div>
 
               <!-- Client 8 -->
               <div class="client-item item">
-                <a href="#"><img src="page/images/c8.png" alt="" /></a>
+                <a href="#"><img src="{{ asset('/img/c8.png') }}" alt="" /></a>
               </div>
 
             </div>

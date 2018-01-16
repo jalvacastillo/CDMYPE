@@ -9,7 +9,7 @@
   
     <div class="carousel-inner">
 
-        <div class="item active" style="background-image: url('assets/images/slider/bg1.jpg');">
+        <div class="item active" style="background-image: url('img/slider/bg1.jpg');">
             <div class="slider-content">
                 <div class="col-md-12 text-center">
 
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="item" style="background-image: url('assets/images/slider/bg2.jpg');">
+        <div class="item" style="background-image: url('img/slider/bg2.jpg');">
             <div class="slider-content">
                 <div class="col-md-12 text-center">
                     <h2 class="animated4"> <span>Todos nuestros <strong>servicios</strong></span> </h2>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-      <div class="item" style="background-image: url('assets/images/slider/bg3.jpg');">
+      <div class="item" style="background-image: url('img/slider/bg3.jpg');">
         <div class="slider-content">
           <div class="col-md-12 text-center">
             <h2 class="animated7">

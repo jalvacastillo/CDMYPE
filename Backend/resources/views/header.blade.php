@@ -17,16 +17,16 @@
             <div class="col-md-4">
               <ul class="social-list">
                 <li>
-                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/CDMYPEILOBASCO/"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/CDMYPEUNICAES"><i class="fa fa-twitter"></i></a>
                 </li>
-                <li>
+{{--                 <li>
                   <a class="instagram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
+                </li> --}}
                 <li>
-                  <a class="youtube itl-tooltip" data-placement="bottom" title="youtube" href="#"><i class="fa fa-youtube"></i></a>
+                  <a class="youtube itl-tooltip" data-placement="bottom" title="youtube" href="https://www.youtube.com/channel/UCtsUESmY8YIGzecsaLZI28A"><i class="fa fa-youtube"></i></a>
                 </li>
               </ul>
             </div>
@@ -41,7 +41,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="{{ url('/') }}" style="width: 120px;">
-              <img alt="" src="/assets/images/cdmype-logo.jpg">
+              <img alt="" src="img/cdmype-logo.jpg">
             </a>
           </div>
           <div class="navbar-collapse collapse">

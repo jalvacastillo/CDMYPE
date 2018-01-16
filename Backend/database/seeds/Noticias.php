@@ -16,11 +16,12 @@ class Noticias extends Seeder
                 $table = new Noticia;
                 $table->titulo      = $faker->realText(30,2);
                 $table->slug        = $faker->slug;
-                $table->descripcion = $faker->text;
+                $table->descripcion = $faker->name;
+                $table->contenido   = $faker->text;
                 $table->recurso     = "default.png";
-                $table->tipo        = $faker->numberBetween(1,3);
+                $table->tipo        = $faker->numberBetween(1,2);
+                $table->categoria   = $faker->numberBetween(1,4);
                 $table->asesor_id   = $faker->numberBetween(1,3);
-                $table->categoria   = $faker->numberBetween(1,2);
 
                 $table->save();
 

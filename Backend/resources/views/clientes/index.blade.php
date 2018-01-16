@@ -21,7 +21,7 @@
                 @foreach($clientes as $cliente)
                       <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="thumbnail">
-                          <img src="assets/images/clientes/{{ $cliente->imagen }}">
+                          <img src="{{ asset('/img/clientes/'. $cliente->imagen) }}">
                           <div class="caption">
                             <h3>{{ $cliente->empresa()->first()->nombre }}</h3>
                             <p class="label label-primary">{{ $cliente->empresa()->first()->sector }}</p>

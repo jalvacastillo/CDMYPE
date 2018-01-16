@@ -13,6 +13,7 @@ class Noticia extends Model
         'titulo',
         'slug',
         'descripcion',
+        'contenido',
         'recurso',
         'tipo',
         'categoria',

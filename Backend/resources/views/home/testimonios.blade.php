@@ -9,7 +9,7 @@
       <div class="custom-carousel show-one-slide touch-carousel" data-appeared-items="2">
         <div class="classic-testimonials item">
           <div class="col-xs-3">
-            <img src="assets/images/testimonios/la-milagrosa.png" alt="Logo Agua la Milagrosa" width="200px">
+            <img src="{{ asset('img/testimonios/la-milagrosa.png') }}" alt="Logo Agua la Milagrosa" width="200px">
           </div>
           <div class="col-xs-7">
             <div class="testimonial-content">
@@ -21,7 +21,7 @@
 
       <div class="classic-testimonials item">
           <div class="col-xs-3">
-            <img src="assets/images/testimonios/calsado-andrely.jpg" alt="Logo Calsado Andrely" width="200px">
+            <img src="{{ asset('img/testimonios/calsado-andrely.jpg') }}" alt="Logo Calsado Andrely" width="200px">
           </div>
           <div class="col-xs-7">
             <div class="testimonial-content">

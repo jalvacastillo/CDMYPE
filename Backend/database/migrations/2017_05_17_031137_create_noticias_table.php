@@ -14,10 +14,11 @@ class CreateNoticiasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('slug')->unique();
-            $table->text('descripcion')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->text('contenido');
             $table->string('recurso');
-            $table->enum('tipo', ['Tips','Asesorías','Casos de Éxito','Eventos', 'Otro']);
-            $table->enum('categoria', ['Imagen', 'Video']);
+            $table->enum('categoria', ['Tips','Asesorías','Casos de Éxito','Eventos', 'Otro']);
+            $table->enum('tipo', ['Imagen', 'Video']);
             $table->integer('asesor_id');
 
             $table->integer('cdmype_id')->default(1);

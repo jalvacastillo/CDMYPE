@@ -10,67 +10,44 @@ class ProyectoController extends Controller
 {
     public function index() {
        
-        try {
+        $proyectos = Proyecto::orderBy('id','dsc')->paginate(7);
 
-            $proyectos = Proyecto::orderBy('id','dsc')->paginate(7);
-
-            return Response()->json($proyectos, 200);
+        return Response()->json($proyectos, 200);
             
-        } catch (Exception $e) {
-
-            return Response()->json($e, 500);
-
-        }
-
     }
 
     public function read($id) {
-        try {
 
-            $proyecto = Proyecto::find($id);
-            return Response()->json($proyecto, 200);
+        $proyecto = Proyecto::findOrFail($id);
+        return Response()->json($proyecto, 200);
             
-        } catch (Exception $e) {
-            return Response()->json($e, 500);
-        }
     }
 
     public function store(ProyectoRequest $request)
     {
-        try {
 
-            if($request->id){
-                $proyecto = Proyecto::find($request->id);
-            }
-            else{
-                $proyecto = new Proyecto;
-            }
-
-            
-            $proyecto->fill($request->all());
-            $proyecto->slug  = str_slug($request->titulo, '-');
-            $proyecto->save();
-
-            return Response()->json($proyecto, 200);
-
-        } catch (Exception $e) {
-            return Response()->json($e, 500);
+        if($request->id){
+            $proyecto = Proyecto::findOrFail($request->id);
         }
+        else{
+            $proyecto = new Proyecto;
+        }
+
+        
+        $proyecto->fill($request->all());
+        $proyecto->slug  = str_slug($request->titulo, '-');
+        $proyecto->save();
+
+        return Response()->json($proyecto, 200);
 
     }
 
     public function delete($id)
     {
-        try{
+        $proyecto = Proyecto::findOrFail($id);
+        $proyecto->delete();
 
-            $proyecto = Proyecto::find($id);
-            $proyecto->delete();
-
-            return Response()->json($proyecto, 201);
-
-        } catch (Exception $e) {
-            return Response()->json($e, 500);
-        }
+        return Response()->json($proyecto, 201);
 
     }
 }

@@ -1,0 +1,48 @@
+<div class="login-box header-filter" style="background-image: url('assets/img/city.jpg'); background-size: cover; background-position: top center; height: 100vh; overflow: hidden;">
+
+<div class="container">
+   
+   <div class="row animated fadeIn">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="login-logo login-box-body">
+          <a [routerLink]="['/']"><img src="assets/img/logo.png" width="50" alt="Logo wlab">CD<b>MYPE</b></a>
+        </div>
+
+        <div class="login-box-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="text-center">{{ saludo }}</h2>
+                    <p class="login-box-msg">Bienvenido</p>
+
+                    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                        
+                        <div class="form-group form-group-lg has-feedback" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                            <input type="email" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required />
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <!-- <div *n    gIf="f.submitted && !email.valid" class="help-block text-danger">Requerido</div> -->
+                        </div>
+
+                        <div class="form-group form-group-lg has-feedback" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required />
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" [disabled]="loading" class="btn btn-primary btn-block">
+                                <span *ngIf="!loading">Entrar</span>
+                                <span *ngIf="loading">Iniciando...</span>
+                            </button>
+                        </div>
+                      
+                    </form>
+                </div>
+                <!-- <div class="col-xs-12 text-center"> -->
+                    <!-- <a [routerLink]="['/registro']" class="btn">O Registrate</a> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+</div>

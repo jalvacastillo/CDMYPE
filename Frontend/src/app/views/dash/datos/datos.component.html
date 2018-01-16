@@ -1,0 +1,58 @@
+<div class="col-sm-3 col-xs-6 animated fadeIn">
+    <div class="small-box bg-blue">
+        <div class="inner">
+            <h3>
+                <span class="animated fadeIn" *ngIf="datos?.productos">{{datos?.productos}}</span>
+                <span class="animated fadeIn" *ngIf="!datos?.productos">0</span>
+            </h3>
+            <p>Productos</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-users"></i>
+        </div>
+        <!-- <a [routerLink]="['/productos']" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+</div>
+<div class="col-sm-3 col-xs-6 animated fadeIn">
+    <div class="small-box bg-yellow">
+        <div class="inner">
+            <h3>
+                <span class="animated fadeIn" *ngIf="datos?.clientes">{{datos?.clientes}}</span>
+                <span class="animated fadeIn" *ngIf="!datos?.clientes">0</span>
+            </h3>
+          <p>Clientes</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-list"></i>
+        </div>
+        <!-- <a [routerLink]="['/clientes']" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+</div>
+
+<div class="col-sm-3 col-xs-6 animated fadeIn">
+    <div class="small-box bg-green">
+        <div class="inner">
+            <h3 class="animated fadeIn" *ngIf="datos?.ventas">{{datos?.ventas | currency:'USD':true:'1.2'}}</h3>
+            <h3 class="animated fadeIn" *ngIf="!datos?.ventas">$0.00</h3>
+            <p>Ventas</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-money"></i>
+        </div>
+        <!-- <a [routerLink]="['/reportes']" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+</div>
+
+<div class="col-sm-3 col-xs-6 animated fadeIn">
+    <div class="small-box bg-red">
+        <div class="inner">
+            <h3 class="animated fadeIn" *ngIf="datos?.compras">{{datos?.compras | currency:'USD':true:'1.2'}}</h3>
+            <h3 class="animated fadeIn" *ngIf="!datos?.compras">$0.00</h3>
+            <p>Compras</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-money"></i>
+        </div>
+        <!-- <a [routerLink]="['/reportes']" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+</div>

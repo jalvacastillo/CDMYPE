@@ -60,7 +60,7 @@
       <div class="copyright-section">
         <div class="row">
           <div class="col-md-12 text-center">
-            <p>&copy; 2017 CDMYPE - Ilobasco </p>
+            <p>&copy; 2018 CDMYPE - Ilobasco </p>
           </div>
           <!-- .col-md-6 -->
           {{-- <div class="col-md-6">
