@@ -12,7 +12,7 @@ export class AuthService {
     constructor(private http: Http, private apiService: ApiService) { }
 
     login(user : any) {
-        return this.http.post(this.apiService.baseUrl + 'login', user)
+        return this.http.post(this.apiService.baseUrl + 'api/login', user)
             .map((response: Response) => {
                 let data = response.json();
                 if (data.token && data.user) {

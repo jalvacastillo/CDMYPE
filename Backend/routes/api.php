@@ -24,14 +24,17 @@ Route::post('/register', 'Auth\AuthJWTController@register');
 	// Dashboard
 		require base_path('routes/modulos/dash.php');
 	
-		require base_path('routes/modulos/noticias.php');
+		require base_path('routes/modulos/clientes.php');
+		require base_path('routes/modulos/consultores.php');
+		require base_path('routes/modulos/pagina.php');
+		require base_path('routes/modulos/usuarios.php');
 		// require base_path('routes/modulos/compras.php');
 		// require base_path('routes/modulos/clientes.php');
 		// require base_path('routes/modulos/proveedores.php');
 		// require base_path('routes/modulos/productos.php');
 		
 		// require base_path('routes/modulos/usuarios.php');
-		// require base_path('routes/modulos/empresa.php');
+		require base_path('routes/modulos/empresa.php');
 		
 
 // });

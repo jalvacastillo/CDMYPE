@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row blog-page">
 
-                <div class="col-md-9 blog-box">
+                <div class="col-md-8 blog-box">
 
                     @foreach($noticias as $noticia)
                         
@@ -21,22 +21,22 @@
                         <div class="blog-post image-post">
                           <!-- Post Thumb -->
                           <div class="post-head">
-                            <a class="lightbox" title="{{ $noticia->titulo }}" href="{{ asset('/img/'. $noticia->recurso) }}">
+                            <a class="lightbox" title="{{ $noticia->titulo }}" href="{{ url('noticia', $noticia->slug) }}">
                               <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
-                              <img alt="" src="{{ asset('/img/'. $noticia->recurso) }}">
+                              <img alt="" src="{{ $noticia->recurso }}">
                             </a>
                           </div>
                           <!-- Post Content -->
                           <div class="post-content">
                             <div class="post-type"><i class="fa fa-picture-o"></i></div>
-                            <h2><a href="#">{{ $noticia->titulo }}</a></h2>
+                            <h2><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->titulo }}</a></h2>
                             <ul class="post-meta">
-                              <li>Autor: <a href="#">{{ $noticia->asesor }}</a></li>
+                              <li>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></li>
                               <li>{{ $noticia->created_at }}</li>
-                              <li><a href="#">{{ $noticia->tipo }}</a></li>
+                              <li><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->tipo }}</a></li>
                             </ul>
                             <p>{{ $noticia->descripcion }}</p>
-                            <a class="main-button" href="#">Leer más <i class="fa fa-angle-right"></i></a>
+                            <a class="main-button" href="{{ url('noticia', $noticia->slug) }}">Leer más <i class="fa fa-angle-right"></i></a>
                           </div>
                         </div>
 
@@ -45,19 +45,19 @@
                         <div class="blog-post video-post">
                           <!-- Post Video -->
                           <div class="post-head">
-                          <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                          <iframe width="560" height="315" src="{{ $noticia->recurso }}" frameborder="0" allowfullscreen></iframe>
                           </div>
                           <!-- Post Content -->
                           <div class="post-content">
                             <div class="post-type"><i class="fa fa-play"></i></div>
-                            <h2><a href="#">{{ $noticia->titulo }}</a></h2>
+                            <h2><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->titulo }}</a></h2>
                             <ul class="post-meta">
-                              <li>Autor: <a href="#">{{ $noticia->asesor }}</a></li>
+                              <li>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></li>
                               <li>{{ $noticia->created_at }}</li>
-                              <li><a href="#">{{ $noticia->tipo }}</a></li>
+                              <li><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->tipo }}</a></li>
                             </ul>
                             <p>{{ $noticia->descripcion }}</p>
-                            <a class="main-button" href="#">Leer más <i class="fa fa-angle-right"></i></a>
+                            <a class="main-button" href="{{ url('noticia', $noticia->slug) }}">Leer más <i class="fa fa-angle-right"></i></a>
                           </div>
                         </div>
 

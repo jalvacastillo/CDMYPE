@@ -1,0 +1,130 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Noticias <small>Listado</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Noticias</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <span class="label label-default" *ngIf="resultados?.total">Registros: {{resultados?.total}}</span>
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">
+                        <form name="form" (ngSubmit)="search()">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search()">
+                        </form>
+                            <div class="input-group-btn">
+                                <button (click)="search()" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a (click)="openModal(modal, {})" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th>Nombre</th>
+                                <th class="text-center">Total</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="resultados?.total < 1">
+                                    <span class="label label-info">No tiene resultados registrados</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let resultado of resultados?.data">
+                                
+                                <td class="text-center">{{ resultado.id }}</td>
+                                <td>{{ resultado.nombre }}</td>
+                                <td class="text-center">{{ resultado.total }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="openModal(modal, resultado)" tooltip="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-default" (click)="delete(resultado.id)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i></a>
+                                    </div>  
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr *ngIf="resultados?.last_page > 1">
+                                <td colspan="8" class="text-center">
+                                    <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item" [ngClass]="{'disabled': resultados?.current_page == 1}">
+                                            <a href="javascript:void(0)" (click)="setPaginacion(resultados?.current_page - 1)" >Previous</a>
+                                        </li>
+                                        
+                                        <li class="page-item" [ngClass]="{'active': page == resultados?.current_page}" *ngFor="let page of paginacion" >
+                                            <a href="javascript:void(0)" (click)="setPaginacion(page)">{{page}} </a>
+                                        </li>
+
+                                        <li class="page-item" [ngClass]="{'disabled': resultados?.current_page == resultados?.last_page}">
+                                            <a href="javascript:void(0)" (click)="setPaginacion(resultados?.current_page + 1)">Next</a>
+                                        </li>
+                                    </ul>
+                                    </nav>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+
+
+<ng-template #modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Resultado</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form name="facturacion" autocomplete="off" (ngSubmit)="onSubmit()">
+        <div class="row text-center">
+            <div class="form-group col-sm-12">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" [(ngModel)]="resultado.nombre" name="nombre">
+            </div>
+            
+            <div class="form-group col-sm-12">
+                <label for="total">Total:</label>
+                <input type="text" class="form-control" [(ngModel)]="resultado.total" name="total">
+            </div>
+
+        </div>
+        
+        <br><br>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fa fa-money"></i>
+                    <span *ngIf="!loading">Guardar</span>
+                    <span *ngIf="loading">Guardando...</span>
+                </button>
+            </div>
+        </div>
+    </form>
+  </div>
+</ng-template>

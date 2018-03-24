@@ -13,11 +13,13 @@ class CreateClientesTable extends Migration {
             
             $table->integer('empresa_id');
             $table->integer('empresario_id')->nullable();
-            $table->enum('procedencia', array('CONAMYPE', 'CDMYPE', 'Cliente', 'Proyecto'))->default('CDMYPE');
-            $table->enum('tipo', array('Propietario','Representante'))->default('Propietario');
-            $table->enum('estado', array('Aprobado','Inscrito'))->default('Inscrito');
-            $table->string('imagen')->default('default.png');
+            $table->enum('procedencia', ['CONAMYPE', 'CDMYPE', 'Cliente', 'Proyecto'])->default('CDMYPE');
+            $table->enum('tipo', ['Propietario','Representante'])->default('Propietario');
+            $table->string('logo')->default('default.png');
+            $table->string('url_facebook')->nullable();
+            $table->string('url_web')->nullable();
 
+            $table->boolean('catalogo')->default(0);
             $table->integer('cdmype_id')->default(1);
             
             $table->softDeletes();

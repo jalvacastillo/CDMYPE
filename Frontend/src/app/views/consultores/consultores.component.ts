@@ -11,7 +11,6 @@ import { Data } from '../../models/data';
 export class ConsultoresComponent implements OnInit {
 
 	public consultores:Data;
-    public paginacion = [];
     public buscador:string;
 
     constructor(private apiService: ApiService, private alertService: AlertService){ }
@@ -23,8 +22,6 @@ export class ConsultoresComponent implements OnInit {
     public loadAll() {
         this.apiService.getAll('consultores').subscribe(consultores => { 
             this.consultores = consultores;
-            this.paginacion = [];
-            for (let i = 0; i < consultores.last_page; i++) { this.paginacion.push(i+1); }
         }, error => {this.alertService.error(error); });
     }
 
@@ -32,8 +29,6 @@ export class ConsultoresComponent implements OnInit {
     	if(text.length > 1) {
 	    	this.apiService.read('consultores/buscar/', text).subscribe(consultores => { 
 	    	    this.consultores = consultores;
-	    	    this.paginacion = [];
-	    	    for (let i = 0; i < consultores.last_page; i++) { this.paginacion.push(i+1); }
 	    	}, error => {this.alertService.error(error); });
     	}
     }

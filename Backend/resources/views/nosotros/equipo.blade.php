@@ -7,20 +7,27 @@
       <div class="team-member">
         <!-- Memebr Photo, Name & Position -->
         <div class="member-photo">
-          <img alt="" src="{{ asset('/img/team/'. $asesor->avatar) }}" style="height:200px; width:280px;" />
-          <div class="member-name">{{ $asesor->nombre }} <span>{{ $asesor->cargo }}</span></div>
+          <img alt="" src="{{ asset('/img/team/'. $asesor->avatar) }}" style="height:250px; width:250px;" />
+          <div class="member-name">{{ $asesor->name }} <span>{{ $asesor->cargo }}</span></div>
         </div>
         <!-- Memebr Words -->
         <div class="member-info">
-          <p>{{ str_limit($asesor->descripcion, 50, '...') }}</p>
+          <p>{{ str_limit($asesor->descripcion, 70, '...') }}</p>
         </div>
         <!-- Memebr Social Links -->
         <div class="member-socail">
-          <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-          <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-          <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-          <a class="mail" href="mailto:{{ $asesor->email }}"><i class="fa fa-envelope"></i></a>
+          @if ($asesor->url_linkedin)
+            <a class="linkedin" href="{{ $asesor->url_linkedin }}" target="_black"><i class="fa fa-linkedin"></i></a>
+          @endif
+          @if ($asesor->url_facebook)
+            <a class="facebook" href="{{ $asesor->url_facebook }}" target="_black"><i class="fa fa-facebook"></i></a>
+          @endif
+          @if ($asesor->email)
+            <a class="mail" href="mailto:{{ $asesor->email }}" target="_black"><i class="fa fa-envelope"></i></a>
+          @endif
+
         </div>
+        <br>
       </div>
     </div>
   @endforeach

@@ -18,25 +18,39 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
 
-                <li routerLinkActive="active"><a [routerLink]="['/ventas']">Ventas</a></li>              
-                <li routerLinkActive="active"><a [routerLink]="['/compras']">Compras</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['/clientes']">Clientes</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['/proveedores']">Proveedores</a></li>              
-                <li routerLinkActive="active"><a [routerLink]="['/noticias']">Noticias</a></li>              
-                <li routerLinkActive="active"><a [routerLink]="['/contabilidad']">Contabilidad</a></li>              
+                <li routerLinkActive="active"><a [routerLink]="['/consultores']">Consultores</a></li>              
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Página web <i class="caret"></i></a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item" routerLinkActive="active">
+                        <a [routerLink]="['/noticias']">Noticias</a>
+                    </li>
+                    <li class="dropdown-item" routerLinkActive="active">
+                        <a [routerLink]="['/resultados']">Resultados</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-item" routerLinkActive="active">
+                        <a [routerLink]="['/proyectos']">Proyectos</a>
+                    </li>
+                    <li class="dropdown-item" routerLinkActive="active">
+                        <a [routerLink]="['/testimonios']">Testimonios</a>
+                    </li>
+                    </ul>
+                </li>                  
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown user user-menu">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="assets/img/usuarios/{{usuario.avatar}}" class="user-image" alt="User Image">
+                    <img src="{{ apiService.baseUrl + 'img/team/' + usuario.avatar }}" class="user-image" alt="User Image">
                     <span class="hidden-xs">{{ usuario.name }}</span>
                     <i class="caret"></i>
                   </a>
                   <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                      <img src="assets/img/usuarios/{{usuario.avatar}}" class="img-circle" alt="User Image">
+                      <img src="{{ apiService.baseUrl + 'img/team/' + usuario.avatar }}" class="img-circle" alt="User Image">
                       <p style="color: black;">
                         {{ usuario.name }}
                         <small>{{usuario.tipo }}</small>

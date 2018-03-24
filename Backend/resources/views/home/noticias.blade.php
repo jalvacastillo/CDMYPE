@@ -12,7 +12,7 @@
                 <div class="left-meta-post">
                   <div class="post-date"><span class="day">{{ $noticia->created_at->format('d') }}</span><span class="month">{{ $noticia->created_at->format('M') }}</span></div>
                     <div class="post-type">
-                        @if($noticia->categoria == 'Imagen')
+                        @if($noticia->tipo == 'Imagen')
                             <i class="fa fa-picture-o"></i>
                         @else
                             <i class="fa fa-video-camera"></i>
@@ -21,7 +21,10 @@
                 </div>
                 <h3 class="post-title"><a href="#">{{ $noticia->titulo }}</a></h3>
                 <div class="post-content">
-                  <p>{{ str_limit($noticia->descripcion, 150,'...')}}<a class="read-more" href="#">Read More...</a></p>
+                  <p>{{ str_limit($noticia->descripcion, 150,'...')}}
+                    <br>
+                    <a class="read-more" href="{{ url('noticias', $noticia->slug) }}">Leer más</a>
+                  </p>
                 </div>
               </div>
             @endforeach

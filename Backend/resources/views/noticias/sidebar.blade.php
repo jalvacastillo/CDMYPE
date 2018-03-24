@@ -1,4 +1,4 @@
-<div class="col-md-3 sidebar right-sidebar">
+<div class="col-md-4 sidebar right-sidebar">
 
   <div class="widget widget-search">
     <form action="#">
@@ -8,13 +8,13 @@
   </div>
 
   <div class="widget widget-categories">
-    <h4>Categories <span class="head-line"></span></h4>
+    <h4>Categorias <span class="head-line"></span></h4>
     <ul>
-      <li> <a href="#">Asesorías</a> </li>
-      <li> <a href="#">Tips</a> </li>
-      <li> <a href="#">Casos de Éxito</a> </li>
-      <li> <a href="#">Eventos</a> </li>
-      <li> <a href="#">Otro  </a> </li>
+      <li> <a href="{{ url('noticias/categoria', 'asesorias') }}">Asesorías</a> </li>
+      <li> <a href="{{ url('noticias/categoria', 'tips') }}">Tips</a> </li>
+      <li> <a href="{{ url('noticias/categoria', 'casos de exito') }}">Casos de Éxito</a> </li>
+      <li> <a href="{{ url('noticias/categoria', 'eventos') }}">Eventos</a> </li>
+      <li> <a href="{{ url('noticias/categoria', 'otro') }}">Otro</a> </li>
     </ul>
   </div>
 

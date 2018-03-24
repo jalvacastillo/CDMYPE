@@ -17,11 +17,9 @@ class CreateProyectosTable extends Migration
             $table->increments('id');
             
             $table->string('titulo');
-            $table->string('slug')->unique();
             $table->text('descripcion');
-            $table->string('imagen')->default('default.png');
             $table->enum('tipo', ['Servicio social', 'Pasantias', 'Investigaciones', 'Otro']);
-            $table->enum('estado', ['Activo', 'En Ejecución', 'Finalizado']);
+            $table->enum('estado', ['Activo', 'Ejecución', 'Finalizado']);
             $table->integer('especialidad_id');
             $table->date('finalizacion');
             $table->string('duracion');

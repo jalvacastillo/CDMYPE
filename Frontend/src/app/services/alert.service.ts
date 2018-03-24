@@ -15,7 +15,7 @@ export class AlertService {
         $.notify({icon: "fa fa-check-circle fa-2x", message: message },{
             type: 'success',
             timer: 1000,
-            placement: {from: 'top', align: 'center'}
+            placement: {from: 'botom', align: 'center'}
         });
 
     }
@@ -25,7 +25,7 @@ export class AlertService {
         $.notify({icon: "fa fa-info-circle fa-2x", message: message },{
             type: 'info',
             timer: 1000,
-            placement: {from: 'top', align: 'center'}
+            placement: {from: 'botom', align: 'center'}
         });
 
     }
@@ -37,7 +37,7 @@ export class AlertService {
             $.notify({icon: "fa fa-exclamation-circle fa-2x", title: 'Woops!', message: '<p>No hay conección al servidor</p>' },{
                type: 'danger',
                timer: 1000,
-               placement: {from: 'top', align: 'center'}
+               placement: {from: 'botom', align: 'center'}
             });
 
         }else if (message._body){
@@ -47,7 +47,7 @@ export class AlertService {
             $.notify({icon: "fa fa-exclamation-circle fa-2x", title: 'Woops!', message: '<p>' + msj.error + '</p>' },{
                type: 'warning',
                timer: 1000,
-               placement: {from: 'top', align: 'center'}
+               placement: {from: 'botom', align: 'center'}
             });
             if(msj.code == 401) {
                 this.router.navigate(['/login']);
@@ -59,7 +59,7 @@ export class AlertService {
             $.notify({icon: "fa fa-exclamation-circle fa-2x", title: 'Woops!', message: '<p>'+ msj.error +'</p>' },{
                type: 'warning',
                timer: 1000,
-               placement: {from: 'top', align: 'center'}
+               placement: {from: 'botom', align: 'center'}
             });
         }
     }

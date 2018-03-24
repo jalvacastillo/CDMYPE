@@ -1,0 +1,75 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Proyecto <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li class="active">Edición</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="onSubmit()">
+            <div class="box box-primary">
+                
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label for="titulo">* Nombre:</label>
+                        <input type="text" class="form-control" [(ngModel)]="proyecto.titulo" name="titulo" placeholder="Nombre" required autofocus>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" class="form-control" [(ngModel)]="proyecto.descripcion" name="descripcion" placeholder="xxxx-x">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="tipo">Tipo:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.tipo" name="tipo">
+                        	<option value="Servicio social">Servicio social</option>
+                        	<option value="Pasantias">Pasantias</option>
+                        	<option value="Investigaciones">Investigaciones</option>
+                        	<option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="estado">Estado:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.estado" name="estado">
+                        	<option value="Activo">Activo</option>
+                        	<option value="Ejecución">Ejecución</option>
+                        	<option value="Finalizado">Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="especialidad_id">Especialidad:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.especialidad_id" name="especialidad_id">
+                        	<option *ngFor="let esp of especialidades" [ngValue]="esp.id">{{ esp.nombre }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="finalizacion">Finalización:</label>
+                        <input type="date" class="form-control" [(ngModel)]="proyecto.finalizacion" name="finalizacion">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="duracion">Duración:</label>
+                        <input type="number" class="form-control" [(ngModel)]="proyecto.duracion" name="duracion">
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                    <button [disabled]="loading" class="btn btn-primary pull-right">
+                        <span *ngIf="!loading">Guardar</span>
+                        <span *ngIf="loading">Guardando...</span>
+                    </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+</div>

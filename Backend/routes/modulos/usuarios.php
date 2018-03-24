@@ -7,6 +7,6 @@
     Route::post('/usuario',         		'UsuarioController@store');
     Route::get('/usuario/{id}',     		'UsuarioController@read');
     Route::delete('/usuario/{id}',  		'UsuarioController@delete');
-
+    Route::post('/usuario-avatar',  		'UsuarioController@avatar');
 
 ?>

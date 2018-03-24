@@ -33,39 +33,35 @@
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th>Nombre</th>
-                                <th class="hidden-xs">Registro</th>
-                                <th class="text-center">P. Anticipado</th>
-                                <th class="text-center">P. Pendiente</th>
-                                <th class="text-center">Ventas</th>
+                                <th>Empresa</th>
+                                <th class="hidden-xs">Empresario</th>
+                                <th class="hidden-xs">Sector</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td colspan="8" class="text-center" *ngIf="clientes?.total < 1">
-                                    <span class="label label-info">No tiene clientes? registrados</span>
+                                    <span class="label label-info">No tiene clientes registrados</span>
                                 </td>
                             </tr>
 
                             <tr class="animated fadeIn" *ngFor=" let cliente of clientes?.data">
                                 
                                 <td class="text-center">{{ cliente.id }}</td>
-                                <td>{{ cliente.nombre }}</td>
-                                <td class="hidden-xs">{{ cliente.registro }}</td>
-                                <td class="text-center">{{ cliente.pago_anticipado | currency:'USD':'true':'1.2' }}</td>
-                                <td class="text-center">{{ cliente.pago_pendiente | currency:'USD':'true':'1.2' }}</td>
-                                <td class="text-center">{{ cliente.num_ventas }}</td>
+                                <td>{{ cliente.empresa }}</td>
+                                <td class="hidden-xs">{{ cliente.empresario }}</td>
+                                <td class="hidden-xs">{{ cliente.sector }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
                                         <a class="btn btn-default" [routerLink]="['/cliente/', cliente.id]" tooltip="Editar">
                                         <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-default" [routerLink]="['/cliente/ventas/', cliente.id]" tooltip="Historial">
-                                        <i class="fa fa-arrow-right"></i>
-                                        </a>
-                                        <a class="btn btn-default" (click)="delete(cliente.id)" tooltip="Eliminar">
-                                        <i class="fa fa-trash"></i></a>
+                                        <!-- <a class="btn btn-default" [routerLink]="['/cliente/ventas/', cliente.id]" tooltip="Historial"> -->
+                                        <!-- <i class="fa fa-arrow-right"></i> -->
+                                        <!-- </a> -->
+                                        <!-- <a class="btn btn-default" (click)="delete(cliente.id)" tooltip="Eliminar"> -->
+                                        <!-- <i class="fa fa-trash"></i></a> -->
                                     </div>  
                                 </td>
 
@@ -77,15 +73,21 @@
                                     <nav>
                                     <ul class="pagination">
                                         <li class="page-item" [ngClass]="{'disabled': clientes?.current_page == 1}">
-                                            <a href="javascript:void(0)" (click)="setPaginacion(clientes?.current_page - 1)" >Previous</a>
+                                            <a href="javascript:void(0)" (click)="setPaginacion(1)" >Primero</a>
+                                        </li>
+                                        <li class="page-item" [ngClass]="{'disabled': clientes?.current_page == 1}">
+                                            <a href="javascript:void(0)" (click)="setPaginacion(clientes?.current_page - 1)" >Anterior</a>
                                         </li>
                                         
-                                        <li class="page-item" [ngClass]="{'active': page == clientes?.current_page}" *ngFor="let page of paginacion" >
-                                            <a href="javascript:void(0)" (click)="setPaginacion(page)">{{page}} </a>
+                                        <li class="page-item">
+                                            <a> {{ clientes.current_page }} / {{ clientes.last_page }} </a>
                                         </li>
 
                                         <li class="page-item" [ngClass]="{'disabled': clientes?.current_page == clientes?.last_page}">
-                                            <a href="javascript:void(0)" (click)="setPaginacion(clientes?.current_page + 1)">Next</a>
+                                            <a href="javascript:void(0)" (click)="setPaginacion(clientes?.current_page + 1)">Siguiente</a>
+                                        </li>
+                                        <li class="page-item" [ngClass]="{'disabled': clientes?.current_page == clientes?.last_page}">
+                                            <a href="javascript:void(0)" (click)="setPaginacion(clientes?.last_page)" >Ultimo</a>
                                         </li>
                                     </ul>
                                     </nav>

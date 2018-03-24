@@ -15,7 +15,7 @@
 
                     <h2 class="animated7"> <span>Has crecer tu <strong>Empresa</strong></span> </h2>
                     <h3 class="animated8"> <span>Nosotros te ayudamos a hacerlo</span> </h3>
-                    <p class="animated6"><a href="{{ url('nosotros') }}" class="slider btn btn-system btn-large">Conoce Como</a></p>
+                    <p class="animated6"><a href="{{ url('nosotros') }}" class="slider btn btn-system btn-large">Conócenos</a></p>
 
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <div class="col-md-12 text-center">
                     <h2 class="animated4"> <span>Todos nuestros <strong>servicios</strong></span> </h2>
                     <h3 class="animated5"> <span>Son de forma gratuita</span> </h3>
-                    <p class="animated6"><a href="{{ url('servicio') }}" class="slider btn btn-system btn-large">Conoce nuestros servicio</a> </p>
+                    <p class="animated6"><a href="{{ url('servicios') }}" class="slider btn btn-system btn-large">Servicios</a> </p>
                 </div>
             </div>
         </div>
@@ -38,9 +38,9 @@
                             <span>7 años de <strong>experiencia</strong></span>
                         </h2>
             <h3 class="animated8">
-                          <span>Acompañando empresas</span>
+                          <span>Y nuestros clientes nos respaldan</span>
                         </h3>
-            <p class="animated6"><a href="{{ url('servicio') }}" class="slider btn btn-system btn-large">Conocenos</a>
+            <p class="animated6"><a href="{{ url('clientes') }}" class="slider btn btn-system btn-large">Clientes</a>
           </div>
         </div>
       </div>

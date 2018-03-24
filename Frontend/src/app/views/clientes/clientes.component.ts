@@ -11,7 +11,6 @@ import { Data } from '../../models/data';
 export class ClientesComponent implements OnInit {
 
 	public clientes:Data;
-    public paginacion = [];
     public buscador:string;
 
     constructor(private apiService: ApiService, private alertService: AlertService){ }
@@ -23,8 +22,6 @@ export class ClientesComponent implements OnInit {
     public loadAll() {
         this.apiService.getAll('clientes').subscribe(clientes => { 
             this.clientes = clientes;
-            this.paginacion = [];
-            for (let i = 0; i < clientes.last_page; i++) { this.paginacion.push(i+1); }
         }, error => {this.alertService.error(error); });
     }
 
@@ -32,8 +29,6 @@ export class ClientesComponent implements OnInit {
     	if(text.length > 1) {
 	    	this.apiService.read('clientes/buscar/', text).subscribe(clientes => { 
 	    	    this.clientes = clientes;
-	    	    this.paginacion = [];
-	    	    for (let i = 0; i < clientes.last_page; i++) { this.paginacion.push(i+1); }
 	    	}, error => {this.alertService.error(error); });
     	}
     }

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.user)
         .subscribe(
             data => {
-                this.alertService.success("Bienvenido");
+                // this.alertService.success("Bienvenido");
                 this.router.navigate(['/']);
             },
             error => {

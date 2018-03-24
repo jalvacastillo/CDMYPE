@@ -14,7 +14,7 @@ class CreateNoticiasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('slug')->unique();
-            $table->string('descripcion')->nullable();
+            $table->string('descripcion');
             $table->text('contenido');
             $table->string('recurso');
             $table->enum('categoria', ['Tips','Asesorías','Casos de Éxito','Eventos', 'Otro']);

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use File;
 use App\User;
-use App\Models\Noticia;
-use App\Models\Proyecto;
+use App\Models\Pagina\Noticia;
+use App\Models\Pagina\Proyecto;
+use App\Models\Pagina\Resultado;
+use App\Models\Pagina\Testimonio;
 use App\Models\Cliente\Cliente;
 
 class HomeController extends Controller
@@ -16,7 +18,10 @@ class HomeController extends Controller
     public function index(){
 
         $noticias = Noticia::orderBy('id','asc')->take(6)->get();
-        return view('home.index', compact('noticias'));
+        $testimonios = Testimonio::orderBy('id','asc')->take(2)->get();
+        $resultados = Resultado::all();
+
+        return view('home.index', compact('noticias', 'resultados', 'testimonios'));
 
     }
 
@@ -30,12 +35,12 @@ class HomeController extends Controller
     }
     
     public function clientes(){
-        $clientes = Cliente::orderBy('id','asc')->with('empresa')->paginate(12);
+        $clientes = Cliente::where('catalogo', 1)->orderBy('id','asc')->with('empresa', 'empresario')->paginate(12);
         return view('clientes.index', compact('clientes'));   
     }
 
     public function cliente($id){
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::where('id', $id)->with('empresa', 'empresario')->first();
         return view('clientes.cliente', compact('cliente'));
     }
 
@@ -59,7 +64,17 @@ class HomeController extends Controller
     }
 
     public function noticias(){
-        $noticias = Noticia::orderBy('id','asc')->paginate(5);
+        $noticias = Noticia::orderBy('id','dsc')->paginate(5);
+        return view('noticias.index', compact('noticias'));
+    }
+
+    public function noticia($slug){
+        $noticia = Noticia::where('slug', $slug)->orderBy('id','asc')->first();
+        return view('noticias.noticia.index', compact('noticia'));
+    }
+
+    public function categoria($cat){
+        $noticias = Noticia::where('categoria', $cat)->orderBy('id','asc')->paginate(7);
         return view('noticias.index', compact('noticias'));
     }
 

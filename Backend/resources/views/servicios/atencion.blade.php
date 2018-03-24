@@ -28,7 +28,7 @@
     </div>
     <div class="service-content">
       <h4>Plan de atención</h4>
-      <p>Se crea un conjunto de actividades para fortalecer las debilidades de la empresa.</p>
+      <p>Se priorizan y programan las acciones a realizar en conjunto con la empresa en base al diagnostico inicial.</p>
     </div>
   </div>
 
@@ -38,7 +38,7 @@
     </div>
     <div class="service-content">
       <h4>Seguimiento</h4>
-      <p>Se ejecutan, evaluan y supervisan cada una de las actividades planificadas.</p>
+      <p>Se ejecutan, evalúan y supervisan cada una de las actividades planificadas.</p>
     </div>
   </div>
   <div class="col-xs-12 service-icon-left-more">
@@ -47,7 +47,7 @@
     </div>
     <div class="service-content">
       <h4>Diagnostico final</h4>
-      <p>Se analiza la empresa a tenido un crecimiento con el apoyo brindado.</p>
+      <p>Se hace una evaluación del crecimiento obtenido producto del apoyo brindado.</p>
     </div>
   </div>
 </div>

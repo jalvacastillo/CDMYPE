@@ -20,6 +20,8 @@ Route::get('/clientes',   'HomeController@clientes');
     Route::post('/registro',   'HomeController@registrofrm');
 Route::get('/pasantias',  'HomeController@pasantias');
 Route::get('/noticias',   'HomeController@noticias');
+Route::get('/noticias/categoria/{cat}',   'HomeController@categoria');
+Route::get('/noticia/{slug}',   'HomeController@noticia');
 Route::get('/contactos',  'HomeController@contactos');
 Route::post('/contactos', 'HomeController@contactosfrm');
 

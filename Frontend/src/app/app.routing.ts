@@ -23,10 +23,13 @@ import { ComprasComponent } from './views/compras/compras.component';
 import { CompraComponent } from './views/compras/compra/compra.component';
 import { VentasComponent } from './views/ventas/ventas.component';
 import { VentaComponent } from './views/ventas/venta/venta.component';
-import { NoticiasComponent } from './views/noticias/noticias.component';
-import { NoticiaComponent } from './views/noticias/noticia/noticia.component';
-
-import { ContabilidadComponent } from './views/contabilidad/contabilidad.component';
+import { NoticiasComponent } from './views/pagina/noticias/noticias.component';
+import { NoticiaComponent } from './views/pagina/noticias/noticia/noticia.component';
+import { ProyectosComponent } from './views/pagina/proyectos/proyectos.component';
+import { ProyectoComponent } from './views/pagina/proyectos/proyecto/proyecto.component';
+import { ResultadosComponent } from './views/pagina/resultados/resultados.component';
+import { TestimoniosComponent } from './views/pagina/testimonios/testimonios.component';
+import { TestimonioComponent } from './views/pagina/testimonios/testimonio/testimonio.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
@@ -53,13 +56,17 @@ const appRoutes: Routes = [
 
     { path: 'noticias', component: NoticiasComponent, canActivate: [AuthGuard] },
     { path: 'noticia/:id', component: NoticiaComponent, canActivate: [AuthGuard] },
+    { path: 'proyectos', component: ProyectosComponent, canActivate: [AuthGuard] },
+    { path: 'proyecto/:id', component: ProyectoComponent, canActivate: [AuthGuard] },
+    { path: 'resultados', component: ResultadosComponent, canActivate: [AuthGuard] },
+    { path: 'testimonios', component: TestimoniosComponent, canActivate: [AuthGuard] },
+    { path: 'testimonio/:id', component: TestimonioComponent, canActivate: [AuthGuard] },
 
     { path: 'ventas', component: VentasComponent, canActivate: [AuthGuard] },
     { path: 'venta/:id', component: VentaComponent, canActivate: [AuthGuard] },
     { path: 'compras', component: ComprasComponent, canActivate: [AuthGuard] },
     { path: 'compra/:id', component: CompraComponent, canActivate: [AuthGuard] },
 
-    { path: 'contabilidad', component: ContabilidadComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '', pathMatch: 'full' }

@@ -12,7 +12,6 @@ class CreateEmpresariosTable extends Migration {
             $table->increments('id');
 
             $table->string('nombre', 50);
-            $table->string('apellido', 50);
             $table->string('dui',20)->unique()->nullable();
             $table->string('nit',30)->unique()->nullable();
             $table->enum('sexo', array('Mujer','Hombre'))->nullable();

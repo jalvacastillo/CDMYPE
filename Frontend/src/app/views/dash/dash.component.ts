@@ -32,10 +32,10 @@ export class DashComponent implements OnInit {
 	}
 
 	public today(){
-		this.select = 'today';
-		this.apiService.getAll('dash/today').subscribe(datos => {
-           this.datos = datos;
-        }, error => {this.alertService.error(error); });
+		// this.select = 'today';
+		// this.apiService.getAll('dash/today').subscribe(datos => {
+  //          this.datos = datos;
+  //       }, error => {this.alertService.error(error); });
 	}
 
 }

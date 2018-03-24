@@ -3,74 +3,187 @@
 <section class="content-header">
     <h1> Cliente <small>Edición</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#">Clientes</a></li>
-        <li class="active">Edición</li>
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Cliente</li>
     </ol>
 </section>
 
 <section class="content animated fadeIn">
-    <div class="row">
-        <div class="col-md-12">
-        
-        <form name="form" (ngSubmit)="onSubmit()">
-            <div class="box box-primary">
-                
-                <div class="box-body">
-                    <div class="form-group col-md-6">
-                        <label for="nombre">* Nombre:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" placeholder="Nombre" required autofocus>
+
+<div class="row">
+
+    
+    <div class="col-md-10 col-md-offset-1">
+        <div class="box box-primary">
+            <div class="box-body">
+                <form name="form" (ngSubmit)="onSubmit()">
+                <div class="col-xs-12">
+                    
+                    <div class="imagen-upload">
+                        <img *ngIf="cliente?.logo" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/clientes/' + cliente.logo }}" style="margin: auto;">
+                        <input type="file" name="logo" id="file" class="inputfile" (change)="uploadFile(cliente, $event)">
+                        <label for="file"></label>
                     </div>
-                    <div class="form-group col-sm-3">
-                        <label for="registro">NRC:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.registro" name="registro" placeholder="xxxx-x">
+
+                    <div class="text-right checkbox pull-right">
+                        <label>Catalogo: <input type="checkbox" [(ngModel)]="cliente.catalogo" name="catalogo"></label>
                     </div>
-                    <div class="form-group col-sm-3">
-                        <label for="nit">NIT:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.nit" name="nit" placeholder="xxxx-xxxxxx-xxx-x">
+
+                    <legend class="col-xs-12">Empresario</legend>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nombre">* Nombre:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.nombre" name="empresario.nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="nit">NIT:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.nit" name="empresario.nit" placeholder="xxxx-xxxxxx-xxx-x">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="nit">DUI:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.dui" name="empresario.dui" placeholder="xxxxxxx-x">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.telefono" name="empresario.telefono" placeholder="0000-0000">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="municipio">Municipio:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.municipio" name="empresario.municipio" placeholder="Municipio">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="departamento">Departamento:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.departamento" name="empresario.departamento" placeholder="Departamento">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="correo">Correo:</label>
+                            <input type="email" class="form-control" [(ngModel)]="empresario.correo" name="empresario.correo" placeholder="Dirección">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="tipo">* Tipo:</label>
+                            <select name="tipo" [(ngModel)]="cliente.tipo" class="form-control">
+                                <option value="Propietario">Propietario</option>
+                                <option value="Representante">Representante</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="procedencia">* Procedencia:</label>
+                            <select name="procedencia" [(ngModel)]="cliente.procedencia" class="form-control">
+                                <option value="CDMYPE">CDMYPE</option>
+                                <option value="CONAMYPE">CONAMYPE</option>
+                                <option value="Cliente">Cliente</option>
+                                <option value="Proyecto">Proyecto</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresario.direccion" name="direccion" placeholder="Dirección">
+                        </div>
                     </div>
-                    <div class="form-group col-sm-3">
-                        <label for="nit">DUI:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.dui" name="dui" placeholder="xxxxxxx-x">
+                    
+                    <legend class="col-xs-12">Empresa</legend>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="empresa.nombre">* Nombre:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.nombre" name="empresa.nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="registro">NRC:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.registro" name="registro" placeholder="xxxx-x">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="empresa.nit">NIT:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.nit" name="empresa.nit" placeholder="xxxx-xxxxxx-xxx-x">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="empresa.dui">DUI:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.dui" name="empresa.dui" placeholder="xxxxxxx-x">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="empresa.sector">Sector:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.sector" name="empresa.sector" placeholder="Sector">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="empresa.telefono">Teléfono:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.telefono" name="empresa.telefono" placeholder="0000-0000">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="empresa.municipio">Municipio:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.municipio" name="empresa.municipio" placeholder="Municipio">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="empresa.departamento">Departamento:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.departamento" name="empresa.departamento" placeholder="Departamento">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="empresa.direccion">Dirección:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.direccion" name="empresa.direccion" placeholder="Dirección">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="empresa.actividad">Actividad:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.actividad" name="empresa.actividad" placeholder="Actividad">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="empresa.url_web">Página Web:</label>
+                            <input type="text" class="form-control" [(ngModel)]="cliente.url_web" name="cliente.url_web" placeholder="www.cliente.com">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="cliente.url_facebook">Página Facebook:</label>
+                            <input type="text" class="form-control" [(ngModel)]="cliente.url_facebook" name="cliente.url_facebook" placeholder="www.fb.com/empresa">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="descripcion">Descripción:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.descripcion" name="descripcion" placeholder="Dirección">
+                        </div>
+
                     </div>
-                    <div class="form-group col-sm-3">
-                        <label for="giro">Giro:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.giro" name="giro" placeholder="Giro">
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <label for="telefono">Teléfono:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.telefono" name="telefono" placeholder="0000-0000">
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <label for="pago_anticipado">Pago anticipado:</label>
-                        <input type="number" class="form-control" [(ngModel)]="cliente.pago_anticipado" name="pago_anticipado" placeholder="0.0">
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <label for="municipio">Municipio:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.municipio" name="municipio" placeholder="Municipio">
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <label for="departamento">Departamento:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.departamento" name="departamento" placeholder="Departamento">
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.direccion" name="direccion" placeholder="Dirección">
+
+
+                    <legend class="col-xs-12" *ngIf="cliente.id">Productos</legend>
+                    <div class="row" *ngIf="cliente.id">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Descripción</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor=" let producto of productos">
+                                    <td width="100">
+                                        <a (click)="delProducto(producto.id)" class="btn btn-xs btn-danger"> <i class="fa fa-minus"></i></a>
+                                        <a (click)="selProducto(producto)" class="btn btn-xs btn-default"> <i class="fa fa-pencil"></i></a>
+                                    </td>
+                                    <td>{{ producto.nombre }}</td>
+                                    <td>{{ producto.precio | currency:'USD':'true':'1.2'}}</td>
+                                    <td>{{ producto.descripcion }}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="text" class="form-control" [(ngModel)]="producto.nombre" name="producto.nombre" placeholder="Nombre"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="producto.precio" name="producto.precio" placeholder="Precio"></td>
+                                    <td><input type="text" class="form-control" [(ngModel)]="producto.descripcion" name="producto.descripcion" placeholder="Descripción"></td>
+                                    <td><a (click)="addProducto()" class="btn btn-primary"> <i class="fa fa-plus"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
-                <div class="box-footer">
-                    <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
-
-                    <button [disabled]="loading" class="btn btn-primary pull-right">
-                        <span *ngIf="!loading">Guardar</span>
-                        <span *ngIf="loading">Guardando...</span>
+                <div class="col-md-12">
+                    <br>
+                    <button [disabled]="loading" class="btn btn-primary btn-block">
+                      <span *ngIf="!loading">Guardar</span>
+                      <span *ngIf="loading">Guardando...</span>
                     </button>
                 </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-</section>
 
 </div>
+<br> <br><br> <br>
+</section>

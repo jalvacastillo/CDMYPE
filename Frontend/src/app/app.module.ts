@@ -22,7 +22,7 @@ import { ClientesModule } from './views/clientes/clientes.module';
 import { ConsultoresModule } from './views/consultores/consultores.module';
 import { ComprasModule } from './views/compras/compras.module';
 import { VentasModule } from './views/ventas/ventas.module';
-import { NoticiasModule } from './views/noticias/noticias.module';
+import { PaginaModule } from './views/pagina/pagina.module';
 import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
 
 
@@ -44,7 +44,7 @@ import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
     ConsultoresModule,
     ComprasModule,
     VentasModule,
-    NoticiasModule,
+    PaginaModule,
     ContabilidadModule
   ],
   providers: [AuthGuard, AdminGuard, AlertService, AuthService, ApiService],

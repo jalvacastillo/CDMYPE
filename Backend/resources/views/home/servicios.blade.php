@@ -12,7 +12,7 @@
                     <i class="fa fa-rocket fa-4x"></i>
                 </div>
                 <div class="service-content">
-                    <h3>Asesorías Empresariales</h3>
+                    <h3>Asesoría Empresarial</h3>
                     <p class="hidden-xs">Brindamos apoyo y acompañamiento para la correcta administración y gestión de tu empresa.</p>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <i class="fa fa-line-chart fa-4x"></i>
                 </div>
                 <div class="service-content">
-                    <h3>Asesorías Financieras</h3>
+                    <h3>Asesoría Financiera</h3>
                     <p class="hidden-xs">Ofrecemos ayuda para la adquisición de créditos y prestamos, asi como la asesoría  en el manejo de tus finanzas.</p>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <i class="fa fa-desktop fa-4x"></i>
                 </div>
                 <div class="service-content">
-                    <h3>Asesorías TIC</h3>
+                    <h3>Asesoría TIC</h3>
                     <p class="hidden-xs">Ayudamos a aplicar la tecnología en su empresa, le capacitamos y asesoramos en todo lo relacionado con las TIC´s.</p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     <i class="fa fa-mars fa-4x"></i>
                 </div>
                 <div class="service-content">
-                    <h3>Asesorías EFE</h3>
+                    <h3>Asesoría EFE</h3>
                     <p class="hidden-xs">Contamos con perosanal especializado para apoyar las empresas que son lideradas por mujeres.</p>
                 </div>
             </div>

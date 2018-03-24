@@ -13,8 +13,8 @@
             <div class="page-content">
 
                 <div class="row text-center">
-                    @include('servicios.servicios-asesorias')
-                    @include('servicios.servicios-otros')
+                    @include('servicios.asesorias')
+                    @include('servicios.otros')
                 </div>
                 <div class="hr1" style="margin-bottom:45px;"></div>
                 

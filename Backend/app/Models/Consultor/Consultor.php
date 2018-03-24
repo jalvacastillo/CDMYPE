@@ -19,10 +19,24 @@ class Consultor extends Model {
         'empresa', 'direccion',
         'municipio', 'departamento',
     ];
+
+    protected $appends = ['especialidad'];
     
     
         public function getAtAttribute(){
             return $this->atConsultores()->where('estado','Seleccionado')->count();
+        }
+
+        public function getEspecialidadAttribute(){
+            
+            $especialidad = $this->especialidades()->first();
+
+            if ($especialidad) {
+                return $especialidad->especialidad;
+            } else {
+                return null;
+            }
+            
         }
 
         public function getCapAttribute(){
@@ -55,7 +69,7 @@ class Consultor extends Model {
 
         public function especialidades() 
         {
-            return $this->hasMany('App\Models\ConsultorEspecialidad', 'consultor_id');
+            return $this->hasMany('App\Models\Consultor\Especialidad', 'consultor_id');
         }
 
 }
