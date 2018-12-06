@@ -15,7 +15,7 @@
         <i class="fa fa-line-chart fa-4x"></i>
     </div>
     <h4>Asesorías Financieras</h4>
-    <p>Ofrecemos ayuda para la adquisición de créditos y prestamos, asi como la asesoría en el manejo de tus finanzas.</p>
+    <p>Ofrecemos ayuda para la adquisición de créditos y prestamos, así como la asesoría en el manejo de tus finanzas.</p>
   </div>
 
   <div class="col-xs-6 col-md-3 image-service-box">
@@ -31,7 +31,7 @@
         <i class="fa fa-mars fa-4x"></i>
     </div>
     <h4>Asesorías EFE</h4>
-    <p>Contamos con perosanal especializado para apoyar las empresas que son lideradas por mujeres.</p>
+    <p>Contamos con personal especializado para apoyar las empresas que son lideradas por mujeres.</p>
   </div>
 
   </div>

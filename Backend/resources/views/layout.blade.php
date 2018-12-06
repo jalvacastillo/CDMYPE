@@ -15,7 +15,7 @@
   <meta name="description" content="Somos un Centro de Desarrollo de la Micro y Pequeña Empresa que atiende cabañas y cuscatlán.">
   <meta name="author" content="Jesus Alvarado - Asesor TIC">
 
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+  <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
   <!-- Bootstrap CSS  -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" media="screen">

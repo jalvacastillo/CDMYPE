@@ -19,7 +19,7 @@ class CreateClientesTable extends Migration {
             $table->string('url_facebook')->nullable();
             $table->string('url_web')->nullable();
 
-            $table->boolean('catalogo')->default(0);
+            $table->boolean('catalogo')->default(1);
             $table->integer('cdmype_id')->default(1);
             
             $table->softDeletes();

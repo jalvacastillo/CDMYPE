@@ -14,7 +14,7 @@
             </h1>
             <br>
             <br>
-            <a href="{{ url('contactos') }}" class="btn-system btn-large btn-wite">Contáctanos <i class="fa fa-arrow-right"></i></a>
+            <a href="{{ url('registro') }}" class="btn-system btn-large btn-wite">Inscríbete <i class="fa fa-arrow-right"></i></a>
         </div>
     </div>
 </div>

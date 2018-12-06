@@ -12,6 +12,7 @@ class Producto extends Model {
     protected $fillable = [
         'cliente_id',
         'nombre',
+        'img',
         'precio',
         'descripcion'
     ];

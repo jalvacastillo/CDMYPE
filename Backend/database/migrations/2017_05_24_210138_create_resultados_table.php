@@ -16,6 +16,7 @@ class CreateResultadosTable extends Migration
 
             $table->string('nombre');
             $table->integer('total')->default(0);
+            $table->string('icon')->default(0);
 
             $table->integer('cdmype_id')->default(1);
             

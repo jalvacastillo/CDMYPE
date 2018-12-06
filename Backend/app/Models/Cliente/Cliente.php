@@ -9,7 +9,16 @@ class Cliente extends Model {
 
     use SoftDeletes;
     protected $table = 'clientes';
-    protected $fillable = ['empresario_id', 'empresa_id', 'tipo', 'procedencia', 'logo', 'catalogo', 'url_facebook', 'url_web'];
+    protected $fillable = [
+        'empresario_id',
+        'empresa_id',
+        'tipo',
+        'procedencia',
+        'logo',
+        'catalogo',
+        'url_facebook',
+        'url_web'
+    ];
 
     protected $appends = ['empresa', 'empresario', 'sector', 'municipio', 'tamano'];
 

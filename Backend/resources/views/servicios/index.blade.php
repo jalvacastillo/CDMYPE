@@ -16,16 +16,14 @@
                     @include('servicios.asesorias')
                     @include('servicios.otros')
                 </div>
-                <div class="hr1" style="margin-bottom:45px;"></div>
+
+                <hr class="hr1" style="margin:30px;"></hr>
                 
-                <div class="row">
-                    <div class="col-sm-6">
-                        @include('servicios.atencion')
-                    </div>
-                    <div class="col-sm-6">
-                        @include('servicios.requisitos')
-                    </div>
-                </div>
+                @include('servicios.atencion')
+                
+                <hr class="hr1" style="margin:30px;"></hr>
+
+                @include('servicios.requisitos')
 
             </div>
         </div>

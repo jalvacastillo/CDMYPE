@@ -55,11 +55,16 @@ class ClienteController extends Controller
 
     public function search($txt) {
 
-        $clientes = Cliente::whereHas('empresa', function($query) use ($txt)
-                    {
+        $clientes = Cliente::
+                    whereHas('empresa', function($query) use ($txt){
                         $query->where('nombre', 'like' ,'%' . $txt . '%');
 
-                    })->paginate(7);
+                    })->
+                    orwhereHas('empresario', function($query) use ($txt){
+                        $query->where('nombre', 'like' ,'%' . $txt . '%');
+
+                    })
+                    ->paginate(7);
 
         return Response()->json($clientes, 200);
 

@@ -58,7 +58,7 @@
               <li><a class="{{ Request::is('nosotros') ? 'active' : '' }}" href="{{ url('/nosotros') }}">Nosotros</a> <li>
               <li><a class="{{ Request::is('servicios') ? 'active' : '' }}" href="{{ url('/servicios') }}">Servicios</a> <li>
               <li><a class="{{ Request::is('clientes') ? 'active' : '' }}" href="{{ url('/clientes') }}">Clientes</a> <li>
-              <li><a class="{{ Request::is('pasantias') ? 'active' : '' }}" href="{{ url('/pasantias') }}">Pasantias</a> </li>
+              {{-- <li><a class="{{ Request::is('pasantias') ? 'active' : '' }}" href="{{ url('/pasantias') }}">Pasantias</a> </li> --}}
               <li><a class="{{ Request::is('noticias') ? 'active' : '' }}" href="{{ url('/noticias') }}">Noticias</a> </li>
               <li><a class="{{ Request::is('contactos') ? 'active' : '' }}" href="{{ url('/contactos') }}">Contactos</a> </li>
             </ul>

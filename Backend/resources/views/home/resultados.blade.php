@@ -10,7 +10,7 @@
 
                     <div class="col-xs-6 col-sm-4">
                         <div class="counter-item">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-{{ $resultado->icon }}"></i>
                             <div class="timer" id="item1" data-to="{{ $resultado->total }}" data-speed="2000"></div>
                             <h5>{{ $resultado->nombre }}</h5>
                         </div>

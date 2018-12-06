@@ -1,43 +1,40 @@
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-    <div id="map" data-position-latitude="13.8150407" data-position-longitude="-88.8625395"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBxfZonLyS9KiYRNpy28h2p3pR5T3oo8U"></script>
+    <div id="map"></div>
     <script>
-      (function($) {
-        $.fn.CustomMap = function(options) {
+      var google;
 
-          var posLatitude = $('#map').data('position-latitude'),
-            posLongitude = $('#map').data('position-longitude');
+      function init() {
+          // Basic options for a simple Google Map
+          // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+          // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
+          var myLatlng = new google.maps.LatLng(13.8150407,-88.8625395);
+          // 39.399872
+          // -8.224454
+          
+          var mapOptions = {
+              // How zoomed in you want the map to start at (always required)
+              zoom: 17,
 
-          var settings = $.extend({home: {latitude: posLatitude, longitude: posLongitude }, zoom: 17 }, options);
+              // The latitude and longitude to center the map (always required)
+              center: myLatlng,
 
-          var coords = new google.maps.LatLng(settings.home.latitude, settings.home.longitude);
-
-          return this.each(function() {
-            var element = $(this);
-
-            var options = {
-              zoom: settings.zoom,
-              center: coords,
-              mapTypeId: google.maps.MapTypeId.ROADMAP,
-              mapTypeControl: false,
-              scaleControl: true,
+              // How you would like to style the map. 
               scrollwheel: false,
-              streetViewControl: false,
-              panControl: true,
-              disableDefaultUI: true,
-              zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.DEFAULT
-              },
-              overviewMapControl: true,
-            };
+              // styles: [{"featureType":"administrative.land_parcel", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"landscape.man_made", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"poi", "elementType":"labels", "stylers":[{"visibility":"off"}]}, {"featureType":"road", "elementType":"labels", "stylers":[{"visibility":"simplified"}, {"lightness":20}]}, {"featureType":"road.highway", "elementType":"geometry", "stylers":[{"hue":"#f49935"}]}, {"featureType":"road.highway", "elementType":"labels", "stylers":[{"visibility":"simplified"}]}, {"featureType":"road.arterial", "elementType":"geometry", "stylers":[{"hue":"#fad959"}]}, {"featureType":"road.arterial", "elementType":"labels", "stylers":[{"visibility":"off"}]}, {"featureType":"road.local", "elementType":"geometry", "stylers":[{"visibility":"simplified"}]}, {"featureType":"road.local", "elementType":"labels", "stylers":[{"visibility":"simplified"}]}, {"featureType":"transit", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"water", "elementType":"all", "stylers":[{"hue":"#a1cdfc"}, {"saturation":30}, {"lightness":49}]}] 
+              styles: [{"featureType":"administrative.land_parcel", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"landscape.man_made", "elementType":"all", "stylers":[{"visibility":"off"}]},  {"featureType":"water", "elementType":"all", "stylers":[{"hue":"#a1cdfc"}, {"lightness":49}]}] 
+          };
 
-            var map = new google.maps.Map(element[0], options);
+          
 
-          });
+          // Get the HTML DOM element that will contain your map 
+          // We are using a div with id="map" seen below in the <body>
+          var mapElement = document.getElementById('map');
 
-        };
-      }(jQuery));
+          // Create the Google Map using out element and options defined above
+          var map = new google.maps.Map(mapElement, mapOptions);
+          
+          
+      }
+      google.maps.event.addDomListener(window, 'load', init);
 
-      jQuery(document).ready(function() {
-        jQuery('#map').CustomMap();
-      });
     </script>

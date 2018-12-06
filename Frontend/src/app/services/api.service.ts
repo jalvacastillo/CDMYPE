@@ -5,7 +5,7 @@ import 'rxjs/add/operator/retry';
 @Injectable()
 export class ApiService {
 
-    // public baseUrl: string = 'http://cri.catolica.edu.sv/cdmype/';
+    // public baseUrl: string = 'http://cdmypeunicaesilobasco.com/';
     public baseUrl: string = 'http://localhost:8000/';
 
     constructor(private http: Http) { }

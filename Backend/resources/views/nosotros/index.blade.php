@@ -23,8 +23,9 @@
 
             @include('nosotros.equipo')
          
-            {{-- <div class="hr1" style="margin-bottom:50px;"></div> --}}
+            <div class="hr1" style="margin-bottom:50px;"></div>
 
+            @include('home.testimonios')
 
             </div>
         </div>

@@ -16,9 +16,8 @@ class CreateNoticiasTable extends Migration
             $table->string('slug')->unique();
             $table->string('descripcion');
             $table->text('contenido');
-            $table->string('recurso');
+            $table->string('img')->default('default.jpg');
             $table->enum('categoria', ['Tips','Asesorías','Casos de Éxito','Eventos', 'Otro']);
-            $table->enum('tipo', ['Imagen', 'Video']);
             $table->integer('asesor_id');
 
             $table->integer('cdmype_id')->default(1);

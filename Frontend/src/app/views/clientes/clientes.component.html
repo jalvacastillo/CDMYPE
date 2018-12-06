@@ -18,7 +18,7 @@
                     <div class="box-tools">
                         <div class="input-group" style="width: 350px;">
                         <form name="form" (ngSubmit)="search(buscador)">
-                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search(buscador)">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador">
                         </form>
                             <div class="input-group-btn">
                                 <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
@@ -36,6 +36,7 @@
                                 <th>Empresa</th>
                                 <th class="hidden-xs">Empresario</th>
                                 <th class="hidden-xs">Sector</th>
+                                <th class="hidden-xs">Catálogo</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
                             </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                 <td>{{ cliente.empresa }}</td>
                                 <td class="hidden-xs">{{ cliente.empresario }}</td>
                                 <td class="hidden-xs">{{ cliente.sector }}</td>
+                                <td class="hidden-xs">{{ cliente.catalogo }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
                                         <a class="btn btn-default" [routerLink]="['/cliente/', cliente.id]" tooltip="Editar">

@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
@@ -21,7 +20,7 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
     FormsModule,
     RouterModule,
     ModalModule.forRoot(),
-    TooltipModule.forRoot(),FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    TooltipModule.forRoot()
   ],
   declarations: [
     NoticiasComponent,

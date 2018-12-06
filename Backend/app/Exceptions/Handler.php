@@ -56,42 +56,46 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ValidationException) {
+        if ($request->wantsJson()) {
 
-            $errors = implode("<br>",$exception->validator->messages()->all());
-            return  Response()->json(['error' => $errors, 'code' => 422], 422);
-        }
+            if ($exception instanceof ValidationException) {
 
-        if ($exception instanceof ModelNotFoundException) {
-            return  Response()->json(['error' => 'No se encontro ningun registro.', 'code' => 404], 404);
-        }
+                $errors = implode("<br>",$exception->validator->messages()->all());
+                return  Response()->json(['error' => $errors, 'code' => 422], 422);
+            }
 
-        if ($exception instanceof AuthenticationException) {
-            return $this->unauthenticated($request, $exception);
-        }
+            if ($exception instanceof ModelNotFoundException) {
+                return  Response()->json(['error' => 'No se encontro ningun registro.', 'code' => 404], 404);
+            }
 
-        if ($exception instanceof AuthorizationException) {
-            return  Response()->json(['error' => 'No posee permisos para ejecutar esta acción.', 'code' => 403], 403);
-        }
+            if ($exception instanceof AuthenticationException) {
+                return $this->unauthenticated($request, $exception);
+            }
 
-        if ($exception instanceof NotFoundHttpException) {
-            return  Response()->json(['error' => 'URL Invalida.', 'code' => 404], 404);
-        }
+            if ($exception instanceof AuthorizationException) {
+                return  Response()->json(['error' => 'No posee permisos para ejecutar esta acción.', 'code' => 403], 403);
+            }
 
-        if ($exception instanceof MethodNotAllowedHttpException) {
-            return  Response()->json(['error' => 'Peticion no valida.', 'code' => 405], 405);
-        }
+            if ($exception instanceof NotFoundHttpException) {
+                return  Response()->json(['error' => 'URL Invalida.', 'code' => 404], 404);
+            }
 
-        if ($exception instanceof JWTException) {
-            return  Response()->json(['error' => $exception->getMessage(), 'code' => $exception->getStatusCode()], $exception->getStatusCode());
-        }
+            if ($exception instanceof MethodNotAllowedHttpException) {
+                return  Response()->json(['error' => 'Peticion no valida.', 'code' => 405], 405);
+            }
 
-        if ($exception instanceof QueryException) {
-            return  Response()->json(['error' => 'No hay conección a la base de datos.', 'code' => 500], 500);
-        }
+            if ($exception instanceof JWTException) {
+                return  Response()->json(['error' => $exception->getMessage(), 'code' => $exception->getStatusCode()], $exception->getStatusCode());
+            }
 
-        if ($exception instanceof HttpException) {
-            return  Response()->json(['error' => $exception->getMessage(), 'code' => $exception->getStatusCode()], $exception->getStatusCode());
+            if ($exception instanceof QueryException) {
+                return  Response()->json(['error' => $exception->getMessage(), 'code' => 500], 500);
+                // return  Response()->json(['error' => 'Hubo un problema con la base de datos', 'code' => 500], 500);
+            }
+
+            if ($exception instanceof HttpException) {
+                return  Response()->json(['error' => $exception->getMessage(), 'code' => $exception->getStatusCode()], $exception->getStatusCode());
+            }
         }
 
         return parent::render($request, $exception);

@@ -29,10 +29,10 @@
                           <p class="list-group-item-text"> {{ $pasantia->descripcion }} </p>
                         </div>
                         <div class="col-sm-3 text-center">
-                          <h4> {{ $pasantia->finalizacion }} <br><small>Fecha límite</small></h4>
+                          {{-- <h4> {{ $pasantia->finalizacion }} <br><small>Fecha límite</small></h4> --}}
                           
-                          <h4> {{ $pasantia->duracion }} <br><small>Duración</small></h4>
-                          
+                          <h3> {{ $pasantia->duracion }} <br><small>Duración</small></h3>
+                          <br><br>
                           {{-- <button type="button" class="btn btn-default btn-block"> Más información </button> --}}
                           <button type="button" class="btn btn-primary btn-block"> Aplicar </button>
                         </div>

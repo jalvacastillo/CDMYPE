@@ -11,6 +11,7 @@ class CreateClienteProductosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('cliente_id');
+			$table->string('img')->default('default.jpg');
 			$table->string('nombre');
 			$table->decimal('precio', 10, 2)->nullable();
 			$table->text('descripcion')->nullable();

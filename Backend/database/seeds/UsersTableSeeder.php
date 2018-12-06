@@ -16,89 +16,102 @@ class UsersTableSeeder extends Seeder
 
             $user = new User;
             $user->name = 'Aminta Rodas';
-            $user->email = 'aminta@admin.com';
+            $user->email = 'aminta.rodas@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesora Empresarial';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Licenciada en Administración de Empresas.';
             $user->avatar = 'aminta.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Jesus Alvarado';
-            $user->email = 'jesus@admin.com';
+            $user->email = 'jesus.alvarado@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesor TIC';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Ingeniero en Sistemas Informáticos.';
             $user->avatar = 'jesus.jpg';
+            $user->url_facebook = 'jalvacastillo';
+            $user->url_linkedin = 'jalvacastillo';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Ingrid Hernandez';
-            $user->email = 'ingrid@admin.com';
+            $user->email = 'ingrid.hernandez@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesora Empresarial';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Licenciada en Mercadeo y Publicidad.';
             $user->avatar = 'ingrid.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Natalia Calderon';
-            $user->email = 'natalia@admin.com';
+            $user->email = 'natalia.calderon@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesora Empresarial';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Licenciada en Economía.';
             $user->avatar = 'natalia.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Walter Cuellar';
-            $user->email = 'walter@admin.com';
+            $user->email = 'walter.cuellar@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesora Empresarial';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Licenciado en Administración de Empresas.';
             $user->avatar = 'walter.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Gustavo Jovel';
-            $user->email = 'gustavo@admin.com';
+            $user->email = 'gustavo.jovel@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesor Financiero';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Ingeniero Agrónomo en Desarrollo Rural.';
             $user->avatar = 'gustavo.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Rhina Molina';
-            $user->email = 'rhina@admin.com';
+            $user->email = 'rhina.molina@catolica.edu.sv';
             $user->tipo = 'Asesor';
             $user->titulo = 'Asesor';
             $user->cargo = 'Asesora EFE';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Licenciada en Administración de Empresas.';
             $user->avatar = 'rhina.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 
             $user = new User;
             $user->name = 'Carmen Mercado';
-            $user->email = 'carmen@admin.com';
+            $user->email = 'carmen.mercado@catolica.edu.sv';
             $user->tipo = 'Compras';
             $user->titulo = 'Compras';
             $user->cargo = 'Técnico de Compras';
-            $user->descripcion = $faker->text;
+            $user->descripcion = 'Técnica en Lácteos.';
             $user->avatar = 'carmen.jpg';
+            $user->password = Hash::make('admin');
+            $user->save();
+
+            $user = new User;
+            $user->name = 'Marlene Argueta';
+            $user->email = 'marlene.argueta@catolica.edu.sv';
+            $user->tipo = 'Compras';
+            $user->titulo = 'Compras';
+            $user->cargo = 'Técnico de Compras';
+            $user->descripcion = 'Técnica en Lácteos.';
+            $user->avatar = 'marlene.jpg';
             $user->password = Hash::make('admin');
             $user->save();
 

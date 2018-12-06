@@ -27,7 +27,9 @@ class HomeController extends Controller
 
     public function nosotros(){
         $asesores = User::orderBy('id','asc')->get();
-        return view('nosotros.index', compact('asesores'));
+        $testimonios = Testimonio::orderBy('id','asc')->take(2)->get();
+
+        return view('nosotros.index', compact('asesores', 'testimonios'));
     }
 
     public function servicios(){

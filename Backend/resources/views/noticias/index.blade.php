@@ -16,52 +16,26 @@
 
                     @foreach($noticias as $noticia)
                         
-                        @if($noticia->tipo == 'Imagen')
-
-                        <div class="blog-post image-post">
+                        <div class="blog-post image-post col-xs-12">
                           <!-- Post Thumb -->
-                          <div class="post-head">
+                          <div class="post-head col-xs-4">
                             <a class="lightbox" title="{{ $noticia->titulo }}" href="{{ url('noticia', $noticia->slug) }}">
                               <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
-                              <img alt="" src="{{ $noticia->recurso }}">
+                              <img alt="" src=" {{ asset('/img/noticias/'.$noticia->img) }}">
                             </a>
                           </div>
                           <!-- Post Content -->
-                          <div class="post-content">
-                            <div class="post-type"><i class="fa fa-picture-o"></i></div>
+                          <div class="post-content col-xs-8">
                             <h2><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->titulo }}</a></h2>
-                            <ul class="post-meta">
-                              <li>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></li>
-                              <li>{{ $noticia->created_at }}</li>
-                              <li><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->tipo }}</a></li>
-                            </ul>
+                            <div class="post-meta">
+                              <span>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></span>
+                              <span>{{ $noticia->created_at->diffForHumans() }}</span>
+                              <span><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->tipo }}</a></span>
+                            </div>
                             <p>{{ $noticia->descripcion }}</p>
                             <a class="main-button" href="{{ url('noticia', $noticia->slug) }}">Leer más <i class="fa fa-angle-right"></i></a>
                           </div>
                         </div>
-
-                        @elseif($noticia->tipo == 'Video')
-
-                        <div class="blog-post video-post">
-                          <!-- Post Video -->
-                          <div class="post-head">
-                          <iframe width="560" height="315" src="{{ $noticia->recurso }}" frameborder="0" allowfullscreen></iframe>
-                          </div>
-                          <!-- Post Content -->
-                          <div class="post-content">
-                            <div class="post-type"><i class="fa fa-play"></i></div>
-                            <h2><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->titulo }}</a></h2>
-                            <ul class="post-meta">
-                              <li>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></li>
-                              <li>{{ $noticia->created_at }}</li>
-                              <li><a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->tipo }}</a></li>
-                            </ul>
-                            <p>{{ $noticia->descripcion }}</p>
-                            <a class="main-button" href="{{ url('noticia', $noticia->slug) }}">Leer más <i class="fa fa-angle-right"></i></a>
-                          </div>
-                        </div>
-
-                        @endif
 
                     @endforeach
                   <div class="text-center">

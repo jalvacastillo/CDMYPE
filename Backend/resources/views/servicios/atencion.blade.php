@@ -2,51 +2,51 @@
 
 <div class="row">
 
-  <div class="col-xs-12 service-icon-left-more">
+  <div class="col-md-4 service-icon-left-more">
     <div class="service-icon">
       <i class="fa fa-file icon-medium"></i>
     </div>
     <div class="service-content">
-      <h4>Inscripción</h4>
-      <p>Presentar copia de DUI, NIT y ultima declaración de IVA si aplica.</p>
+      <h4>1) Registro</h4>
+      <p>Copia de DUI, NIT y última declaración de IVA si aplica.</p>
     </div>
   </div>
 
-  <div class="col-xs-12 service-icon-left-more">
+  <div class="col-md-4 service-icon-left-more">
     <div class="service-icon">
       <i class="fa fa-stethoscope icon-medium"></i>
     </div>
     <div class="service-content">
-      <h4>Diagnostico inicial</h4>
+      <h4>2) Diagnostico inicial</h4>
       <p>Se realiza un diagnostico en base a las necesidades de la empresa.</p>
     </div>
   </div>
 
-  <div class="col-xs-12 service-icon-left-more">
+  <div class="col-md-4 service-icon-left-more">
     <div class="service-icon">
-      <i class="fa fa-list icon-medium"></i>
+      <i class="fa fa-list-ol icon-medium"></i>
     </div>
     <div class="service-content">
-      <h4>Plan de atención</h4>
+      <h4>3) Plan de atención</h4>
       <p>Se priorizan y programan las acciones a realizar en conjunto con la empresa en base al diagnostico inicial.</p>
     </div>
   </div>
 
-  <div class="col-xs-12 service-icon-left-more">
+  <div class="col-md-4 service-icon-left-more">
     <div class="service-icon">
-      <i class="fa fa-check-square-o icon-medium"></i>
+      <i class="fa fa-road icon-medium"></i>
     </div>
     <div class="service-content">
-      <h4>Seguimiento</h4>
+      <h4>4) Seguimiento</h4>
       <p>Se ejecutan, evalúan y supervisan cada una de las actividades planificadas.</p>
     </div>
   </div>
-  <div class="col-xs-12 service-icon-left-more">
+  <div class="col-md-4 service-icon-left-more">
     <div class="service-icon">
       <i class="fa fa-heart icon-medium"></i>
     </div>
     <div class="service-content">
-      <h4>Diagnostico final</h4>
+      <h4>5) Impacto</h4>
       <p>Se hace una evaluación del crecimiento obtenido producto del apoyo brindado.</p>
     </div>
   </div>
