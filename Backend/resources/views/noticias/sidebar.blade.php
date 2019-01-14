@@ -10,11 +10,9 @@
   <div class="widget widget-categories">
     <h4>Categorias <span class="head-line"></span></h4>
     <ul>
-      <li> <a href="{{ url('noticias/categoria', 'asesorias') }}">Asesorías</a> </li>
-      <li> <a href="{{ url('noticias/categoria', 'tips') }}">Tips</a> </li>
-      <li> <a href="{{ url('noticias/categoria', 'casos de exito') }}">Casos de Éxito</a> </li>
-      <li> <a href="{{ url('noticias/categoria', 'eventos') }}">Eventos</a> </li>
-      <li> <a href="{{ url('noticias/categoria', 'otro') }}">Otro</a> </li>
+      @foreach ($categorias as $categoria)
+      <li> <a href="{{ url('noticias/categoria/'. str_slug($categoria->first()->categoria) ) }}">{{ $categoria->categoria }} <span class="badge pull-right">{{ $categoria->total }}</span></a> </li>
+      @endforeach
     </ul>
   </div>
 

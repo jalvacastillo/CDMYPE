@@ -1,0 +1,46 @@
+<form name="frm" role="form" ng-submit="submit()">
+<div class="modal-header">
+   <h3 class="modal-title" id="modal-title">Dirección</h3>
+</div>
+<div class="modal-body row" id="modal-body">
+    <alertas></alertas>
+    
+        <div class="col-6">
+            <div class="form-group">
+                <label for="nombre"> * Nombre:</label>
+                <input type="text" class="form-control" ng-model="tarjeta.nombre" placeholder="Nombre" required autofocus />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="nombre"> * Apellido:</label>
+                <input type="text" class="form-control" ng-model="tarjeta.apellido" placeholder="Apellido" required />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="numero"> Número:</label>
+                <input type="tel" class="form-control" ng-model="tarjeta.numero" placeholder="XXXX-XXXX" />
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label for="vencimiento"> Vencimiento:</label>
+                <input type="text" class="form-control" ng-model="tarjeta.vencimiento" placeholder="Vencimiento" />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="codigo"> Codigo:</label>
+                <input type="text" class="form-control" ng-model="tarjeta.codigo" placeholder="Codigo" />
+            </div>
+        </div>
+</div>
+<div class="modal-footer">
+   <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+   <button class="btn btn-primary" type="submit">
+        <span ng-if="!loading">Guardar</span>
+        <span ng-if="loading">Guardando...</span>
+    </button>
+</div>
+</form>

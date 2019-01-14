@@ -1,0 +1,21 @@
+<nav>
+<ul class="pagination">
+    <li class="page-item" [ngClass]="{'disabled': items?.current_page == 1}">
+        <a href="javascript:void(0)" (click)="setPage(1)" >Primero</a>
+    </li>
+    <li class="page-item" [ngClass]="{'disabled': items?.current_page == 1}">
+        <a href="javascript:void(0)" (click)="setPage(items?.current_page - 1)" >Anterior</a>
+    </li>
+    
+    <li class="page-item">
+        <a> {{ items.current_page }} / {{ items.last_page }} </a>
+    </li>
+
+    <li class="page-item" [ngClass]="{'disabled': items?.current_page == items?.last_page}">
+        <a href="javascript:void(0)" (click)="setPage(items?.current_page + 1)">Siguiente</a>
+    </li>
+    <li class="page-item" [ngClass]="{'disabled': items?.current_page == items?.last_page}">
+        <a href="javascript:void(0)" (click)="setPage(items?.last_page)" >Ultimo</a>
+    </li>
+</ul>
+</nav>

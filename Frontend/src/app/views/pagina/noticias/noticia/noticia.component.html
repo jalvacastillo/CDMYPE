@@ -17,13 +17,16 @@
             <div class="box box-primary">
                 
                 <div class="box-body">
-                    <div class="form-group col-md-6">
+                    <div class="col-xs-12 text-center img-thumbnail file-upload">
+                        <img *ngIf="noticia.img && !preview" src="{{ apiService.baseUrl + 'img/noticias/' + noticia.img }}" height="100">
+                        <img *ngIf="!noticia.img && !preview" src="{{ apiService.baseUrl + 'img/noticias/default.jpg' }}" height="100">
+                        <img *ngIf="url_img_preview && preview" src="{{ url_img_preview }}" height="100">
+                        <input type="file" name="img" (change)="setFile($event)" accept="image/png, image/jpeg">
+                    </div>
+
+                    <div class="form-group col-md-8">
                         <label for="nombre">* Titulo:</label>
                         <input type="text" class="form-control" [(ngModel)]="noticia.titulo" name="nombre" placeholder="Nombre" required autofocus>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="descripcion">Descripción:</label>
-                        <input type="text" class="form-control" [(ngModel)]="noticia.descripcion" name="Descripcion" placeholder="Nombre" required autofocus>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="categoria">Categoria:</label>
@@ -35,20 +38,13 @@
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="tipo">Tipo:</label>
-                        <select name="tipo" class="form-control" [(ngModel)]="noticia.tipo">
-                            <option value="Imagen">Imagen</option>
-                            <option value="Video">Video</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="recurso">Recurso:</label>
-                        <input type="text" class="form-control" [(ngModel)]="noticia.recurso" name="recurso" placeholder="Imagen o Video" required>
+                    <div class="form-group col-md-12">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" class="form-control" [(ngModel)]="noticia.descripcion" name="descripcion" placeholder="Descripción">
                     </div>
 
                     <div class="form-group col-md-12">
-                        <!-- <div [froalaEditor] [(froalaModel)]="noticia.contenido"></div> -->
+                        <app-ngx-editor *ngIf="noticia" name="contenido" [placeholder]="'Contenido'" [spellcheck]="true" [(ngModel)]="noticia.contenido"></app-ngx-editor>
                     </div>
 
                 </div>

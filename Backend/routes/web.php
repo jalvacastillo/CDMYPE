@@ -11,21 +11,34 @@
 |
 */
 
-Route::get('/',           'HomeController@index');
-Route::get('/nosotros',   'HomeController@nosotros');
-Route::get('/servicios',  'HomeController@servicios');
-Route::get('/clientes',   'HomeController@clientes');
-    Route::get('/cliente/{id}',   'HomeController@cliente');
-    Route::get('/registro',   'HomeController@registro');
+Route::get('/',           'HomeController@index')->name('inicio');
+Route::get('/servicios',  'HomeController@servicios')->name('servicios');
+    Route::get('/servicio/{slug}',  'HomeController@servicio')->name('servicio');
+Route::get('/nosotros',   'HomeController@nosotros')->name('nosotros');
+
+Route::get('/empresas',   'HomeController@empresas')->name('empresas');
+    Route::get('/empresa/{id}',   'HomeController@empresa')->name('empresa');
+    Route::get('/registro',   'HomeController@registro')->name('registro');
     Route::post('/registro',   'HomeController@registrofrm');
-Route::get('/pasantias',  'HomeController@pasantias');
-Route::get('/noticias',   'HomeController@noticias');
-Route::get('/noticias/categoria/{cat}',   'HomeController@categoria');
-Route::get('/noticia/{slug}',   'HomeController@noticia');
-Route::get('/contactos',  'HomeController@contactos');
-Route::post('/contactos', 'HomeController@contactosfrm');
+
+    // Guia
+    Route::get('/guia/tipo',   'HomeController@guiaTipo')->name('guiaTipo');
+
+Route::get('/academia',  'HomeController@academia')->name('academia');
+Route::get('/actividades',  'HomeController@actividades')->name('actividades');
+Route::get('/noticias',   'HomeController@noticias')->name('noticias');
+    Route::get('/noticias/categoria/{cat}',   'HomeController@noticiasCategoria');
+    Route::get('/noticia/{slug}',   'HomeController@noticia');
+Route::get('/contactos',  'HomeController@contactos')->name('contactos');
+    Route::post('/contactos', 'HomeController@contactosfrm');
+Route::get('/cuenta',  'UsuarioController@index')->name('cuenta')->middleware('auth');
 
 Route::get('/oferta-at/{id}',   'DashController@oferta');
-Route::post('/oferta-at/{id}', 	'At\ConsultorController@oferta');
+Route::post('/oferta-at/{id}',  'At\ConsultorController@oferta');
+
+Route::get('/politicas-de-privacidad', 	'HomeController@privacidad');
+
 
 Auth::routes();
+Route::get('auth/{provider}',           'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback',  'Auth\SocialAuthController@handleProviderCallback');

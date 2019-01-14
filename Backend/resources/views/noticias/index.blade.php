@@ -38,9 +38,19 @@
                         </div>
 
                     @endforeach
+
                   <div class="text-center">
                     {{ $noticias->links() }}
                   </div>
+
+                  @if ($noticias->count() <= 0)
+                    <div class="col-12 text-center">
+                      <i class="fa fa-empty"></i>
+                      <p class="text-muted">No hay noticias</p>
+                      <br>
+                      <a href="{{ route('noticias') }}" class="btn btn-link"><i class="fa fa-arrow-left"></i> Ir a noticias</a>
+                    </div>
+                  @endif
 
                 </div>
 

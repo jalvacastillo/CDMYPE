@@ -1,11 +1,11 @@
 <?php 
 
 
-    Route::get('/noticias',         		'Pagina\NoticiaController@index');
-    Route::post('/noticia',                 'Pagina\NoticiaController@store');
-    Route::get('/noticia/{id}',             'Pagina\NoticiaController@read');
-    Route::delete('/noticia/{id}',          'Pagina\NoticiaController@delete');
-    Route::get('/noticias/buscar/{text}',	'Pagina\NoticiaController@search');
+    Route::get('/noticias',         		'Pagina\NoticiasController@index');
+    Route::post('/noticia',                 'Pagina\NoticiasController@store');
+    Route::get('/noticia/{id}',             'Pagina\NoticiasController@read');
+    Route::delete('/noticia/{id}',          'Pagina\NoticiasController@delete');
+    Route::get('/noticias/buscar/{text}',	'Pagina\NoticiasController@search');
 
     Route::get('/proyectos',         		'Pagina\ProyectoController@index');
     Route::post('/proyecto',                'Pagina\ProyectoController@store');

@@ -6,10 +6,10 @@
 
 @section('content')
 
-    @include('contactos.map')
+    {{-- @include('contactos.map') --}}
 
     <div id="content">
-        <div class="container">
+        <div class="container" ng-controller="ContactosCtrl">
             <div class="row">
                 @include('contactos.contactos')
                 @include('contactos.informacion')

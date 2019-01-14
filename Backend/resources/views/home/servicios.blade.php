@@ -1,80 +1,48 @@
 <div class="section service">
     <div class="container">
-        <div class="row">
+        <div class="row text-center">
 
-            <div class="big-title text-center" data-animation="fadeInDown" data-animation-delay="01">
+            <div class="big-title" data-animation="fadeInDown" data-animation-delay="01">
                 <h1>Nuestros <strong>Servicios</strong></h1>
                 <p class="title-desc">Brindamos servicios integrales para ayudarte en todas las áreas de tu empresa.</p>
             </div>
+            
+            <h2 class="classic-title" id="asesorias"><span>Asesorías</span></h2>
 
-            <div class="col-md-3 col-xs-6 service-box" data-animation="fadeIn" data-animation-delay="01">
-                <div class="service-icon text-center">
-                    <i class="fa fa-rocket fa-4x"></i>
+            <div class="row">
+              
+              @foreach ($asesorias as $asesoria)
+              <div class="col-xs-6 col-md-3 image-service-box">
+                <div class="service-icon">
+                    <img src="{{ asset('img/servicios/'. $asesoria->img) }}" alt="{{ $asesoria->nombre }}" height="50px">
                 </div>
-                <div class="service-content">
-                    <h3>Asesoría Empresarial</h3>
-                    <p class="hidden-xs">Apoyo y acompañamiento para la correcta administración y gestión de tu empresa.</p>
-                </div>
+                <h3>{{ $asesoria->nombre }}</h3>
+                <p class="hidden-xs">{{ $asesoria->descripcion }}</p>
+                <br>
+                <a href="{{ route('servicio', $asesoria->slug) }}">Más información <i class="fa fa-angle-right"></i></a>
+              </div>
+              @endforeach
+
+
             </div>
 
-            <div class="col-md-3 col-xs-6 service-box" data-animation="fadeIn" data-animation-delay="02">
-                <div class="service-icon text-center">
-                    <i class="fa fa-line-chart fa-4x"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Asesoría Financiera</h3>
-                    <p class="hidden-xs">Ayuda para la adquisición de créditos y prestamos, así como la asesoría  en el manejo de tus finanzas.</p>
-                </div>
-            </div>
+            <br>
+            <h2 class="classic-title" id="otros"><span>Otros Servicios</span></h2>
 
-            <div class="col-md-3 col-xs-6 service-box" data-animation="fadeIn" data-animation-delay="03">
-                <div class="service-icon text-center">
-                    <i class="fa fa-desktop fa-4x"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Asesoría TIC</h3>
-                    <p class="hidden-xs">Ayudamos a aplicar la tecnología en su empresa, le capacitamos y asesoramos en todo lo relacionado con las TIC´s.</p>
-                </div>
-            </div>
+            <div class="row">
 
-            <div class="col-md-3 col-xs-6 service-box" data-animation="fadeIn" data-animation-delay="03">
-                <div class="service-icon text-center">
-                    <i class="fa fa-mars fa-4x"></i>
+              @foreach ($otros as $otro)
+              <div class="col-xs-6 col-md-4 image-service-box">
+                <div class="service-icon">
+                    <img src="{{ asset('img/servicios/'. $otro->img) }}" alt="{{ $otro->nombre }}" height="50px">
                 </div>
-                <div class="service-content">
-                    <h3>Asesoría EFE</h3>
-                    <p class="hidden-xs">Contamos con personal especializado para apoyar las empresas que son lideradas por mujeres.</p>
-                </div>
-            </div>
+                <h3>{{ $otro->nombre }}</h3>
+                <p class="hidden-xs">{{ $otro->descripcion }}</p>
+                <br>
+                <a href="{{ route('servicio', $otro->slug) }}">Más información <i class="fa fa-angle-right"></i></a>
+              </div>
+              @endforeach
 
-            <div class="col-md-4 col-xs-6 service-box" data-animation="fadeIn" data-animation-delay="04">
-                <div class="service-icon text-center">
-                    <i class="fa fa-users fa-4x"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Capacitaciones</h3>
-                    <p class="hidden-xs">Brindamos formación en diferentes áreas de manera grupal para una o varias empresas en temas empresariales.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-xs-6 service-box" data-animation="fadeIn" data-animation-delay="05">
-                <div class="service-icon text-center">
-                    <i class="fa fa-wrench fa-4x"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Asistencia Técnica</h3>
-                    <p class="hidden-xs">Apoyamos de forma técnica y especializada con la contratación de consultores especializados.</p>
-                </div>
-            </div>
-
-            <div class="col-xs-4 service-box" data-animation="fadeIn" data-animation-delay="06">
-                <div class="service-icon text-center">
-                    <i class="fa fa-briefcase fa-4x"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Vinculación</h3>
-                    <p class="hidden-xs">Facilitamos a las empresas el acercamiento a programas y/o servicios de otras instituciones, también a crear alianzas comerciales con otras empresas.</p>
-                </div>
             </div>
 
         </div>

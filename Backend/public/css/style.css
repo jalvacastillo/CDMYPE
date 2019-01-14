@@ -74,12 +74,13 @@ a {
     -o-transition: color 0.2s ease-in-out;
 }
 
-a:hover {
-    color: #444;
-}
 
-a, a:hover {
-    text-decoration: none;
+a {
+    text-decoration: none !important;
+}
+a.btn-link:hover {
+    text-decoration: underline !important;
+    color: #00afd1 !important;
 }
 
 i {
@@ -3068,9 +3069,9 @@ ul.icons-list li i {
     max-width:100%;
 }
 
-.text-center {
+/*.text-center {
     margin-bottom: 35px;
-}
+}*/
 
 #portfolio-list {
     list-style: none;
@@ -3726,10 +3727,6 @@ ul.post-meta li, ul.post-meta li a {
 
 .post-tags-list a:hover {
 	color: #fff;
-}
-
-.post-share {
-	float: left;
 }
 
 .post-share span {
@@ -5686,6 +5683,10 @@ ul.footer-nav li a:hover {
 .service-icon.img-thumbnail:hover{
     background: #21b8d5;
     color: #ffffff;
+}
+
+.image-service-box{
+    margin-bottom: 15px;
 }
 
 @media(max-width:767px){

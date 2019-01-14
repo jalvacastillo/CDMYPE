@@ -10,16 +10,16 @@
 
     <div id="content">
         <div class="container">
-            <div class="page-content">
+            <div class="page-content" id="somos">
 
 
             @include('nosotros.intro')
 
-            <div class="hr5" style="margin:50px 0px;"></div>
+            <div class="hr5" style="margin:50px 0px;" id="naturaleza"></div>
 
             @include('nosotros.misionvision')
 
-            <div class="hr5" style="margin:50px 0px;"></div>
+            <div class="hr5" style="margin:50px 0px;" id="equipo"></div>
 
             @include('nosotros.equipo')
          

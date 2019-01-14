@@ -20,14 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'tipo',
+        'tipo_registro',
         'avatar',
-        'cargo',
-        'titulo',
-        'url_facebook',
-        'url_linkedin',
-        'descripcion',
-        'cdmype_id'
+        'activo'
     ];
 
     /**

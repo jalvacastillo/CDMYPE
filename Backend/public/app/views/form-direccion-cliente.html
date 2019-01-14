@@ -1,0 +1,75 @@
+<form name="frm" role="form" ng-submit="submit()">
+<div class="modal-header">
+   <h3 class="modal-title" id="modal-title">Dirección</h3>
+    <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body row" id="modal-body">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible" role="alert" ng-if="error">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div ng-bind-html="error"></div>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="nombre"> * Nombre:</label>
+                <input type="text" class="form-control" ng-model="direccion.nombre" placeholder="Nombre" required autofocus />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="nombre"> * Apellido:</label>
+                <input type="text" class="form-control" ng-model="direccion.apellido" placeholder="Apellido" required />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="telefono"> Teléfono:</label>
+                <input type="tel" class="form-control" ng-model="direccion.telefono" placeholder="XXXX-XXXX" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="linea1"> Linea 1:</label>
+                <input type="text" class="form-control" ng-model="direccion.linea1" placeholder="Lugar, Calle etc..." />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="linea2"> Linea 2:</label>
+                <input type="text" class="form-control" ng-model="direccion.linea2" placeholder="Lugar, Calle etc..." />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> Zip Code:</label>
+                <input type="text" class="form-control" ng-model="direccion.zipcode" placeholder="Zip Code" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> País:</label>
+                <input type="text" class="form-control" ng-model="direccion.pais" placeholder="Pais" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> Estado:</label>
+                <input type="text" class="form-control" ng-model="direccion.estado" placeholder="Estado" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> Ciudad:</label>
+                <input type="text" class="form-control" ng-model="direccion.ciudad" placeholder="Ciudad" />
+            </div>
+        </div>
+</div>
+<div class="modal-footer">
+   <button class="btn btn-primary" type="submit">
+        <span ng-if="!loading">Guardar</span>
+        <span ng-if="loading">Guardando...</span>
+    </button>
+</div>
+</form>

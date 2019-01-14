@@ -32,7 +32,7 @@ class Testimonio extends Model
     }
 
     public function cliente(){
-        return $this->belongsTo('App\Models\Cliente\Cliente', 'cliente_id');
+        return $this->belongsTo('App\Models\Empresas\Empresa', 'cliente_id');
     }
 
     public function asesor(){

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -6,6 +7,12 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 
+import { NgxEditorModule } from 'ngx-editor';
+
+import { SharedModule } from '../../shared/shared.module';
+
+import { ServiciosComponent } from './servicios/servicios.component';
+import { ServicioComponent } from './servicios/servicio/servicio.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
@@ -17,12 +24,17 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     RouterModule,
+    SharedModule,
+    NgxEditorModule,
     ModalModule.forRoot(),
     TooltipModule.forRoot()
   ],
   declarations: [
+    ServiciosComponent,
+    ServicioComponent,
     NoticiasComponent,
     NoticiaComponent,
     ProyectosComponent,
@@ -32,6 +44,8 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
     TestimonioComponent
   ],
   exports: [
+    ServiciosComponent,
+    ServicioComponent,
     NoticiasComponent,
     NoticiaComponent,
     ProyectosComponent,

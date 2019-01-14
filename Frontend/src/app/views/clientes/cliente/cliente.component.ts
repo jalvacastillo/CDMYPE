@@ -101,12 +101,12 @@ export class ClienteComponent implements OnInit {
         let fileList: FileList = event.target.files;
         let logo: File = fileList[0];
 
-        this.apiService.upload('cliente-logo', cliente.id, logo).subscribe(cliente => {
-            this.cliente.logo = cliente.logo;
-            this.alertService.success("Guardado");
-        },error => {
-            this.alertService.error(error._body);
-        });
+        // this.apiService.upload('cliente-logo', cliente.id, logo).subscribe(cliente => {
+        //     this.cliente.logo = cliente.logo;
+        //     this.alertService.success("Guardado");
+        // },error => {
+        //     this.alertService.error(error._body);
+        // });
 
     }
 

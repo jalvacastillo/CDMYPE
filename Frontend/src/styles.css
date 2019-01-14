@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-/*body{
-	min-height: 700px;
-}*/
+.main{
+	min-height: calc(100vh - 120px);
+    width: 100%;
+}
 
 .inputfile {
     width: 0.1px;
@@ -69,4 +70,21 @@
 /* Editor */
 .fr-toolbar{
     border-top: 0px !important;
+}
+
+/* File */
+
+.file-upload { overflow: hidden; position: relative; text-align: center; cursor: pointer; }
+.file-upload:hover{ opacity: .5; }
+
+.file-upload > input {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
 }

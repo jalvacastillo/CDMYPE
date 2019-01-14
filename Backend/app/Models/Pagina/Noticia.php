@@ -14,17 +14,21 @@ class Noticia extends Model
         'slug',
         'descripcion',
         'contenido',
-        'recurso',
-        'tipo',
+        'img',
         'categoria',
         'asesor_id',
-        'cdmype_id'
+        'views',
+        'activo'
     ];
 
-    protected $appends = ['asesor'];
+    protected $appends = ['asesor', 'avatar'];
 
     public function getAsesorAttribute(){
         return $this->asesor()->pluck('name')->first();
+    }
+
+    public function getAvatarAttribute(){
+        return $this->asesor()->pluck('avatar')->first();
     }
 
     public function asesor(){

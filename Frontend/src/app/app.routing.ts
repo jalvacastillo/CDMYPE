@@ -23,6 +23,10 @@ import { ComprasComponent } from './views/compras/compras.component';
 import { CompraComponent } from './views/compras/compra/compra.component';
 import { VentasComponent } from './views/ventas/ventas.component';
 import { VentaComponent } from './views/ventas/venta/venta.component';
+
+
+import { ServiciosComponent } from './views/pagina/servicios/servicios.component';
+import { ServicioComponent } from './views/pagina/servicios/servicio/servicio.component';
 import { NoticiasComponent } from './views/pagina/noticias/noticias.component';
 import { NoticiaComponent } from './views/pagina/noticias/noticia/noticia.component';
 import { ProyectosComponent } from './views/pagina/proyectos/proyectos.component';
@@ -54,6 +58,8 @@ const appRoutes: Routes = [
     { path: 'consultores', component: ConsultoresComponent, canActivate: [AuthGuard] },
     { path: 'consultor/:id', component: ConsultorComponent, canActivate: [AuthGuard] },
 
+    { path: 'servicios', component: ServiciosComponent, canActivate: [AuthGuard] },
+    { path: 'servicio/:id', component: ServicioComponent, canActivate: [AuthGuard] },
     { path: 'noticias', component: NoticiasComponent, canActivate: [AuthGuard] },
     { path: 'noticia/:id', component: NoticiaComponent, canActivate: [AuthGuard] },
     { path: 'proyectos', component: ProyectosComponent, canActivate: [AuthGuard] },

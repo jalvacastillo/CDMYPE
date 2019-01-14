@@ -14,21 +14,22 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         // $this->call(Bitacoras::class);
         
-        $this->call(EmpresasTableSeeder::class);
-        $this->call(EmpresariosTableSeeder::class);
-        $this->call(ClientesTableSeeder::class);
+        // $this->call(EmpresasTableSeeder::class);
+        // $this->call(EmpresariosTableSeeder::class);
+        // $this->call(ClientesTableSeeder::class);
         // $this->call(ClienteIndicadoresSeeder::class);
         // $this->call(ClienteProyectosSeeder::class);
         // $this->call(ClienteAccionesSeeder::class);
 
-        $this->call(ConsultoresTableSeeder::class);
-        $this->call(ConsultorEspecialidadesSeeder::class);
+        // $this->call(ConsultoresTableSeeder::class);
+        // $this->call(ConsultorEspecialidadesSeeder::class);
         
         // $this->call(SalidasTableSeeder::class);
         // $this->call(SalidaAsesoresTableSeeder::class);
 
-        $this->call(Especialidades::class);
+        // $this->call(Especialidades::class);
         $this->call(Pagina::class);
+        $this->call(Servicios::class);
 
         // $this->call(AtTerminosSeeder::class);
         // $this->call(AtConsultoresSeeder::class);

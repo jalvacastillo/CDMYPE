@@ -55,13 +55,13 @@ export class PerfilComponent implements OnInit {
 
         let avatar: File = event.target.files[0];
 
-        this.apiService.upload('usuario-avatar', usuario.id, avatar).subscribe(usuario => {
-            this.usuario.avatar = usuario.avatar;
-            sessionStorage.setItem('auth_user', JSON.stringify(this.usuario));
-            this.alertService.success("Guardado");
-        },error => {
-            this.alertService.error(error._body);
-        });
+        // this.apiService.upload('usuario-avatar', usuario.id, avatar).subscribe(usuario => {
+        //     this.usuario.avatar = usuario.avatar;
+        //     sessionStorage.setItem('auth_user', JSON.stringify(this.usuario));
+        //     this.alertService.success("Guardado");
+        // },error => {
+        //     this.alertService.error(error._body);
+        // });
 
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Pagina;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,9 +25,10 @@ class NoticiaRequest extends FormRequest
     {
         return [
             'titulo' => 'required',
+            'slug'  => 'required',
             'descripcion' => 'required',
-            'recurso' => 'required',
-            'tipo' => 'required',
+            'file'          => 'mimes:jpeg,png|max:40000',
+            'img'           => 'required',
             'categoria' => 'required',
         ];
     }

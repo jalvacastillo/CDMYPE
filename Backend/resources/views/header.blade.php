@@ -22,9 +22,6 @@
                 <li>
                   <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/CDMYPEUNICAES"><i class="fa fa-twitter"></i></a>
                 </li>
-{{--                 <li>
-                  <a class="instagram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-                </li> --}}
                 <li>
                   <a class="youtube itl-tooltip" data-placement="bottom" title="youtube" href="https://www.youtube.com/channel/UCtsUESmY8YIGzecsaLZI28A"><i class="fa fa-youtube"></i></a>
                 </li>
@@ -40,37 +37,72 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}" style="width: 120px;">
+            <a class="navbar-brand" href="{{ route('inicio') }}" style="width: 120px;">
               <img alt="" src="{{ asset('img/cdmype-logo.jpg') }}">
             </a>
           </div>
           <div class="navbar-collapse collapse">
-            {{-- <div class="search-side">
-              <a class="show-search"><i class="fa fa-search"></i></a>
-              <div class="search-form">
-                <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                  <input type="text" value="" name="s" id="s" placeholder="Search the site...">
-                </form>
-              </div>
-            </div> --}}
             <ul class="nav navbar-nav navbar-right">
-              <li><a class="{{ Request::is('/') ? 'active' : '' }} hidden-sm" href="{{ url('/') }}">Inicio</a> </li>
-              <li><a class="{{ Request::is('nosotros') ? 'active' : '' }}" href="{{ url('/nosotros') }}">Nosotros</a> <li>
-              <li><a class="{{ Request::is('servicios') ? 'active' : '' }}" href="{{ url('/servicios') }}">Servicios</a> <li>
-              <li><a class="{{ Request::is('clientes') ? 'active' : '' }}" href="{{ url('/clientes') }}">Clientes</a> <li>
-              {{-- <li><a class="{{ Request::is('pasantias') ? 'active' : '' }}" href="{{ url('/pasantias') }}">Pasantias</a> </li> --}}
-              <li><a class="{{ Request::is('noticias') ? 'active' : '' }}" href="{{ url('/noticias') }}">Noticias</a> </li>
-              <li><a class="{{ Request::is('contactos') ? 'active' : '' }}" href="{{ url('/contactos') }}">Contactos</a> </li>
+              @foreach ($menu as $element)
+              <li class="drop">
+                <a class="{{ Request::is($element['route']) ? 'active' : '' }}" href="{{ route($element['route']) }}">
+                  {{ $element['nombre'] }}
+                </a>
+                @if ($element['elementos'])
+                  <ul class="dropdown">
+                    @foreach ($element['elementos'] as $item)
+                    <li><a href="{{ route($item['route']) }}">{{ $item['nombre'] }}</a></li>
+                    @endforeach
+                  </ul>
+                @endif
+              </li>
+              @endforeach
+
+              <li class="drop">
+                @guest
+                  <a class="{{ Request::is('cuenta') ? 'active' : '' }}" href="{{ route('cuenta') }}">
+                    Cuenta
+                  </a>
+                @else
+                  <ul class="dropdown">
+                    <li><a href="{{ route('actividades') }}">Conocimiento</a></li>
+                    <li><a href="{{ route('actividades') }}">Actividades</a></li>
+                    <li><a href="{{ route('actividades') }}">Clientes</a></li>
+                  </ul>
+                @endguest
+              </li>
+
             </ul>
           </div>
         </div>
         <ul class="wpb-mobile-menu">
-              <li><a class="{{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a> </li>
-              <li><a class="{{ Request::is('nosotros') ? 'active' : '' }}" href="{{ url('/nosotros') }}">Nosotros</a> <li>
-              <li><a class="{{ Request::is('servicios') ? 'active' : '' }}" href="{{ url('/servicios') }}">Servicios</a> <li>
-              <li><a class="{{ Request::is('contactos') ? 'active' : '' }}" href="{{ url('/contactos') }}">Contactos</a> </li>
-              <li><a class="{{ Request::is('pasantias') ? 'active' : '' }}" href="{{ url('/pasantias') }}">Pasantias</a> </li>
-              <li><a class="{{ Request::is('noticias') ? 'active' : '' }}" href="{{ url('/noticias') }}">Noticias</a> </li>
+            @foreach ($menu as $element)
+            <li class="drop">
+              <a class="{{ Request::is($element['route']) ? 'active' : '' }}" href="{{ route($element['route']) }}">
+                {{ $element['nombre'] }}
+              </a>
+              @if ($element['elementos'])
+                <ul class="dropdown">
+                  @foreach ($element['elementos'] as $item)
+                  <li><a href="{{ route($item['route']) }}">{{ $item['nombre'] }}</a></li>
+                  @endforeach
+                </ul>
+              @endif
+            </li>
+            @endforeach
+            <li class="drop">
+                @guest
+                  <a class="{{ Request::is('cuenta') ? 'active' : '' }}" href="{{ route('cuenta') }}">
+                    Cuenta
+                  </a>
+                @else
+                  <ul class="dropdown">
+                    <li><a href="{{ route('actividades') }}">Conocimiento</a></li>
+                    <li><a href="{{ route('actividades') }}">Actividades</a></li>
+                    <li><a href="{{ route('actividades') }}">Clientes</a></li>
+                  </ul>
+                @endguest
+              </li>
         </ul>
       </div>
     </header>

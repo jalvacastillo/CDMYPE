@@ -15,7 +15,7 @@
 
                     <h2 class="animated7">Ayudamos a <strong>Empresas</strong></h2>
                     <h3 class="animated8">a crecer</h3>
-                    <p class="animated6"><a href="{{ url('nosotros') }}" class="slider btn btn-system btn-large">Conoce quienes somos</a></p>
+                    <p class="animated6"><a href="{{ route('guiaTipo') }}" class="slider btn btn-system btn-large">Conoce cómo</a></p>
 
                 </div>
             </div>

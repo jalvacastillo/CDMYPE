@@ -24,17 +24,17 @@
 
 @section('content')
 
-	<!-- Start Page Banner -->
-	<div class="page-banner">
-	  <div class="container">
-	    <div class="row">
-	      <div class="col-md-12 text-center">
-	        <img alt="" src=" {{ asset('/img/noticias/'.$noticia->img) }}" style="margin-bottom: 20px; height: 200px;">
-	        <h1>{{ $noticia->titulo }}</h1>
-			<div class="post-meta">
-				<p>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></p>
-				<p>{{ $noticia->created_at->diffForHumans() }}</p>
-				<p><a  class="label label-primary" href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->categoria }}</a></p>
+<div class="page-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            <img alt="" src=" {{ asset('/img/noticias/'.$noticia->img) }}" style="margin-bottom: 20px; height: 200px;">
+            <h1>{{ $noticia->titulo }}</h1>
+            <div class="post-meta">
+                {{-- <p>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></p> --}}
+                <p>Autor: <img class="img-circle" src="{{ asset('img/team/'. $noticia->asesor()->first()->avatar) }}" alt="{{ $noticia->asesor }}" style="height:30px;"></p>
+                <p>{{ $noticia->created_at->diffForHumans() }}</p>
+                <p><a  class="label label-primary" href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->categoria }}</a></p>
                 <div class="post-bottom clearfix">
                   <div class="post-share" style="float: none;">
                     <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/noticia/' . $noticia->slug) }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"><i class="fa fa-facebook"></i></a>
@@ -42,39 +42,36 @@
                     <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
                   </div>
                 </div>
-			</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<!-- End Page Banner -->
-	
-	<!-- Start Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-       	<div> {!! $noticia->contenido !!} </div>
-
-        <div class="post-bottom clearfix">
-          <div class="post-share">
-            <span>Comparte este post:</span> <br>
-            <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/noticia/' . $noticia->slug) }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"><i class="fa fa-facebook"></i></a>
-            <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-            <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
-          </div>
+            </div>
+            </div>
         </div>
-      </div> 
+    </div>
+</div>
 
-
-      </div>
-
+<div class="container">
+    <div class="row">
         <div class="col-md-12">
+            {!! $noticia->contenido !!}
+        </div>
+        <hr>
+        <div class="col-md-12 text-center">
+          <div class="post-meta">
+              <div class="post-bottom clearfix">
+                <div class="post-share" style="float: none;">
+                  <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/noticia/' . $noticia->slug) }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"><i class="fa fa-facebook"></i></a>
+                  <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                  <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div> 
+
+        <div class="col-md-12" style="margin: 50px 0px">
             <div class="fb-comments" data-href="http://cri.catolica.edu.sv/cdmype" data-width="100%" data-numposts="5"></div>
         </div>
 
     </div>
-
-  </div>
-	<!-- End content -->
+</div>
 
 @endsection

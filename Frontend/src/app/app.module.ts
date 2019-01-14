@@ -12,8 +12,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { SharedModule } from './shared/shared.module';
 
 import { AuthModule } from './auth/auth.module';
 import { DashModule } from './views/dash/dash.module';
@@ -28,9 +27,7 @@ import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +36,7 @@ import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
     routing,
     AuthModule,
     AdminsModule,
+    SharedModule,
     DashModule,
     ClientesModule,
     ConsultoresModule,
