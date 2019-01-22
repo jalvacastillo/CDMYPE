@@ -16,16 +16,16 @@ class CreateProyectosTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->string('titulo');
+            $table->string('nombre');
+            $table->string('slug');
             $table->text('descripcion');
-            $table->enum('tipo', ['Servicio social', 'Pasantias', 'Investigaciones', 'Otro']);
-            $table->enum('estado', ['Activo', 'Ejecución', 'Finalizado']);
-            $table->integer('especialidad_id');
+            $table->enum('tipo', ['Pasantía', 'Hora Social', 'Investigación', 'Proyecto', 'Otro']);
+            $table->enum('categoria', ['TIC', 'EFE', 'Financiero', 'Empresarial', 'Otro']);
+            $table->enum('estado', ['Inactivo', 'Activo', 'Ejecución', 'Completado']);
+            $table->string('especialidad');
             $table->date('finalizacion');
             $table->string('duracion');
-            $table->integer('asesor_id');
-
-            $table->integer('cdmype_id')->default(1);
+            $table->text('contenido');
             
             $table->softDeletes();
             $table->timestamps();

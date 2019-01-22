@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Models\Consultor\Especialidad;
+use App\Models\Consultores\Especialidad;
 
 class ConsultorEspecialidadesSeeder extends Seeder
 {

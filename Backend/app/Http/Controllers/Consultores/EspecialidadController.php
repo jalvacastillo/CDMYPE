@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Consultores;
 
 use App\Http\Requests\Consultor\EspecialidadRequest;
 
-use App\Models\Consultor\Especialidad;
+use App\Models\Consultores\Especialidad;
 
 class EspecialidadController extends Controller
 {

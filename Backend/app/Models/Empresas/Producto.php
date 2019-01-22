@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Models\Cliente;
+namespace App\Models\Empresas;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Producto extends Model {
 
-    use SoftDeletes;
-    protected $table = 'cliente_productos';
+    protected $table = 'empresa_productos';
     protected $fillable = [
-        'cliente_id',
+        'empresa_id',
         'nombre',
         'img',
         'precio',
@@ -20,7 +18,7 @@ class Producto extends Model {
 
     public function cliente()
     {
-        return $this->belongsTo('App\Models\Cliente\Cliente','cliente_id');
+        return $this->belongsTo('App\Models\Empresas\Empresa','empresa_id');
     }
 
 

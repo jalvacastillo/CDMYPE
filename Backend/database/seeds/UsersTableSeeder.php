@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             $user->email = 'aminta.rodas@catolica.edu.sv';
             $user->avatar = 'aminta.jpg';
             $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
             $user->nombre = 'Aminta Rodas';
@@ -36,6 +37,7 @@ class UsersTableSeeder extends Seeder
             $user->email = 'jesus.alvarado@catolica.edu.sv';
             $user->avatar = 'jesus.jpg';
             $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
             $user->nombre = 'Jesus Alvarado';
@@ -55,6 +57,7 @@ class UsersTableSeeder extends Seeder
             $user->email = 'ingrid.hernandez@catolica.edu.sv';
             $user->avatar = 'ingrid.jpg';
             $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
             $user->nombre = 'Ingrid Hernandez';
@@ -71,6 +74,7 @@ class UsersTableSeeder extends Seeder
             $user->email = 'natalia.calderon@catolica.edu.sv';
             $user->avatar = 'natalia.jpg';
             $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
             $user->nombre = 'Natalia Calderon';
@@ -87,6 +91,7 @@ class UsersTableSeeder extends Seeder
             $user->email = 'walter.cuellar@catolica.edu.sv';
             $user->avatar = 'walter.jpg';
             $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
             $user->nombre = 'Walter Cuellar';
@@ -97,43 +102,40 @@ class UsersTableSeeder extends Seeder
             $user->descripcion = '';
             $user->avatar = 'walter.jpg';
             $user->save();
-            // $user->avatar = 'gustavo.jpg';
 
-            // $user = new User;
-            // $user->nombre = 'Gustavo Jovel';
-            // $user->email = 'gustavo.jovel@catolica.edu.sv';
-            // $user->nombre = 'Gustavo Jovel';
-            // $user->tipo = 'Asesor';
-            // $user->= 'gustavo.jpg = 'Asesor';
-            // $user->cargo = 'Asesor Financiero';
-            // $user->descripcion = 'Ingeniero Agrónomo en Desarrollo Rural.';
-            // $user->avatar';
-            // $user->password = Hash::make('admin');
-            // $user->avatar = 'rhina.jpg';
-            // $user->save();
+            $user = new User;
+            $user->name = 'Gustavo Jovel';
+            $user->email = 'gustavo.jovel@catolica.edu.sv';
+            $user->avatar = 'gustavo.jpg';
+            $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
+            $user->save();
+            $user = new Equipo;
+            $user->nombre = 'Gustavo Jovel';
+            $user->tipo = 'Asesor';
+            $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
+            $user->cargo = 'Asesora Financiero';
+            $user->categoria = 'Financiero';
+            $user->descripcion = '';
+            $user->avatar = 'gustavo.jpg';
+            $user->save();
 
-            // $user = new User;
-            // $user->nombre = 'Rhina Molina';
-            // $user->email = 'rhina.molina@catolica.edu.sv';
-            // $user->tipo = 'Asesor';
-            // $user->= 'rhina.jpg = 'Asesor';
-            // $user->cargo = 'Asesora EFE';
-            // $user->descripcion = 'Licenciada en Administración de Empresas.';
-            // $user->avatar';
-            // $user->password = Hash::make('admin');
-            // $user->avatar = 'carmen.jpg';
-            // $user->save();
-
-            // $user = new User;
-            // $user->nombre = 'Carmen Mercado';
-            // $user->email = 'carmen.mercado@catolica.edu.sv';
-            // $user->tipo = 'Compras';
-            // $user->= 'carmen.jpg = 'Compras';
-            // $user->cargo = 'Técnico de Compras';
-            // $user->descripcion = 'Técnica en Lácteos.';
-            // $user->avatar';
-            // $user->password = Hash::make('admin');
-            // $user->save();
+            $user = new User;
+            $user->name = 'Rhina Molina';
+            $user->email = 'rhina.molina@catolica.edu.sv';
+            $user->avatar = 'rhina.jpg';
+            $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
+            $user->save();
+            $user = new Equipo;
+            $user->nombre = 'Rhina Molina';
+            $user->tipo = 'Asesor';
+            $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
+            $user->cargo = 'Asesora EFE';
+            $user->categoria = 'EFE';
+            $user->descripcion = '';
+            $user->avatar = 'rhina.jpg';
+            $user->save();
             
     }
 }

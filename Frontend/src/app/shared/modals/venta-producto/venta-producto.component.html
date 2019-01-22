@@ -1,0 +1,58 @@
+<button (click)="openModal(inventario)" class="btn btn-default tcla-F4" tooltip="Crear">
+    <i class="glyphicon glyphicon-list-alt"></i> Producto <small>(F4)</small>
+</button>
+
+<ng-template #inventario>
+  <div class="modal-header text-center">
+    <h3 class="modal-title">Producto</h3>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form autocomplete="off" (ngSubmit)="agregarDetalle()">
+        <div class="row">
+        <div class="form-group col-sm-12">
+            <form autocomplete="off" class="buscador">
+                <input type="text" name="producto.nombre" class="form-control" placeholder="Nombre o número" [(ngModel)]="producto.nombre" focus="true" (keyup)="searchProducto()">
+                <ul class="list-group info" style="top: 32px;">
+                  <a href="javascript:void(0);" class="list-group-item text-primary" *ngIf="loading"> Buscando... </a>
+                  <a href="javascript:void(0);" class="list-group-item text-warning" *ngIf="!loading && productos?.data.length == 0"> Ningun registro encontrado </a>
+                </ul>
+                <ul class="list-group opciones" *ngIf="productos?.total > 0" style="top: 32px;">
+                  <a href="javascript:void(0);" class="list-group-item" (click)="selectProducto(producto)" *ngFor=" let producto of productos?.data">
+                    {{producto.nombre}} - <small class="text-danger">{{producto.categoria}}</small>
+                  </a>
+                </ul>
+            </form>
+        </div>
+        <div class="form-group col-sm-6 text-center">
+            <label for="precio">Precio:</label><br>
+            <p>{{ producto.precio | currency:'USD':'true':'1.2'}}</p>
+        </div>
+        <div class="form-group col-sm-6 text-center">
+            <label for="medida">Medida:</label><br>
+            <p>{{ producto.medida }}</p>
+        </div>
+        <div class="form-group col-sm-6 text-center">
+            <label for="medida">Disponibles:</label><br>
+            <p>{{ producto.stock_venta }}</p>
+        </div>
+        <div class="form-group col-sm-6 text-center">
+            <label for="medida">Descuento:</label><br>
+            <p>{{ producto.descuento }} %</p>
+        </div>
+        <div class="form-group col-sm-12">
+            <label for="bomba">Cantidad:</label>
+            <input id="cantidad" type="number" min="1" max="{{ producto.stock_venta }}" class="form-control text-center" [(ngModel)]="producto.cantidad" name="cantidad">
+            <span class="margin text-danger" *ngIf="producto.cantidad > producto.stock_venta">Sobrepasa las existenias</span>
+        </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <button type="submit" [disabled]="!producto.id || !producto.cantidad || producto.cantidad > producto.stock_venta" class="btn btn-primary btn-block"> Agregar </button>
+            </div>
+        </div>
+    </form>
+  </div>
+</ng-template>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Models\Consultores\Consultor;
+use App\Models\Alumnos\Alumno;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Carbon\Carbon;
-use App\Models\Laboratorio;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,8 +51,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'empresa' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'tipo' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -65,17 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // Creamos primero el laboratorio vacio.
-        $lab = Laboratorio::create([
-            'nombre' => $data['empresa'],
-            'vencimiento' => Carbon::now()->addMonths(1)
-        ]);
-
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'laboratorio_id' => $lab->id,
+            'tipo' => $data['tipo'],
+            'password' => bcrypt($data['password'])
         ]);
+
+        if ($data['tipo'] == 'Consultor') {
+            Consultor::create(['nombre'=>$data['name'], 'correo' => $data['email'], 'usuario_id' => $user->id]);
+        }
+        if ($data['tipo'] == 'Estudiante') {
+            Alumnos::create(['nombre'=>$data['name'], 'correo' => $data['email'], 'usuario_id' => $user->id]);
+        }
+
+        return $user;
     }
 }

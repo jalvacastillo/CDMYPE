@@ -6,9 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
-
-import { NgxEditorModule } from 'ngx-editor';
-
+import { PopoverModule } from 'ngx-bootstrap/popover';
 import { SharedModule } from '../../shared/shared.module';
 
 import { ServiciosComponent } from './servicios/servicios.component';
@@ -20,6 +18,8 @@ import { ProyectoComponent } from './proyectos/proyecto/proyecto.component';
 import { ResultadosComponent } from './resultados/resultados.component';
 import { TestimoniosComponent } from './testimonios/testimonios.component';
 import { TestimonioComponent } from './testimonios/testimonio/testimonio.component';
+import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
+import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.component';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
     FormsModule,
     RouterModule,
     SharedModule,
-    NgxEditorModule,
+    PopoverModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot()
   ],
@@ -41,7 +41,9 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
   	ProyectoComponent,
     ResultadosComponent,
     TestimoniosComponent,
-    TestimonioComponent
+    TestimonioComponent,
+    DiagnosticosComponent,
+    DiagnosticoComponent
   ],
   exports: [
     ServiciosComponent,
@@ -52,7 +54,9 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
   	ProyectoComponent,
     ResultadosComponent,
     TestimoniosComponent,
-    TestimonioComponent
+    TestimonioComponent,
+    DiagnosticosComponent,
+    DiagnosticoComponent
   ]
 })
 export class PaginaModule { }

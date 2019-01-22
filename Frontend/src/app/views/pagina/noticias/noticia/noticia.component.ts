@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../../../services/alert.service';
 import { ApiService } from '../../../../services/api.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.component.html'
@@ -24,17 +26,18 @@ export class NoticiaComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-	    
-	    this.route.params.subscribe(params => {
-	        
-	        if(isNaN(params['id'])){
-	            this.noticia = {};
-	            this.noticia.asesor_id = this.apiService.auth_user().id;
-	        }
-	        else{
-	            // Optenemos el noticia
-	            this.apiService.read('noticia/', params['id']).subscribe(noticia => {
-	               this.noticia = noticia;
+
+
+        this.route.params.subscribe(params => {
+            
+            if(isNaN(params['id'])){
+                this.noticia = {};
+                this.noticia.asesor_id = this.apiService.auth_user().id;
+            }
+            else{
+                this.apiService.read('noticia/', params['id']).subscribe(noticia => {
+                   this.noticia = noticia;
+                    var editor = $("#compose-textarea").wysihtml5();
 	            });
 	        }
 
@@ -47,8 +50,9 @@ export class NoticiaComponent implements OnInit {
 
 	    let formData:FormData = new FormData();
 	    formData.append('titulo', this.noticia.titulo);
-	    formData.append('contenido', this.noticia.contenido);
+	    formData.append('contenido', $("#compose-textarea").val());
         formData.append('categoria', this.noticia.categoria);
+        formData.append('asesor_id', this.apiService.auth_user().id);
 	    formData.append('descripcion', this.noticia.descripcion);
         formData.append('slug', this.apiService.slug(this.noticia.titulo));
 	    if (this.noticia.id){
@@ -64,6 +68,8 @@ export class NoticiaComponent implements OnInit {
        
         this.apiService.upload('noticia', formData).subscribe(data => {
             this.loading = false;
+            this.alertService.success('Guardado');
+
         },error => {this.alertService.error(error._body); this.loading = false;});
 	}
 

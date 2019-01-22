@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Consultor\Consultor;
+use App\Models\Consultores\Consultor;
 
 class ConsultoresTableSeeder extends Seeder
 {

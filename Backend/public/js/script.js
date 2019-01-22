@@ -411,6 +411,8 @@ $(document).ready(function ($) {
 	
 	$('.itl-tooltip').tooltip();
 	
+	$('[data-toggle="tooltip"]').tooltip(); 
+	
 	$('.bg-parallax').each(function() {
 		$(this).parallax("30%", 0.2);
 	});

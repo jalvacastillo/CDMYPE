@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Cliente;
+namespace App\Models\Empresas;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,17 +11,22 @@ class Empresario extends Model {
     protected $table = 'empresarios';
     protected $fillable = array(
         'nombre',
-        'nit', 'dui', 'edad',
-        'sexo', 'correo',
-        'telefono', 'celular',
-        'direccion', 'municipio',
+        'nit',
+        'dui',
+        'edad',
+        'sexo',
+        'correo',
+        'telefono',
+        'celular',
+        'direccion',
+        'municipio',
         'departamento'
     );
     
 
         public function empresas() 
         {
-            return $this->hasMany('App\Models\Cliente\Cliente','empresario_id');
+            return $this->hasMany('App\Models\Empresas\Empresa','empresario_id');
         }
 
         public function asistencias() 

@@ -14,7 +14,7 @@ class CreateEmpresariosTable extends Migration {
             $table->string('nombre', 50);
             $table->string('dui',20)->unique()->nullable();
             $table->string('nit',30)->unique()->nullable();
-            $table->enum('sexo', array('Mujer','Hombre'))->nullable();
+            $table->string('sexo')->nullable();
             $table->integer('edad')->nullable();
             $table->string('telefono', 30)->nullable();
             $table->string('celular',30)->nullable();
@@ -22,7 +22,6 @@ class CreateEmpresariosTable extends Migration {
             $table->string('municipio', 30)->nullable();
             $table->string('departamento', 30)->nullable();
             $table->string('correo', 75)->nullable();
-            $table->enum('tipo', ['Propietario','Representante'])->default('Propietario');
             
             $table->softDeletes();
             $table->timestamps();

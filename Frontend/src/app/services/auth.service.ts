@@ -16,31 +16,32 @@ export class AuthService {
             .map((response: Response) => {
                 let data = response.json();
                 if (data.token && data.user) {
-                    sessionStorage.setItem('token', JSON.stringify(data.token));
-                    sessionStorage.setItem('auth_user', JSON.stringify(data.user));
+                    sessionStorage.setItem('token_cdmype', JSON.stringify(data.token));
+                    sessionStorage.setItem('auth_user_cdmype', JSON.stringify(data.user));
                 }
             });
         
     }
 
     register(user : any) {
-        return this.http.post(this.apiService.baseUrl + 'register', user)
+        return this.http.post(this.apiService.baseUrl + 'api/register', user)
             .map((response: Response) => {
                 let data = response.json();
                 if (data.token && data.user) {
-                    sessionStorage.setItem('token', JSON.stringify(data.token));
-                    sessionStorage.setItem('auth_user', JSON.stringify(data.user));
+                    sessionStorage.setItem('token_cdmype', JSON.stringify(data.token));
+                    sessionStorage.setItem('auth_user_cdmype', JSON.stringify(data.user));
                 }
             });
         
     }
 
     logout() {
-        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('token_cdmype');
+        sessionStorage.removeItem('auth_user_cdmype');
     }
 
     autenticated(){
-        let token = JSON.parse(sessionStorage.getItem('token'));
+        let token = this.apiService.auth_token();
         if(token) {
             return true;
         }else{

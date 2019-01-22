@@ -3,15 +3,12 @@
 namespace App\Models\Cliente;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Carbon\Carbon;
 
 class Indicador extends Model {
 
-    use SoftDeletes;
     protected $table = 'cliente_indicadores';    
-    public $errores;
     protected $fillable = array(
         'asesor_id',
         'cliente_id',

@@ -25,6 +25,7 @@ class AccionRequest extends FormRequest
     {
         return [
             'nombre' =>'required',
+            'descripcion' =>'required',
             'servicio_id' =>'required'
         ];
     }

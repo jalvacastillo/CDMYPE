@@ -24,7 +24,7 @@ export class ApiService {
 
         let headers = new Headers();
         headers.append('Accept', 'application/json');
-        headers.append('Authorization','Bearer ' + JSON.parse(sessionStorage.getItem('token')) );
+        headers.append('Authorization','Bearer ' + JSON.parse(sessionStorage.getItem('token_cdmype')) );
 
         let options = new RequestOptions({ headers: headers });
 
@@ -58,15 +58,15 @@ export class ApiService {
         return str;
     }
 
-    auth_user(){ return JSON.parse(sessionStorage.getItem('auth_user')); }
+    auth_user(){ return JSON.parse(sessionStorage.getItem('auth_user_cdmype')); }
 
-    auth_token(){ return JSON.parse(sessionStorage.getItem('token')); }
+    auth_token(){ return JSON.parse(sessionStorage.getItem('token_cdmype')); }
 
     // private helper methods
 
     private jwt() {
         // create authorization header with jwt token
-        let token = JSON.parse(sessionStorage.getItem('token'));
+        let token = JSON.parse(sessionStorage.getItem('token_cdmype'));
         if (token) {
             let headers = new Headers({ 'Authorization': 'Bearer ' + token });
             return new RequestOptions({ headers: headers });

@@ -3,14 +3,12 @@
 namespace App\Models\Cliente;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Carbon\Carbon;
 
 class Proyecto extends Model {
 
-    use SoftDeletes;
-    protected $table = 'cliente_proyectos';
+    protected $table = 'empresas_proyectos';
     protected $fillable = array(
         'asesor_id',
         'cliente_id',

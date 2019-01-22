@@ -25,8 +25,10 @@ Route::post('/register', 'Auth\AuthJWTController@register');
 		require base_path('routes/modulos/dash.php');
 	
 		require base_path('routes/modulos/servicios.php');
+		require base_path('routes/modulos/proyectos.php');
+		require base_path('routes/modulos/diagnosticos.php');
 		
-		require base_path('routes/modulos/clientes.php');
+		require base_path('routes/modulos/empresas.php');
 		require base_path('routes/modulos/consultores.php');
 		require base_path('routes/modulos/pagina.php');
 		require base_path('routes/modulos/usuarios.php');

@@ -44,9 +44,8 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <app-ngx-editor *ngIf="noticia" name="contenido" [placeholder]="'Contenido'" [spellcheck]="true" [(ngModel)]="noticia.contenido"></app-ngx-editor>
+                        <textarea id="compose-textarea" name="contenido"  class="form-control" style="height: 400px">{{ noticia?.contenido }}</textarea>
                     </div>
-
                 </div>
 
                 <div class="box-footer">

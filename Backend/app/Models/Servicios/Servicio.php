@@ -17,6 +17,12 @@ class Servicio extends Model
         'img'
     ];
 
+    protected $appends = ['total_acciones'];
+
+    public function getTotalAccionesAttribute(){
+        return $this->acciones()->count();
+    }
+
     public function acciones(){
         return $this->hasMany(Accion::class, 'servicio_id');
     }

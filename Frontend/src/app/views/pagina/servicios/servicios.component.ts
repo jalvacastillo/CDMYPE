@@ -12,7 +12,6 @@ import { Data } from '../../../models/data';
 export class ServiciosComponent implements OnInit {
 
     public servicios:Data;
-    public paginacion = [];
     public buscador:any = '';
     public loading = false;
 
@@ -24,11 +23,11 @@ export class ServiciosComponent implements OnInit {
     }
 
     public loadAll() {
+        this.loading = true;
         this.apiService.getAll('servicios').subscribe(servicios => { 
             this.servicios = servicios;
-            for (let i = 0; i < servicios.last_page; i++) {this.paginacion.push(i+1);
-            }
-        }, error => {this.alertService.error(error); });
+            this.loading = false;
+        }, error => {this.alertService.error(error); this.loading = false; });
     }
 
     public delete(servicio) {

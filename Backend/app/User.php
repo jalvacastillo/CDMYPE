@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'tipo_registro',
+        'tipo',
         'avatar',
         'activo'
     ];
@@ -33,6 +34,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function alumno(){
+        return $this->hasMany('App\Models\Alumnos\Alumno', 'usuario_id');
+    }
+
+    public function consultor(){
+        return $this->hasMany('App\Models\Consultores\Consultor', 'usuario_id');
+    }
 
     
 }

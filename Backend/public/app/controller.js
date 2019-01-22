@@ -98,12 +98,6 @@ app.controller('ProductoCtrl', [ '$scope', '$http', 'config', '$uibModal', funct
         });
     }
 
-    $scope.aumentar = function(){ $scope.detalle.cantidad += 1; }
-
-    $scope.disminuir = function(){ if ( $scope.detalle.cantidad > 1) { $scope.detalle.cantidad -= 1; } }
-
-    $scope.verificar = function(){ if ( !$scope.detalle.cantidad ) {$scope.detalle.cantidad = 1; } }
-
     $scope.submit = function () {
         $scope.loading = true;
         $scope.detalle.producto_id  = $scope.producto.id;

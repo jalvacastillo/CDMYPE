@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AlertService } from '../../../services/alert.service';
 import { ApiService } from '../../../services/api.service';
 import { Data } from '../../../models/data';
@@ -12,22 +11,21 @@ import { Data } from '../../../models/data';
 export class ProyectosComponent implements OnInit {
 
     public proyectos:Data;
-    public paginacion = [];
     public buscador:any = '';
+    public loading = false;
 
     constructor(private apiService: ApiService, private alertService: AlertService) { }
 
     ngOnInit() {
         this.loadAll();
-        console.log(this.proyectos);
     }
 
     public loadAll() {
+        this.loading = true;
         this.apiService.getAll('proyectos').subscribe(proyectos => { 
             this.proyectos = proyectos;
-            for (let i = 0; i < proyectos.last_page; i++) {this.paginacion.push(i+1);
-            }
-        }, error => {this.alertService.error(error); });
+            this.loading = false;
+        }, error => {this.alertService.error(error); this.loading = false;});
     }
 
     public delete(proyecto) {
@@ -44,18 +42,30 @@ export class ProyectosComponent implements OnInit {
     }
 
     public search(){
-        if(this. buscador > 1) {
+        if(this.buscador && this.buscador.length > 2) {
+            this.loading = true;
             this.apiService.read('proyectos/buscar/', this.buscador).subscribe(proyectos => { 
                 this.proyectos = proyectos;
-                this.paginacion = [];
-                for (let i = 0; i < proyectos.last_page; i++) { this.paginacion.push(i+1); }
-            }, error => {this.alertService.error(error); });
+                this.loading = false;
+            }, error => {this.alertService.error(error); this.loading = false;});
         }
     }
 
-    private setPaginacion(page:number) {
-        this.apiService.getAll('proyectos?page='+ page).subscribe(proyectos => { this.proyectos = proyectos; });
+    public setEstado(proyecto:any, estado:string){
+        proyecto.estado = estado;
+        this.apiService.store('proyecto', proyecto).subscribe(proyecto => { 
+            this.alertService.success('Actualizado');
+        }, error => {this.alertService.error(error); });
     }
+
+     public setPagination(event):void{
+        this.loading = true;
+        this.apiService.paginate(this.proyectos.path + '?page='+ event.page).subscribe(proyectos => { 
+            this.proyectos = proyectos;
+            this.loading = false;
+        }, error => {this.alertService.error(error); this.loading = false;});
+    }
+
 
 }
 

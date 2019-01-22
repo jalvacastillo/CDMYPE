@@ -3,16 +3,22 @@
 namespace App\Models\Servicios;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Accion extends Model
 {
-    use SoftDeletes;
     protected $table = 'servicio_acciones';
     protected $fillable = [
         'nombre',
         'descripcion',
         'servicio_id'
     ];
+
+    public function indicadores(){
+        return $this->hasMany('App\Models\Servicios\Indicador');
+    }
+
+    public function servicio(){
+        return $this->belongsTo('App\Models\Servicios\Servicio', 'servicio_id');
+    }
 
 }

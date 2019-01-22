@@ -15,7 +15,7 @@ class CreateEquipoTable extends Migration
             $table->string('nombre');
 
             $table->enum('tipo', ['Asesor','Compras','Director']);
-            $table->enum('categoria', ['TIC', 'EFE', 'Financiera', 'Empresarial', 'Otro']);
+            $table->enum('categoria', ['TIC', 'EFE', 'Financiero', 'Empresarial', 'Otro']);
 
             $table->string('cargo');
             $table->string('titulo')->nullable();
@@ -26,6 +26,8 @@ class CreateEquipoTable extends Migration
 
             $table->string('avatar')->default('default.png');
             $table->boolean('web')->default(1);
+
+            $table->integer('usuario_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

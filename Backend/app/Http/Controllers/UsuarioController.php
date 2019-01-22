@@ -90,4 +90,13 @@ class UsuarioController extends Controller
 
     }
 
+    public function informacion()
+    {
+       
+        $usuario = Auth::user();
+
+        return view('auth.registro.informacion', compact('usuario'));
+
+    }
+
 }

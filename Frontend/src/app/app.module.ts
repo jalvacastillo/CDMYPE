@@ -17,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { DashModule } from './views/dash/dash.module';
 import { AdminsModule } from './views/admin/admin.module';
-import { ClientesModule } from './views/clientes/clientes.module';
+import { EmpresasModule } from './views/empresas/empresas.module';
 import { ConsultoresModule } from './views/consultores/consultores.module';
 import { ComprasModule } from './views/compras/compras.module';
 import { VentasModule } from './views/ventas/ventas.module';
@@ -38,7 +38,7 @@ import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
     AdminsModule,
     SharedModule,
     DashModule,
-    ClientesModule,
+    EmpresasModule,
     ConsultoresModule,
     ComprasModule,
     VentasModule,

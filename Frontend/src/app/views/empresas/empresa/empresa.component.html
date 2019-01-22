@@ -1,0 +1,68 @@
+<section class="content-header">
+    <h1> Cliente <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Cliente</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+<div class="container">
+    <div class="row">
+
+        
+        <div class="col-sm-12">
+
+          
+          <div class="box box-primary" style="min-height: 190px;">
+            <div class="box-body box-profile">
+                <div class="imagen-upload">
+                    <img *ngIf="empresa?.logo" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/empresas/' + empresa.logo }}" style="margin: auto;">
+                    <input type="file" name="logo" id="file" class="inputfile" (change)="uploadFile(empresa, $event)">
+                    <label for="file"></label>
+                </div>
+
+                <h3 class="text-center">{{ empresa.nombre }}</h3>
+                <p class="text-center">{{ empresa.created_at | date:'dd/mm/yyyy' }}</p>
+                <div class="text-right checkbox pull-right">
+                    <label>Catalogo: <input type="checkbox" [(ngModel)]="empresa.catalogo" name="catalogo"></label>
+                </div>
+
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="col-sm-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#info" data-toggle="tab">Información</a></li>
+              <li><a href="#empresarios" data-toggle="tab">Empresarios</a></li>
+              <li><a href="#productos" data-toggle="tab">Productos</a></li>
+              <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="info">
+                    <app-empresa-info *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-info>
+                </div>
+
+                <div class="tab-pane fade" id="empresarios">
+                   <app-empresa-empresarios *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-empresarios>
+                   
+                </div>
+
+                <div class="tab-pane fade" id="productos">
+                   <app-empresa-productos *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-productos>
+                </div>  
+
+                <div class="tab-pane fade" id="historial">
+                   <!-- <app-empresa-ordenes *ngIf="empresa.id" [empresa_id] = "empresa.id"></app-empresa-ordenes> -->
+                </div>          
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>
+</section>

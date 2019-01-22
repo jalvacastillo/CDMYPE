@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { PaginationComponent } from './parts/pagination/pagination.component';
 import { DescargarExcelComponent } from './parts/descargar-excel/descargar-excel.component';
 
+import { BuscadorEmpresasComponent } from './modals/buscador-empresas/buscador-empresas.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,12 +24,14 @@ import { DescargarExcelComponent } from './parts/descargar-excel/descargar-excel
   	FooterComponent,
     HeaderComponent,
     PaginationComponent,
+    BuscadorEmpresasComponent,
     DescargarExcelComponent
   ],
   exports: [
   	FooterComponent,
     HeaderComponent,
     PaginationComponent,
+    BuscadorEmpresasComponent,
     DescargarExcelComponent
   ]
 })

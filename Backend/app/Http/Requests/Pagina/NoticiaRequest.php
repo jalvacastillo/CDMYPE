@@ -30,6 +30,7 @@ class NoticiaRequest extends FormRequest
             'file'          => 'mimes:jpeg,png|max:40000',
             'img'           => 'required',
             'categoria' => 'required',
+            'asesor_id' => 'required'
         ];
     }
 }

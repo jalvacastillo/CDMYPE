@@ -16,7 +16,6 @@ class CreateServicioAccionesTable extends Migration
             $table->text('descripcion');
             $table->integer('servicio_id');
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

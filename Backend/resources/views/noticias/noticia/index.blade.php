@@ -20,6 +20,14 @@
 	<meta property="og:title"         content="{{ $noticia->titulo }}" />
 	<meta property="og:description"   content="{{ $noticia->descripcion }}" />
 	<meta property="og:image"         content="{{ asset('/img/noticias/'.$noticia->img) }}" />
+
+    <style>
+        #contenido{text-align: justify; }
+        #contenido ul {padding: 40px !important; margin: inherit !important; }
+        #contenido li{font-size: 16px; }
+        #contenido blockquote {padding: 10px 20px; margin: 20px; }
+        #contenido ul, #contenido ol {list-style: inherit !important; margin-top: inherit !important; margin-bottom: inherit !important; }
+    </style>
 @endsection
 
 @section('content')
@@ -48,7 +56,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" id="contenido">
     <div class="row">
         <div class="col-md-12">
             {!! $noticia->contenido !!}
@@ -73,5 +81,11 @@
 
     </div>
 </div>
+
+<script>
+    $( "#contenido a" ).each(function( index ) {
+        $(this).attr('target', 'blank');
+    });
+</script>
 
 @endsection

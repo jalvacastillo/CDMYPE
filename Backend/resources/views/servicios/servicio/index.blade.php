@@ -26,27 +26,29 @@
     <div id="content">
         <div class="container">
             <div class="page-content">
+                <div class="row">
+                 <div class="col-md-12  text-center">
+                      <img src="{{ asset('img/servicios/'. $servicio->img) }}" alt="{{ $servicio->nombre }}" style="height: 150px;">
+                      <h3> <br> {{ $servicio->nombre }}</h3>
+                      <p> <br> {{ $servicio->descripcion }}</p>
+                 </div>
+                </div>
 
-               <div class="col-md-12  text-center">
-                    <img src="{{ asset('img/servicios/'. $servicio->img) }}" alt="{{ $servicio->nombre }}" style="height: 150px;">
-                    <h3> <br> {{ $servicio->nombre }}</h3>
-                    <p> <br> {{ $servicio->descripcion }}</p>
-               </div>
-
-               <h2 class="classic-title text-center" id="asesorias"><span>Acciones</span></h2>
 
                <div class="row">
+               <h2 class="classic-title text-center"><span>Acciones</span></h2>
                  @foreach ($servicio->acciones as $accion)
                  <div class="col-xs-6 col-md-3 image-service-box">
                    <h3>{{ $accion->nombre }}</h3>
                    <p>{{ $accion->descripcion }}</p>
+                   <a href="{{ route('accion', [$servicio->slug, str_slug($accion->nombre)]) }}">Más información <i class="fa fa-angle-right"></i></a>
                  </div>
                  @endforeach
                </div>
 
-               <h2 class="classic-title text-center" id="asesorias"><span>Asesores</span></h2>
 
                <div class="row">
+               <h2 class="classic-title text-center"><span>Asesores</span></h2>
                  
                 @foreach ($servicio->asesores as $asesor)
                 <div class="col-md-3 col-sm-6 col-xs-12">

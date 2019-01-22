@@ -6,13 +6,7 @@
     Route::get('/noticia/{id}',             'Pagina\NoticiasController@read');
     Route::delete('/noticia/{id}',          'Pagina\NoticiasController@delete');
     Route::get('/noticias/buscar/{text}',	'Pagina\NoticiasController@search');
-
-    Route::get('/proyectos',         		'Pagina\ProyectoController@index');
-    Route::post('/proyecto',                'Pagina\ProyectoController@store');
-    Route::get('/proyecto/{id}',            'Pagina\ProyectoController@read');
-    Route::delete('/proyecto/{id}',         'Pagina\ProyectoController@delete');
-    Route::get('/proyectos/buscar/{text}',	'Pagina\ProyectoController@search');
-
+    
     Route::get('/resultados',               'Pagina\ResultadoController@index');
     Route::post('/resultado',               'Pagina\ResultadoController@store');
     Route::get('/resultado/{id}',           'Pagina\ResultadoController@read');
@@ -22,6 +16,11 @@
     Route::post('/testimonio',               'Pagina\TestimonioController@store');
     Route::get('/testimonio/{id}',           'Pagina\TestimonioController@read');
     Route::delete('/testimonio/{id}',        'Pagina\TestimonioController@delete');
+
+    Route::get('/equipos',               'Pagina\EquipoController@index');
+    Route::post('/equipo',               'Pagina\EquipoController@store');
+    Route::get('/equipo/{id}',           'Pagina\EquipoController@read');
+    Route::delete('/equipo/{id}',        'Pagina\EquipoController@delete');
 
 
 ?>

@@ -9,12 +9,10 @@ class Empresa extends Model {
 
     use SoftDeletes;
     protected $table = 'empresas';
-    public $errores;
-    protected $dates = ['deleted_at'];
-    protected $fillable = array(
+    protected $fillable = [
+        'nombre',
         'estado',
         'procedencia',
-        'nombre',
         'nit',
         'iva',
         'ubicacion',
@@ -32,7 +30,7 @@ class Empresa extends Model {
         'url_facebook',
         'url_web',
         'catalogo',
-    );
+    ];
 
     protected $appends = ['aporte'];
 
@@ -179,7 +177,7 @@ class Empresa extends Model {
             if ($empresa_id) {
                 return Empresa::find($empresa_id);
             } else {
-                return Empresa::create(['estado' => 'Prospecto']);
+                return Empresa::create(['estado' => 'Prospecto', 'procedencia'=> 'Página Web']);
             }
         }
 
@@ -193,15 +191,19 @@ class Empresa extends Model {
 
         public function empresarios()
         {
-            return $this->hasMany('App\Models\Cliente\Cliente','empresa_id');
+            return $this->hasMany('App\Models\Empresas\EmpresaEmpresario');
+        }
+        
+        public function productos()
+        {
+            return $this->hasMany('App\Models\Empresas\Producto');
         }
 
-
         public function indicadores(){
-            return $this->hasOne('App\Models\Indicador', 'empresa_id');
+            return $this->hasOne('App\Models\Empresas\Indicador', 'empresa_id');
         }
 
         public function proyectos(){
-            return $this->hasMany('App\Models\proyecto', 'empresa_id');
+            return $this->hasMany('App\Models\Empresas\proyecto', 'empresa_id');
         }
 }

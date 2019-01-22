@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Servicios\Servicio;
 use App\Models\Servicios\Accion;
+use App\Models\Servicios\Indicador;
 use App\Models\Servicios\Asesor;
 
 class Servicios extends Seeder
@@ -43,6 +44,18 @@ class Servicios extends Seeder
             $table->descripcion = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem delectus quae qui, reiciendis, corrupti quo iusto consectetur? Magni placeat nemo suscipit nobis quam quaerat!';
             $table->servicio_id = 3;
             $table->save();
+                $table = new Indicador;
+                $table->accion_id   = 1;
+                $table->indicador   = 'Ventas';
+                $table->save();
+                $table = new Indicador;
+                $table->accion_id   = 1;
+                $table->indicador   = 'Costos';
+                $table->save();
+                $table = new Indicador;
+                $table->accion_id   = 1;
+                $table->indicador   = 'Administración';
+                $table->save();
             $table = new Accion;
             $table->nombre  = 'Marketing Digital TIC';
             $table->descripcion = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem delectus quae qui, reiciendis, corrupti quo iusto consectetur? Magni placeat nemo suscipit nobis quam quaerat!';

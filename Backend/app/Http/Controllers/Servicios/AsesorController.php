@@ -9,31 +9,6 @@ use App\Models\Servicios\Asesor;
 class AsesoresController extends Controller
 {
     
-
-    public function index() {
-       
-        $asesores = Asesor::orderBy('id','dsc')->paginate(7);
-
-        return Response()->json($asesores, 200);
-
-    }
-
-
-    public function search($txt) {
-
-        $asesor = Asesor::where('nombre', 'like' ,'%' . $txt . '%')->paginate(7);
-        return Response()->json($asesor, 200);
-
-    }
-
-    public function read($id) {
-
-        $asesor = Asesor::where('id', $id)->with('asesor')->first();
-        return Response()->json($asesor, 200);
-
-    }
-
-
     public function store(AsesorRequest $request)
     {
         if($request->id){

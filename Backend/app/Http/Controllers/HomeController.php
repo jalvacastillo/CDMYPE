@@ -5,8 +5,9 @@ use File;
 use Mail;
 use App\User;
 use App\Models\Servicios\Servicio;
+use App\Models\Servicios\Accion;
 use App\Models\Pagina\Noticia;
-use App\Models\Pagina\Proyecto;
+use App\Models\Proyectos\Proyecto;
 use App\Models\Pagina\Resultado;
 use App\Models\Pagina\Testimonio;
 use App\Models\Cliente\Cliente;
@@ -38,8 +39,19 @@ class HomeController extends Controller
     }
 
     public function servicio($slug){
-        $servicio = Servicio::with('acciones', 'asesores')->where('slug', $slug)->first();
+        $servicio = Servicio::with('acciones.indicadores', 'asesores')->where('slug', $slug)->first();
         return view('servicios.servicio.index', compact('servicio'));
+    }
+
+    public function accion($s_slug, $a_slug){
+        $nombre = ucwords(str_replace('-', ' ', $a_slug));
+        $accion = Accion::with('indicadores')->where('nombre', 'like', $nombre)->first();
+
+        $indicadores = $accion->indicadores()->pluck('indicador')->all();
+
+        $noticias = Noticia::whereIn('tipo', $indicadores)->get();
+
+        return view('servicios.accion.index', compact('accion', 'noticias'));
     }
     
     public function empresas(){
@@ -64,10 +76,6 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Solicitud recibida, pronto nos pondremos en contacto con tigo!');
         $empresa = new Cliente;
     }
-    public function academia(){
-        $pasantias = Proyecto::where('estado', 'Activo')->orderBy('id','asc')->paginate(7);
-        return view('pasantias.index', compact('pasantias'));  
-    }
 
     public function actividades(){
         $pasantias = Proyecto::where('estado', 'Activo')->orderBy('id','asc')->paginate(7);
@@ -91,11 +99,8 @@ class HomeController extends Controller
     public function noticia($slug){
         $noticia = Noticia::where('slug', $slug)->orderBy('id','asc')->first();
         // dd($request->header('User-Agent'));
-
-        if(!\Session::get('empresa_id')){
-            $noticia->views ++;
-            $noticia->save();
-        }
+        $noticia->views ++;
+        $noticia->save();
 
         return view('noticias.noticia.index', compact('noticia'));
     }

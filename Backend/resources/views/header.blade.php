@@ -60,15 +60,25 @@
 
               <li class="drop">
                 @guest
-                  <a class="{{ Request::is('cuenta') ? 'active' : '' }}" href="{{ route('cuenta') }}">
-                    Cuenta
-                  </a>
+                    <a href="{{ route('login') }}">Login</a>
                 @else
-                  <ul class="dropdown">
-                    <li><a href="{{ route('actividades') }}">Conocimiento</a></li>
-                    <li><a href="{{ route('actividades') }}">Actividades</a></li>
-                    <li><a href="{{ route('actividades') }}">Clientes</a></li>
-                  </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
                 @endguest
               </li>
 
@@ -92,15 +102,25 @@
             @endforeach
             <li class="drop">
                 @guest
-                  <a class="{{ Request::is('cuenta') ? 'active' : '' }}" href="{{ route('cuenta') }}">
-                    Cuenta
-                  </a>
+                    <a href="{{ route('login') }}">Login</a>
                 @else
-                  <ul class="dropdown">
-                    <li><a href="{{ route('actividades') }}">Conocimiento</a></li>
-                    <li><a href="{{ route('actividades') }}">Actividades</a></li>
-                    <li><a href="{{ route('actividades') }}">Clientes</a></li>
-                  </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
                 @endguest
               </li>
         </ul>

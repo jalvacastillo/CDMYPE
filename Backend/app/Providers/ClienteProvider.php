@@ -54,13 +54,13 @@ class ClienteProvider extends ServiceProvider
                 //             ['nombre' => 'Directorio MYPE', 'route'    => 'empresas'],
                 //     ]
                 // ],
-                // [ 
-                //     'nombre'   => 'Academia', 'route'    => 'academia',
-                //     'elementos' => [
-                //             ['nombre' => 'Asesor Junior', 'route'    => 'academia'],
-                //             ['nombre' => 'Consultor', 'route'    => 'academia'],
-                //     ]
-                // ],
+                [ 
+                    'nombre'   => 'Academia', 'route'    => 'proyectos',
+                    'elementos' => [
+                            ['nombre' => 'Asesor Junior', 'route'    => 'proyectos'],
+                            ['nombre' => 'Consultor', 'route'    => 'proyectos'],
+                    ]
+                ],
                 // [ 
                 //     'nombre'   => 'Actividades', 'route'    => 'actividades',
                 //     'elementos' => [

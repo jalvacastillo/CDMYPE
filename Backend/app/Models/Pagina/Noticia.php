@@ -16,6 +16,7 @@ class Noticia extends Model
         'contenido',
         'img',
         'categoria',
+        'tipo',
         'asesor_id',
         'views',
         'activo'

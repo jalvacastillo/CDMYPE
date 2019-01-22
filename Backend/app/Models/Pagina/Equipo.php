@@ -21,6 +21,7 @@ class Equipo extends Model
         'url_linkedin',
         'avatar',
         'web',
+        'usuario_id'
     ];
 
 }

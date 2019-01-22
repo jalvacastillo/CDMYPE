@@ -28,7 +28,7 @@ class ServiciosController extends Controller
 
     public function read($id) {
 
-        $servicio = Servicio::where('id', $id)->with('acciones','asesores')->first();
+        $servicio = Servicio::where('id', $id)->with('acciones.indicadores','asesores')->first();
         return Response()->json($servicio, 200);
 
     }

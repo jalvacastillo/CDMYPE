@@ -17,8 +17,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->string('tipo_registro')->default('Manual');
+            $table->string('tipo');
 
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('default.jpg');
             $table->boolean('activo')->default(1);
 
             $table->softDeletes();
