@@ -30,9 +30,10 @@ class CreateEmpresasTable extends Migration {
             $table->string('actividad', 3000)->nullable();
 
             $table->string('logo')->default('default.png');
+            $table->string('correo')->nullable();
             $table->string('url_facebook')->nullable();
             $table->string('url_web')->nullable();
-            $table->boolean('catalogo')->default(1);
+            $table->boolean('catalogo')->default(0);
             
             $table->softDeletes();
             $table->timestamps();

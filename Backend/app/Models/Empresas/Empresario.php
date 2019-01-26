@@ -20,7 +20,8 @@ class Empresario extends Model {
         'celular',
         'direccion',
         'municipio',
-        'departamento'
+        'departamento',
+        'usuario_id'
     );
     
 

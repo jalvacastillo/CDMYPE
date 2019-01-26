@@ -31,4 +31,6 @@
         </div>
     </div>
 
+    @include('home.accion')
+
 @endsection

@@ -14,10 +14,10 @@ class CreateEquipoTable extends Migration
             
             $table->string('nombre');
 
-            $table->enum('tipo', ['Asesor','Compras','Director']);
-            $table->enum('categoria', ['TIC', 'EFE', 'Financiero', 'Empresarial', 'Otro']);
+            $table->string('tipo');
+            $table->string('categoria');
 
-            $table->string('cargo');
+            $table->string('cargo')->nullable();
             $table->string('titulo')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('url_facebook')->nullable();
@@ -25,11 +25,10 @@ class CreateEquipoTable extends Migration
             $table->string('url_linkedin')->nullable();
 
             $table->string('avatar')->default('default.png');
-            $table->boolean('web')->default(1);
+            $table->boolean('web')->default(0);
 
             $table->integer('usuario_id')->nullable();
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

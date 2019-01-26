@@ -34,7 +34,6 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th>Nombre</th>
-                                <th class="hidden-xs">Empresario</th>
                                 <th class="hidden-xs">Sector</th>
                                 <th class="hidden-xs">Catálogo</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
@@ -51,7 +50,6 @@
                                 
                                 <td class="text-center">{{ empresa.id }}</td>
                                 <td>{{ empresa.nombre }}</td>
-                                <td class="hidden-xs">{{ empresa.empresario }}</td>
                                 <td class="hidden-xs">{{ empresa.sector }}</td>
                                 <td class="text-center hidden-xs">
                                     <input type="checkbox" name="activo{{empresa.id}}" [(ngModel)]="empresa.catalogo" (click)="activar(empresa)">

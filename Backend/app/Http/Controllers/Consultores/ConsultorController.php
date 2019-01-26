@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Consultores;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Consultor\ConsultorRequest;
+use App\Http\Requests\Consultores\ConsultorRequest;
 use App\Models\Consultores\Consultor;
 
 class ConsultorController extends Controller

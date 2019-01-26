@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Models\Consultores\Consultor;
 use App\Models\Alumnos\Alumno;
+use App\Models\Empresas\Empresa;
+use App\Models\Empresas\Empresario;
+use App\Models\Empresas\EmpresaEmpresario;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/cuenta';
 
     /**
      * Create a new controller instance.
@@ -77,7 +80,14 @@ class RegisterController extends Controller
             Consultor::create(['nombre'=>$data['name'], 'correo' => $data['email'], 'usuario_id' => $user->id]);
         }
         if ($data['tipo'] == 'Estudiante') {
-            Alumnos::create(['nombre'=>$data['name'], 'correo' => $data['email'], 'usuario_id' => $user->id]);
+            Alumno::create(['nombre'=>$data['name'], 'correo' => $data['email'], 'usuario_id' => $user->id]);
+        }
+        if ($data['tipo'] == 'Empresario') {
+            $empresario = new Empresario;
+            $empresario->usuario_id = $user->id;
+            $empresario->nombre = $user->name;
+            $empresario->correo = $user->email;
+            $empresario->save();
         }
 
         return $user;

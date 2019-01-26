@@ -45,9 +45,8 @@ export class DiagnosticoComponent implements OnInit {
 
     }
 
-    public setEstado(pregunta:any, estado:string){
-        pregunta.estado = estado;
-        this.apiService.store('diagnostico/pregunta', pregunta).subscribe(pregunta => { 
+    public onSubmitPregunta(){
+        this.apiService.store('diagnostico/pregunta', this.pregunta).subscribe(pregunta => { 
             this.alertService.success('Actualizado');
         }, error => {this.alertService.error(error); });
     }

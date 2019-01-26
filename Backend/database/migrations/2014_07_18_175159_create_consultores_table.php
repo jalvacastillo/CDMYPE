@@ -13,7 +13,7 @@ class CreateConsultoresTable extends Migration {
             $table->string('nombre', 100);
             $table->string('dui',20)->nullable();
             $table->string('nit',30)->nullable();
-            $table->enum('sexo', ['Mujer','Hombre'])->nullable();
+            $table->string('sexo')->nullable();
             $table->string('correo',75)->nullable();
             $table->string('direccion', 250)->nullable();
             $table->string('municipio', 50)->nullable();
@@ -21,7 +21,7 @@ class CreateConsultoresTable extends Migration {
             $table->string('telefono',30)->nullable();
             $table->string('celular',30)->nullable();
             $table->string('empresa',100)->nullable();
-            $table->enum('tipo', ['Externo', 'Interno'])->default('Externo');
+            $table->string('tipo')->default('Externo');
 
             $table->integer('usuario_id')->nullable();
             

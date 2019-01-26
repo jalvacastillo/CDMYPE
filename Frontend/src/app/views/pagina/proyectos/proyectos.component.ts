@@ -58,7 +58,7 @@ export class ProyectosComponent implements OnInit {
         }, error => {this.alertService.error(error); });
     }
 
-     public setPagination(event):void{
+    public setPagination(event):void{
         this.loading = true;
         this.apiService.paginate(this.proyectos.path + '?page='+ event.page).subscribe(proyectos => { 
             this.proyectos = proyectos;

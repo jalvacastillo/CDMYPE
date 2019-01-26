@@ -28,6 +28,7 @@ class Empresa extends Model {
         'actividad',
         'logo',
         'url_facebook',
+        'correo',
         'url_web',
         'catalogo',
     ];
@@ -49,9 +50,9 @@ class Empresa extends Model {
             return 2;
         }
 
-        public function getEmpresarioAttribute(){
-            return $this->empresarios()->first();
-        }
+        // public function getEmpresarioAttribute(){
+        //     return $this->empresarios()->first();
+        // }
 
         public function getAporteAttribute(){
             // Tamaño
@@ -191,7 +192,7 @@ class Empresa extends Model {
 
         public function empresarios()
         {
-            return $this->hasMany('App\Models\Empresas\EmpresaEmpresario');
+            return $this->hasMany('App\Models\Empresas\EmpresaEmpresario', 'empresa_id');
         }
         
         public function productos()

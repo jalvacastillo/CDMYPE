@@ -13,14 +13,12 @@ class CreateServiciosTable extends Migration
             $table->increments('id');
 
             $table->string('nombre');
-            $table->enum('tipo', ['Asesoría', 'Otro']);
-            $table->enum('categoria', ['TIC', 'EFE', 'Financiera', 'Empresarial', 'Otro']);
+            $table->string('tipo');
+            $table->string('categoria');
             $table->text('descripcion');
             $table->string('slug')->unique();
             $table->string('img');
             
-
-            $table->softDeletes();
             $table->timestamps();
         });
     }

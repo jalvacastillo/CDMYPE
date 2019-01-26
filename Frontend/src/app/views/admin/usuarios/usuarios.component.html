@@ -32,8 +32,6 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Fecha</th>
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th class="text-center">Tipo</th>
@@ -43,21 +41,21 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="8" class="text-center" *ngIf="usuarios.total < 1">
-                                    <span class="label label-info">No tiene usuarios registrados</span>
+                                <td colspan="8" class="text-center" *ngIf="usuarios?.total < 1 && !loading">
+                                    <span class="label label-info">No tiene asesores registrados</span>
+                                </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
                                 </td>
                             </tr>
 
-                            <tr *ngFor=" let usuario of usuarios.data">
+                            <tr *ngFor=" let usuario of usuarios?.data">
                                 
-                                <td class="text-center">{{usuario.id}}</td>
-                                <td class="text-center">{{usuario.created_at | date:'dd-MM-y'}}</td>
                                 <td>{{usuario.name}}</td>
                                 <td>{{usuario.email}}</td>
                                 <td class="text-center">{{usuario.tipo}}</td>
-                                <td class="text-center">
-                                    <span *ngIf="usuario.activo == 1">Si</span>
-                                    <span *ngIf="usuario.activo != 1">No</span>
+                                <td class="text-center hidden-xs">
+                                    <input type="checkbox" name="activo{{usuario.id}}" [(ngModel)]="usuario.activo" (click)="activar(usuario)">
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" style="width:100px;">
@@ -71,28 +69,10 @@
 
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr *ngIf="usuarios.last_page > 1">
-                                <td colspan="8" class="text-center">
-                                    <nav>
-                                    <ul class="pagination">
-                                        <li class="page-item" [ngClass]="{'disabled': usuarios.current_page == 1}">
-                                            <a href="javascript:void(0)" (click)="setPaginacion(usuarios.current_page - 1)" >Previous</a>
-                                        </li>
-                                        
-                                        <li class="page-item" [ngClass]="{'active': page == usuarios.current_page}" *ngFor="let page of paginacion" >
-                                            <a href="javascript:void(0)" (click)="setPaginacion(page)">{{page}} </a>
-                                        </li>
-
-                                        <li class="page-item" [ngClass]="{'disabled': usuarios.current_page == usuarios.last_page}">
-                                            <a href="javascript:void(0)" (click)="setPaginacion(usuarios.current_page + 1)">Next</a>
-                                        </li>
-                                    </ul>
-                                    </nav>
-                                </td>
-                            </tr>
-                        </tfoot>
                     </table>
+                    <div class="text-center" *ngIf="usuarios?.last_page > 1">
+                        <app-pagination [items]="usuarios" (setPagination)="setPagination($event)"></app-pagination>
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,6 +22,21 @@
       </div>
     </div>
 
+    <form action="{{ route('filtrarProyectos') }}" method="POST">
+    <div class="row panel-footer" style="display: flex; justify-content: center;">
+      {{ csrf_field() }}
+        <div class="form-group" style="margin: 0px 15px; width: 50%;">
+            <input type="text" name="parametro" class="form-control form-control-sm" placeholder="Tipo, Nombre, etc...">
+        </div>
+
+      <div class="form-group" style="margin: 0px 15px; width: 10%">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+        <button type="{{ route('empresas') }}" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+      </div>
+    </div>
+    </form>
+
+
         <div id="content">
           <div class="container">
             <div class="page-content" id="pasantias">
@@ -30,7 +45,7 @@
                 <div class="row list-group">
                 
                 @foreach($proyectos as $proyecto)
-                    <div class="list-group-item">
+                    <div class="list-group-item col-xs-6">
                         <div class="row">
                         <div class="media col-sm-3 hidden-xs">
                           <figure class="pull-left">
@@ -48,8 +63,7 @@
                           
                           <h3> {{ $proyecto->duracion }} <br><small>Duración</small></h3>
                           <br><br>
-                          <a href="{{ route('aplicar', encrypt($proyecto->id)) }}" class="btn btn-primary btn-block"> Aplicar </a>
-                          <a href="{{ route('proyecto', [str_slug($proyecto->nombre), encrypt($proyecto->id) ]) }}" class="btn btn-primary btn-block"> Más información </a>
+                          <a href="{{ route('proyecto', [str_slug($proyecto->nombre), encrypt($proyecto->id) ]) }}" class="btn btn-primary btn-block"> Ver Más </a>
                         </div>
                         </div>
                     </div>
@@ -65,5 +79,7 @@
             </div>
           </div>
         </div>
+
+        @include('home.accion-proyectos')
 
 @endsection

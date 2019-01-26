@@ -1,0 +1,36 @@
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row" *ngIf="consultor.id">
+   <table class="table table-hover">
+       <thead>
+           <tr>
+               <th>Nombre</th>
+               <th>Precio</th>
+               <th>Descripción</th>
+               <th class="text-center"><i class="fa fa-cog"></i></th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor=" let especialidad of consultor?.especialidades">
+               <td>{{ especialidad.nombre }}</td>
+               <td>{{ especialidad.precio | currency:'USD':'true':'1.2'}}</td>
+               <td>{{ especialidad.descripcion }}</td>
+               <td class="text-center" width="100">
+                   <a (click)="delProducto(especialidad.id)" class="btn btn-danger"> <i class="fa fa-minus"></i></a>
+                   <a (click)="selProducto(especialidad)" class="btn btn-default"> <i class="fa fa-pencil"></i></a>
+               </td>
+           </tr>
+           <tr>
+               <td><input type="text" class="form-control" [(ngModel)]="especialidad.nombre" name="especialidad.nombre" placeholder="Nombre"></td>
+               <td><input type="number" class="form-control" [(ngModel)]="especialidad.precio" name="especialidad.precio" placeholder="Precio"></td>
+               <td><input type="text" class="form-control" [(ngModel)]="especialidad.descripcion" name="especialidad.descripcion" placeholder="Descripción"></td>
+               <td class="text-center">
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Agregar</span>
+                    <span *ngIf="loading">Agregando...</span>
+                </button>
+                </td>
+           </tr>
+       </tbody>
+   </table>
+</div>
+</form>

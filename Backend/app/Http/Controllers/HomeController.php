@@ -3,14 +3,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use File;
 use Mail;
-use App\User;
+use Auth;
+
 use App\Models\Servicios\Servicio;
 use App\Models\Servicios\Accion;
 use App\Models\Pagina\Noticia;
 use App\Models\Proyectos\Proyecto;
 use App\Models\Pagina\Resultado;
+
+use App\Models\Pagina\Equipo;
 use App\Models\Pagina\Testimonio;
-use App\Models\Cliente\Cliente;
+
+use App\Models\Empresas\Empresa;
+use App\Models\Empresas\Empresario;
 
 class HomeController extends Controller
 {
@@ -26,8 +31,9 @@ class HomeController extends Controller
         return view('home.index', compact('asesorias','otros','noticias', 'resultados', 'testimonios'));
     }
     public function nosotros(){
-        $asesores = User::orderBy('id','asc')->get();
+        $asesores = Equipo::where('web', 1)->orderBy('id','asc')->get();
         $testimonios = Testimonio::orderBy('id','asc')->take(2)->get();
+
         return view('nosotros.index', compact('asesores', 'testimonios'));
     }
 
@@ -53,34 +59,7 @@ class HomeController extends Controller
 
         return view('servicios.accion.index', compact('accion', 'noticias'));
     }
-    
-    public function empresas(){
-        $empresas = Cliente::where('catalogo', 1)->orderBy('id','asc')->with('empresa', 'empresario')->paginate(12);
-        return view('empresas.index', compact('empresas'));   
-    }
-    public function empresa($id){
-        $empresa = Cliente::where('id', $id)->with('empresa', 'empresario')->first();
-        return view('empresas.empresa', compact('empresa'));
-    }
-    public function registro(){
-        $empresa = new Cliente;
-        return view('empresas.registro', compact('empresa'));
-    }
-    public function registrofrm(Request $request){
-        // return $request;
-        return redirect()->back()->with('message', 'Solicitud recibida, pronto nos pondremos en contacto con tigo!');
-        $empresa = new Cliente;
-    }
-    public function guiaTipo(Request $request){
-        return $request;
-        return redirect()->back()->with('message', 'Solicitud recibida, pronto nos pondremos en contacto con tigo!');
-        $empresa = new Cliente;
-    }
 
-    public function actividades(){
-        $pasantias = Proyecto::where('estado', 'Activo')->orderBy('id','asc')->paginate(7);
-        return view('pasantias.index', compact('pasantias'));  
-    }
     public function noticias(){
         $categorias = Noticia::where('activo', 1)->selectRaw('count(*) as total, categoria')->groupBy('categoria')->get();
         $noticias = Noticia::where('activo', 1)->orderBy('id','dsc')->paginate(5);

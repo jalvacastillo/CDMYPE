@@ -1,0 +1,16 @@
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row" *ngIf="at.id">
+    <div class="form-group col-xs-12">
+        <label for="nombre"> * Estado:</label>
+        <input list="tipo" class="form-control" name="tipo" [(ngModel)]="at.acta.tipo" placeholder="Nombre" required autofocus />
+        <datalist id="tipo">
+            <option value="Conformidad">
+            <option value="Rechazo">
+        </datalist>
+    </div>
+    <div class="form-group col-xs-12">
+        <label for="empresa"> Fecha:</label>
+        <input type="date" class="form-control" name="fecha" [(ngModel)]="at.acta.fecha" placeholder="Nombre"/>
+    </div>
+</div>
+</form>

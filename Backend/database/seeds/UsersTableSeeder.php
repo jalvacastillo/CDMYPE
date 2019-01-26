@@ -16,6 +16,24 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create();
 
             $user = new User;
+            $user->name = 'Carmen Mercado';
+            $user->email = 'carmen.mercado@cdmype.org.sv';
+            $user->avatar = 'carmen.jpg';
+            $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
+            $user->save();
+            $user = new Equipo;
+            $user->id = 1;
+            $user->nombre = 'Carmen Mercado';
+            $user->tipo = 'Asesor';
+            $user->titulo = 'Licenciada en Administración de Empresas.';
+            $user->categoria = 'Empresarial';
+            $user->cargo = 'Asesora Empresarial';
+            $user->descripcion = '';
+            $user->avatar = 'carmen.jpg';
+            $user->save();
+
+            $user = new User;
             $user->name = 'Aminta Rodas';
             $user->email = 'aminta.rodas@catolica.edu.sv';
             $user->avatar = 'aminta.jpg';
@@ -23,6 +41,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 4;
             $user->nombre = 'Aminta Rodas';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Administración de Empresas.';
@@ -40,6 +59,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 15;
             $user->nombre = 'Jesus Alvarado';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero en Sistemas Informáticos.';
@@ -60,6 +80,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 5;
             $user->nombre = 'Ingrid Hernandez';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Mercadeo y Publicidad.';
@@ -77,6 +98,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 6;
             $user->nombre = 'Natalia Calderon';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Economía.';
@@ -94,6 +116,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 3;
             $user->nombre = 'Walter Cuellar';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciado en Administración de Empresas.';
@@ -111,6 +134,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 12;
             $user->nombre = 'Gustavo Jovel';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
@@ -128,6 +152,7 @@ class UsersTableSeeder extends Seeder
             $user->tipo = 'Administrador';
             $user->save();
             $user = new Equipo;
+            $user->id = 7;
             $user->nombre = 'Rhina Molina';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
@@ -135,6 +160,42 @@ class UsersTableSeeder extends Seeder
             $user->categoria = 'EFE';
             $user->descripcion = '';
             $user->avatar = 'rhina.jpg';
+            $user->save();
+
+            $user = new User;
+            $user->name = 'Raul Escalante';
+            $user->email = 'raul.escalante@catolica.edu.sv';
+            $user->avatar = 'raul.jpg';
+            $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
+            $user->save();
+            $user = new Equipo;
+            $user->id = 8;
+            $user->nombre = 'Raul Escalante';
+            $user->tipo = 'Asesor';
+            $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
+            $user->cargo = 'Asesora EFE';
+            $user->categoria = 'EFE';
+            $user->descripcion = '';
+            $user->avatar = 'raul.jpg';
+            $user->save();
+
+            $user = new User;
+            $user->name = 'Rene Sanabria';
+            $user->email = 'rene.sanabria@catolica.edu.sv';
+            $user->avatar = 'rene.jpg';
+            $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
+            $user->save();
+            $user = new Equipo;
+            $user->id = 2;
+            $user->nombre = 'Rene Sanabria';
+            $user->tipo = 'Asesor';
+            $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
+            $user->cargo = 'Asesora EFE';
+            $user->categoria = 'EFE';
+            $user->descripcion = '';
+            $user->avatar = 'rene.jpg';
             $user->save();
             
     }

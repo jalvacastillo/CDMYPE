@@ -68,7 +68,7 @@ class Servicios extends Seeder
             $table->save();
 
             $table = new Asesor;
-            $table->asesor_id  = 2;
+            $table->asesor_id  = 15;
             $table->servicio_id = 3;
             $table->save();
 

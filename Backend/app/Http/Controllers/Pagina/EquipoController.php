@@ -19,7 +19,7 @@ class EquipoController extends Controller
 
     public function read($id) {
 
-        $equipo = Equipo::findOrFail($id);
+        $equipo = Equipo::where('id', $id)->with('usuario')->firstOrFail();
         return Response()->json($equipo, 200);
 
     }

@@ -1,25 +1,181 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\At\Acta;
+use App\Models\Ats\Acta;
 
 class AtActasSeeder extends Seeder
 {
 
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $actas = array(
+          array('id' => '1','fecha' => '2014-10-16','estado' => 'Conformidad','attermino_id' => '1','deleted_at' => NULL,'created_at' => '2014-08-28 20:24:38','updated_at' => '2015-10-27 18:28:34'),
+          array('id' => '2','fecha' => '2014-09-02','estado' => 'Conformidad','attermino_id' => '3','deleted_at' => NULL,'created_at' => '2014-09-02 17:40:28','updated_at' => '2015-12-15 10:50:11'),
+          array('id' => '3','fecha' => '2014-10-16','estado' => 'Conformidad','attermino_id' => '12','deleted_at' => NULL,'created_at' => '2014-10-16 14:58:43','updated_at' => '2014-10-16 14:58:43'),
+          array('id' => '4','fecha' => '2014-10-24','estado' => 'Conformidad','attermino_id' => '2','deleted_at' => NULL,'created_at' => '2014-10-27 14:13:15','updated_at' => '2014-10-27 14:14:52'),
+          array('id' => '5','fecha' => '2014-10-30','estado' => 'Conformidad','attermino_id' => '4','deleted_at' => NULL,'created_at' => '2014-10-30 19:51:09','updated_at' => '2014-10-30 19:51:09'),
+          array('id' => '6','fecha' => '2014-10-27','estado' => 'Conformidad','attermino_id' => '5','deleted_at' => NULL,'created_at' => '2014-11-01 16:53:37','updated_at' => '2014-11-01 16:53:37'),
+          array('id' => '7','fecha' => '2014-11-03','estado' => 'Conformidad','attermino_id' => '28','deleted_at' => NULL,'created_at' => '2014-11-03 16:40:16','updated_at' => '2014-11-03 16:40:16'),
+          array('id' => '8','fecha' => '2014-11-06','estado' => 'Conformidad','attermino_id' => '7','deleted_at' => NULL,'created_at' => '2014-11-06 16:25:26','updated_at' => '2014-11-06 16:25:26'),
+          array('id' => '9','fecha' => '2014-11-12','estado' => 'Conformidad','attermino_id' => '26','deleted_at' => NULL,'created_at' => '2014-11-12 16:14:10','updated_at' => '2014-11-12 16:14:10'),
+          array('id' => '10','fecha' => '2014-10-30','estado' => 'Conformidad','attermino_id' => '10','deleted_at' => NULL,'created_at' => '2014-11-13 14:58:56','updated_at' => '2014-11-13 14:58:56'),
+          array('id' => '11','fecha' => '2014-11-12','estado' => 'Conformidad','attermino_id' => '32','deleted_at' => NULL,'created_at' => '2014-11-13 15:07:19','updated_at' => '2014-11-13 15:07:19'),
+          array('id' => '12','fecha' => '2014-11-18','estado' => 'Conformidad','attermino_id' => '39','deleted_at' => NULL,'created_at' => '2014-11-17 23:14:49','updated_at' => '2014-11-17 23:14:49'),
+          array('id' => '13','fecha' => '2014-11-18','estado' => 'Conformidad','attermino_id' => '33','deleted_at' => NULL,'created_at' => '2014-11-18 14:12:31','updated_at' => '2014-11-18 14:12:31'),
+          array('id' => '14','fecha' => '2014-11-21','estado' => 'Conformidad','attermino_id' => '11','deleted_at' => NULL,'created_at' => '2014-11-26 14:22:49','updated_at' => '2014-11-26 14:23:05'),
+          array('id' => '15','fecha' => '2014-11-21','estado' => 'Conformidad','attermino_id' => '37','deleted_at' => NULL,'created_at' => '2014-11-27 14:11:46','updated_at' => '2014-11-27 14:11:46'),
+          array('id' => '16','fecha' => '2014-11-28','estado' => 'Conformidad','attermino_id' => '46','deleted_at' => NULL,'created_at' => '2014-11-27 22:32:49','updated_at' => '2014-11-27 22:32:49'),
+          array('id' => '17','fecha' => '2014-11-28','estado' => 'Conformidad','attermino_id' => '25','deleted_at' => NULL,'created_at' => '2014-11-28 19:53:17','updated_at' => '2014-11-28 19:53:17'),
+          array('id' => '18','fecha' => '2014-12-03','estado' => 'Conformidad','attermino_id' => '27','deleted_at' => NULL,'created_at' => '2014-12-02 17:49:51','updated_at' => '2014-12-03 14:23:20'),
+          array('id' => '19','fecha' => '2014-12-04','estado' => 'Conformidad','attermino_id' => '31','deleted_at' => NULL,'created_at' => '2014-12-03 23:10:23','updated_at' => '2014-12-03 23:10:23'),
+          array('id' => '20','fecha' => '2014-12-05','estado' => 'Conformidad','attermino_id' => '23','deleted_at' => NULL,'created_at' => '2014-12-05 13:31:21','updated_at' => '2014-12-05 13:31:21'),
+          array('id' => '21','fecha' => '2014-12-05','estado' => 'Conformidad','attermino_id' => '49','deleted_at' => NULL,'created_at' => '2014-12-05 14:20:27','updated_at' => '2014-12-05 14:20:27'),
+          array('id' => '22','fecha' => '2014-12-05','estado' => 'Conformidad','attermino_id' => '47','deleted_at' => NULL,'created_at' => '2014-12-05 17:15:26','updated_at' => '2014-12-05 17:15:26'),
+          array('id' => '23','fecha' => '2014-12-09','estado' => 'Conformidad','attermino_id' => '29','deleted_at' => NULL,'created_at' => '2014-12-08 15:09:31','updated_at' => '2014-12-08 15:09:31'),
+          array('id' => '24','fecha' => '2014-12-08','estado' => 'Conformidad','attermino_id' => '8','deleted_at' => NULL,'created_at' => '2014-12-08 19:24:24','updated_at' => '2014-12-08 19:24:24'),
+          array('id' => '25','fecha' => '2014-12-09','estado' => 'Conformidad','attermino_id' => '35','deleted_at' => NULL,'created_at' => '2014-12-09 14:58:53','updated_at' => '2014-12-09 14:59:38'),
+          array('id' => '26','fecha' => '2014-12-09','estado' => 'Conformidad','attermino_id' => '51','deleted_at' => NULL,'created_at' => '2014-12-09 15:34:24','updated_at' => '2014-12-09 15:34:24'),
+          array('id' => '27','fecha' => '2014-12-09','estado' => 'Conformidad','attermino_id' => '43','deleted_at' => NULL,'created_at' => '2014-12-09 15:34:53','updated_at' => '2015-10-14 15:58:49'),
+          array('id' => '28','fecha' => '2014-12-09','estado' => 'Conformidad','attermino_id' => '40','deleted_at' => NULL,'created_at' => '2014-12-09 18:11:40','updated_at' => '2014-12-09 18:11:40'),
+          array('id' => '29','fecha' => '2014-12-05','estado' => 'Conformidad','attermino_id' => '45','deleted_at' => NULL,'created_at' => '2014-12-09 19:14:22','updated_at' => '2014-12-09 20:58:09'),
+          array('id' => '30','fecha' => '2014-12-09','estado' => 'Conformidad','attermino_id' => '41','deleted_at' => NULL,'created_at' => '2014-12-09 20:35:40','updated_at' => '2014-12-09 20:35:40'),
+          array('id' => '31','fecha' => '2014-12-10','estado' => 'Conformidad','attermino_id' => '55','deleted_at' => NULL,'created_at' => '2014-12-10 14:49:51','updated_at' => '2014-12-10 14:49:51'),
+          array('id' => '32','fecha' => '2014-12-11','estado' => 'Conformidad','attermino_id' => '24','deleted_at' => NULL,'created_at' => '2014-12-11 05:34:25','updated_at' => '2014-12-11 05:34:25'),
+          array('id' => '33','fecha' => '2014-12-11','estado' => 'Conformidad','attermino_id' => '48','deleted_at' => NULL,'created_at' => '2014-12-11 14:50:53','updated_at' => '2014-12-11 14:50:53'),
+          array('id' => '34','fecha' => '2014-12-10','estado' => 'Conformidad','attermino_id' => '53','deleted_at' => NULL,'created_at' => '2014-12-11 16:46:55','updated_at' => '2014-12-11 16:46:55'),
+          array('id' => '35','fecha' => '2014-12-11','estado' => 'Conformidad','attermino_id' => '50','deleted_at' => NULL,'created_at' => '2014-12-11 21:38:54','updated_at' => '2014-12-11 21:38:54'),
+          array('id' => '36','fecha' => '2014-12-12','estado' => 'Conformidad','attermino_id' => '56','deleted_at' => NULL,'created_at' => '2014-12-12 15:53:31','updated_at' => '2014-12-12 15:53:31'),
+          array('id' => '37','fecha' => '2015-06-10','estado' => 'Conformidad','attermino_id' => '63','deleted_at' => NULL,'created_at' => '2015-06-10 13:26:26','updated_at' => '2015-10-14 15:57:53'),
+          array('id' => '38','fecha' => '2015-06-22','estado' => 'Conformidad','attermino_id' => '62','deleted_at' => NULL,'created_at' => '2015-06-27 17:23:37','updated_at' => '2015-10-14 15:58:11'),
+          array('id' => '39','fecha' => '2015-07-09','estado' => 'Conformidad','attermino_id' => '68','deleted_at' => NULL,'created_at' => '2015-06-30 18:39:29','updated_at' => '2015-07-14 16:54:28'),
+          array('id' => '40','fecha' => '2015-07-09','estado' => 'Conformidad','attermino_id' => '65','deleted_at' => NULL,'created_at' => '2015-07-08 22:36:56','updated_at' => '2015-07-08 22:36:56'),
+          array('id' => '41','fecha' => '2015-07-18','estado' => 'Conformidad','attermino_id' => '58','deleted_at' => NULL,'created_at' => '2015-07-17 22:19:22','updated_at' => '2015-10-14 15:58:34'),
+          array('id' => '42','fecha' => '2015-08-08','estado' => 'Conformidad','attermino_id' => '61','deleted_at' => NULL,'created_at' => '2015-07-31 14:26:07','updated_at' => '2015-08-10 14:15:40'),
+          array('id' => '43','fecha' => '2015-07-31','estado' => 'Conformidad','attermino_id' => '64','deleted_at' => NULL,'created_at' => '2015-07-31 18:54:56','updated_at' => '2015-07-31 18:54:56'),
+          array('id' => '44','fecha' => '2015-08-08','estado' => 'Conformidad','attermino_id' => '59','deleted_at' => NULL,'created_at' => '2015-07-31 22:26:19','updated_at' => '2015-08-24 18:46:42'),
+          array('id' => '45','fecha' => '2015-08-08','estado' => 'Conformidad','attermino_id' => '76','deleted_at' => NULL,'created_at' => '2015-08-01 17:18:28','updated_at' => '2015-12-15 10:47:23'),
+          array('id' => '46','fecha' => '2015-08-11','estado' => 'Conformidad','attermino_id' => '77','deleted_at' => NULL,'created_at' => '2015-08-10 19:32:46','updated_at' => '2015-08-10 19:32:46'),
+          array('id' => '47','fecha' => '2015-08-13','estado' => 'Conformidad','attermino_id' => '69','deleted_at' => NULL,'created_at' => '2015-08-12 14:21:47','updated_at' => '2015-10-01 15:52:43'),
+          array('id' => '48','fecha' => '2015-08-08','estado' => 'Conformidad','attermino_id' => '60','deleted_at' => NULL,'created_at' => '2015-08-14 22:10:35','updated_at' => '2015-08-14 22:10:35'),
+          array('id' => '49','fecha' => '2015-08-18','estado' => 'Conformidad','attermino_id' => '74','deleted_at' => NULL,'created_at' => '2015-08-17 14:40:31','updated_at' => '2015-12-15 10:47:09'),
+          array('id' => '50','fecha' => '2015-08-24','estado' => 'Conformidad','attermino_id' => '81','deleted_at' => NULL,'created_at' => '2015-08-24 16:52:38','updated_at' => '2015-08-24 16:52:38'),
+          array('id' => '51','fecha' => '2015-08-29','estado' => 'Conformidad','attermino_id' => '75','deleted_at' => NULL,'created_at' => '2015-08-29 13:04:48','updated_at' => '2015-08-29 14:29:37'),
+          array('id' => '52','fecha' => '2015-09-02','estado' => 'Conformidad','attermino_id' => '66','deleted_at' => NULL,'created_at' => '2015-09-01 16:52:06','updated_at' => '2015-10-13 15:37:13'),
+          array('id' => '53','fecha' => '2015-09-03','estado' => 'Conformidad','attermino_id' => '89','deleted_at' => NULL,'created_at' => '2015-09-03 18:40:15','updated_at' => '2015-09-03 18:40:15'),
+          array('id' => '54','fecha' => '2015-10-02','estado' => 'Conformidad','attermino_id' => '86','deleted_at' => NULL,'created_at' => '2015-09-03 19:24:36','updated_at' => '2015-10-02 19:45:24'),
+          array('id' => '55','fecha' => '2015-09-08','estado' => 'Conformidad','attermino_id' => '80','deleted_at' => NULL,'created_at' => '2015-09-09 14:12:06','updated_at' => '2015-09-09 14:12:06'),
+          array('id' => '56','fecha' => '2015-09-01','estado' => 'Conformidad','attermino_id' => '73','deleted_at' => NULL,'created_at' => '2015-09-09 22:34:30','updated_at' => '2015-09-09 22:36:08'),
+          array('id' => '57','fecha' => '2015-09-11','estado' => 'Conformidad','attermino_id' => '83','deleted_at' => NULL,'created_at' => '2015-09-10 19:46:52','updated_at' => '2015-09-10 19:46:52'),
+          array('id' => '58','fecha' => '2015-09-12','estado' => 'Conformidad','attermino_id' => '67','deleted_at' => NULL,'created_at' => '2015-09-11 22:31:09','updated_at' => '2015-12-15 10:47:54'),
+          array('id' => '59','fecha' => '2015-09-16','estado' => 'Conformidad','attermino_id' => '79','deleted_at' => NULL,'created_at' => '2015-09-16 13:30:46','updated_at' => '2015-09-16 13:30:46'),
+          array('id' => '60','fecha' => '2015-09-24','estado' => 'Conformidad','attermino_id' => '71','deleted_at' => NULL,'created_at' => '2015-09-22 19:35:00','updated_at' => '2015-09-22 19:36:37'),
+          array('id' => '61','fecha' => '2015-09-25','estado' => 'Conformidad','attermino_id' => '78','deleted_at' => NULL,'created_at' => '2015-09-28 20:18:44','updated_at' => '2015-09-28 20:18:44'),
+          array('id' => '62','fecha' => '2015-10-02','estado' => 'Conformidad','attermino_id' => '85','deleted_at' => NULL,'created_at' => '2015-10-02 17:20:35','updated_at' => '2015-12-15 10:46:22'),
+          array('id' => '63','fecha' => '2015-10-03','estado' => 'Conformidad','attermino_id' => '90','deleted_at' => NULL,'created_at' => '2015-10-03 14:04:40','updated_at' => '2015-10-03 14:04:40'),
+          array('id' => '64','fecha' => '2015-10-07','estado' => 'Conformidad','attermino_id' => '88','deleted_at' => NULL,'created_at' => '2015-10-07 14:13:14','updated_at' => '2015-10-07 14:13:14'),
+          array('id' => '65','fecha' => '2015-10-07','estado' => 'Conformidad','attermino_id' => '103','deleted_at' => NULL,'created_at' => '2015-10-07 14:17:22','updated_at' => '2015-12-15 10:46:55'),
+          array('id' => '66','fecha' => '2015-10-07','estado' => 'Conformidad','attermino_id' => '87','deleted_at' => NULL,'created_at' => '2015-10-07 15:32:53','updated_at' => '2015-10-07 15:32:53'),
+          array('id' => '67','fecha' => '2015-10-14','estado' => 'Conformidad','attermino_id' => '101','deleted_at' => NULL,'created_at' => '2015-10-14 14:26:09','updated_at' => '2015-10-14 14:26:09'),
+          array('id' => '68','fecha' => '2015-10-16','estado' => 'Conformidad','attermino_id' => '95','deleted_at' => NULL,'created_at' => '2015-10-16 21:56:38','updated_at' => '2015-10-16 21:56:38'),
+          array('id' => '69','fecha' => '2015-10-21','estado' => 'Conformidad','attermino_id' => '91','deleted_at' => NULL,'created_at' => '2015-10-21 21:48:58','updated_at' => '2015-10-21 21:48:58'),
+          array('id' => '70','fecha' => '2015-10-22','estado' => 'Conformidad','attermino_id' => '111','deleted_at' => NULL,'created_at' => '2015-10-22 19:05:51','updated_at' => '2015-10-22 19:05:51'),
+          array('id' => '71','fecha' => '2015-10-26','estado' => 'Conformidad','attermino_id' => '121','deleted_at' => NULL,'created_at' => '2015-10-26 15:33:02','updated_at' => '2015-10-28 14:48:40'),
+          array('id' => '72','fecha' => '2015-11-03','estado' => 'Conformidad','attermino_id' => '94','deleted_at' => NULL,'created_at' => '2015-10-26 21:08:05','updated_at' => '2015-11-06 15:11:16'),
+          array('id' => '73','fecha' => '2015-10-26','estado' => 'Conformidad','attermino_id' => '93','deleted_at' => NULL,'created_at' => '2015-10-28 16:40:40','updated_at' => '2015-10-28 16:40:40'),
+          array('id' => '74','fecha' => '2015-10-24','estado' => 'Conformidad','attermino_id' => '97','deleted_at' => NULL,'created_at' => '2015-10-30 14:17:48','updated_at' => '2015-10-30 14:21:02'),
+          array('id' => '75','fecha' => '2015-10-31','estado' => 'Conformidad','attermino_id' => '130','deleted_at' => NULL,'created_at' => '2015-10-30 15:14:56','updated_at' => '2015-11-03 14:55:30'),
+          array('id' => '76','fecha' => '2015-11-04','estado' => 'Conformidad','attermino_id' => '102','deleted_at' => NULL,'created_at' => '2015-11-04 08:41:55','updated_at' => '2015-11-04 08:41:55'),
+          array('id' => '77','fecha' => '2015-11-04','estado' => 'Conformidad','attermino_id' => '119','deleted_at' => NULL,'created_at' => '2015-11-04 14:23:44','updated_at' => '2015-11-04 14:23:44'),
+          array('id' => '78','fecha' => '2015-11-06','estado' => 'Conformidad','attermino_id' => '72','deleted_at' => NULL,'created_at' => '2015-11-05 14:13:55','updated_at' => '2015-11-05 14:13:55'),
+          array('id' => '79','fecha' => '2015-10-30','estado' => 'Conformidad','attermino_id' => '100','deleted_at' => NULL,'created_at' => '2015-11-06 08:06:57','updated_at' => '2015-12-10 18:07:41'),
+          array('id' => '80','fecha' => '2015-11-10','estado' => 'Conformidad','attermino_id' => '107','deleted_at' => NULL,'created_at' => '2015-11-10 07:43:02','updated_at' => '2015-11-10 07:43:02'),
+          array('id' => '81','fecha' => '2015-11-11','estado' => 'Conformidad','attermino_id' => '118','deleted_at' => NULL,'created_at' => '2015-11-11 06:29:21','updated_at' => '2015-11-11 08:18:01'),
+          array('id' => '82','fecha' => '2015-11-11','estado' => 'Conformidad','attermino_id' => '99','deleted_at' => NULL,'created_at' => '2015-11-11 06:31:08','updated_at' => '2015-11-11 06:31:08'),
+          array('id' => '83','fecha' => '2015-11-14','estado' => 'Conformidad','attermino_id' => '106','deleted_at' => NULL,'created_at' => '2015-11-14 08:45:50','updated_at' => '2015-11-14 08:45:50'),
+          array('id' => '84','fecha' => '2015-11-11','estado' => 'Conformidad','attermino_id' => '127','deleted_at' => NULL,'created_at' => '2015-11-14 09:49:31','updated_at' => '2015-11-14 10:00:49'),
+          array('id' => '85','fecha' => '2015-11-18','estado' => 'Conformidad','attermino_id' => '92','deleted_at' => NULL,'created_at' => '2015-11-18 12:56:39','updated_at' => '2015-11-18 12:56:39'),
+          array('id' => '86','fecha' => '2015-11-19','estado' => 'Conformidad','attermino_id' => '123','deleted_at' => NULL,'created_at' => '2015-11-19 09:36:17','updated_at' => '2015-11-19 09:36:17'),
+          array('id' => '87','fecha' => '2015-11-20','estado' => 'Conformidad','attermino_id' => '98','deleted_at' => NULL,'created_at' => '2015-11-19 10:38:22','updated_at' => '2015-11-19 10:38:22'),
+          array('id' => '88','fecha' => '2015-11-20','estado' => 'Conformidad','attermino_id' => '108','deleted_at' => NULL,'created_at' => '2015-11-23 14:41:50','updated_at' => '2015-11-23 14:41:50'),
+          array('id' => '89','fecha' => '2015-12-05','estado' => 'Conformidad','attermino_id' => '120','deleted_at' => NULL,'created_at' => '2015-11-28 08:38:05','updated_at' => '2015-12-05 11:09:06'),
+          array('id' => '90','fecha' => '2015-11-30','estado' => 'Conformidad','attermino_id' => '104','deleted_at' => NULL,'created_at' => '2015-11-30 17:10:22','updated_at' => '2015-11-30 17:10:22'),
+          array('id' => '91','fecha' => '2015-11-30','estado' => 'Conformidad','attermino_id' => '129','deleted_at' => NULL,'created_at' => '2015-11-30 17:10:53','updated_at' => '2015-11-30 17:10:53'),
+          array('id' => '92','fecha' => '2015-12-01','estado' => 'Conformidad','attermino_id' => '135','deleted_at' => NULL,'created_at' => '2015-12-01 11:42:31','updated_at' => '2015-12-01 11:42:31'),
+          array('id' => '93','fecha' => '2015-12-01','estado' => 'Conformidad','attermino_id' => '136','deleted_at' => NULL,'created_at' => '2015-12-01 11:43:11','updated_at' => '2015-12-01 11:43:11'),
+          array('id' => '94','fecha' => '2015-12-03','estado' => 'Conformidad','attermino_id' => '124','deleted_at' => NULL,'created_at' => '2015-12-04 08:48:22','updated_at' => '2015-12-04 09:46:03'),
+          array('id' => '95','fecha' => '2015-12-03','estado' => 'Conformidad','attermino_id' => '82','deleted_at' => NULL,'created_at' => '2015-12-04 08:50:22','updated_at' => '2015-12-04 10:00:22'),
+          array('id' => '96','fecha' => '2015-12-07','estado' => 'Conformidad','attermino_id' => '125','deleted_at' => NULL,'created_at' => '2015-12-05 10:35:32','updated_at' => '2015-12-07 11:24:31'),
+          array('id' => '97','fecha' => '2015-12-07','estado' => 'Conformidad','attermino_id' => '138','deleted_at' => NULL,'created_at' => '2015-12-08 08:44:52','updated_at' => '2015-12-08 08:44:52'),
+          array('id' => '98','fecha' => '2015-12-09','estado' => 'Conformidad','attermino_id' => '139','deleted_at' => NULL,'created_at' => '2015-12-08 16:36:13','updated_at' => '2015-12-08 16:36:13'),
+          array('id' => '99','fecha' => '2015-12-09','estado' => 'Conformidad','attermino_id' => '113','deleted_at' => NULL,'created_at' => '2015-12-09 16:11:57','updated_at' => '2015-12-09 16:11:57'),
+          array('id' => '100','fecha' => '2015-12-11','estado' => 'Conformidad','attermino_id' => '112','deleted_at' => NULL,'created_at' => '2015-12-10 07:22:48','updated_at' => '2015-12-10 07:22:48'),
+          array('id' => '101','fecha' => '2015-12-04','estado' => 'Conformidad','attermino_id' => '134','deleted_at' => NULL,'created_at' => '2015-12-10 17:39:43','updated_at' => '2015-12-10 17:39:43'),
+          array('id' => '102','fecha' => '2015-12-11','estado' => 'Conformidad','attermino_id' => '140','deleted_at' => NULL,'created_at' => '2015-12-11 06:47:27','updated_at' => '2015-12-11 06:47:27'),
+          array('id' => '103','fecha' => '2015-12-09','estado' => 'Conformidad','attermino_id' => '137','deleted_at' => NULL,'created_at' => '2015-12-11 06:52:53','updated_at' => '2015-12-11 06:52:53'),
+          array('id' => '104','fecha' => '2015-12-11','estado' => 'Conformidad','attermino_id' => '117','deleted_at' => NULL,'created_at' => '2015-12-11 07:04:21','updated_at' => '2015-12-11 07:04:21'),
+          array('id' => '105','fecha' => '2015-12-11','estado' => 'Conformidad','attermino_id' => '105','deleted_at' => NULL,'created_at' => '2015-12-11 10:34:03','updated_at' => '2015-12-11 10:34:03'),
+          array('id' => '106','fecha' => '2015-12-15','estado' => 'Conformidad','attermino_id' => '84','deleted_at' => NULL,'created_at' => '2015-12-15 10:46:35','updated_at' => '2015-12-15 10:46:35'),
+          array('id' => '107','fecha' => '2015-12-15','estado' => 'Conformidad','attermino_id' => '132','deleted_at' => NULL,'created_at' => '2015-12-15 12:59:11','updated_at' => '2015-12-15 12:59:11'),
+          array('id' => '108','fecha' => '2015-12-15','estado' => 'Conformidad','attermino_id' => '122','deleted_at' => NULL,'created_at' => '2015-12-17 11:04:27','updated_at' => '2015-12-17 11:04:27'),
+          array('id' => '109','fecha' => '2016-07-26','estado' => 'Conformidad','attermino_id' => '142','deleted_at' => NULL,'created_at' => '2016-07-25 16:58:40','updated_at' => '2016-07-25 17:01:44'),
+          array('id' => '110','fecha' => '2016-08-08','estado' => 'Conformidad','attermino_id' => '146','deleted_at' => NULL,'created_at' => '2016-08-08 09:02:25','updated_at' => '2016-08-08 09:02:25'),
+          array('id' => '111','fecha' => '2016-08-22','estado' => 'Conformidad','attermino_id' => '152','deleted_at' => NULL,'created_at' => '2016-08-22 08:55:38','updated_at' => '2016-08-25 09:38:17'),
+          array('id' => '112','fecha' => '2016-08-22','estado' => 'Conformidad','attermino_id' => '145','deleted_at' => NULL,'created_at' => '2016-08-22 11:23:46','updated_at' => '2016-08-22 11:23:46'),
+          array('id' => '113','fecha' => '2016-09-03','estado' => 'Conformidad','attermino_id' => '156','deleted_at' => NULL,'created_at' => '2016-09-05 09:14:58','updated_at' => '2016-09-05 09:14:58'),
+          array('id' => '114','fecha' => '2016-09-05','estado' => 'Conformidad','attermino_id' => '148','deleted_at' => NULL,'created_at' => '2016-09-05 09:28:31','updated_at' => '2016-09-05 09:28:31'),
+          array('id' => '115','fecha' => '2016-09-12','estado' => 'Conformidad','attermino_id' => '149','deleted_at' => NULL,'created_at' => '2016-09-12 14:56:37','updated_at' => '2016-09-12 14:56:37'),
+          array('id' => '116','fecha' => '2016-09-22','estado' => 'Conformidad','attermino_id' => '154','deleted_at' => NULL,'created_at' => '2016-09-22 11:49:42','updated_at' => '2016-09-22 11:49:42'),
+          array('id' => '117','fecha' => '2016-09-26','estado' => 'Conformidad','attermino_id' => '159','deleted_at' => NULL,'created_at' => '2016-09-26 08:39:28','updated_at' => '2016-09-26 08:39:28'),
+          array('id' => '118','fecha' => '2016-09-26','estado' => 'Conformidad','attermino_id' => '162','deleted_at' => NULL,'created_at' => '2016-09-26 09:11:33','updated_at' => '2016-09-26 09:11:33'),
+          array('id' => '119','fecha' => '2016-09-27','estado' => 'Conformidad','attermino_id' => '157','deleted_at' => NULL,'created_at' => '2016-09-27 07:14:16','updated_at' => '2016-09-27 07:14:16'),
+          array('id' => '120','fecha' => '2016-09-22','estado' => 'Conformidad','attermino_id' => '165','deleted_at' => NULL,'created_at' => '2016-09-30 09:04:10','updated_at' => '2016-09-30 09:24:56'),
+          array('id' => '121','fecha' => '2016-09-30','estado' => 'Conformidad','attermino_id' => '160','deleted_at' => NULL,'created_at' => '2016-10-01 08:38:43','updated_at' => '2016-10-01 10:27:26'),
+          array('id' => '122','fecha' => '2016-10-04','estado' => 'Conformidad','attermino_id' => '167','deleted_at' => NULL,'created_at' => '2016-10-04 13:25:55','updated_at' => '2016-10-04 14:34:45'),
+          array('id' => '123','fecha' => '2016-10-05','estado' => 'Conformidad','attermino_id' => '161','deleted_at' => NULL,'created_at' => '2016-10-05 11:11:37','updated_at' => '2016-10-05 11:11:37'),
+          array('id' => '124','fecha' => '2016-10-06','estado' => 'Conformidad','attermino_id' => '168','deleted_at' => NULL,'created_at' => '2016-10-06 07:31:20','updated_at' => '2016-10-06 07:31:20'),
+          array('id' => '125','fecha' => '2016-10-11','estado' => 'Conformidad','attermino_id' => '164','deleted_at' => NULL,'created_at' => '2016-10-08 15:39:49','updated_at' => '2016-10-08 15:39:49'),
+          array('id' => '126','fecha' => '2016-10-10','estado' => 'Conformidad','attermino_id' => '169','deleted_at' => NULL,'created_at' => '2016-10-10 08:56:20','updated_at' => '2016-10-10 08:56:20'),
+          array('id' => '127','fecha' => '2016-10-10','estado' => 'Conformidad','attermino_id' => '171','deleted_at' => NULL,'created_at' => '2016-10-10 13:24:18','updated_at' => '2016-10-10 13:24:18'),
+          array('id' => '128','fecha' => '2016-10-16','estado' => 'Conformidad','attermino_id' => '151','deleted_at' => NULL,'created_at' => '2016-10-10 15:32:05','updated_at' => '2016-10-15 09:43:07'),
+          array('id' => '129','fecha' => '2016-10-11','estado' => 'Conformidad','attermino_id' => '147','deleted_at' => NULL,'created_at' => '2016-10-11 13:45:32','updated_at' => '2016-10-11 13:45:32'),
+          array('id' => '130','fecha' => '2016-10-10','estado' => 'Conformidad','attermino_id' => '143','deleted_at' => NULL,'created_at' => '2016-10-12 09:37:17','updated_at' => '2016-10-12 09:37:17'),
+          array('id' => '131','fecha' => '2016-10-17','estado' => 'Conformidad','attermino_id' => '176','deleted_at' => NULL,'created_at' => '2016-10-17 08:36:14','updated_at' => '2016-10-17 08:44:36'),
+          array('id' => '132','fecha' => '2016-10-17','estado' => 'Conformidad','attermino_id' => '158','deleted_at' => NULL,'created_at' => '2016-10-17 10:16:45','updated_at' => '2016-10-17 10:16:45'),
+          array('id' => '133','fecha' => '2016-10-25','estado' => 'Conformidad','attermino_id' => '186','deleted_at' => NULL,'created_at' => '2016-10-25 07:29:58','updated_at' => '2016-10-25 07:29:58'),
+          array('id' => '134','fecha' => '2016-10-26','estado' => 'Conformidad','attermino_id' => '163','deleted_at' => NULL,'created_at' => '2016-10-26 11:53:47','updated_at' => '2016-10-26 11:53:47'),
+          array('id' => '135','fecha' => '2016-10-27','estado' => 'Conformidad','attermino_id' => '180','deleted_at' => NULL,'created_at' => '2016-10-27 08:43:23','updated_at' => '2016-10-27 08:43:23'),
+          array('id' => '136','fecha' => '2016-10-22','estado' => 'Conformidad','attermino_id' => '153','deleted_at' => NULL,'created_at' => '2016-10-29 11:48:57','updated_at' => '2016-10-29 11:48:57'),
+          array('id' => '137','fecha' => '2016-11-01','estado' => 'Conformidad','attermino_id' => '155','deleted_at' => NULL,'created_at' => '2016-10-31 09:04:21','updated_at' => '2016-10-31 09:04:21'),
+          array('id' => '138','fecha' => '2016-11-28','estado' => 'Conformidad','attermino_id' => '185','deleted_at' => NULL,'created_at' => '2016-10-31 17:43:22','updated_at' => '2016-12-07 14:02:43'),
+          array('id' => '139','fecha' => '2016-11-03','estado' => 'Conformidad','attermino_id' => '183','deleted_at' => NULL,'created_at' => '2016-11-03 11:21:00','updated_at' => '2016-11-03 11:21:00'),
+          array('id' => '140','fecha' => '2016-11-04','estado' => 'Conformidad','attermino_id' => '184','deleted_at' => NULL,'created_at' => '2016-11-04 13:36:47','updated_at' => '2016-11-04 13:36:47'),
+          array('id' => '141','fecha' => '2016-11-07','estado' => 'Conformidad','attermino_id' => '177','deleted_at' => NULL,'created_at' => '2016-11-07 09:06:18','updated_at' => '2016-11-07 09:06:18'),
+          array('id' => '142','fecha' => '2016-11-08','estado' => 'Conformidad','attermino_id' => '174','deleted_at' => NULL,'created_at' => '2016-11-07 10:26:47','updated_at' => '2016-11-07 10:26:47'),
+          array('id' => '143','fecha' => '2016-11-07','estado' => 'Conformidad','attermino_id' => '178','deleted_at' => NULL,'created_at' => '2016-11-08 13:21:13','updated_at' => '2016-11-08 13:21:13'),
+          array('id' => '144','fecha' => '2016-11-11','estado' => 'Conformidad','attermino_id' => '179','deleted_at' => NULL,'created_at' => '2016-11-11 09:08:27','updated_at' => '2016-11-11 09:08:27'),
+          array('id' => '145','fecha' => '2016-11-11','estado' => 'Conformidad','attermino_id' => '166','deleted_at' => NULL,'created_at' => '2016-11-11 10:40:36','updated_at' => '2016-11-11 10:40:36'),
+          array('id' => '146','fecha' => '2016-11-22','estado' => 'Conformidad','attermino_id' => '187','deleted_at' => NULL,'created_at' => '2016-11-21 14:32:21','updated_at' => '2016-11-21 14:32:21'),
+          array('id' => '147','fecha' => '2016-11-25','estado' => 'Conformidad','attermino_id' => '182','deleted_at' => NULL,'created_at' => '2016-11-25 10:19:57','updated_at' => '2016-11-25 10:19:57'),
+          array('id' => '148','fecha' => '2016-11-16','estado' => 'Conformidad','attermino_id' => '189','deleted_at' => NULL,'created_at' => '2016-11-25 17:27:47','updated_at' => '2016-11-25 17:27:47'),
+          array('id' => '149','fecha' => '2016-11-26','estado' => 'Conformidad','attermino_id' => '175','deleted_at' => NULL,'created_at' => '2016-11-26 09:29:50','updated_at' => '2016-11-26 09:29:50'),
+          array('id' => '150','fecha' => '2016-11-25','estado' => 'Conformidad','attermino_id' => '188','deleted_at' => NULL,'created_at' => '2016-11-28 08:33:56','updated_at' => '2016-11-28 08:33:56'),
+          array('id' => '151','fecha' => '2016-12-01','estado' => 'Conformidad','attermino_id' => '170','deleted_at' => NULL,'created_at' => '2016-11-30 16:44:51','updated_at' => '2016-11-30 16:44:51'),
+          array('id' => '152','fecha' => '2016-12-05','estado' => 'Conformidad','attermino_id' => '191','deleted_at' => NULL,'created_at' => '2016-12-02 09:50:11','updated_at' => '2016-12-05 14:08:48'),
+          array('id' => '153','fecha' => '2016-12-05','estado' => 'Conformidad','attermino_id' => '192','deleted_at' => NULL,'created_at' => '2016-12-05 08:54:37','updated_at' => '2016-12-05 09:47:16'),
+          array('id' => '154','fecha' => '2016-12-07','estado' => 'Conformidad','attermino_id' => '194','deleted_at' => NULL,'created_at' => '2016-12-06 17:36:05','updated_at' => '2016-12-06 17:36:05')
+        );
 
-            for($i = 1; $i <= 20 ; $i++)
-            {
-                $table = new Acta;
-                $table->termino_id  = $faker->numberBetween(1,20);
-                $table->fecha       = $faker->date;
-                $table->tipo      = $faker->numberBetween(1,2);
+        for ($i = 0; $i < count($actas); $i++) { 
 
-                $table->save();
+            $table = new Acta;
+            $table->id              = $actas[$i]['id'];
+            $table->at_id           = $actas[$i]['attermino_id'];
+            $table->fecha           = $actas[$i]['fecha'];
+            $table->tipo            = $actas[$i]['estado'];
+            $table->save();
 
-            }
+        }
+
 
     }
 }

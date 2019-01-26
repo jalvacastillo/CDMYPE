@@ -82,8 +82,23 @@
 
                </div>
 
+               <div class="row">
+               <h2 class="classic-title text-center"><span>Diagnósticos</span></h2>
+                 
+                @foreach ($diagnosticos as $diagnostico)
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h1>{{$diagnostico->nombre}}</h1>
+                    <p>{{$diagnostico->descripcion}}</p>
+                    <a href="{{ route('diagnostico', str_slug($diagnostico->nombre)) }}" class="btn btn-primary btn-block">Realizar</a>
+                </div>
+                @endforeach
+
+               </div>
+
             </div>
         </div>
     </div>
+
+    @include('home.accion')
 
 @endsection

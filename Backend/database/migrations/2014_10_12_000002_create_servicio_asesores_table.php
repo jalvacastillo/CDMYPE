@@ -12,8 +12,8 @@ class CreateServicioAsesoresTable extends Migration
         Schema::create('servicio_asesores', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->integer('asesor_id')->nullable();
-            $table->integer('servicio_id')->nullable();
+            $table->integer('servicio_id');
+            $table->integer('asesor_id');
 
             $table->timestamps();
         });

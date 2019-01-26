@@ -1,0 +1,39 @@
+<form name="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="nombre">* Nombre:</label>
+            <input type="text" class="form-control" [(ngModel)]="equipo.nombre" name="nombre" placeholder="Nombre" required autofocus>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="titulo">* Titulo:</label>
+            <input type="text" class="form-control" [(ngModel)]="equipo.titulo" name="titulo" placeholder="Titulo" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="cargo">* Cargo:</label>
+            <input type="text" class="form-control" [(ngModel)]="equipo.cargo" name="cargo" placeholder="Cargo" required>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="descripcion">* Descripción:</label>
+            <textarea name="descripcion" class="form-control" cols="30" rows="3" [(ngModel)]="equipo.descripcion"></textarea>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="url_facebook">* Facebook:</label>
+            <input type="url" class="form-control" [(ngModel)]="equipo.url_facebook" name="url_facebook" placeholder="La url de tu perfil" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="url_linkedin">* Linkedin:</label>
+            <input type="url" class="form-control" [(ngModel)]="equipo.url_linkedin" name="url_linkedin" placeholder="La url de tu perfil" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="url_twitter">* Twitter:</label>
+            <input type="url" class="form-control" [(ngModel)]="equipo.url_twitter" name="url_twitter" placeholder="La url de tu perfil" required>
+        </div>
+        <div class="col-xs-12">
+          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+          <button [disabled]="loading" class="btn btn-primary pull-right">
+              <span *ngIf="!loading">Guardar</span>
+              <span *ngIf="loading">Guardando...</span>
+          </button>
+        </div>
+    </div>
+</form>

@@ -36,6 +36,7 @@
                                 <div class="form-group">
                                     <label for="tipo">Tipo:</label>
                                     <select id="tipo" type="email" class="form-control {{ $errors->has('tipo') ? ' is-invalid' : '' }}" name="tipo" value="{{ old('tipo') }}" required>
+                                        <option value="Empresario"> Empresario </option>
                                         <option value="Consultor"> Consultor </option>
                                         <option value="Estudiante"> Estudiante </option>
                                     </select>

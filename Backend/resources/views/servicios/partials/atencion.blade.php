@@ -46,7 +46,7 @@
       <i class="fa fa-heart icon-medium"></i>
     </div>
     <div class="service-content">
-      <h4>5) Impacto</h4>
+      <h4>5) Resultados</h4>
       <p>Se hace una evaluación del crecimiento obtenido producto del apoyo brindado.</p>
     </div>
   </div>

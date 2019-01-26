@@ -17,6 +17,7 @@ class CreateDiagnosticosTable extends Migration
             $table->string('nombre');
             $table->string('categoria');
             $table->text('descripcion');
+            $table->boolean('activo')->default(0);
             
             $table->timestamps();
         });

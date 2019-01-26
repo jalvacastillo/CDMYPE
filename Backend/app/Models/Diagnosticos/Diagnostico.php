@@ -10,7 +10,8 @@ class Diagnostico extends Model
     protected $fillable = [
         'nombre',
         'categoria',
-        'descripcion'
+        'descripcion',
+        'activo'
     ];
 
     public function preguntas(){

@@ -14,7 +14,7 @@
             </h1>
             <br>
             <br>
-            <a href="{{ url('registro') }}" class="btn-system btn-large btn-wite">Haz tu diagnostico <i class="fa fa-arrow-right"></i></a>
+            <a href="{{ route('registroCliente') }}" class="btn-system btn-large btn-wite">Haz tu diagnostico <i class="fa fa-arrow-right"></i></a>
         </div>
     </div>
 </div>

@@ -63,10 +63,16 @@
                     <a href="{{ route('login') }}">Login</a>
                 @else
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{-- {{ Auth::user()->name }} --}}
+                        <i class="fa fa-user"></i>
+                        <span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
+                        <li class="text-center">
+                          <img src="{{ asset('img/usuarios/'. Auth::user()->avatar) }}" class="img-circle" style="height: 50px;">
+                          <a href="{{ route('usuario') }}">{{ Auth::user()->name }} <br> Cuenta</a>
+                        </li>
                         <li>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

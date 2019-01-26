@@ -1,149 +1,67 @@
-<div class="container">
-
 <section class="content-header">
-    <h1> Proveedor <small>Edición</small> </h1>
+    <h1> Consultor <small>Edición</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#">Proveedor</a></li>
-        <li class="active">Edición</li>
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Consultor</li>
     </ol>
 </section>
 
 <section class="content animated fadeIn">
+
+<div class="container">
     <div class="row">
-        <div class="col-md-12">
+
         
-        <form name="form" (ngSubmit)="onSubmit()">
-            <div class="box box-primary">
-                
-                <div class="box-body">
-                    <div class="col-xs-12 col-sm-4">
-                    <div class="form-group">
-                        <label for="nombre"> * Nombre:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="nombre" [(ngModel)]="consultor.nombre" placeholder="Nombre" required autofocus />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-2">
-                    <div class="form-group">
-                        <label for="sexo"> Sexo:</label>
-                        <div class="controls">
-                            <label class="radio-inline"><input type="radio" name="sexo" [(ngModel)]="consultor.sexo" value="Hombre">Hombre</label>
-                            <label class="radio-inline"><input type="radio" name="sexo" [(ngModel)]="consultor.sexo" value="Mujer">Mujer</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-2">
-                    <div class="form-group">
-                        <label for="tipo"> Tipo:</label>
-                        <div class="controls">
-                            <label class="radio-inline"><input type="radio" name="tipo" [(ngModel)]="consultor.tipo" value="Interno">Interno</label>
-                            <label class="radio-inline"><input type="radio" name="tipo" [(ngModel)]="consultor.tipo" value="Externo">Externo</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="form-group">
-                        <label for="empresa"> Empresa:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="empresa" [(ngModel)]="consultor.empresa" placeholder="Nombre"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3">
-                    <div class="form-group">
-                        <label for="nit"> NIT:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="nit" [(ngModel)]="consultor.nit" placeholder="XXX-XXXXX-XX-X" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3">
-                    <div class="form-group">
-                        <label for="nombre"> DUI:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="dui" [(ngModel)]="consultor.dui" placeholder="XXX-XXXXX-XX-X" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3">
-                    <div class="form-group">
-                        <label for="municipio"> Municipio:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="municipio" [(ngModel)]="consultor.municipio" placeholder="Municipio" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3">
-                    <div class="form-group">
-                        <label for="departamento"> Departamento:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="departamento" [(ngModel)]="consultor.departamento" placeholder="Municipio" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label for="direccion"> Dirección:</label>
-                        <div class="controls">
-                            <input type="text" class="form-control" name="direccion" [(ngModel)]="consultor.direccion" placeholder="Lugar, Calle etc..." />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label for="correo"> * Correo:</label>
-                        <div class="controls">
-                            <input type="email" class="form-control" name="correo" [(ngModel)]="consultor.correo" placeholder="Correo" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label for="telefono"> Teléfono:</label>
-                        <div class="controls">
-                            <input type="tel" class="form-control" name="telefono" [(ngModel)]="consultor.telefono" placeholder="XXXX-XXXX" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label for="nombre"> Celular:</label>
-                        <div class="controls">
-                            <input type="tel" class="form-control" name="celular" [(ngModel)]="consultor.celular" placeholder="XXXX-XXXX"  />
-                        </div>
-                    </div>
-                </div>
+        <div class="col-sm-12">
+
+          
+          <div class="box box-primary" style="min-height: 100px;">
+            <div class="box-body box-profile">
+                <div class="imagen-upload">
+                    <img *ngIf="consultor?.avatar" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/team/' + consultor.avatar }}" style="margin: auto;">
+                    <input type="file" name="avatar" id="file" class="inputfile" (change)="uploadFile(consultor, $event)">
+                    <label for="file"></label>
                 </div>
 
+                <h3 class="text-center">{{ consultor.nombre }}</h3>
+                <p class="text-center">{{ consultor.tipo }}</p>
+                <!-- <div class="text-right checkbox pull-right">
+                    <label>Web: <input type="checkbox" [(ngModel)]="consultor.web" name="web"></label>
+                </div> -->
 
-                <legend class="col-xs-12" *ngIf="consultor.id">Especialidades</legend>
-                <div class="row" *ngIf="consultor.id">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr *ngFor=" let especialidad of especialidades">
-                                <td class="text-center" width="100">
-                                    <a (click)="delEspecialidad(especialidad.id)" class="btn btn-xs btn-danger"> <i class="fa fa-minus"></i></a>
-                                </td>
-                                <td>{{ especialidad.especialidad }}</td>
-                                <!-- <td class="text-center"><a (click)="addEspecialidad()" class="btn btn-primary"> <i class="fa fa-plus"></i></a></td> -->
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="box-footer">
-                    <br><br>
-                    <button [disabled]="loading" class="btn btn-primary btn-block">
-                        <span *ngIf="!loading">Guardar</span>
-                        <span *ngIf="loading">Guardando...</span>
-                    </button>
-                </div>
             </div>
-            </form>
+          </div>
         </div>
-    </div>
-</section>
+        
+        
+        <div class="col-sm-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#info" data-toggle="tab">Información</a></li>
+              <li><a href="#cuenta" data-toggle="tab">Cuenta</a></li>
+              <li><a href="#especialidades" data-toggle="tab">Especialidades</a></li>
+              <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="info">
+                    <app-consultor-info *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-info>
+                </div>
 
+                <div class="tab-pane fade" id="cuenta">
+                   <!-- <app-consultor-cuenta *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-cuenta>                    -->
+                </div>
+
+                <div class="tab-pane fade" id="especialidades">
+                   <app-consultor-especialidades *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-especialidades>
+                </div>  
+
+                <div class="tab-pane fade" id="historial">
+                   <!-- <app-consultor-ordenes *ngIf="consultor.id" [consultor_id] = "consultor.id"></app-consultor-ordenes> -->
+                </div>          
+            </div>
+          </div>
+        </div>
+
+    </div>
 </div>
+</section>

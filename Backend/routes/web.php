@@ -12,40 +12,57 @@
 */
 
 Route::get('/',           'HomeController@index')->name('inicio');
-Route::get('/servicios',  'HomeController@servicios')->name('servicios');
-    Route::get('/servicio/{slug}',  'HomeController@servicio')->name('servicio');
-        Route::get('/servicio/{s_slug}/{a_slug}',  'HomeController@accion')->name('accion');
+
+// Servicios
+Route::get('/servicios',                        'ServiciosController@servicios' )->name('servicios');
+    Route::get('/servicio/{slug}',              'ServiciosController@servicio'  )->name('servicio');
+    Route::get('/servicio/{s_slug}/{a_slug}',   'ServiciosController@accion'    )->name('accion');
+    Route::get('/servicios/diagnosticos/{slug}',  'ServiciosController@diagnostico')->name('diagnostico');
+    Route::post('/servicios/diagnosticos/{slug}',  'ServiciosController@guardarDiagnostico');
+
+// Nosotros
 Route::get('/nosotros',   'HomeController@nosotros')->name('nosotros');
+    Route::get('/politicas-de-privacidad',  'HomeController@privacidad');
+    Route::get('/politicas-de-privacidad',  'HomeController@terminos')->name('terminos');
 
-Route::get('/empresas',   'HomeController@empresas')->name('empresas');
-    Route::get('/empresa/{id}',   'HomeController@empresa')->name('empresa');
-    Route::get('/registro',   'HomeController@registro')->name('registro');
-    Route::post('/registro',   'HomeController@registrofrm');
+// Empresas
+Route::get('/empresas',         'EmpresasController@empresas'   )->name('empresas');
+    Route::get('/empresa/{slug}/{id}', 'EmpresasController@empresa'    )->name('empresa');
+    Route::post('/empresas', 'EmpresasController@filtrar'    )->name('filtrarEmpresas');
+    
+    Route::get('/guia/inicio',     'EmpresasController@paso1')->name('registroCliente');
+    Route::post('/guia/necesidad',    'EmpresasController@paso2')->name('paso2');
+    Route::post('/guia/registro',    'EmpresasController@paso3')->name('paso3');
 
-    // Guia
-    Route::get('/guia/tipo',   'HomeController@guiaTipo')->name('guiaTipo');
-
+// Academia
 Route::get('/academia/proyectos',  'AcademiaController@proyectos')->name('proyectos');
     Route::get('/academia/proyecto/{slug}/{id}',  'AcademiaController@proyecto')->name('proyecto');
-    Route::get('/academia/aplicar/{id}',  'AcademiaController@aplicar')->name('aplicar')->middleware('auth');
-    Route::post('/academia/aplicacion',  'AcademiaController@aplicacion')->name('aplicarProyecto')->middleware('auth');
-Route::get('/actividades',  'HomeController@actividades')->name('actividades');
+    Route::post('/academia/proyecto/{slug}/{id}',  'AcademiaController@aplicacion')->name('aplicarProyecto');
+    Route::post('/academia/proyectos', 'AcademiaController@filtrar'    )->name('filtrarProyectos');
+
+// Actividades
+Route::get('/actividades',  'ActividadesController@actividades')->name('actividades');
+    Route::post('/actividades/actividad', 'ActividadesController@filtrar'    )->name('filtrarActividades');
+
+// Noticias
 Route::get('/noticias',   'HomeController@noticias')->name('noticias');
     Route::get('/noticias/categoria/{cat}',   'HomeController@noticiasCategoria');
     Route::get('/noticia/{slug}',   'HomeController@noticia');
+
+// Contactos
 Route::get('/contactos',  'HomeController@contactos')->name('contactos');
     Route::post('/contactos', 'HomeController@contactosfrm');
+
+// Cuenta
 Route::get('/cuenta',  'UsuarioController@index')->name('usuario')->middleware('auth');
+    Route::post('/cuenta',  'UsuarioController@store')->middleware('auth');
 
 Route::get('/oferta-at/{id}',   'DashController@oferta');
 Route::post('/oferta-at/{id}',  'At\ConsultorController@oferta');
 
-Route::get('/politicas-de-privacidad',  'HomeController@privacidad');
-Route::get('/politicas-de-privacidad',  'HomeController@terminos')->name('terminos');
 
 
 Auth::routes();
-Route::get('/cuenta/informacion',  'UsuarioController@informacion')->name('informacion')->middleware('auth');
 
 Route::get('auth/{provider}',           'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback',  'Auth\SocialAuthController@handleProviderCallback');

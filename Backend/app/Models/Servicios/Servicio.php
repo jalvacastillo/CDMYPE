@@ -3,11 +3,9 @@
 namespace App\Models\Servicios;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Servicio extends Model
 {
-    use SoftDeletes;
     protected $table = 'servicios';
     protected $fillable = [
         'nombre',
@@ -21,6 +19,10 @@ class Servicio extends Model
 
     public function getTotalAccionesAttribute(){
         return $this->acciones()->count();
+    }
+
+    public function noticias(){
+        return $this->hasMany('App\Models\Pagina\Noticia', 'categoria');
     }
 
     public function acciones(){

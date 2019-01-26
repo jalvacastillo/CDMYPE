@@ -16,13 +16,9 @@ class CreateTestimoniosTable extends Migration
         Schema::create('testimonios', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->string('cliente_id');
+            $table->string('empresa_id');
             $table->text('descripcion');
-            $table->integer('asesor_id');
 
-            $table->integer('cdmype_id')->default(1);
-            
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -55,10 +55,9 @@
                    </div>
                  @endforeach
                </div> --}}
-
-               <div class="row">
+               {{-- <div class="row">
                <h2 class="classic-title text-center"><span>Noticias Relacionadas</span></h2>
-                 @foreach($noticias as $noticia)
+                 @foreach($accion->servicio()->first()->noticias as $noticia)
                    <div class="col-md-4 post-row item">
                      <div class="left-meta-post">
                          <img src="{{ asset('img/noticias/'. $noticia->img) }}" alt="{{ $noticia->titulo }}" style="height: 150px;">
@@ -75,7 +74,7 @@
                      </div>
                    </div>
                  @endforeach
-               </div>
+               </div> --}}
 
                {{-- <div class="row">
                <h2 class="classic-title text-center"><span>Indicadores</span></h2>
@@ -125,5 +124,7 @@
             </div>
         </div>
     </div>
+
+    @include('home.accion')
 
 @endsection

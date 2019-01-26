@@ -8,7 +8,7 @@
     </ol>
 </section>
 
-<section class="content animated fadeIn" *ngIf="usuario.name">
+<section class="content animated fadeIn" *ngIf="usuario.id">
 
 <div class="row">
 
@@ -25,7 +25,7 @@
               <label for="file">Cambiar foto</label>
           </div>
           
-          <h3 class="profile-username text-center">{{ usuario.name }}</h3>
+          <h3 class="profile-username text-center">{{ usuario.nombre }}</h3>
           <p class="text-muted text-center">{{ usuario.tipo }}</p>
           
           <!-- <ul class="list-group list-group-unbordered">
@@ -57,7 +57,7 @@
             <div class="active tab-pane" id="settings">
                     <div class="form-group ">
                         <label for="name">* Nombre:</label>
-                        <input type="text" class="form-control" [(ngModel)]="usuario.name" name="name" placeholder="Nombre" required autofocus>
+                        <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="name" placeholder="Nombre" required autofocus>
                     </div>
                     <div class="form-group ">
                         <label for="email">* Correo:</label>

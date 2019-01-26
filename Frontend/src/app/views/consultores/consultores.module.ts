@@ -7,6 +7,8 @@ import { TooltipModule } from 'ngx-bootstrap';
 
 import { ConsultoresComponent } from './consultores.component';
 import { ConsultorComponent } from './consultor/consultor.component';
+import { ConsultorInfoComponent } from './consultor/info/consultor-info.component';
+import { ConsultorEspecialidadesComponent } from './consultor/especialidades/consultor-especialidades.component';
 
 @NgModule({
   imports: [
@@ -17,11 +19,15 @@ import { ConsultorComponent } from './consultor/consultor.component';
   ],
   declarations: [
   	ConsultoresComponent,
-    ConsultorComponent
+    ConsultorComponent,
+    ConsultorInfoComponent,
+    ConsultorEspecialidadesComponent
   ],
   exports: [
   	ConsultoresComponent,
-    ConsultorComponent
+    ConsultorComponent,
+    ConsultorInfoComponent,
+    ConsultorEspecialidadesComponent
   ]
 })
 export class ConsultoresModule { }

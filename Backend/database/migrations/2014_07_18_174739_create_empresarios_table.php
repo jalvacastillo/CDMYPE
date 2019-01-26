@@ -22,6 +22,8 @@ class CreateEmpresariosTable extends Migration {
             $table->string('municipio', 30)->nullable();
             $table->string('departamento', 30)->nullable();
             $table->string('correo', 75)->nullable();
+
+            $table->integer('usuario_id')->nullable();
             
             $table->softDeletes();
             $table->timestamps();

@@ -20,7 +20,7 @@ import { AdminsModule } from './views/admin/admin.module';
 import { EmpresasModule } from './views/empresas/empresas.module';
 import { ConsultoresModule } from './views/consultores/consultores.module';
 import { ComprasModule } from './views/compras/compras.module';
-import { VentasModule } from './views/ventas/ventas.module';
+import { AtsModule } from './views/ats/ats.module';
 import { PaginaModule } from './views/pagina/pagina.module';
 import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
 
@@ -41,7 +41,7 @@ import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
     EmpresasModule,
     ConsultoresModule,
     ComprasModule,
-    VentasModule,
+    AtsModule,
     PaginaModule,
     ContabilidadModule
   ],

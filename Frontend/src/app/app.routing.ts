@@ -25,6 +25,8 @@ import { VentasComponent } from './views/ventas/ventas.component';
 import { VentaComponent } from './views/ventas/venta/venta.component';
 
 
+import { EquiposComponent } from './views/pagina/equipo/equipos.component';
+import { EquipoComponent } from './views/pagina/equipo/equipo/equipo.component';
 import { ServiciosComponent } from './views/pagina/servicios/servicios.component';
 import { ServicioComponent } from './views/pagina/servicios/servicio/servicio.component';
 import { NoticiasComponent } from './views/pagina/noticias/noticias.component';
@@ -37,6 +39,9 @@ import { TestimonioComponent } from './views/pagina/testimonios/testimonio/testi
 
 import { DiagnosticosComponent } from './views/pagina/diagnosticos/diagnosticos.component';
 import { DiagnosticoComponent } from './views/pagina/diagnosticos/diagnostico/diagnostico.component';
+
+import { AtsComponent } from './views/ats/ats.component';
+import { AtComponent } from './views/ats/at/at.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
@@ -61,6 +66,8 @@ const appRoutes: Routes = [
     { path: 'consultores', component: ConsultoresComponent, canActivate: [AuthGuard] },
     { path: 'consultor/:id', component: ConsultorComponent, canActivate: [AuthGuard] },
 
+    { path: 'equipos', component: EquiposComponent, canActivate: [AuthGuard] },
+    { path: 'equipo/:id', component: EquipoComponent, canActivate: [AuthGuard] },
     { path: 'servicios', component: ServiciosComponent, canActivate: [AuthGuard] },
     { path: 'servicio/:id', component: ServicioComponent, canActivate: [AuthGuard] },
     { path: 'noticias', component: NoticiasComponent, canActivate: [AuthGuard] },
@@ -73,8 +80,11 @@ const appRoutes: Routes = [
     { path: 'diagnosticos', component: DiagnosticosComponent, canActivate: [AuthGuard] },
     { path: 'diagnostico/:id', component: DiagnosticoComponent, canActivate: [AuthGuard] },
 
-    { path: 'ventas', component: VentasComponent, canActivate: [AuthGuard] },
-    { path: 'venta/:id', component: VentaComponent, canActivate: [AuthGuard] },
+    
+    // Ats
+    { path: 'ats', component: AtsComponent, canActivate: [AuthGuard] },
+    { path: 'at/:id', component: AtComponent, canActivate: [AuthGuard] },
+
     { path: 'compras', component: ComprasComponent, canActivate: [AuthGuard] },
     { path: 'compra/:id', component: CompraComponent, canActivate: [AuthGuard] },
 

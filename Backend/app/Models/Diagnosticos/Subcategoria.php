@@ -16,4 +16,8 @@ class Subcategoria extends Model
         return $this->belongsTo('App\Models\Diagnosticos\Categoria', 'categoria_id');
     }
 
+    public function preguntas(){
+        return $this->hasMany('App\Models\Diagnosticos\Pregunta', 'subcategoria_id');
+    }
+
 }

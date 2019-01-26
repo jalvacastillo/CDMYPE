@@ -12,7 +12,7 @@ export class EmpresasComponent implements OnInit {
 
     public empresas:Data;
 	public empresa:any = {};
-    public buscador:string;
+    public buscador:any = '';
     public loading: boolean = false;
 
     constructor(private apiService: ApiService, private alertService: AlertService){ }
@@ -55,7 +55,7 @@ export class EmpresasComponent implements OnInit {
     public activar(empresa:any){
         this.loading = true;
         this.empresa = empresa;
-        this.empresa.activo = !this.empresa.activo;
+        this.empresa.catalogo = !this.empresa.catalogo;
         this.apiService.store('empresa', this.empresa).subscribe(empresa => {
             this.empresa = empresa;
             this.alertService.success("Guardado");

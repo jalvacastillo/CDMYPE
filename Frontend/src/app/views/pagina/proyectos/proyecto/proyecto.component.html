@@ -90,7 +90,7 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <textarea id="compose-textarea" name="contenido"  class="form-control" style="height: 400px">{{ proyecto?.contenido }}</textarea>
+                        <textarea id="compose-textarea" name="contenido"  class="form-control" style="height: 200px">{{ proyecto?.contenido }}</textarea>
                     </div>
 
                 </div>
@@ -139,11 +139,11 @@
                                 <td>{{ aplicacion.nombre }}</td>
                                 <td class="text-center">{{ aplicacion.tipo }}</td>
                                 <td class="text-center">
-                                    <span class="label label-pop" [ngClass]="{'label-danger' : aplicacion?.estado == 'Iniciado', 'label-success' : aplicacion?.estado == 'Seleccionado'}" [popover]="popTemplate" [outsideClick]="true">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : aplicacion?.estado == 'En Revisión', 'label-success' : aplicacion?.estado == 'Seleccionado'}" [popover]="popTemplate" [outsideClick]="true">
                                         {{aplicacion.estado}}
                                     </span>
                                     <ng-template #popTemplate>
-                                        <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'Iniciado')">Iniciado</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'En Revisión')">En Revisión</button>
                                         <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'Seleccionado')">Seleccionado</button>
                                     </ng-template>
                                 </td>

@@ -12,27 +12,55 @@ class AcademiaController extends Controller
 {
     
     public function proyectos(){
-        $proyectos = Proyecto::where('estado', 'Activo')->orderBy('id','asc')->paginate(7);
+        $proyectos = Proyecto::where('estado', 'Activo')->orderBy('id','asc')->paginate(8);
         return view('proyectos.index', compact('proyectos'));  
     }
 
     public function proyecto($slug, $id){
         $proyecto = Proyecto::where('estado', 'Activo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
-        // return $proyecto;
-        return view('proyectos.proyecto', compact('proyecto'));  
-    }
-
-    public function aplicar($id){
-        $proyecto = Proyecto::where('estado', 'Activo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
-        // return $proyecto;
+        
         $usuario = Auth::user();
-        return view('proyectos.aplicar', compact('proyecto', 'usuario'));  
+        
+        if ($usuario) {
+            $aplicacion = Aplicacion::where('proyecto_id', $proyecto->id)->where('usuario_id', $usuario->id)->first();
+        }else{
+            $aplicacion = [];
+        }
+        
+
+        return view('proyectos.proyecto', compact('proyecto', 'usuario', 'aplicacion'));  
     }
 
-    public function aplicacion(Request $request){
+    public function filtrar(Request $request){
 
-        $request['usuario_id'] = Auth::user()->id;
-        $request['estado'] = 'Iniciado';
+        // return $request->parametro;
+
+        $empresas = Proyecto::where('estado', 'Activo')->orderBy('id','asc')
+                            ->orwhere('nombre', 'like', '%' . $request->parametro .'%')
+                            ->orwhere('tipo', 'like', '%' . $request->parametro .'%')
+                            ->orwhere('categoria', 'like', '%' . $request->parametro .'%')
+                            ->with('empresarios')->paginate(12);
+
+        // $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')
+        //                     ->when($request->sector, function($query) use ($request){
+        //                         return $query->where('sector', $request->sector);
+        //                     })
+        //                     ->when($request->municipio, function($query) use ($request){
+        //                         return $query->where('municipio', $request->municipio);
+        //                     })
+        //                     ->with('empresarios')->paginate(12);
+                            
+        return view('empresas.index', compact('empresas'));   
+    }
+
+    public function aplicacion(Request $request, $slug, $id){
+
+        $proyecto = Proyecto::where('estado', 'Activo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
+        $usuario = Auth::user();
+
+        $request['usuario_id'] = $usuario->id;
+        $request['proyecto_id'] = $proyecto->id;
+        $request['estado'] = 'En Revisión';
         
         $request->validate([
             'proyecto_id'   => 'required',
@@ -40,18 +68,15 @@ class AcademiaController extends Controller
             'usuario_id'    => 'required',
         ]);
 
-        if($request->id){
-            $aplicacion = Aplicacion::findOrFail($request->id);
-        }
-        else{
-            $aplicacion = new Aplicacion;
-        }
-        
-        $aplicacion->fill($request->all());
-        $aplicacion->save();
+        $aplicacion = Aplicacion::where('proyecto_id', $proyecto->id)->where('usuario_id', $usuario->id)->first();
 
-        // return view('success');
-        return 'success';
+        if (!$aplicacion) {
+            $aplicacion = new Aplicacion;
+            $aplicacion->fill($request->all());
+            $aplicacion->save();
+        }
+
+        return view('proyectos.proyecto', compact('proyecto', 'usuario', 'aplicacion'));  
     }
 
     public function contactosfrm(Request $request){

@@ -11,8 +11,8 @@ import { ApiService } from '../../../services/api.service';
 export class ConsultorComponent implements OnInit {
 
 	public consultor: any = {};
-	public especialidades: any[] = [];
-	public especialidad: any = {};
+	public producto: any = {};
+	public consultorrio: any = {};
     public loading = false;
 
 	constructor( 
@@ -26,13 +26,12 @@ export class ConsultorComponent implements OnInit {
 	        
 	        if(isNaN(params['id'])){
 	            this.consultor = {};
-	            this.consultor.usuario_id = this.apiService.auth_user().id;
+	            this.consultor.logo = 'default.png';
 	        }
 	        else{
 	            // Optenemos el consultor
 	            this.apiService.read('consultor/', params['id']).subscribe(consultor => {
 	               this.consultor = consultor;
-	               this.especialidades = consultor.especialidades;
 	            });
 	        }
 
@@ -40,42 +39,19 @@ export class ConsultorComponent implements OnInit {
 
 	}
 
-	public addEspecialidad(){
-		if (this.especialidad.nombre) {
-			this.especialidad.consultor_id = this.consultor.id;
-			this.apiService.store('especialidad', this.especialidad).subscribe(especialidad => {
-		        this.loading = false;
-		        if (!this.especialidad.id) { 
-					this.especialidades.push(this.especialidad);
-		        }
-				this.especialidad = {};
-		    },error => {this.alertService.error(error); this.loading = false; });
-		}
-	}
 
-	public delEspecialidad(id:number) {
-	    if (confirm('¿Desea eliminar el Registro?')) {
-	        this.apiService.delete('especialidad/', id) .subscribe(data => {
-	            for (let i = 0; i < this.especialidades.length; i++) { 
-	                if (this.especialidades[i].id == data.id )
-	                    this.especialidades.splice(i, 1);
-	            }
-	        }, error => {this.alertService.error(error); });
-	    }
+	uploadFile(consultor, event) {
 
-	}
+        let fileList: FileList = event.target.files;
+        let logo: File = fileList[0];
 
-	public onSubmit() {
-	    this.loading = true;
-	    // Guardamos al consultor
-	    this.apiService.store('consultor', this.consultor).subscribe(consultor => {
-	        this.alertService.success("Consultor guardado");
-	        this.loading = false;
-	        this.router.navigate(['/consultor/'+ consultor.id]);
-	    },error => {
-	        this.alertService.error(error);
-	        this.loading = false;
-	    });
-	}
+        // this.apiService.upload('consultor-logo', consultor.id, logo).subscribe(consultor => {
+        //     this.consultor.logo = consultor.logo;
+        //     this.alertService.success("Guardado");
+        // },error => {
+        //     this.alertService.error(error._body);
+        // });
+
+    }
 
 }

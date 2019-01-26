@@ -11,11 +11,11 @@
                 <img src="{{ asset('img/team/team.jpg') }}" class="img-responsive" alt="" style="margin: auto;">
             </div>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 text-center">
-        <p class="animated4"><a href="{{ url('nosotros') }}" class="btn btn-system btn-large">Conocenos más</a>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <br><br>
+                <p class="animated4"><a href="{{ url('nosotros') }}" class="btn btn-system btn-large">Conocenos más</a>
+            </div>
+        </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap';
 import { ProgressbarModule } from 'ngx-bootstrap';
+import { SharedModule } from '../../shared/shared.module';
 
 import { PerfilComponent } from './perfil/perfil.component';
 import { EmpresaComponent } from './empresa/empresa.component';
@@ -16,6 +17,7 @@ import { ReportesComponent } from './reportes/reportes.component';
     CommonModule,
     FormsModule,
     RouterModule,
+    SharedModule,
     TooltipModule.forRoot(),
     ProgressbarModule.forRoot()
   ],

@@ -70,69 +70,33 @@ app.controller('ContactosCtrl', [ '$scope', '$http', 'config', '$uibModal', func
 
 }])
 
-app.controller('ProductoCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
-    $scope.producto = {};
-    $scope.detalle = {};
-    $scope.detalle.cantidad = 1;
+app.controller('RegistroCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
+    $scope.empresa = {};
+    $scope.empresario = {};
 
-
-    if ($('#producto_slug').val()) {
-        $http.get(config.url + '/tienda/producto/' + $('#producto_slug').val(), {headers: {'Content-Type': 'application/json'}}).
-        then(function(data){
-            $scope.producto = data.data.producto;
-            
-            if ($scope.producto.atributos) {
-                $scope.detalle.atributos = [];
-                for (var i = 0; i < $scope.producto.atributos.length; i++) {
-                    if ($scope.producto.atributos[i].valores.length > 0) {
-                        var atributo = {};
-                        atributo.atributo = $scope.producto.atributos[i].nombre;
-                        atributo.valor    = $scope.producto.atributos[i].valores[0].nombre;
-                        $scope.detalle.atributos.push(atributo);
-                    }
-                }
-            }
-
-        }, function(data){
-            console.log(data);
-        });
-    }
+    $http.get(config.url + '/registro', {headers: {'Content-Type': 'application/json'}}).
+    then(function(data){
+        $scope.empresario = data.data.empresario;
+        $scope.empresa = data.data.empresa;
+    }, function(data){
+        console.log(data);
+    });
 
     $scope.submit = function () {
         $scope.loading = true;
-        $scope.detalle.producto_id  = $scope.producto.id;
-        // Verificar si hay descuento por oferta
-        if ($scope.producto.precio_oferta) {
-            $scope.detalle.precio = $scope.producto.precio_oferta;
-        }else{
-            $scope.detalle.precio = $scope.producto.precio;
-        }
 
-        $scope.detalle.img          = $scope.producto.img;
-
-        // console.log($scope.detalle);
-
-        $http.post(config.url + '/tienda/producto', $scope.detalle, {headers: {'Content-Type': 'application/json'}}).
+        $http.post(config.url + '/api/empresa', $scope.empresa, {headers: {'Content-Type': 'application/json'}}).
         then(function(data) {
-            $('.cart-icon').html(data.data.total_productos).addClass('highlight');
-            setTimeout(function () {
-                $('.cart-icon').removeClass('highlight');
-                $scope.loading = false;
-            }, 2000);
+            console.log(data.data);
+        }, function(data) {$scope.loading = false; console.log(data); });
 
-            swal("Agregado", "ya está en tu carrito de compras !", "success", {timer: 2000, buttons:false});
-
-
-            $scope.detalle.cantidad = 1;
-
-            $scope.$emit('carrito');
-
-        }, function(data) {
-            $scope.loading = false;
-            console.log(data);
-        });
+        $http.post(config.url + '/api/empresario', $scope.empresario, {headers: {'Content-Type': 'application/json'}}).
+        then(function(data) {
+            console.log(data.data);
+        }, function(data) {$scope.loading = false; console.log(data); });
 
     }
+            // swal("Agregado", "ya está en tu carrito de compras !", "success", {timer: 2000, buttons:false});
 
     $scope.addFavorito = function(producto_id){
         var producto = {};
@@ -236,12 +200,10 @@ app.controller('CarritoCtrl', [ '$scope', '$http', 'config', '$uibModal', functi
 }])
 
 app.controller('UsuarioCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
+    
     $scope.usuario = {};
+    $scope.historial = [];
     $scope.direccion = {};
-    $scope.usuario.dia = '';
-    $scope.usuario.mes = '';
-    $scope.usuario.anio = '';
-    $scope.estado = '';
     $scope.loading = false;
 
     $scope.load = function(){
@@ -249,6 +211,7 @@ app.controller('UsuarioCtrl', [ '$scope', '$http', 'config', '$uibModal', functi
         $http.get(config.url + '/cuenta', {headers: {'Content-Type': 'application/json'}}).
         then(function(data){
             $scope.usuario = data.data.usuario;
+            $scope.historial = data.data.historial;
             $scope.loading = false;
         }, function(data){
             $scope.loading = false;

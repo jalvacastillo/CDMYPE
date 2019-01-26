@@ -6,96 +6,55 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\User as Usuario;
+use Auth;
+use App\User;
 
 class UsuarioController extends Controller
 {
     
 
-    public function index() {
+    public function index(Request $request){
        
-        $usuarios = Usuario::orderBy('id','dsc')->paginate(7);
+        $usuario = User::where('id', Auth::user()->id)->firstOrFail();
 
-        return Response()->json($usuarios, 200);
+        $historial = $usuario->aplicaciones()->get();
 
-    }
-
-
-    public function read($id) {
-        
-        $usuario = Usuario::findOrFail($id);
-
-        return Response()->json($usuario, 200);
-    }
-
-    public function search($txt) {
-
-        $usuarios = Usuario::where('nombre', 'like' ,'%' . $txt . '%')->paginate(7);
-        return Response()->json($usuarios, 200);
-
-    }
-
-
-    public function store(UsuarioRequest $request)
-    {
-        if($request->id){
-            $usuario = Usuario::findOrFail($request->id);
+        if ($request->ajax()) {
+            return response()->json(['usuario' => $usuario, 'historial' => $historial]);
         }
-        else{
-            $usuario = new Usuario;
-        }
-        
-        if ( $request->password) {
+
+        return view('usuario.index', compact('usuario', 'historial'));
+
+    }
+
+    public function store(Request $request){
+       
+        $usuario = User::findOrFail($request->id);
+
+        if ($request->password) {
             $request['password'] = \Hash::make($request->password);
-        }else{
-            return Response()->json(['message' => 'Contraseña requerida'], 401);
         }
 
+        if ($request->tipo == 'Consultor') {
+            $consultor = Auth::user()->consultor()->first();
+            $consultor->fill($request->detalle);
+            $consultor->save();
+        }
+        if ($request->tipo == 'Estudiante') {
+            $alumno = Auth::user()->alumno()->first();
+            $alumno->fill($request->detalle);
+            $alumno->save();
+        }
         
         $usuario->fill($request->all());
         $usuario->save();
 
-        return Response()->json($usuario, 200);
+        if ($request->ajax()) {
+            $usuario = User::where('id', Auth::user()->id)->firstOrFail();
+            return response()->json(['usuario' => $usuario]);
+        }
 
-
-    }
-
-    public function avatar(Request $request){
-
-        $usuario = Usuario::findOrFail($request->id);
-
-        if ($request->hasFile('file')) {
-                
-                if ($usuario) {
-                    $file = $request->file;
-                    $ruta = public_path() . '/img/team/';
-                    $nombre = time().$file->getClientOriginalName();
-                    $file->move($ruta, $nombre);
-                    \File::delete($ruta . $usuario->avatar);
-                    $usuario->avatar = $nombre;
-                    $usuario->save();
-                }
-            } 
-        return Response()->json($usuario, 200);
-        
-    }
-
-    public function delete($id)
-    {
-       
-        $usuario = Usuario::findOrFail($id);
-        $usuario->delete();
-
-        return Response()->json($usuario, 201);
-
-    }
-
-    public function informacion()
-    {
-       
-        $usuario = Auth::user();
-
-        return view('auth.registro.informacion', compact('usuario'));
+        return view('usuario.index', compact('usuario'));
 
     }
 

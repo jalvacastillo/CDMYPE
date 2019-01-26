@@ -178,7 +178,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        App\Providers\ClienteProvider::class,
+        App\Providers\PaginaProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
 

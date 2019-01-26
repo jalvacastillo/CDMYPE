@@ -1,0 +1,83 @@
+<form name="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label> * Empresa:</label>
+                <input class="form-control" type="text" name="empresa" [(ngModel)]="search" placeholder="Buscar" autofocus>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label> * Empresario:</label>
+         </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <div class="form-group">
+                <label> * Tema:</label>
+                <input type="text" class="form-control" name="tema" [(ngModel)]="at.tema" placeholder="Nombre" required />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="obj_general"> Objetivo General:</label>
+            <textarea class="form-control" previsualizar name="obj_general" [(ngModel)]="at.obj_general" cols="30" rows="2"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="obj_especifico"> Objetivo Especifico:</label>
+                <textarea class="form-control" previsualizar name="obj_especifico" [(ngModel)]="at.obj_especifico" cols="30" rows="2"></textarea>
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="productos"> Productos:</label>
+            <textarea class="form-control" previsualizar name="productos" [(ngModel)]="at.productos" cols="30" rows="2"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Especialidad:</label>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Fecha Limite:</label>
+                <input type="date" class="form-control" name="fecha" [(ngModel)]="at.fecha"/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Trabajo Local:</label>
+                <input type="text" class="form-control" name="trabajo_local" [(ngModel)]="at.trabajo_local" placeholder="Lugar, Calle etc..." />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Semanas de Ejecución:</label>
+                <input type="number" class="form-control" name="tiempo_ejecucion" [(ngModel)]="at.tiempo_ejecucion" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Financiamiento:</label>
+                <input type="number" class="form-control" name="financiamiento" [(ngModel)]="at.financiamiento"/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Aporte Empresarial:</label>
+                <input type="number" class="form-control" name="aporte" [(ngModel)]="at.aporte" />
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+          <button [disabled]="loading" class="btn btn-primary pull-right">
+              <span *ngIf="!loading">Guardar</span>
+              <span *ngIf="loading">Guardando...</span>
+          </button>
+        </div>
+    </div>
+</form>

@@ -11,11 +11,13 @@ import { Data } from '../../models/data';
 export class ConsultoresComponent implements OnInit {
 
 	public consultores:Data;
-    public buscador:string;
+    public empresa:any = {};
+    public buscador:any = '';
+    public loading: boolean = false;
 
     constructor(private apiService: ApiService, private alertService: AlertService){ }
 
-	ngOnInit() {
+    ngOnInit() {
         this.loadAll();
     }
 
@@ -26,11 +28,11 @@ export class ConsultoresComponent implements OnInit {
     }
 
     public search(text:any){
-    	if(text.length > 1) {
-	    	this.apiService.read('consultores/buscar/', text).subscribe(consultores => { 
-	    	    this.consultores = consultores;
-	    	}, error => {this.alertService.error(error); });
-    	}
+        if(text.length > 1) {
+            this.apiService.read('consultores/buscar/', text).subscribe(consultores => { 
+                this.consultores = consultores;
+            }, error => {this.alertService.error(error); });
+        }
     }
 
     public delete(id:number) {
@@ -40,18 +42,29 @@ export class ConsultoresComponent implements OnInit {
                 //     if (this.consultores['data'][i].id == data.id )
                 //         this.consultores['data'].splice(i, 1);
                 // }
-                 this.consultores.data.forEach( item => {
-                    if (item.id == data.id )
-                        item.pop();
-                });
             }, error => {this.alertService.error(error); });
                    
         }
 
     }
 
-    public setPaginacion(page:number) {
-        this.apiService.getAll('consultores?page='+ page).subscribe(consultores => { this.consultores = consultores; });
+    public activar(empresa:any){
+        this.loading = true;
+        this.empresa = empresa;
+        this.empresa.catalogo = !this.empresa.catalogo;
+        this.apiService.store('empresa', this.empresa).subscribe(empresa => {
+            this.empresa = empresa;
+            this.alertService.success("Guardado");
+            this.loading = false;
+        },error => {this.alertService.error(error); this.loading = false; });
+    }
+
+    public setPagination(event):void{
+        this.loading = true;
+        this.apiService.paginate(this.consultores.path + '?page='+ event.page).subscribe(consultores => { 
+            this.consultores = consultores;
+            this.loading = false;
+        }, error => {this.alertService.error(error); this.loading = false;});
     }
 
 }

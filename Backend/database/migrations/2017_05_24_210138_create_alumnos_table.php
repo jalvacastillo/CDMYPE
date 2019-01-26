@@ -13,8 +13,9 @@ class CreateAlumnosTable extends Migration
             $table->increments('id');
             
             $table->string('nombre');
-            $table->string('carrera');
-            $table->string('correo');
+            $table->string('correo')->nullable();
+            $table->string('carrera')->nullable();
+            $table->string('sexo')->nullable();
             $table->string('direccion')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('municipio')->nullable();

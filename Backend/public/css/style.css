@@ -58,6 +58,12 @@ img {
 	height: auto;
 }
 
+.text-truncate{
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
 ul, ol {
 	list-style: none;
 }
@@ -905,22 +911,15 @@ ul.social-list li:last-child a i {
 
 #main-slide .slider-content h2{
 	font-size: 66px;
-	font-weight: 100;
 	text-transform: uppercase;
-    color: #555;
+    text-shadow: 1px 1px 1px white;
 }
 
-/*#main-slide .slider-content h2.white, #main-slide .slider-content h3.white {
-    color: #fff;
-}*/
-
 #main-slide .slider-content h3{
-	font-size: 35px;
-	font-weight: 300;
-	margin-top: 60px;
-	/*text-transform: uppercase;*/
-    text-align: center;
-    color: #555;
+    font-size: 35px;
+    /*font-weight: 300;*/
+    margin-top: 60px;
+    text-shadow: 1px 1px 1px white;
 }
 
 .slider.btn{
@@ -2705,6 +2704,8 @@ ul.icons-list li i {
 
 .team-member .member-socail {
 	text-align: center;
+    margin: 20px 0px;
+    min-height: 50px;
 }
 
 .team-member .member-socail a i {

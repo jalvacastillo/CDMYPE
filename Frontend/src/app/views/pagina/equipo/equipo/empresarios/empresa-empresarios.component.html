@@ -1,0 +1,100 @@
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th class="text-center"><i class="fa fa-cog"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center" *ngIf="empresa.empresarios?.length < 1">
+                    <span class="label label-info">No tiene empresarios registradas</span>
+                </td>
+            </tr>
+
+            <tr class="animated fadeIn" *ngFor=" let empresario of empresa?.empresarios">
+                
+                <td>{{ empresario.empresario.nombre }}</td>
+                <td>{{ empresario.tipo }}</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-default" (click)="openModal(mEmpresario, empresario.empresario)" tooltip="Editar">
+                        <i class="fa fa-pencil"></i>
+                        </a>
+                        <a class="btn btn-default" (click)="eliminar(empresario)" tooltip="Eliminar">
+                        <i class="fa fa-trash"></i></a>
+                    </div> 
+                </td>
+
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <button (click)="openModal(mEmpresario, {})" class="btn btn-default" tooltip="Guardar">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div> 
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<ng-template #mEmpresario>
+ <div class="modal-header">
+   <div class="modal-title text-center"> <h2>Empresario</h2> </div>
+   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+    <form name="form" (ngSubmit)="onSubmit()">
+       <div class="row">
+           <div class="form-group col-md-6">
+               <label for="nombre">* Nombre:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.nombre" name="empresario.nombre" placeholder="Nombre">
+           </div>
+           <div class="form-group col-sm-3">
+               <label for="nit">NIT:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.nit" name="empresario.nit" placeholder="xxxx-xxxxxx-xxx-x">
+           </div>
+           <div class="form-group col-sm-3">
+               <label for="nit">DUI:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.dui" name="empresario.dui" placeholder="xxxxxxx-x">
+           </div>
+           <div class="form-group col-sm-4">
+               <label for="telefono">Teléfono:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.telefono" name="empresario.telefono" placeholder="0000-0000">
+           </div>
+           <div class="form-group col-sm-4">
+               <label for="municipio">Municipio:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.municipio" name="empresario.municipio" placeholder="Municipio">
+           </div>
+           <div class="form-group col-sm-4">
+               <label for="departamento">Departamento:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.departamento" name="empresario.departamento" placeholder="Departamento">
+           </div>
+           <div class="form-group col-sm-4">
+               <label for="correo">Correo:</label>
+               <input type="email" class="form-control" [(ngModel)]="empresario.correo" name="empresario.correo" placeholder="Dirección">
+           </div>
+           <div class="form-group col-sm-8">
+               <label for="direccion">Dirección:</label>
+               <input type="text" class="form-control" [(ngModel)]="empresario.direccion" name="direccion" placeholder="Dirección">
+           </div>
+           <div class="col-xs-12">
+             <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+             <button [disabled]="loading" class="btn btn-primary pull-right">
+                 <span *ngIf="!loading">Guardar</span>
+                 <span *ngIf="loading">Guardando...</span>
+             </button>
+           </div>
+       </div>
+    </form>
+ </div>
+</ng-template>

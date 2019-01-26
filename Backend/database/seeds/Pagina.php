@@ -49,19 +49,17 @@ class Pagina extends Seeder
 
         $table->save();
 
-            // $table = new Testimonio;
-            // $table->cliente_id      = 15;
-            // $table->descripcion     = $faker->text;
-            // $table->asesor_id       = 2;
+            $table = new Testimonio;
+            $table->empresa_id      = 15;
+            $table->descripcion     = $faker->text;
 
-            // $table->save();
+            $table->save();
 
-            // $table = new Testimonio;
-            // $table->cliente_id      = 240;
-            // $table->descripcion     = $faker->text;
-            // $table->asesor_id       = 2;
+            $table = new Testimonio;
+            $table->empresa_id      = 240;
+            $table->descripcion     = $faker->text;
 
-            // $table->save();
+            $table->save();
 
             $table = new Resultado;
             $table->nombre      = 'Empresas';

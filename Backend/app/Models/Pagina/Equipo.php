@@ -3,11 +3,9 @@
 namespace App\Models\Pagina;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Equipo extends Model
 {
-    use SoftDeletes;
     protected $table = 'equipo';
     protected $fillable = [
         'nombre',
@@ -23,5 +21,9 @@ class Equipo extends Model
         'web',
         'usuario_id'
     ];
+
+    public function usuario(){
+        return $this->belongsTo('App\User', 'usuario_id');
+    }
 
 }

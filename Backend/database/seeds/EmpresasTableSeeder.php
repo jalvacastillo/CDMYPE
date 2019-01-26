@@ -15,27 +15,6 @@ class EmpresasTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-            // for($i = 1; $i <= 20 ; $i++)
-            // {
-            //     $table = new Empresa;
-            //     $table->nombre          = $faker->name;
-            //     $table->nit             = $faker->buildingNumber;
-            //     $table->iva             = $faker->buildingNumber;
-            //     $table->constitucion    = $faker->numberBetween(1,3);
-            //     $table->direccion       = $faker->text;
-            //     $table->municipio       = $faker->word;
-            //     $table->departamento    = $faker->word;
-            //     $table->fundacion       = $faker->date;
-            //     $table->contabilidad    = false;
-            //     $table->sector          = $faker->numberBetween(1,3);
-            //     $table->tamano          = $faker->numberBetween(1,3);
-                
-            //     $table->descripcion = $faker->text;
-            //     $table->actividad   = $faker->text;
-            //     $table->save();
-
-            // }
-
 
             $empresas = array(
               array('id' => '4','categoria' => 'Empresa','nombre' => 'KIBUTZ CAFETERÍA','descripcion' => 'Empresa creada como iniciativa de ex estudiantes de la Escuela de Alimentos para comercializar embutidos y otros alimentos en Cojutepeque y zonas aledañas.','municipio_id' => 'Cojutepeque','direccion' => 'Av. Santa Ana, Plaza Centro, 2do. Nivel.','nit' => '0710-040190-103-5','registro_iva' => '','constitucion' => 'Persona Juridica','clasificacion' => 'Micro','sector_economico' => 'Agroindustria Alimentaria','actividad' => 'Servicios de alimentación a domicilio y en local; elaboración de embutidos.','deleted_at' => NULL,'created_at' => '2014-08-28 23:02:16','updated_at' => '2014-09-04 19:38:06'),

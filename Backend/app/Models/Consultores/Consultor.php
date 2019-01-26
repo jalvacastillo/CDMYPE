@@ -12,12 +12,19 @@ class Consultor extends Model {
     public $errores;
     protected $fillable = [
         'nombre',
-        'nit', 'dui',
-        'correo', 'tipo',
-        'iva', 'sexo',
-        'telefono', 'celular',
-        'empresa', 'direccion',
-        'municipio', 'departamento', 'usuario_id'
+        'nit',
+        'dui',
+        'correo',
+        'tipo',
+        'iva',
+        'sexo',
+        'telefono',
+        'celular',
+        'empresa',
+        'direccion',
+        'municipio',
+        'departamento',
+        'usuario_id'
     ];
 
     protected $appends = ['avatar','especialidad'];

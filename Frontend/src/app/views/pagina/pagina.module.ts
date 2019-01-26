@@ -9,6 +9,11 @@ import { ModalModule } from 'ngx-bootstrap';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { SharedModule } from '../../shared/shared.module';
 
+import { EquiposComponent } from './equipo/equipos.component';
+import { EquipoComponent } from './equipo/equipo/equipo.component';
+import { EquipoInfoComponent } from './equipo/equipo/info/equipo-info.component';
+import { EquipoCuentaComponent } from './equipo/equipo/cuenta/equipo-cuenta.component';
+
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioComponent } from './servicios/servicio/servicio.component';
 import { NoticiasComponent } from './noticias/noticias.component';
@@ -33,6 +38,10 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     TooltipModule.forRoot()
   ],
   declarations: [
+    EquiposComponent,
+    EquipoComponent,
+    EquipoInfoComponent,
+    EquipoCuentaComponent,
     ServiciosComponent,
     ServicioComponent,
     NoticiasComponent,
@@ -46,6 +55,10 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     DiagnosticoComponent
   ],
   exports: [
+    EquiposComponent,
+    EquipoComponent,
+    EquipoInfoComponent,
+    EquipoCuentaComponent,
     ServiciosComponent,
     ServicioComponent,
     NoticiasComponent,

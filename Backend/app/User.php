@@ -26,14 +26,23 @@ class User extends Authenticatable
         'activo'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    protected $appends = ['detalle'];
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getDetalleAttribute(){
+        if ($this->tipo == 'Consultor') {
+            return $this->consultor()->first();
+        }
+        if ($this->tipo == 'Estudiante') {
+            return $this->alumno()->first();
+        }
+        if ($this->tipo == 'Empresario') {
+            return $this->empresario()->first();
+        }
+        return null;
+    }
 
     public function alumno(){
         return $this->hasMany('App\Models\Alumnos\Alumno', 'usuario_id');
@@ -41,6 +50,14 @@ class User extends Authenticatable
 
     public function consultor(){
         return $this->hasMany('App\Models\Consultores\Consultor', 'usuario_id');
+    }
+
+    public function empresario(){
+        return $this->hasMany('App\Models\Empresas\Empresario', 'usuario_id');
+    }
+
+    public function aplicaciones(){
+        return $this->hasMany('App\Models\Proyectos\Aplicacion', 'usuario_id')->with('proyecto');
     }
 
     

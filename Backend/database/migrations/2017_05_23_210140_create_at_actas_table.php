@@ -13,14 +13,10 @@ class CreateAtActasTable extends Migration
             
             $table->increments('id');
 
-            $table->integer('termino_id');
+            $table->integer('at_id');
             $table->date('fecha');
-            $table->enum('tipo', ['Conformidad', 'Rechazo'])->default('Conformidad');
-
-
-            $table->integer('cdmype_id')->default(1);
+            $table->string('tipo');
             
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -19,9 +19,9 @@ class CreateProyectosTable extends Migration
             $table->string('nombre');
             $table->string('slug');
             $table->text('descripcion');
-            $table->enum('tipo', ['Pasantía', 'Hora Social', 'Investigación', 'Proyecto', 'Otro']);
-            $table->enum('categoria', ['TIC', 'EFE', 'Financiero', 'Empresarial', 'Otro']);
-            $table->enum('estado', ['Inactivo', 'Activo', 'Ejecución', 'Completado']);
+            $table->string('tipo');
+            $table->string('categoria');
+            $table->string('estado');
             $table->string('especialidad');
             $table->date('finalizacion');
             $table->string('duracion');

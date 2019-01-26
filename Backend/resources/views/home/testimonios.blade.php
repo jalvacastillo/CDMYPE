@@ -1,3 +1,4 @@
+@if($testimonios->count() > 0)
 <div class="container section" style="padding-top: 0;">
   <div class="row">
 
@@ -9,7 +10,11 @@
       @foreach ($testimonios as $testimonio)
         <div class="classic-testimonials item">
           <div class="col-xs-3">
-            <img src="{{ asset('img/clientes/'. $testimonio->logo) }}" alt="Logo" width="200px">
+            @if ($testimonio->logo)
+              <img src="{{ asset('img/empresas/'. $testimonio->logo) }}" alt="{{ 'logo ' . $testimonio->propietario}}" width="200px">
+            @else
+              <img src="{{ asset('img/empresas/default.jpg') }}" alt="Logo" width="200px">
+            @endif
           </div>
           <div class="col-xs-7">
             <div class="testimonial-content">
@@ -25,3 +30,4 @@
     </div>
   </div>
 </div>
+@endif

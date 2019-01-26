@@ -1,4 +1,4 @@
-<div class="col-md-4 sidebar right-sidebar">
+<div class="col-md-3 sidebar right-sidebar">
 
   <div class="widget widget-search">
     <form action="#">
