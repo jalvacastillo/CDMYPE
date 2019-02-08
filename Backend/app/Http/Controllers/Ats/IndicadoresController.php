@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Empresas;
+namespace App\Http\Controllers\Ats;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Empresas\IndicadorRequest;

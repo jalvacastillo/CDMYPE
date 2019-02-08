@@ -22,6 +22,12 @@ class Equipo extends Model
         'usuario_id'
     ];
 
+    protected $appends = ['correo'];
+
+    public function getCorreoAttribute(){
+        return $this->usuario()->first()->email;
+    }
+
     public function usuario(){
         return $this->belongsTo('App\User', 'usuario_id');
     }

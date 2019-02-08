@@ -14,14 +14,14 @@ class Especialidad extends Model {
         'especialidad_id'
     );
 
-     protected $appends = ['consultor', 'especialidad'];
-    
-        public function getConsultorAttribute(){
-            return $this->consultor()->pluck('nombre')->first();
+     protected $appends = ['nombre', 'especialidad'];
+
+        public function getNombreAttribute(){
+            return $this->especialidad()->pluck('nombre')->first();
         }
 
         public function getEspecialidadAttribute(){
-            return $this->especialidad()->pluck('nombre')->first();
+            return $this->especialidad()->first()->especialidad()->first()->nombre;
         }
 
         public function consultor() 
@@ -32,6 +32,6 @@ class Especialidad extends Model {
 
         public function especialidad()
         {
-            return $this->belongsTo('App\Models\Especialidad');
+            return $this->belongsTo('App\Models\Subespecialidad', 'especialidad_id');
         }
 }

@@ -25,13 +25,27 @@
     <form action="{{ route('filtrarProyectos') }}" method="POST">
     <div class="row panel-footer" style="display: flex; justify-content: center;">
       {{ csrf_field() }}
-        <div class="form-group" style="margin: 0px 15px; width: 50%;">
-            <input type="text" name="parametro" class="form-control form-control-sm" placeholder="Tipo, Nombre, etc...">
-        </div>
 
-      <div class="form-group" style="margin: 0px 15px; width: 10%">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-        <button type="{{ route('empresas') }}" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+      <div class="input-group" style="width: 75%;">
+        <input type="text" name="parametro" class="form-control" placeholder="Tipo, Nombre, etc...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opciones <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="{{ route('empresas') }}">Todos los proyectos</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Categoria</li>
+              {{-- <li><a href="{{ route('proyectoCategoria', 'formacion') }}">Formación</a></li> --}}
+              {{-- <li><a href="{{ route('proyectoCategoria', 'comercializacion') }}">Comercialización</a></li> --}}
+              {{-- <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Tipo</li>
+              <li><a href="{{ route('proyectoTipo', 'capacitacion') }}">Capacitaciones</a></li>
+              <li><a href="{{ route('proyectoTipo', 'taller') }}">Talleres</a></li>
+              <li><a href="{{ route('proyectoTipo', 'webinar') }}">Webinars</a></li> --}}
+            </ul>
+        </span>
       </div>
     </div>
     </form>

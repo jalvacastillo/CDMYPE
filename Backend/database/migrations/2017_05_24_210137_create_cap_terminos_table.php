@@ -21,19 +21,15 @@ class CreateCapTerminosTable extends Migration
             $table->text('obj_especifico');
             $table->text('productos');
             $table->string('lugar');
-            $table->date('fecha');
+            $table->datetime('fecha_ini');
+            $table->datetime('fecha_fin');
             $table->date('fecha_limite');
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
             $table->string('nota')->nullable();
-            $table->enum('estado', ['Creada', 'Enviada', 'Contratada', 'Finalizada']);
+            $table->string('estado'); //, ['Creada', 'Enviada', 'Contratada', 'Finalizada'
             $table->integer('asesor_id');
             $table->integer('especialidad_id');
             $table->string('informe')->nullable();
 
-            $table->integer('cdmype_id')->default(1);
-            
-            $table->softDeletes();
             $table->timestamps();
         });
     }

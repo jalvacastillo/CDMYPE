@@ -1089,7 +1089,7 @@ class AtTerminosSeeder extends Seeder
             $table->save();
 
             $table = new At;
-            $table->id      = $atterminos[$i]['id'];            
+            $table->id              = $atterminos[$i]['id'];            
             $table->tema            = $atterminos[$i]['tema'];
             $table->obj_general     = $atterminos[$i]['obj_general'];
             $table->obj_especifico  = $atterminos[$i]['obj_especifico'];

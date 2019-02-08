@@ -2,22 +2,57 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use File;
-use Mail;
 use Auth;
-use App\User;
 use App\Models\Actividades\Actividad;
 use App\Models\Actividades\Aplicacion;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AplicacionActividad;
+use App\User;
 
 class ActividadesController extends Controller
 {
     
     public function actividades(){
-        $actividades = Actividad::where('estado', 'Activo')->orderBy('id','asc')->paginate(8);
+        $actividades = Actividad::where('estado', '!=', 'Inactivo')->orderBy('inicio','asc')->paginate(8);
+        return view('actividades.index', compact('actividades'));
+    }
+
+    public function calendario(Request $request){
+        $actividades = Actividad::where('estado', '!=', 'Inactivo')->get();
+
+        $eventos = [];
+
+        foreach ($actividades as $actividad) {
+            $eventos[] = array(
+                "id"      => $actividad->id,
+                "title"   => $actividad->nombre,
+                "description"   => $actividad->descripcion,
+                "view_url"     => route('actividad', [str_slug($actividad->nombre), encrypt($actividad->id)]),
+                "class"   => "event-important",
+                "start"   => $actividad->inicio->toDateTimeString(),
+                "end"     => $actividad->fin->toDateTimeString(),
+            );
+        }
+
+        if ($request->ajax()) {
+            return response()->json($eventos);
+        }
+        
+        return view('actividades.calendario', compact('actividades'));  
+    }
+
+    public function categoria($categoria){
+        $actividades = Actividad::where('estado', '!=', 'Inactivo')->where('categoria', 'like', '%'.$categoria.'%')->orderBy('inicio','asc')->paginate(8);
+        return view('actividades.index', compact('actividades'));  
+    }
+
+    public function tipo($tipo){
+        $actividades = Actividad::where('estado', '!=', 'Inactivo')->where('tipo', 'like', '%'.$tipo.'%')->orderBy('inicio','asc')->paginate(8);
         return view('actividades.index', compact('actividades'));  
     }
 
     public function actividad($slug, $id){
-        $actividad = Actividad::where('estado', 'Activo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
+        $actividad = Actividad::where('estado', '!=', 'Inactivo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
         
         $usuario = Auth::user();
         
@@ -35,31 +70,20 @@ class ActividadesController extends Controller
 
         // return $request->parametro;
 
-        $empresas = Actividad::where('estado', 'Activo')->orderBy('id','asc')
+        $empresas = Actividad::where('estado', '!=', 'Inactivo')->orderBy('inicio','asc')
                             ->orwhere('nombre', 'like', '%' . $request->parametro .'%')
                             ->orwhere('tipo', 'like', '%' . $request->parametro .'%')
                             ->orwhere('categoria', 'like', '%' . $request->parametro .'%')
-                            ->with('empresarios')->paginate(12);
-
-        // $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')
-        //                     ->when($request->sector, function($query) use ($request){
-        //                         return $query->where('sector', $request->sector);
-        //                     })
-        //                     ->when($request->municipio, function($query) use ($request){
-        //                         return $query->where('municipio', $request->municipio);
-        //                     })
-        //                     ->with('empresarios')->paginate(12);
+                            ->paginate(12);
                             
         return view('empresas.index', compact('empresas'));   
     }
 
-    public function aplicacion(Request $request, $slug, $id){
+    public function aplicacion(Request $request){
 
-        $actividad = Actividad::where('estado', 'Activo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
         $usuario = Auth::user();
 
         $request['usuario_id'] = $usuario->id;
-        $request['actividad_id'] = $actividad->id;
         $request['estado'] = 'En Revisión';
         
         $request->validate([
@@ -68,12 +92,21 @@ class ActividadesController extends Controller
             'usuario_id'    => 'required',
         ]);
 
-        $aplicacion = Aplicacion::where('actividad_id', $actividad->id)->where('usuario_id', $usuario->id)->first();
+        $aplicacion = Aplicacion::where('actividad_id', $request->actividad_id)->where('usuario_id', $usuario->id)->first();
 
         if (!$aplicacion) {
             $aplicacion = new Aplicacion;
             $aplicacion->fill($request->all());
             $aplicacion->save();
+        }
+
+        Mail::to($usuario->email)->send(new AplicacionActividad($aplicacion));
+        foreach ($aplicacion->actividad()->first()->asesores as $asesor) {
+            Mail::to($asesor->asesor()->first()->correo)->send(new AplicacionActividad($aplicacion));
+        }
+
+        if ($request->ajax()) {
+            return response()->json(['msj' => 'ok!']);
         }
 
         return view('actividades.actividad', compact('actividad', 'usuario', 'aplicacion'));  

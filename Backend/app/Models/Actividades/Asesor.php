@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\Proyectos;
+namespace App\Models\Actividades;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Asesor extends Model
 {
-    protected $table = 'proyecto_asesores';
+    protected $table = 'actividad_asesores';
     protected $fillable = [
         'asesor_id',
-        'proyecto_id'
+        'actividad_id'
     ];
 
     protected $appends = ['nombre', 'titulo', 'categoria', 'cargo', 'avatar'];

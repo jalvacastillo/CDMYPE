@@ -17,6 +17,7 @@ class CreateProyectosTable extends Migration
             $table->increments('id');
             
             $table->string('nombre');
+            $table->string('img')->default('default.jpg');
             $table->string('slug');
             $table->text('descripcion');
             $table->string('tipo');

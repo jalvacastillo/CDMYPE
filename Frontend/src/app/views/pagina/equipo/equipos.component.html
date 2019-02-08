@@ -17,11 +17,11 @@
                     <h3 class="box-title"></h3>
                     <div class="box-tools">
                         <div class="input-group" style="width: 350px;">
-                        <form name="form" (ngSubmit)="search(buscador)">
-                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search(buscador)">
+                        <form name="form" (ngSubmit)="search()">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador">
                         </form>
                             <div class="input-group-btn">
-                                <button (click)="search(buscador)" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                <button (click)="search()" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success"><i class="fa fa-refresh"></i></a>
                                 <a [routerLink]="['/equipo/nuevo']" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></a>
                             </div>

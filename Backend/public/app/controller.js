@@ -31,6 +31,134 @@ app.constant('config', { 'url': 'http://localhost:8000' })
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
 }])
 
+app.controller('AuthCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
+    $scope.login = {};
+    $scope.loading = false;
+
+    $scope.login = function () {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: '/app/views/login.html',
+          controller: function($scope, login){
+                $scope.login = login;
+                $scope.loading = false;
+                 console.log('si');
+                $scope.submit = function(){
+                    console.log($scope.login);
+                    $scope.loading = true;
+                    $http.post(config.url + '/login', $scope.login, {headers: {'Content-Type': 'application/json'}}).
+                    then(function(data){
+                        $scope.loading = false;
+                        $scope.msj = data.data.msj;
+                        $scope.login = {};
+                        console.log(data);
+                        location.reload();
+                    }, function(data){
+                        $scope.loading = false;
+                        $scope.alert =  data.data.error;
+                        console.log(data);
+                    });
+                }
+
+                $scope.cancel = function () { modalInstance.dismiss('cancel'); };
+          },
+          resolve: { 
+                login: function () { return $scope.producto; }
+            }
+        });
+
+    };
+
+    $scope.register = function () {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: '/app/views/registro.html',
+          controller: function($scope, login){
+                $scope.login = login;
+                $scope.loading = false;
+                 console.log('si');
+                $scope.submit = function(){
+                    console.log($scope.login);
+                    $scope.loading = true;
+                    $http.post(config.url + '/register', $scope.login, {headers: {'Content-Type': 'application/json'}}).
+                    then(function(data){
+                        $scope.loading = false;
+                        $scope.msj = data.data.msj;
+                        $scope.login = {};
+                        console.log(data);
+                        location.reload();
+                    }, function(data){
+                        $scope.loading = false;
+                        $scope.alert =  data.data.error;
+                        console.log(data);
+                    });
+                }
+
+                $scope.cancel = function () { modalInstance.dismiss('cancel'); };
+          },
+          resolve: { 
+                login: function () { return $scope.producto; }
+            }
+        });
+
+    };
+
+    $scope.logout = function(){
+        $http.post(config.url + '/logout', {headers: {'Content-Type': 'application/json'}}).
+        then(function(data){
+            console.log(data);
+            location.reload();
+        }, function(data){
+            console.log(data);
+        });
+    }
+
+
+}])
+
+app.controller('ActividadesCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
+    $scope.aplicacion = {};
+    $scope.loading = false;
+
+    $scope.aplicar = function () {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: '/app/views/aplicar-actividad.html',
+          controller: function($scope, aplicacion){
+                $scope.aplicacion = aplicacion;
+                $scope.loading = false;
+                 console.log('si');
+                $scope.submit = function(){
+                    console.log($scope.aplicacion);
+                    console.log($('#actividad_id').val());
+                    $scope.loading = true;
+                    $scope.aplicacion.actividad_id = $('#actividad_id').val();
+                    $http.post(config.url + '/actividad/aplicacion', $scope.aplicacion, {headers: {'Content-Type': 'application/json'}}).
+                    then(function(data){
+                        $scope.loading = false;
+                        $scope.msj = data.data.msj;
+                        $scope.aplicacion = {};
+                        console.log(data);
+                        location.reload();
+                    }, function(data){
+                        $scope.loading = false;
+                        $scope.alert =  data.data.error;
+                        console.log(data);
+                    });
+                }
+
+                $scope.cancel = function () { modalInstance.dismiss('cancel'); };
+          },
+          resolve: { 
+                aplicacion: function () { return $scope.aplicacion; }
+            }
+        });
+
+    };
+
+}])
+
+
 app.controller('MainCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
     $scope.carrito = {};
 
@@ -55,11 +183,16 @@ app.controller('MainCtrl', [ '$scope', '$http', 'config', '$uibModal', function(
 
 app.controller('ContactosCtrl', [ '$scope', '$http', 'config', '$uibModal', function($scope, $http, config, $uibModal){
     $scope.correo = {};
+    $scope.loading = false;
+    $scope.msj = '';
 
     $scope.onSubmit = function(){
         console.log($scope.correo);
+        $scope.loading = true;
         $http.post(config.url + '/contactos', $scope.correo, {headers: {'Content-Type': 'application/json'}}).
         then(function(data){
+            $scope.loading = false;
+            $scope.msj = data.data.msj;
             $scope.correo = {};
             console.log(data);
         }, function(data){

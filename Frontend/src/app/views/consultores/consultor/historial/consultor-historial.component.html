@@ -1,0 +1,66 @@
+<div class="row" style="max-height: 300px; overflow-y: auto;">
+    <legend>Asistencias Técnicas <small class="badge badge-info">{{ consultor.ats?.length }}</small></legend>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th class="text-center"><i class="fa fa-cog"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center" *ngIf="consultor.ats?.length < 1">
+                    <span class="label label-info">No tiene ats registradas</span>
+                </td>
+            </tr>
+
+            <tr class="animated fadeIn" *ngFor=" let at of consultor?.ats">
+                
+                <td>{{ at.tema }}</td>
+                <td>{{ at.especialidad }}</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <a [routerLink]="['/at/', at.id]" class="btn btn-default" tooltip="Editar">
+                        <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div> 
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row" style="max-height: 300px; overflow-y: auto;">
+    <legend>Capacitaciones <small class="badge badge-info">{{ consultor.caps?.length }}</small></legend>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th class="text-center"><i class="fa fa-cog"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center" *ngIf="consultor.caps?.length < 1">
+                    <span class="label label-info">No tiene caps registradas</span>
+                </td>
+            </tr>
+
+            <tr class="animated fadeIn" *ngFor=" let cap of consultor?.caps">
+                
+                <td>{{ cap.tema }}</td>
+                <td>{{ cap.especialidad }}</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <a [routerLink]="['/cap/', cap.id]" class="btn btn-default" tooltip="Editar">
+                        <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div> 
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

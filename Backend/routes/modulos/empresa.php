@@ -1,7 +1,8 @@
 <?php 
 
 
-    Route::get('/especialidades',     'EspecialidadController@index');
+    Route::get('/especialidades',     'EspecialidadesController@index');
+    Route::get('/subespecialidades',     'SubespecialidadesController@index');
 
     
 

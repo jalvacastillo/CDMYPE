@@ -13,7 +13,7 @@ class CreateCapConsultoresTable extends Migration
             
             $table->increments('id');
 
-            $table->integer('termino_id')->nullable();
+            $table->integer('cap_id')->nullable();
             $table->integer('consultor_id')->nullable();
             $table->date('fecha_oferta')->nullable();
             $table->date('fecha_seleccion')->nullable();
@@ -21,7 +21,6 @@ class CreateCapConsultoresTable extends Migration
             $table->string('doc_oferta')->nullable();
             $table->double('evaluacion')->nullable();
             
-            $table->softDeletes();
             $table->timestamps();
         });
     }

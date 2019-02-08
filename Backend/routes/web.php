@@ -31,8 +31,8 @@ Route::get('/empresas',         'EmpresasController@empresas'   )->name('empresa
     Route::post('/empresas', 'EmpresasController@filtrar'    )->name('filtrarEmpresas');
     
     Route::get('/guia/inicio',     'EmpresasController@paso1')->name('registroCliente');
-    Route::post('/guia/necesidad',    'EmpresasController@paso2')->name('paso2');
-    Route::post('/guia/registro',    'EmpresasController@paso3')->name('paso3');
+    Route::get('/guia/necesidad',    'EmpresasController@paso2')->name('paso2');
+    Route::get('/guia/registro',    'EmpresasController@paso3')->name('paso3');
 
 // Academia
 Route::get('/academia/proyectos',  'AcademiaController@proyectos')->name('proyectos');
@@ -42,7 +42,13 @@ Route::get('/academia/proyectos',  'AcademiaController@proyectos')->name('proyec
 
 // Actividades
 Route::get('/actividades',  'ActividadesController@actividades')->name('actividades');
+    Route::get('/actividades/categoria/{slug}',  'ActividadesController@categoria')->name('actividadesCategoria');
+    Route::get('/actividades/tipo/{slug}',  'ActividadesController@tipo')->name('actividadesTipo');
+    Route::get('/actividad/{slug}/{id}',  'ActividadesController@actividad')->name('actividad');
+    Route::post('/actividad/aplicacion',  'ActividadesController@aplicacion')->name('aplicarActividad');
     Route::post('/actividades/actividad', 'ActividadesController@filtrar'    )->name('filtrarActividades');
+
+    Route::get('/actividades/calendario', 'ActividadesController@calendario')->name('actividadesCalendario');
 
 // Noticias
 Route::get('/noticias',   'HomeController@noticias')->name('noticias');

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\Proyectos;
+namespace App\Models\Actividades;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 class Aplicacion extends Model
 {
-    protected $table = 'proyecto_aplicaciones';
+    protected $table = 'actividad_aplicaciones';
     protected $fillable = [
-        'proyecto_id',
+        'actividad_id',
         'tipo',
         'estado',
         'nota',
@@ -36,6 +36,7 @@ class Aplicacion extends Model
          return Carbon::parse($this->created_at)->format('h:i:s a');
     }
 
+
     public function getDetalleAttribute(){
         if ($this->usuario()->first()->tipo == 'Alumno') {
             return $this->usuario()->first()->alumno()->first();
@@ -52,8 +53,8 @@ class Aplicacion extends Model
         return $this->belongsTo('App\User', 'usuario_id');
     }
 
-    public function proyecto(){
-        return $this->belongsTo('App\Models\Proyectos\Proyecto', 'proyecto_id');
+    public function actividad(){
+        return $this->belongsTo('App\Models\Actividades\Actividad', 'actividad_id');
     }
 
 }

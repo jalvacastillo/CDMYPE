@@ -17,11 +17,11 @@
                     <span class="label label-default" *ngIf="noticias?.total">Registros: {{noticias?.total}}</span>
                     <div class="box-tools">
                         <div class="input-group" style="width: 350px;">
-                        <form name="form" (ngSubmit)="search(buscador)">
-                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search(buscador)">
+                        <form name="form" (ngSubmit)="search()">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador">
                         </form>
                             <div class="input-group-btn">
-                                <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <button (click)="search()" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
                                 <a [routerLink]="['/noticia/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
                             </div>

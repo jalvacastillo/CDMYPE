@@ -11,13 +11,19 @@ class Actividad extends Model
     protected $table = 'actividades';
     protected $fillable = [
         'nombre',
+        'img',
         'descripcion',
         'contenido',
         'tipo',
         'categoria',
         'estado',
         'especialidad',
+        'cupo',
+        'inicio',
+        'fin'
     ];
+
+    protected $dates = ['inicio', 'fin'];
 
     protected $appends = ['total_aplicaciones'];
 
@@ -26,11 +32,11 @@ class Actividad extends Model
     }
 
     public function asesores(){
-        return $this->hasMany('App\Models\Proyectos\Asesor');
+        return $this->hasMany('App\Models\Actividades\Asesor');
     }
     
     public function aplicaciones(){
-        return $this->hasMany('App\Models\Proyectos\Aplicacion');
+        return $this->hasMany('App\Models\Actividades\Aplicacion');
     }
 
 

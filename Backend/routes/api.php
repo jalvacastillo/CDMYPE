@@ -26,6 +26,7 @@ Route::post('/register', 'Auth\AuthJWTController@register');
 	
 		require base_path('routes/modulos/servicios.php');
 		require base_path('routes/modulos/proyectos.php');
+		require base_path('routes/modulos/actividades.php');
 		require base_path('routes/modulos/diagnosticos.php');
 		
 		require base_path('routes/modulos/empresas.php');
@@ -33,7 +34,8 @@ Route::post('/register', 'Auth\AuthJWTController@register');
 		require base_path('routes/modulos/pagina.php');
 		require base_path('routes/modulos/usuarios.php');
 
-		require base_path('routes/modulos/at.php');
+		require base_path('routes/modulos/ats.php');
+		require base_path('routes/modulos/caps.php');
 		// require base_path('routes/modulos/compras.php');
 		// require base_path('routes/modulos/clientes.php');
 		// require base_path('routes/modulos/proveedores.php');

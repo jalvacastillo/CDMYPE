@@ -19,10 +19,8 @@ import { DashModule } from './views/dash/dash.module';
 import { AdminsModule } from './views/admin/admin.module';
 import { EmpresasModule } from './views/empresas/empresas.module';
 import { ConsultoresModule } from './views/consultores/consultores.module';
-import { ComprasModule } from './views/compras/compras.module';
 import { AtsModule } from './views/ats/ats.module';
 import { PaginaModule } from './views/pagina/pagina.module';
-import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
 
 
 @NgModule({
@@ -40,10 +38,8 @@ import { ContabilidadModule } from './views/contabilidad/contabilidad.module';
     DashModule,
     EmpresasModule,
     ConsultoresModule,
-    ComprasModule,
     AtsModule,
-    PaginaModule,
-    ContabilidadModule
+    PaginaModule
   ],
   providers: [AuthGuard, AdminGuard, AlertService, AuthService, ApiService],
   bootstrap: [AppComponent]

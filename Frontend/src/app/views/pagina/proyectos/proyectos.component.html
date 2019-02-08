@@ -58,7 +58,7 @@
                                 <td>{{ proyecto.nombre }}</td>
                                 <td class="hidden-xs">{{ proyecto.tipo }}</td>
                                 <td class="text-center">
-                                    <span class="label label-pop" [ngClass]="{'label-danger' : proyecto?.estado == 'Inactivo', 'label-warning' : proyecto?.estado == 'Ejecución', 'label-success' : proyecto?.estado == 'Completado', 'label-info' : proyecto?.estado == 'Activo'}" [popover]="popTemplate" [outsideClick]="true">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : proyecto?.estado == 'Inactivo', 'label-warning' : proyecto?.estado == 'Ejecución', 'label-success' : proyecto?.estado == 'Finalizado', 'label-info' : proyecto?.estado == 'Activo'}" [popover]="popTemplate" [outsideClick]="true">
                                         {{proyecto.estado}}
                                     </span>
                                     <ng-template #popTemplate>

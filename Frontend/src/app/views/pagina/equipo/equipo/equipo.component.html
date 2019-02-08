@@ -19,7 +19,7 @@
             <div class="box-body box-profile">
                 <div class="imagen-upload">
                     <img *ngIf="equipo?.avatar" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/team/' + equipo.avatar }}" style="margin: auto;">
-                    <input type="file" name="avatar" id="file" class="inputfile" (change)="uploadFile(equipo, $event)">
+                    <!-- <input type="file" name="avatar" id="file" class="inputfile" (change)="uploadFile(equipo, $event)"> -->
                     <label for="file"></label>
                 </div>
 

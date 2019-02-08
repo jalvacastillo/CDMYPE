@@ -58,9 +58,9 @@
               </li>
               @endforeach
 
-              <li class="drop">
+              <li class="drop" ng-controller="AuthCtrl">
                 @guest
-                    <a href="{{ route('login') }}">Login</a>
+                    <a ng-click="login()">Login</a>
                 @else
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{-- {{ Auth::user()->name }} --}}
@@ -68,21 +68,13 @@
                         <span class="caret"></span>
                     </a>
 
-                    <ul class="dropdown-menu" role="menu">
+                    <ul class="dropdown-menu" role="menu" style="right: 0px; left: auto;">
                         <li class="text-center">
                           <img src="{{ asset('img/usuarios/'. Auth::user()->avatar) }}" class="img-circle" style="height: 50px;">
                           <a href="{{ route('usuario') }}">{{ Auth::user()->name }} <br> Cuenta</a>
                         </li>
                         <li>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                            <a ng-click="logout()">Salir</a>
                         </li>
                     </ul>
                 @endguest

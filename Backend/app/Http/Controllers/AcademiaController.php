@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mails\AplicacionActividad;
 use File;
-use Mail;
 use Auth;
 use App\User;
 use App\Models\Proyectos\Proyecto;
@@ -33,22 +34,11 @@ class AcademiaController extends Controller
 
     public function filtrar(Request $request){
 
-        // return $request->parametro;
-
         $empresas = Proyecto::where('estado', 'Activo')->orderBy('id','asc')
                             ->orwhere('nombre', 'like', '%' . $request->parametro .'%')
                             ->orwhere('tipo', 'like', '%' . $request->parametro .'%')
                             ->orwhere('categoria', 'like', '%' . $request->parametro .'%')
                             ->with('empresarios')->paginate(12);
-
-        // $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')
-        //                     ->when($request->sector, function($query) use ($request){
-        //                         return $query->where('sector', $request->sector);
-        //                     })
-        //                     ->when($request->municipio, function($query) use ($request){
-        //                         return $query->where('municipio', $request->municipio);
-        //                     })
-        //                     ->with('empresarios')->paginate(12);
                             
         return view('empresas.index', compact('empresas'));   
     }
@@ -58,9 +48,9 @@ class AcademiaController extends Controller
         $proyecto = Proyecto::where('estado', 'Activo')->with('asesores')->where('id', decrypt($id))->firstOrFail();
         $usuario = Auth::user();
 
-        $request['usuario_id'] = $usuario->id;
+        $request['usuario_id']  = $usuario->id;
         $request['proyecto_id'] = $proyecto->id;
-        $request['estado'] = 'En Revisión';
+        $request['estado']      = 'En Revisión';
         
         $request->validate([
             'proyecto_id'   => 'required',
@@ -75,6 +65,8 @@ class AcademiaController extends Controller
             $aplicacion->fill($request->all());
             $aplicacion->save();
         }
+
+        // Mail::to($usuario->email)->send(new AplicacionActividad($aplicacion));
 
         return view('proyectos.proyecto', compact('proyecto', 'usuario', 'aplicacion'));  
     }

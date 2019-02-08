@@ -5,10 +5,10 @@
             <input type="text" name="empresa.producto" class="form-control" placeholder="Nombre" [(ngModel)]="empresa.producto" focus="true" (keyup)="searchEmpresa()">
             <ul class="list-group info">
               <a href="javascript:void(0);" class="list-group-item text-primary" *ngIf="loading"> Buscando... </a>
-              <a href="javascript:void(0);" class="list-group-item text-warning" *ngIf="!loading && productos?.data.length == 0"> Ningun registro encontrado </a>
+              <a href="javascript:void(0);" class="list-group-item text-warning" *ngIf="!loading && empresas?.data.length == 0"> Ningun registro encontrado </a>
             </ul>
-            <ul class="list-group opciones" *ngIf="productos?.total > 0">
-              <a href="javascript:void(0);" class="list-group-item" (click)="selectProducto(producto)" *ngFor=" let producto of productos?.data">
+            <ul class="list-group opciones" *ngIf="empresas?.total > 0">
+              <a href="javascript:void(0);" class="list-group-item" (click)="selectProducto(producto)" *ngFor=" let producto of empresas?.data">
                 {{producto.nombre}} - <small>{{producto.categoria}}</small>
               </a>
             </ul>

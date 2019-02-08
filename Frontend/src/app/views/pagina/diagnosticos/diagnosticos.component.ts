@@ -41,6 +41,10 @@ export class DiagnosticosComponent implements OnInit {
 
     }
 
+    public agregarAccion() {
+         
+    }
+
     public search(){
         if(this.buscador && this.buscador.length > 2) {
             this.loading = true;

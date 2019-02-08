@@ -95,6 +95,10 @@ html,body{min-height:100%}.layout-boxed html,.layout-boxed body{height:100%}body
   background-color: rgba(55, 41, 76, 0.9);
 }
 
+body{
+    background: #f4f4f4 !important;
+}
+
 
 
 /*! bootstrap3-wysihtml5-bower 2014-09-26 */

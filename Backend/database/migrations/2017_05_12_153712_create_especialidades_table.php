@@ -13,8 +13,6 @@ class CreateEspecialidadesTable extends Migration
             $table->increments('id');
 
             $table->string('nombre', 50);
-            
-            $table->integer('cdmype_id')->default(1);
 
             $table->softDeletes();
             $table->timestamps();

@@ -25,7 +25,7 @@ export class ProyectoComponent implements OnInit {
     modalRef: BsModalRef;
 
     constructor( 
-        private apiService: ApiService, private alertService: AlertService,
+        public apiService: ApiService, private alertService: AlertService,
         private route: ActivatedRoute, private router: Router, private modalService: BsModalService
     ) { }
 
@@ -115,6 +115,10 @@ export class ProyectoComponent implements OnInit {
 
     // Empresas
         public openModalEmpresas(template: TemplateRef<any>) {
+            this.modalRef = this.modalService.show(template);
+        }
+
+        public agregarAccion(template: TemplateRef<any>) {
             this.modalRef = this.modalService.show(template);
         }
 

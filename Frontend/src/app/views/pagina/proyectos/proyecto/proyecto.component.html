@@ -3,8 +3,8 @@
 <section class="content-header">
     <h1> Proyecto <small>Edición</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#">Proyectos</a></li>
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a [routerLink]="['/proyectos']">Proyectos</a></li>
         <li class="active">Edición</li>
     </ol>
 </section>
@@ -21,7 +21,7 @@
                         <label for="nombre">* Nombre:</label>
                         <input type="text" class="form-control" [(ngModel)]="proyecto.nombre" name="nombre" placeholder="Nombre" required autofocus>
                     </div>
-                    <div class="form-group col-sm-3">
+                    <div class="form-group col-sm-6">
                         <label for="descripcion">Descripción:</label>
                         <input type="text" class="form-control" [(ngModel)]="proyecto.descripcion" name="descripcion" placeholder="xxxx-x">
                     </div>

@@ -68,7 +68,7 @@ class At extends Model {
 
     public function especialidad()
     {
-        return $this->belongsTo('App\Models\Especialidad');
+        return $this->belongsTo('App\Models\Subespecialidad');
     }
 
     public function consultor()

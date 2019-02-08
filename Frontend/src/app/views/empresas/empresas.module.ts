@@ -11,7 +11,6 @@ import { EmpresaComponent } from './empresa/empresa.component';
 import { EmpresaInfoComponent } from './empresa/info/empresa-info.component';
 import { EmpresaEmpresariosComponent } from './empresa/empresarios/empresa-empresarios.component';
 import { EmpresaProductosComponent } from './empresa/productos/empresa-productos.component';
-import { EmpresaVentasComponent } from './ventas/empresa-ventas.component';
 
 @NgModule({
   imports: [
@@ -26,16 +25,14 @@ import { EmpresaVentasComponent } from './ventas/empresa-ventas.component';
     EmpresaComponent,
     EmpresaInfoComponent,
     EmpresaEmpresariosComponent,
-    EmpresaProductosComponent,
-    EmpresaVentasComponent
+    EmpresaProductosComponent
   ],
   exports: [
   	EmpresasComponent,
     EmpresaComponent,
     EmpresaInfoComponent,
     EmpresaEmpresariosComponent,
-    EmpresaProductosComponent,
-    EmpresaVentasComponent
+    EmpresaProductosComponent
   ]
 })
 export class EmpresasModule { }

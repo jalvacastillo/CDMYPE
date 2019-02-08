@@ -17,11 +17,12 @@ class Proyectos extends Seeder
         {
             $table = new Proyecto;
             $table->nombre          = $faker->realText(30,2);
+            $table->img          = 'default.jpg';
             $table->slug            = str_slug($table->nombre);
             $table->descripcion     = $faker->text;
             $table->tipo            = $faker->randomElement(['Pasantía', 'Hora Social', 'Investigación', 'Proyecto', 'Otro']);
             $table->categoria       = $faker->randomElement(['TIC', 'EFE', 'Financiero', 'Empresarial', 'Otro']);
-            $table->estado          = $faker->randomElement(['Inactivo', 'Activo', 'Ejecución', 'Completado']);
+            $table->estado          = $faker->randomElement(['Inactivo', 'Activo', 'Ejecución', 'Finalizado']);
             $table->especialidad    = 'Mercadeo';
             $table->finalizacion    = $faker->date;
             $table->duracion        = '5 Semanas';

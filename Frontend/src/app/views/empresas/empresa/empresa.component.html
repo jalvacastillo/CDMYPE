@@ -1,20 +1,20 @@
+<div class="container">
+
 <section class="content-header">
-    <h1> Cliente <small>Edición</small> </h1>
+    <h1> Empresa <small>Edición</small> </h1>
     <ol class="breadcrumb">
         <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Cliente</li>
+        <li class="active">Empresa</li>
     </ol>
 </section>
 
 <section class="content animated fadeIn">
 
-<div class="container">
     <div class="row">
 
         
         <div class="col-sm-12">
 
-          
           <div class="box box-primary" style="min-height: 190px;">
             <div class="box-body box-profile">
                 <div class="imagen-upload">
@@ -24,7 +24,7 @@
                 </div>
 
                 <h3 class="text-center">{{ empresa.nombre }}</h3>
-                <p class="text-center">{{ empresa.created_at | date:'dd/mm/yyyy' }}</p>
+                <p class="text-center">{{ empresa.created_at | date:'dd/MM/yyyy hh:mm:ss a' }}</p>
                 <div class="text-right checkbox pull-right">
                     <label>Catalogo: <input type="checkbox" [(ngModel)]="empresa.catalogo" name="catalogo"></label>
                 </div>
@@ -64,5 +64,6 @@
         </div>
 
     </div>
-</div>
 </section>
+
+</div>

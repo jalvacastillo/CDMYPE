@@ -12,7 +12,6 @@
         <div class="container">
             <div class="row blog-page">
 
-              @include('noticias.sidebar')
                 <div class="col-md-9 blog-box">
 
                     @foreach($noticias as $noticia)
@@ -55,8 +54,7 @@
 
                 </div>
 
-
-
+                @include('noticias.sidebar')
 
             </div>
         </div>

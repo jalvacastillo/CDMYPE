@@ -1,0 +1,45 @@
+<form name="frm" role="form" ng-submit="submit()">
+<div class="modal-body" id="modal-body">
+    <h4 class="text-center classic-title" style="margin: 0px 0px 15px 0px;"><span>Iniciar Sesión</span></h4>
+    <div class="row">
+                <div class="col-xs-12" ng-if="alert">
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Woops!</strong> {{ alert }}
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="email">Correo:</label>
+                    <input id="email" type="email" class="form-control" ng-model="login.email" placeholder="tu@correo.com" required>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="password">Contraseña:</label>
+                    <input id="password" type="password" class="form-control" ng-model="login.password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group col-xs-12">
+                    <div class="form-group text-center">
+                        <br>
+                        <button class="btn btn-primary btn-block" type="submit">
+                             <span ng-if="!loading">Entrar</span>
+                             <span ng-if="loading">Entrando...</span>
+                         </button>
+                        <label class="mb-3">O ingresa con:</label>
+                        <a href="{{ route('social.auth', 'facebook') }}" class="btn btn-info btn-block">
+                            <span class="fa fa-facebook fa-fw"></span> Facebook
+                        </a>
+
+                        <a href="{{ route('social.auth', 'google') }}" class="btn btn-danger btn-block">
+                            <span class="fa fa-google fa-fw"></span> Google
+                        </a>
+                        <a href="{{ route('register') }}" class="btn btn-default btn-block">
+                            <span class="fa fa-envelope fa-fw"></span> Crear cuenta
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</form>

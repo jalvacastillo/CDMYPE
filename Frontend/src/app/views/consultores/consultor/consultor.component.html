@@ -38,7 +38,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#info" data-toggle="tab">Información</a></li>
-              <li><a href="#cuenta" data-toggle="tab">Cuenta</a></li>
+              <li><a href="#cuenta" data-toggle="tab" *ngIf="consultor.usuario">Cuenta</a></li>
               <li><a href="#especialidades" data-toggle="tab">Especialidades</a></li>
               <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
             </ul>
@@ -47,8 +47,8 @@
                     <app-consultor-info *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-info>
                 </div>
 
-                <div class="tab-pane fade" id="cuenta">
-                   <!-- <app-consultor-cuenta *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-cuenta>                    -->
+                <div class="tab-pane fade" id="cuenta" *ngIf="consultor.usuario">
+                   <app-consultor-cuenta *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-cuenta>                   
                 </div>
 
                 <div class="tab-pane fade" id="especialidades">
@@ -56,7 +56,7 @@
                 </div>  
 
                 <div class="tab-pane fade" id="historial">
-                   <!-- <app-consultor-ordenes *ngIf="consultor.id" [consultor_id] = "consultor.id"></app-consultor-ordenes> -->
+                   <app-consultor-historial *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-historial>
                 </div>          
             </div>
           </div>

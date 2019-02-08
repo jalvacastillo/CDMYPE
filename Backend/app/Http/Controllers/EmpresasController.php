@@ -45,7 +45,8 @@ class EmpresasController extends Controller
 
     public function paso1(Request $request){
 
-        return 'datos';
+        // return 'datos';
+        return view('empresas.guia.inicio');
 
         $empresa = Empresa::findOrCreateBySessionID(\Session::get('empresa_id'));
         \Session::put('empresa_id', $empresa->id);
@@ -58,7 +59,9 @@ class EmpresasController extends Controller
     }
 
     public function paso2(Request $request){
+        return view('empresas.guia.necesidad');
         return 'Servicios';
+
         $table = new EmpresaEmpresario;
         $table->empresa_id = $empresa->id;
         $table->empresario_id = $empresario->id;
@@ -72,6 +75,7 @@ class EmpresasController extends Controller
     }
     
     public function paso3(Request $request){
+        return view('empresas.guia.registro');
         return 'Registro';
 
         return redirect()->back()->with('message', 'Solicitud recibida, pronto nos pondremos en contacto con tigo!');

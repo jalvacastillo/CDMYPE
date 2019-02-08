@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+use App\Models\Actividades\Aplicacion as Actividad;
+use App\Models\Proyectos\Aplicacion as Proyecto;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +30,8 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        // Actividad::created(function ($actividad) {
+        //     $actividad->sendMail();
+        // });
     }
 }

@@ -13,7 +13,6 @@ import { Data } from '../../../models/data';
 export class BuscadorEmpresasComponent implements OnInit {
 
 	@Input() empresa: any = {};
-	@Input() compra: any = {};
 	@Output() empresaSelect = new EventEmitter();
 	modalRef: BsModalRef;
 

@@ -96,8 +96,11 @@
   <script>
     angular.module("app").constant("CSRF_TOKEN", '{{ csrf_token() }}');
   </script>
+  
 
   <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+  
+  @yield('footer')
 
 </body>
 

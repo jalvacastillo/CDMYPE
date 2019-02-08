@@ -12,6 +12,7 @@ class Proyecto extends Model
     protected $dates = ['finalizacion'];
     protected $fillable = [
         'nombre',
+        'img',
         'descripcion',
         'contenido',
         'tipo',

@@ -67,14 +67,14 @@ class Consultor extends Model {
             return $this->usuario()->pluck('avatar')->first();
         }
 
-        public function capConsultores() 
+        public function caps() 
         {
-            return $this->hasMany('App\Models\Cap\Consultor', 'consultor_id');
+            return $this->hasMany('App\Models\Caps\Consultor', 'consultor_id');
         }
 
         public function ats() 
         {
-            return $this->hasMany('App\Models\At\Consultor', 'consultor_id');
+            return $this->hasMany('App\Models\Ats\Consultor', 'consultor_id');
         }
 
         public function especialidades() 

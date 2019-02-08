@@ -32,10 +32,9 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">ID</th>
                                 <th>Nombre</th>
                                 <th class="hidden-xs">Sector</th>
-                                <th class="hidden-xs">Catálogo</th>
+                                <th class="text-center">Catálogo</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
                             </tr>
                         </thead>
@@ -48,7 +47,6 @@
 
                             <tr class="animated fadeIn" *ngFor=" let empresa of empresas?.data">
                                 
-                                <td class="text-center">{{ empresa.id }}</td>
                                 <td>{{ empresa.nombre }}</td>
                                 <td class="hidden-xs">{{ empresa.sector }}</td>
                                 <td class="text-center hidden-xs">
@@ -56,8 +54,8 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
-                                        <a class="btn btn-default" [routerLink]="['/empresa/', empresa.id]" tooltip="Editar">
-                                        <i class="fa fa-pencil"></i>
+                                        <a class="btn btn-default" [routerLink]="['/empresa/', empresa.id]" tooltip="Detalles">
+                                        <i class="fa fa-arrow-right"></i>
                                         </a>
                                         <!-- <a class="btn btn-default" [routerLink]="['/empresa/ventas/', empresa.id]" tooltip="Historial"> -->
                                         <!-- <i class="fa fa-arrow-right"></i> -->

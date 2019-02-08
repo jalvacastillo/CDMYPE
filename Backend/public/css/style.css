@@ -78,6 +78,7 @@ a {
     -moz-transition: color 0.2s ease-in-out;
     -webkit-transition: color 0.2s ease-in-out;
     -o-transition: color 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 
@@ -5642,6 +5643,14 @@ ul.footer-nav li a:hover {
     position: relative;
 }
 
+.map {
+    background: url(../img/maps.jpg) no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 160px 0;
+    background-size: contain;
+}
+
 .over:after{
     content: "";
     background-color: rgba(0, 175, 209, .8);
@@ -5697,4 +5706,19 @@ ul.footer-nav li a:hover {
         padding: 15px;
         margin-bottom: 10px;
     }
+}
+
+
+/*#calendarModal {
+    top: 100px;
+}*/
+
+
+.modal-dialog {
+    margin-top: 170px;
+}
+
+.modal.fade.ng-scope.ng-isolate-scope.show {
+    background: #2a2663cf;
+    z-index: 10000000 !important;
 }

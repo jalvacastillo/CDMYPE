@@ -14,16 +14,9 @@ import { DashComponent } from './views/dash/dash.component';
 
 import { EmpresasComponent } from './views/empresas/empresas.component';
 import { EmpresaComponent } from './views/empresas/empresa/empresa.component';
-import { EmpresaVentasComponent } from './views/empresas/ventas/empresa-ventas.component';
 
 import { ConsultoresComponent } from './views/consultores/consultores.component';
 import { ConsultorComponent } from './views/consultores/consultor/consultor.component';
-
-import { ComprasComponent } from './views/compras/compras.component';
-import { CompraComponent } from './views/compras/compra/compra.component';
-import { VentasComponent } from './views/ventas/ventas.component';
-import { VentaComponent } from './views/ventas/venta/venta.component';
-
 
 import { EquiposComponent } from './views/pagina/equipo/equipos.component';
 import { EquipoComponent } from './views/pagina/equipo/equipo/equipo.component';
@@ -31,8 +24,13 @@ import { ServiciosComponent } from './views/pagina/servicios/servicios.component
 import { ServicioComponent } from './views/pagina/servicios/servicio/servicio.component';
 import { NoticiasComponent } from './views/pagina/noticias/noticias.component';
 import { NoticiaComponent } from './views/pagina/noticias/noticia/noticia.component';
+
 import { ProyectosComponent } from './views/pagina/proyectos/proyectos.component';
 import { ProyectoComponent } from './views/pagina/proyectos/proyecto/proyecto.component';
+
+import { ActividadesComponent } from './views/pagina/actividades/actividades.component';
+import { ActividadComponent } from './views/pagina/actividades/actividad/actividad.component';
+
 import { ResultadosComponent } from './views/pagina/resultados/resultados.component';
 import { TestimoniosComponent } from './views/pagina/testimonios/testimonios.component';
 import { TestimonioComponent } from './views/pagina/testimonios/testimonio/testimonio.component';
@@ -60,7 +58,6 @@ const appRoutes: Routes = [
     { path: '', component: DashComponent, canActivate: [AuthGuard] },
     
     { path: 'empresas', component: EmpresasComponent, canActivate: [AuthGuard] },
-    { path: 'empresa/ventas/:id', component: EmpresaVentasComponent, canActivate: [AuthGuard] },
     { path: 'empresa/:id', component: EmpresaComponent, canActivate: [AuthGuard] },
     
     { path: 'consultores', component: ConsultoresComponent, canActivate: [AuthGuard] },
@@ -72,8 +69,13 @@ const appRoutes: Routes = [
     { path: 'servicio/:id', component: ServicioComponent, canActivate: [AuthGuard] },
     { path: 'noticias', component: NoticiasComponent, canActivate: [AuthGuard] },
     { path: 'noticia/:id', component: NoticiaComponent, canActivate: [AuthGuard] },
+    
     { path: 'proyectos', component: ProyectosComponent, canActivate: [AuthGuard] },
     { path: 'proyecto/:id', component: ProyectoComponent, canActivate: [AuthGuard] },
+
+    { path: 'actividades', component: ActividadesComponent, canActivate: [AuthGuard] },
+    { path: 'actividad/:id', component: ActividadComponent, canActivate: [AuthGuard] },
+
     { path: 'resultados', component: ResultadosComponent, canActivate: [AuthGuard] },
     { path: 'testimonios', component: TestimoniosComponent, canActivate: [AuthGuard] },
     { path: 'testimonio/:id', component: TestimonioComponent, canActivate: [AuthGuard] },
@@ -84,9 +86,6 @@ const appRoutes: Routes = [
     // Ats
     { path: 'ats', component: AtsComponent, canActivate: [AuthGuard] },
     { path: 'at/:id', component: AtComponent, canActivate: [AuthGuard] },
-
-    { path: 'compras', component: ComprasComponent, canActivate: [AuthGuard] },
-    { path: 'compra/:id', component: CompraComponent, canActivate: [AuthGuard] },
 
 
     // otherwise redirect to home

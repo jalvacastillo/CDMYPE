@@ -7,7 +7,7 @@
                 <p class="title-desc" style="margin: 0;">Contamos con asesores especialisados en diferentes áreas</p>
             </div>
 
-            <div class="col-xs-6 col-xs-offset-3">
+            <div class="col-md-8 col-md-offset-2">
                 <img src="{{ asset('img/team/team.jpg') }}" class="img-responsive" alt="" style="margin: auto;">
             </div>
         </div>

@@ -44,7 +44,7 @@
                   <img class="img-circle" src="{{ asset('img/team/'. $asesor->avatar) }}" alt="{{ $asesor->nombre }}" style="height:30px;" data-toggle="tooltip" title="{{ $asesor->nombre }}">
                 @endforeach
               </p>
-              <p>Publicado hace {{ $proyecto->created_at->diffForHumans() }}</p>
+              <p>Publicado {{ $proyecto->created_at->diffForHumans() }}</p>
 
               <p class="label label-primary">{{ $proyecto->categoria }}</p>
               <p class="label label-info">{{ $proyecto->tipo }}</p>

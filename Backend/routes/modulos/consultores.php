@@ -1,16 +1,14 @@
 <?php 
 
-    Route::get('/consultores',         	'Consultores\ConsultorController@index');
-    Route::get('/consultores/buscar/{txt}',  	'Consultores\ConsultorController@search');
-    Route::get('/consultor/{id}',       'Consultores\ConsultorController@read');
-    Route::post('/consultor',           'Consultores\ConsultorController@store');
-    Route::delete('/consultor/{id}',    'Consultores\ConsultorController@delete');
+    Route::get('/consultores',         	'Consultores\ConsultoresController@index');
+    Route::get('/consultores/buscar/{txt}',  	'Consultores\ConsultoresController@search');
+    Route::get('/consultor/{id}',       'Consultores\ConsultoresController@read');
+    Route::post('/consultor',           'Consultores\ConsultoresController@store');
+    Route::delete('/consultor/{id}',    'Consultores\ConsultoresController@delete');
 
-	Route::get('/consultor/historial/{id}',  		'Consultores\ConsultorController@historial');
+	Route::get('/consultor/historial/{id}',  		'Consultores\ConsultoresController@historial');
 
-	Route::get('/consultor/especialidades', 	'Consultores\EspecialidadController@index');
-    Route::post('/consultor/especialidad',         	'Consultores\EspecialidadController@store');
-    Route::get('/consultor/especialidad/{id}',     	'Consultores\EspecialidadController@read');
-    Route::delete('/consultor/especialidad/{id}',  	'Consultores\EspecialidadController@delete');
+    Route::post('/consultor/especialidad',         	'Consultores\EspecialidadesController@store');
+    Route::delete('/consultor/especialidad/{id}',  	'Consultores\EspecialidadesController@delete');
 
 ?>

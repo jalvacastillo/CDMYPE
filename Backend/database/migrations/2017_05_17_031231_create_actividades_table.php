@@ -17,12 +17,16 @@ class CreateActividadesTable extends Migration
             $table->increments('id');
             
             $table->string('nombre');
+            $table->string('img')->default('default.jpg');
             $table->text('descripcion');
             $table->string('tipo');
             $table->string('categoria');
             $table->string('estado');
             $table->string('especialidad');
             $table->text('contenido');
+            $table->integer('cupo');
+            $table->datetime('inicio');
+            $table->datetime('fin');
             
             $table->softDeletes();
             $table->timestamps();

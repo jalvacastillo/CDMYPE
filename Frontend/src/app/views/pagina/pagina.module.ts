@@ -16,13 +16,22 @@ import { EquipoCuentaComponent } from './equipo/equipo/cuenta/equipo-cuenta.comp
 
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioComponent } from './servicios/servicio/servicio.component';
+
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
+
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { ProyectoComponent } from './proyectos/proyecto/proyecto.component';
+
+import { ActividadesComponent } from './actividades/actividades.component';
+import { ActividadComponent } from './actividades/actividad/actividad.component';
+import { ActividadInfoComponent } from './actividades/actividad/info/actividad-info.component';
+import { ActividadAplicacionesComponent } from './actividades/actividad/aplicaciones/actividad-aplicaciones.component';
+
 import { ResultadosComponent } from './resultados/resultados.component';
 import { TestimoniosComponent } from './testimonios/testimonios.component';
 import { TestimonioComponent } from './testimonios/testimonio/testimonio.component';
+
 import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
 import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.component';
 
@@ -48,6 +57,10 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     NoticiaComponent,
     ProyectosComponent,
   	ProyectoComponent,
+    ActividadesComponent,
+    ActividadComponent,
+    ActividadInfoComponent,
+    ActividadAplicacionesComponent,
     ResultadosComponent,
     TestimoniosComponent,
     TestimonioComponent,
@@ -65,6 +78,10 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     NoticiaComponent,
     ProyectosComponent,
   	ProyectoComponent,
+    ActividadesComponent,
+    ActividadComponent,
+    ActividadInfoComponent,
+    ActividadAplicacionesComponent,
     ResultadosComponent,
     TestimoniosComponent,
     TestimonioComponent,

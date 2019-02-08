@@ -10,6 +10,7 @@ import { ApiService } from '../../../../services/api.service';
 export class ConsultorEspecialidadesComponent implements OnInit {
 
 	@Input() consultor:any = {};
+    public especialidades:any[] = [];
     public especialidad:any = {};
     public loading:boolean = false;
 
@@ -19,33 +20,37 @@ export class ConsultorEspecialidadesComponent implements OnInit {
         ) { }
 
 	ngOnInit() {
-
+        this.apiService.getAll('subespecialidades').subscribe(especialidades => {
+            this.loading = false;
+            this.especialidades = especialidades;
+        },error => {this.alertService.error(error); this.loading = false; });
 	}
 
     public onSubmit(){
-        if (this.especialidad.nombre) {
-            this.loading = true;
-            this.especialidad.consultor_id = this.consultor.id;
-            this.apiService.store('consultor/especialidad', this.especialidad).subscribe(especialidad => {
-                this.loading = false;
-                if (!this.especialidad.id) { 
-                    this.consultor.especialidads.push(especialidad);
-                }
-                this.especialidad = {};
-            },error => {this.alertService.error(error); this.loading = false; });
-        }
+        this.loading = true;
+        this.especialidad.consultor_id = this.consultor.id;
+        this.apiService.store('consultor/especialidad', this.especialidad).subscribe(especialidad => {
+            this.loading = false;
+            if (!this.especialidad.id && especialidad.id) { 
+                this.consultor.especialidades.push(especialidad);
+            }
+            this.especialidad = {};
+        },error => {this.alertService.error(error); this.loading = false; });
     }
 
-    public selProducto(especialidad:any){
-        this.especialidad = especialidad;
+    public onSelect(item:any){
+
+        this.especialidad.especialidad_id = item.item.id;
+
+        this.onSubmit();
     }
 
-    public delProducto(id:number) {
+    public delete(id:number) {
         if (confirm('¿Desea eliminar el Registro?')) {
             this.apiService.delete('consultor/especialidad/', id) .subscribe(data => {
-                for (let i = 0; i < this.consultor.especialidads.length; i++) { 
-                    if (this.consultor.especialidads[i].id == data.id )
-                        this.consultor.especialidads.splice(i, 1);
+                for (let i = 0; i < this.consultor.especialidades.length; i++) { 
+                    if (this.consultor.especialidades[i].id == data.id )
+                        this.consultor.especialidades.splice(i, 1);
                 }
             }, error => {this.alertService.error(error); });
         }
