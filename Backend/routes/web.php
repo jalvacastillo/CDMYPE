@@ -51,9 +51,9 @@ Route::get('/actividades',  'ActividadesController@actividades')->name('activida
     Route::get('/actividades/calendario', 'ActividadesController@calendario')->name('actividadesCalendario');
 
 // Noticias
-Route::get('/noticias',   'HomeController@noticias')->name('noticias');
-    Route::get('/noticias/categoria/{cat}',   'HomeController@noticiasCategoria');
-    Route::get('/noticia/{slug}',   'HomeController@noticia');
+Route::get('/noticias',                     'NoticiasController@noticias')->name('noticias');
+    Route::get('/noticias/categoria/{cat}', 'NoticiasController@noticiasCategoria');
+    Route::get('/noticia/{slug}',           'NoticiasController@noticia');
 
 // Contactos
 Route::get('/contactos',  'HomeController@contactos')->name('contactos');

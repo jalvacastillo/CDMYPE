@@ -59,7 +59,8 @@
                 <div class="row list-group">
                 
                 @foreach($proyectos as $proyecto)
-                    <div class="list-group-item col-xs-6">
+                <div class="col-xs-6">
+                    <div class="list-group-item" style="margin-bottom: 15px;">
                         <div class="row">
                         <div class="media col-sm-3 hidden-xs">
                           <figure class="pull-left">
@@ -81,6 +82,7 @@
                         </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
 
                 </div>

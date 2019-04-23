@@ -44,8 +44,8 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
               @foreach ($menu as $element)
-              <li class="drop">
-                <a class="{{ Request::is($element['route']) ? 'active' : '' }}" href="{{ route($element['route']) }}">
+              <li class="drop {{ Route::is($element['route']) ? 'active' : '' }}">
+                <a class="{{ Route::is($element['route']) ? 'active' : '' }}" href="{{ route($element['route']) }}">
                   {{ $element['nombre'] }}
                 </a>
                 @if ($element['elementos'])
@@ -64,14 +64,15 @@
                 @else
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{-- {{ Auth::user()->name }} --}}
-                        <i class="fa fa-user"></i>
+                        {{-- <i class="fa fa-user"></i> --}}
+                        Cuenta
                         <span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu" style="right: 0px; left: auto;">
                         <li class="text-center">
-                          <img src="{{ asset('img/usuarios/'. Auth::user()->avatar) }}" class="img-circle" style="height: 50px;">
-                          <a href="{{ route('usuario') }}">{{ Auth::user()->name }} <br> Cuenta</a>
+                          {{-- <img src="{{ asset('img/usuarios/'. Auth::user()->avatar) }}" class="img-circle" style="height: 50px;"> --}}
+                          <a href="{{ route('usuario') }}">{{ Auth::user()->name }} <br> {{ Auth::user()->tipo }} </a>
                         </li>
                         <li>
                             <a ng-click="logout()">Salir</a>

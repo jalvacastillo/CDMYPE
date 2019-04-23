@@ -83,9 +83,12 @@
           </div>
         @else
           @guest
-            <p class="text-center">Para aplicar primero tienes que <a href="{{ route('login') }}">iniciar sesión</a> o <a href="{{ route('register') }}">crear una cuenta</a>.</p>
+          <div ng-controller="AuthCtrl">
+            <p class="text-center">Para aplicar primero tienes que <a ng-click="login()">iniciar sesión</a> o <a href="{{ route('register') }}">crear una cuenta</a>.</p>
+          </div>
           @endguest
           @auth
+          @if (Auth::user()->tipo != 'Administrador')
           <h3 class="text-center">Confirma tus datos para aplicar:</h3>
           <form class="form" method="POST" action="{{ route('aplicarProyecto', [str_slug($proyecto->nombre), encrypt($proyecto->id) ]) }}">
             {{ csrf_field() }}
@@ -108,6 +111,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Aplicar</button>
           </form>
+          @endif
           @endauth
         @endif
     </div>

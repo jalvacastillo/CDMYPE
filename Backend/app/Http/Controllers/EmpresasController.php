@@ -9,14 +9,14 @@ class EmpresasController extends Controller
 {
         
     public function empresas(){
-        // $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')->with('empresarios')->paginate(12);
-        $empresas = Empresa::orderBy('id','asc')->with('empresarios')->paginate(12);
+        $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')->with('empresarios')->paginate(12);
+        // $empresas = Empresa::orderBy('id','asc')->with('empresarios')->paginate(12);
         return view('empresas.index', compact('empresas'));   
     }
 
     public function empresa($slug, $id){
-        // $empresa = Empresa::where('catalogo', 1)->where('id', decrypt($id))->with('empresarios')->firstOrFail();
-        $empresa = Empresa::where('id', decrypt($id))->with('empresarios')->firstOrFail();
+        $empresa = Empresa::where('catalogo', 1)->where('id', decrypt($id))->with('empresarios')->firstOrFail();
+        // $empresa = Empresa::where('id', decrypt($id))->with('empresarios')->firstOrFail();
         return view('empresas.empresa', compact('empresa'));
     }
 
