@@ -1,0 +1,65 @@
+
+
+<div class="container">
+<section class="content-header">
+    <h1> Capacitación <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Capacitación</li>
+    </ol>
+</section>
+    
+<section class="content animated fadeIn">
+    <div class="row">
+        <!-- <div class="col-sm-12">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{{ at.tema }}</h3>
+                <p class="text-center">{{ at.created_at | date:'dd/mm/yyyy' }}</p>
+            </div>
+          </div>
+        </div> -->
+        
+        
+        <div class="col-sm-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs nav-justified">
+              <li class="active"><a href="#tdr" data-toggle="tab">Paso 1 <br> <b>Termino</b></a></li>
+              <li><a href="#consultores" data-toggle="tab">Paso 2 <br> <b>Ofertas</b></a></li>
+              <li><a href="#convocatoria" data-toggle="tab">Paso 3 <br> <b>Convocatoria</b></a></li>
+              <li><a href="#contrato" data-toggle="tab">Paso 4 <br> <b>Contrato</b></a></li>
+              <li><a href="#asistencia" data-toggle="tab">Paso 5 <br> <b>Asistencia</b></a></li>
+              <li><a href="#informe" data-toggle="tab">Paso 6 <br> <b>Informe</b></a></li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane fade in active" id="tdr">
+                    <app-cap-tdr [cap] = "cap"></app-cap-tdr>
+                </div>
+
+                <div class="tab-pane fade" id="convocatoria">
+                    <app-cap-empresarios *ngIf="cap.id"></app-cap-empresarios>
+                </div>
+
+                <div class="tab-pane fade" id="consultores">
+                   <app-cap-consultores *ngIf="cap.id"></app-cap-consultores>
+                   
+                </div>
+
+                <div class="tab-pane fade" id="contrato">
+                   <app-cap-contrato *ngIf="cap.id"></app-cap-contrato>
+                </div>  
+
+                <div class="tab-pane fade" id="asistencia">
+                   <app-cap-asistencia *ngIf="cap.id"></app-cap-asistencia>
+                </div>  
+                <div class="tab-pane fade" id="informe">
+                   <app-cap-informe *ngIf="cap.id"></app-cap-informe>
+                </div>          
+            </div>
+          </div>
+        </div>
+
+    </div>
+</section>
+</div>

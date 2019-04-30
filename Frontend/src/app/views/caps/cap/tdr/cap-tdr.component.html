@@ -1,0 +1,120 @@
+<form name="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label> * Encabezado:</label>
+                <input type="text" class="form-control" name="encabezado" [(ngModel)]="cap.encabezado" placeholder="Encabezado" required />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label> * Tema:</label>
+                <input type="text" class="form-control" name="tema" [(ngModel)]="cap.tema" placeholder="Nombre" required />
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> * Categoria:</label>
+                <input type="text" class="form-control" name="categoria" [(ngModel)]="cap.categoria" placeholder="Categoria" required />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> * Lugar:</label>
+                <input type="text" class="form-control" name="lugar" [(ngModel)]="cap.lugar" placeholder="Lugar" required />
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Especialidad:</label>
+                <select class="form-control" [(ngModel)]="cap.especialidad_id" name="especialidad_id">
+                    <optgroup *ngFor="let esp of especialidades" label="{{esp.nombre}}">
+                        <option *ngFor="let sub of esp.subespecialidades" [ngValue]="sub.id">{{ sub.nombre }}</option>
+                      </optgroup>
+                </select>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="obj_general"> Objetivo General:</label>
+            <textarea class="form-control" name="obj_general" [(ngModel)]="cap.obj_general" cols="30" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="obj_especifico"> Objetivo Especifico:</label>
+                <textarea class="form-control" name="obj_especifico" [(ngModel)]="cap.obj_especifico" cols="30" rows="3"></textarea>
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="productos"> Productos:</label>
+                <textarea class="form-control" name="productos" [(ngModel)]="cap.productos" cols="30" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Fecha Limite:</label>
+                <input type="date" class="form-control" name="fecha_limite" [(ngModel)]="cap.fecha_limite"/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Fecha Inicio:</label>
+                <input type="text" class="form-control" name="fecha_ini" [(ngModel)]="cap.fecha_ini"/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label> Fecha Fin:</label>
+                <input type="text" class="form-control" name="fecha_fin" [(ngModel)]="cap.fecha_fin"/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label> Descripción:</label>
+                <input type="text" class="form-control" name="descripcion" [(ngModel)]="cap.descripcion"/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label> Nota:</label>
+                <input type="text" class="form-control" name="nota" [(ngModel)]="cap.nota" />
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+          <a *ngIf="cap.id" target="_blank" href="{{ apiService.baseUrl + '/cap/tdr/' + cap.id }}" class="btn btn-default"> Imprimir</a>
+          <button [disabled]="loading" class="btn btn-primary pull-right">
+              <span *ngIf="!loading">Guardar</span>
+              <span *ngIf="loading">Guardando...</span>
+          </button>
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="titulo"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input type="hidden" id="myModalBandera">
+                        <textarea class="form-control" id="texto" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-primary" (click)="ocultar()" >Guardar</a>
+            </div>
+        </div>
+    </div>
+</div>

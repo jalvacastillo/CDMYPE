@@ -1,0 +1,24 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6 col-md-offset-3">
+     
+      <a *ngIf="at.id" target="_blank" href="{{ apiService.baseUrl + '/at/tdr/' + at.id }}" class="btn btn-default btn-block"> TDR</a>
+      <a *ngIf="contrato.id" target="_blank" href="{{ apiService.baseUrl + '/at/contrato/' + contrato.id }}" class="btn btn-default btn-block"> Contrato</a>
+      <a *ngIf="acta.id" target="_blank" href="{{ apiService.baseUrl + '/at/acta/' + acta.id }}" class="btn btn-default btn-block"> Contrato</a>
+      <a *ngIf="at.id" target="_blank" href="{{ apiService.baseUrl + '/at/recibo-aporte/' + at.id }}" class="btn btn-default btn-block"> Recibo Aporte</a>
+      <a *ngIf="at.id" target="_blank" href="{{ apiService.baseUrl + '/at/pago-aporte/' + at.id }}" class="btn btn-default btn-block"> Pago </a>
+      <a *ngIf="at.id" target="_blank" href="{{ apiService.baseUrl + '/at/acta-recepcion/' + at.id }}" class="btn btn-default btn-block"> Acta recepcion </a>
+      <a *ngIf="at.informe" target="_blank" href="{{ apiService.baseUrl + '/at/at/informes/' + at.informe }}" class="btn btn-default btn-block"> Informe </a>
+      
+      <br>
+      <br>
+      <form name="form" (ngSubmit)="onSubmitFile(consultor)">
+         <div class="row">
+             <div class="form-group col-md-12">
+                 <label for="informe">Informe:</label>
+                 <input type="file" name="img" (change)="setFile($event)" accept="application/pdf">
+             </div>
+         </div>
+      </form>
+
+    </div>
+</div>

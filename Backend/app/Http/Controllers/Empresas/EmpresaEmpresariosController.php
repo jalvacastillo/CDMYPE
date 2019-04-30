@@ -3,34 +3,42 @@
 namespace App\Http\Controllers\Empresas;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Empresas\EmpresaEmpresarioRequest;
+use Illuminate\Http\Request;
+
 use App\Models\Empresas\EmpresaEmpresario;
 
 class EmpresaEmpresariosController extends Controller
 {
     
-    public function store(EmpresaEmpresarioRequest $request)
+    public function store(Request $request)
     {
+
+        $request->validate([
+            'empresa_id'        => 'required',
+            'empresario_id'     => 'required',
+            'tipo'              => 'required',
+        ]);
+
         if($request->id){
-            $producto = EmpresaEmpresario::findOrFail($request->id);
+            $empresario = EmpresaEmpresario::findOrFail($request->id);
         }
         else{
-            $producto = new EmpresaEmpresario;
+            $empresario = new EmpresaEmpresario;
         }
         
-        $producto->fill($request->all());
-        $producto->save();
+        $empresario->fill($request->all());
+        $empresario->save();
 
-        return Response()->json($producto, 200);
+        return Response()->json($empresario, 200);
 
     }
 
     public function delete($id)
     {
-        $producto = EmpresaEmpresario::findOrFail($id);
-        $producto->delete();
+        $empresario = EmpresaEmpresario::findOrFail($id);
+        $empresario->delete();
 
-        return Response()->json($producto, 201);
+        return Response()->json($empresario, 201);
 
     }
 

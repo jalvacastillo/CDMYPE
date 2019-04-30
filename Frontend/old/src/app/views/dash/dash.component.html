@@ -1,0 +1,29 @@
+<div class="container">
+  
+<section class="content-header">
+    <h1> Dashboard <small>Panel de Control</small> </h1>
+    
+    <ol class="breadcrumb">
+      <li> <a [routerLink]="['/dashboard']"><i class="fa fa-oard"></i> Home</a> </li>
+      <li class="active">Dashboard</li>
+    </ol>
+</section>
+<section class="content animated fadeIn">
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <div class="btn-group" role="group">
+              <button class="btn" [ngClass]="{'btn-primary' : select == 'today'}" (click)="today()">Hoy</button>
+              <button class="btn" [ngClass]="{'btn-primary' : select == 'month'}" (click)="today()">Mes</button>
+              <button class="btn" [ngClass]="{'btn-primary' : select == 'year'}" (click)="today()">Año</button>
+              <button class="btn" [ngClass]="{'btn-primary' : select == 'all'}" (click)="today()">Todos</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <app-datos [datos]="datos"></app-datos>
+    </div>
+
+</section>
+
+</div>

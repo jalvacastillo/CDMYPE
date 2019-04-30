@@ -13,12 +13,11 @@ class CreateCapContratosTable extends Migration
             
             $table->increments('id');
 
-            $table->integer('termino_id');
+            $table->integer('cap_id');
             $table->string('lugar')->nullable();
             $table->enum('firma', ['Director', 'Directora'])->nullable();
-            $table->double('pago')->nullable();
+            $table->decimal('pago')->nullable();
             
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,0 +1,36 @@
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row" *ngIf="at.id">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label> * Empresa:</label>
+            {{ at.empresa }}
+            <!-- <input class="form-control" type="text" name="empresa" [(ngModel)]="search" placeholder="Buscar" autofocus> -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Sector</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3" class="text-center" *ngIf="at?.empresas.lenght < 1">
+                            <span class="label label-info">No tiene empresas registrados</span>
+                        </td>
+                    </tr>
+
+                    <tr class="animated fadeIn" *ngFor=" let empresa of at?.empresas">
+                        <td>{{ empresa.nombre }}</td>
+                        <td>{{ empresa.sector }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label> * Empresario:</label>
+     </div>
+    </div>
+</div>
+</form>

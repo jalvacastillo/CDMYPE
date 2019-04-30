@@ -3,7 +3,7 @@
 <section class="content-header">
     <h1> Consultores <small>Listado</small> </h1>
     <ol class="breadcrumb">
-        <li><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Consultores</li>
     </ol>
 </section>
@@ -23,7 +23,7 @@
                             <div class="input-group-btn">
                                 <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
-                                <a [routerLink]="['/consultor/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/consultor/nuevo" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,6 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">ID</th>
                                 <th>Nombre</th>
                                 <th>Especialidad</th>
                                 <th class="text-center">Tipo</th>
@@ -45,19 +44,21 @@
                                 <td colspan="8" class="text-center" *ngIf="consultores?.total < 1">
                                     <span class="label label-info">No tiene consultores registrados</span>
                                 </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
                             </tr>
 
                             <tr class="animated fadeIn" *ngFor=" let consultor of consultores?.data">
                                 
-                                <td class="text-center">{{consultor.id}}</td>
-                                <td>{{consultor.nombre}}</td>
+                                <td><a routerLink="/consultor/{{ consultor.id }}" tooltip="Editar">{{consultor.nombre}}</a></td>
                                 <td>{{consultor.especialidad}}</td>
                                 <td class="text-center">{{consultor.tipo}}</td>
                                 <td class="text-center">{{consultor.municipio}}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
-                                        <a class="btn btn-default" [routerLink]="['/consultor/', consultor.id]" tooltip="Editar">
-                                        <i class="fa fa-pencil"></i>
+                                        <a class="btn btn-default" routerLink="/consultor/{{ consultor.id }}" tooltip="Editar">
+                                        <i class="fa fa-arrow-right"></i>
                                         </a>
                                         <!-- <a class="btn btn-default" [routerLink]="['/consultor/compras/', consultor.id]" tooltip="Historial"> -->
                                         <!-- <i class="fa fa-arrow-right"></i> -->

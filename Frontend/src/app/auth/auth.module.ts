@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { FocusModule } from 'angular2-focus';
+
 import { LoginComponent } from './../auth/login/login.component';
 import { RegisterComponent } from './../auth/register/register.component';
 
@@ -10,7 +12,8 @@ import { RegisterComponent } from './../auth/register/register.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    FocusModule.forRoot()
   ],
   declarations: [
   	LoginComponent,

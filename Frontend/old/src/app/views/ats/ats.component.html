@@ -1,0 +1,100 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Asistencias Técnicas <small>Listado</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Asistencias Técnicas</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <span class="label label-default" *ngIf="ats?.total">Registros: {{ats?.total}}</span>
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">
+                        <form name="form" (ngSubmit)="search(buscador)">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador">
+                        </form>
+                            <div class="input-group-btn">
+                                <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a [routerLink]="['/at/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Fecha</th>
+                                <th>Tema</th>
+                                <th class="hidden-xs">Empresa</th>
+                                <th class="hidden-xs">Encargado</th>
+                                <th class="hidden-xs">Especialidad</th>
+                                <th class="hidden-xs">Estado</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="ats?.total < 1">
+                                    <span class="label label-info">No tiene ats registrados</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let at of ats?.data">
+                                
+                                <td class="text-center">{{ at.created_at | date:'dd-MM-yyyy' }}</td>
+                                <td>{{ at.tema | truncate:30 }}</td>
+                                <td class="text-center">
+                                    <span *ngFor=" let empresa of at?.empresas">
+                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + 'img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <img class="img-circle" *ngIf="at.asesor?.avatar" src="{{apiService.baseUrl + 'img/team/' + at.asesor.avatar }}" height="30px" tooltip="{{ at.asesor.name }}"/>
+                                </td>
+                                <td>{{ at.especialidad }}</td>
+                                <td class="text-center">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : at?.estado == 'Creada', 'label-warning' : at?.estado == 'Contratada', 'label-success' : at?.estado == 'Finalizada', 'label-info' : at?.estado == 'Enviada'}" [popover]="popTemplate" [outsideClick]="true">
+                                        {{at.estado}}
+                                    </span>
+                                    <ng-template #popTemplate>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(at, 'Creada')">Creada</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(at, 'Enviada')">Enviada</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(at, 'Contratada')">Contratada</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(at, 'Finalizada')">Finalizada</button>
+                                    </ng-template>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" [routerLink]="['/at/', at.id]" tooltip="Editar">
+                                        <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        <!-- <a class="btn btn-default" [routerLink]="['/at/ventas/', at.id]" tooltip="Historial"> -->
+                                        <!-- <i class="fa fa-arrow-right"></i> -->
+                                        <!-- </a> -->
+                                        <!-- <a class="btn btn-default" (click)="delete(at.id)" tooltip="Eliminar"> -->
+                                        <!-- <i class="fa fa-trash"></i></a> -->
+                                    </div>  
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center" *ngIf="ats?.last_page > 1">
+                        <app-pagination [items]="ats" (setPagination)="setPagination($event)"></app-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>

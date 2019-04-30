@@ -18,6 +18,14 @@ class ConsultoresController extends Controller
 
     }
 
+    public function all() {
+       
+        $consultores = Consultor::orderBy('id','dsc')->get();
+
+        return Response()->json($consultores, 200);
+
+    }
+
 
     public function read($id) {
 
@@ -57,6 +65,19 @@ class ConsultoresController extends Controller
     public function search($txt) {
 
         $consultores = Consultor::where('nombre', 'like' ,'%' . $txt . '%')->paginate(7);
+        return Response()->json($consultores, 200);
+
+    }
+
+    public function filter($columna, $valor) {
+        // return $columna;
+        $consultores = Consultor::with('especialidades')
+                                    ->whereHas('especialidades', function($query) use ($valor) {
+                                        $query->where('especialidad_id', $valor);
+                                    })->get();
+        foreach ($consultores as $consultor) {
+            $consultor->enviar = true;
+        }
         return Response()->json($consultores, 200);
 
     }

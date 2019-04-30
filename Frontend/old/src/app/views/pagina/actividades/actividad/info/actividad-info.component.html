@@ -1,0 +1,107 @@
+<form name="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="nombre">* Nombre:</label>
+            <input type="text" class="form-control" [(ngModel)]="actividad.nombre" name="nombre" placeholder="Nombre" required autofocus>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" class="form-control" [(ngModel)]="actividad.descripcion" name="descripcion" placeholder="xxxx-x">
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="tipo">Tipo:</label>
+            <select class="form-control" [(ngModel)]="actividad.tipo" name="tipo">
+                <option value="Capacitación">Capacitación</option>
+                <option value="Webinar">Webinar</option>
+                <option value="Taller">Taller</option>
+                <option value="Seminario">Seminario</option>
+                <option value="Curso">Curso</option>
+                <option value="Evento">Evento</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="estado">Estado:</label>
+            <select class="form-control" [(ngModel)]="actividad.estado" name="estado">
+                <option value="Inactivo">Inactivo</option>
+                <option value="Activo">Activo</option>
+                <option value="Ejecución">Ejecución</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="categoria">Categoria:</label>
+            <select class="form-control" [(ngModel)]="actividad.categoria" name="categoria">
+                <option value="Formación">Formación</option>
+                <option value="Comercialización">Comercialización</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="especialidad_id">Especialidad:</label>
+            <select class="form-control" [(ngModel)]="actividad.especialidad" name="especialidad">
+                <option *ngFor="let esp of especialidades" [ngValue]="esp.nombre">{{ esp.nombre }}</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="finalizacion">Inicio:</label>
+            <input type="datetime" class="form-control" [(ngModel)]="actividad.inicio" name="inicio">
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="finalizacion">Finalización:</label>
+            <input type="datetime" class="form-control" [(ngModel)]="actividad.fin" name="finalizacion">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="cupo">* Cupo:</label>
+            <input type="number" class="form-control" [(ngModel)]="actividad.cupo" name="cupo" placeholder="0" required>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label for="duracion">Asesores:</label>
+            <div style="display: block;">
+                <span *ngFor=" let asesor of actividad?.asesores">
+                    <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
+                </span>
+                <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + 'img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <textarea id="compose-textarea" name="contenido"  class="form-control" style="height: 200px">{{ actividad?.contenido }}</textarea>
+        </div>
+        <div class="col-xs-12">
+          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+          <button [disabled]="loading" class="btn btn-primary pull-right">
+              <span *ngIf="!loading">Guardar</span>
+              <span *ngIf="loading">Guardando...</span>
+          </button>
+        </div>
+    </div>
+</form>
+
+<ng-template #mAsesores>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <h2 class="text-center no-margin">Asesores</h2>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <table class="table table-hover">
+                <tbody>
+                    <tr *ngFor=" let asesor of asesores">
+                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
+                        <td>{{ asesor.nombre }}</td>
+                        <td class="text-center">
+                            <button (click)="agregarAsesor(asesor)" class="btn btn-primary" [disabled]="loading">
+                                <span *ngIf="!loading">Agregar</span>
+                                <span *ngIf="loading">Agregando</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </div>
+</ng-template>

@@ -35,4 +35,4 @@ import { ReportesComponent } from './reportes/reportes.component';
     UsuarioComponent
   ]
 })
-export class AdminsModule { }
+export class AdminModule { }

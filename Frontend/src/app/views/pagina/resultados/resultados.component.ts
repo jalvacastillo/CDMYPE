@@ -4,7 +4,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AlertService } from '../../../services/alert.service';
 import { ApiService } from '../../../services/api.service';
-import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-resultados',
@@ -12,7 +11,7 @@ import { Data } from '../../../models/data';
 })
 export class ResultadosComponent implements OnInit {
 
-    public resultados:Data;
+    public resultados:any = [];
     public resultado: any = {};
     public paginacion = [];
     public loading:boolean = false;

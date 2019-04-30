@@ -1,50 +1,68 @@
-<div class="row">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Especialidad</th>
-                <th>Estado</th>
-                <th class="text-center"><i class="fa fa-cog"></i></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td colspan="3" class="text-center" *ngIf="at.consultores?.length < 1">
-                    <span class="label label-info">No tiene consultores registradas</span>
-                </td>
-            </tr>
+<div class="row animated fadeIn">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12">
+                      <button (click)="openModal(mConsultor, {})" class="pull-right btn btn-default" tooltip="Agregar">
+                          Agregar <i class="fa fa-plus"></i>
+                      </button>
+                      <button (click)="openModalCorreos(mCorreos)" class="pull-right btn btn-primary" tooltip="Envíar TDR" style="margin-right: 10px;">
+                          Enviar <i class="fa fa-envelope"></i>
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                              <th>Nombre</th>
+                              <th>Fecha</th>
+                              <th class="text-center">Oferta</th>
+                              <th class="text-center">Estado</th>
+                              <th class="text-center"><i class="fa fa-cog"></i></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td colspan="5" class="text-center" *ngIf="consultores?.total < 1 && !loading">
+                                  <span class="label label-info">No tiene ofertas registrados</span>
+                              </td>
+                              <td colspan="5" class="text-center" *ngIf="loading">
+                                  <span class="label label-info">Cargando...</span>
+                              </td>
+                          </tr>
 
-            <tr class="animated fadeIn" *ngFor=" let consultor of at?.consultores">
-                
-                <td>{{ consultor.nombre }}</td>
-                <td>{{ consultor.especialidad }}</td>
-                <td>{{ consultor.estado }}</td>
-                <td class="text-center">
-                    <div class="btn-group" role="group">
-                        <a class="btn btn-default" (click)="openModal(mConsultor, consultor.consultor)" tooltip="Editar">
-                        <i class="fa fa-pencil"></i>
-                        </a>
-                        <a class="btn btn-default" (click)="eliminar(consultor)" tooltip="Eliminar">
-                        <i class="fa fa-trash"></i></a>
-                    </div> 
-                </td>
+                          <tr class="animated fadeIn" *ngFor=" let consultor of consultores">
+                              
+                              <td><a routerLink="/consultor/{{consultor.id}}">{{ consultor.nombre }}</a></td>
+                              <td>{{ consultor.fecha_oferta | date:'dd-MM-yyyy hh:mm a' }}</td>
+                              <td class="text-center">
+                                <a target="_blank" class="btn btn-default" href="{{ apiService.baseUrl + '/ofertas/' + consultor.doc_oferta }}">
+                                    <i class="fa fa-file"></i>
+                                  </a>
+                              </td>
+                              <td class="text-center">
+                                  <a *ngIf="!consultor.seleccionado" class="btn btn-default" (click)="seleccionar(consultor)" tooltip="Seleccionar">
+                                    Seleccionar
+                                  </a>
+                                  <span *ngIf="consultor.seleccionado">Seleccionado</span>
+                              </td>
+                              <td class="text-center">
+                                  <div class="btn-group" role="group">
+                                      <a class="btn btn-danger" (click)="eliminar(consultor)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                      </a>
+                                  </div> 
+                              </td>
 
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2"></td>
-                <td class="text-center">
-                    <div class="btn-group" role="group">
-                        <button (click)="openModal(mConsultor, {})" class="btn btn-default" tooltip="Guardar">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div> 
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+                          </tr>
+                      </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <ng-template #mConsultor>
@@ -55,45 +73,76 @@
    </button>
  </div>
  <div class="modal-body">
-    <form name="form" (ngSubmit)="onSubmit()">
+    <form name="form" (ngSubmit)="onSubmitFile(consultor)">
        <div class="row">
-           <div class="form-group col-md-6">
+           <div class="form-group col-md-12">
                <label for="nombre">* Nombre:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.nombre" name="empresario.nombre" placeholder="Nombre">
+               <select class="form-control" [(ngModel)]="consultor.consultor_id" name="consultor_id">
+                   <option *ngFor="let comp of consultoresList" [ngValue]="comp.id">{{ comp.nombre }}</option>
+               </select>
            </div>
-           <div class="form-group col-sm-3">
-               <label for="nit">NIT:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.nit" name="empresario.nit" placeholder="xxxx-xxxxxx-xxx-x">
-           </div>
-           <div class="form-group col-sm-3">
-               <label for="nit">DUI:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.dui" name="empresario.dui" placeholder="xxxxxxx-x">
-           </div>
-           <div class="form-group col-sm-4">
-               <label for="telefono">Teléfono:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.telefono" name="empresario.telefono" placeholder="0000-0000">
-           </div>
-           <div class="form-group col-sm-4">
-               <label for="municipio">Municipio:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.municipio" name="empresario.municipio" placeholder="Municipio">
-           </div>
-           <div class="form-group col-sm-4">
-               <label for="departamento">Departamento:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.departamento" name="empresario.departamento" placeholder="Departamento">
-           </div>
-           <div class="form-group col-sm-4">
-               <label for="correo">Correo:</label>
-               <input type="email" class="form-control" [(ngModel)]="empresario.correo" name="empresario.correo" placeholder="Dirección">
-           </div>
-           <div class="form-group col-sm-8">
-               <label for="direccion">Dirección:</label>
-               <input type="text" class="form-control" [(ngModel)]="empresario.direccion" name="direccion" placeholder="Dirección">
+           
+           <div class="form-group col-md-12">
+               <label for="direccion">Oferta:</label>
+               <input type="file" name="img" (change)="setFile($event)" accept="application/pdf">
            </div>
            <div class="col-xs-12">
              <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
              <button [disabled]="loading" class="btn btn-primary pull-right">
                  <span *ngIf="!loading">Guardar</span>
                  <span *ngIf="loading">Guardando...</span>
+             </button>
+           </div>
+       </div>
+    </form>
+ </div>
+</ng-template>
+
+<ng-template #mCorreos>
+ <div class="modal-header">
+   <div class="modal-title text-center"> <h2>Enviar TDR</h2> </div>
+   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+    <form name="form" (ngSubmit)="onSubmitEnviar()">
+       <div class="row">
+           <div class="col-md-12" style="height: 250px; overflow-y: auto;">
+               <table class="table table-bordered">
+                 <thead>
+                   <tr>
+                     <th>Nombre</th>
+                     <th class="text-center">Enviar</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                        <td colspan="3" class="text-center" *ngIf="consultoresList?.lenght < 1 && !loading">
+                            <span class="label label-info">No hay consultores con especialidad</span>
+                        </td>
+                          <td colspan="3" class="text-center" *ngIf="loading">
+                              <span class="label label-info">Cargando...</span>
+                        </td>
+                    </tr>
+
+                    <tr class="animated fadeIn" *ngFor=" let consultor of consultoresList">
+                      
+                        <td>
+                            <a routerLink="/consultor/{{consultor.id}}">{{ consultor.nombre }}</a>
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" name="consultor.enviar" [(ngModel)]="consultor.enviar">
+                        </td>
+                    </tr>
+                 </tbody>
+               </table>
+           </div>
+           <div class="col-xs-12" style="margin-top: 20px;">
+             <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+             <button [disabled]="loading" class="btn btn-primary pull-right">
+                 <span *ngIf="!loading">Enviar</span>
+                 <span *ngIf="loading">Enviando...</span>
              </button>
            </div>
        </div>

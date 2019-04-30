@@ -1,17 +1,17 @@
-<div class="text-center">
-    <div class="form-group col-sm-12">
-        <label for="cantidad">Producto:</label>
-        <form autocomplete="off" class="buscador">
-            <input type="text" name="empresa.producto" class="form-control" placeholder="Nombre" [(ngModel)]="empresa.producto" focus="true" (keyup)="searchEmpresa()">
-            <ul class="list-group info">
-              <a href="javascript:void(0);" class="list-group-item text-primary" *ngIf="loading"> Buscando... </a>
-              <a href="javascript:void(0);" class="list-group-item text-warning" *ngIf="!loading && empresas?.data.length == 0"> Ningun registro encontrado </a>
-            </ul>
-            <ul class="list-group opciones" *ngIf="empresas?.total > 0">
-              <a href="javascript:void(0);" class="list-group-item" (click)="selectProducto(producto)" *ngFor=" let producto of empresas?.data">
-                {{producto.nombre}} - <small>{{producto.categoria}}</small>
-              </a>
-            </ul>
-        </form>
-    </div>
+<div class="row">
+<div class="form-group col-sm-12">
+    <label for="cantidad">* Empresa:</label>
+    <form autocomplete="off" class="buscador">
+        <input id="empresa" type="text" name="empresa.nombre" class="form-control" placeholder="Buscar empresa" [(ngModel)]="empresa.nombre" focus="true" id="example">
+        <ul class="list-group info">
+          <a href="javascript:void(0);" class="list-group-item text-primary" *ngIf="searching"> Buscando... </a>
+          <a href="javascript:void(0);" class="list-group-item text-warning" *ngIf="!searching && empresas?.data?.length == 0"> Ningun registro encontrado </a>
+        </ul>
+        <ul class="list-group opciones" *ngIf="empresas?.total > 0">
+          <a href="javascript:void(0);" class="list-group-item" (click)="selectEmpresa(empresa)" *ngFor=" let empresa of empresas?.data">
+            {{empresa.nombre}} - <small>{{empresa.sector}}</small>
+          </a>
+        </ul>
+    </form>
+</div>
 </div>

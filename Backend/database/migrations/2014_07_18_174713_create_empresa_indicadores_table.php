@@ -11,8 +11,7 @@ class CreateEmpresaIndicadoresTable extends Migration {
         Schema::create('empresa_indicadores',function($table){
             $table->increments('id');
             
-            $table->integer('asesor_id');
-            $table->integer('empresa_id');
+            $table->date('fecha');
             $table->double('venta_nacional');
             $table->double('venta_expo')->nullable();
             $table->integer('empleo_hf')->nullable();
@@ -21,10 +20,14 @@ class CreateEmpresaIndicadoresTable extends Migration {
             $table->integer('empleo_mt')->nullable();
             $table->double('costos')->nullable();
             $table->double('financiamiento')->nullable();
-            $table->double('capital')->nullable();
-            $table->enum('mercados', ['Local', 'Regional', 'Nacional', 'Internacional'])->nullable();
+            $table->double('capital_semilla')->nullable();
+            $table->boolean('m_local')->default(false);
+            $table->boolean('m_nacional')->default(false);
+            $table->boolean('m_regional')->default(false);
+            $table->boolean('m_internacional')->default(false);
             $table->text('productos')->nullable();
-            $table->enum('tipo', ['Inicial', 'Final'])->nullable();
+            $table->integer('usuario_id');
+            $table->integer('empresa_id');
             
             $table->timestamps();
         });

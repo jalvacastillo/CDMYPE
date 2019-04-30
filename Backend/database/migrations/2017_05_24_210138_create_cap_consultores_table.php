@@ -15,11 +15,10 @@ class CreateCapConsultoresTable extends Migration
 
             $table->integer('cap_id')->nullable();
             $table->integer('consultor_id')->nullable();
-            $table->date('fecha_oferta')->nullable();
-            $table->date('fecha_seleccion')->nullable();
-            $table->enum('estado', ['Enviado', 'Seleccionado'])->default('Enviado');
+            $table->datetime('fecha_oferta')->nullable();
+            $table->datetime('fecha_seleccion')->nullable();
             $table->string('doc_oferta')->nullable();
-            $table->double('evaluacion')->nullable();
+            $table->boolean('seleccionado')->default(false);
             
             $table->timestamps();
         });

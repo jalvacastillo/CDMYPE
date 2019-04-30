@@ -57,10 +57,9 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($request->wantsJson()) {
-
             if ($exception instanceof ValidationException) {
 
-                $errors = implode("<br>",$exception->validator->messages()->all());
+                $errors = $exception->validator->messages()->all();
                 return  Response()->json(['error' => $errors, 'code' => 422], 422);
             }
 
@@ -90,7 +89,6 @@ class Handler extends ExceptionHandler
 
             if ($exception instanceof QueryException) {
                 return  Response()->json(['error' => $exception->getMessage(), 'code' => 500], 500);
-                // return  Response()->json(['error' => 'Hubo un problema con la base de datos', 'code' => 500], 500);
             }
 
             if ($exception instanceof HttpException) {

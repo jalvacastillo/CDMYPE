@@ -15,9 +15,9 @@ class Acta extends Model {
     ];
 
 
-    public function termino() 
+    public function at() 
     {
-        return $this->belongsTo('App\Models\Termino','termino_id');
+        return $this->belongsTo('App\Models\Ats\At','at_id');
     }
         
 }

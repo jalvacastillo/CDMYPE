@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../../../services/alert.service';
 import { ApiService } from '../../../../services/api.service';
@@ -13,36 +16,41 @@ export class EmpresaProductosComponent implements OnInit {
     public producto:any = {};
     public loading:boolean = false;
 
+    modalRef: BsModalRef;
+
 	constructor( 
             private apiService: ApiService, private alertService: AlertService,
-            private route: ActivatedRoute, private router: Router
+            private route: ActivatedRoute, private router: Router, private modalService: BsModalService
         ) { }
 
 	ngOnInit() {
 
 	}
 
-    public onSubmit(){
-        if (this.producto.nombre) {
-            this.loading = true;
-            this.producto.empresa_id = this.empresa.id;
-            this.apiService.store('empresa/producto', this.producto).subscribe(producto => {
-                this.loading = false;
-                if (!this.producto.id) { 
-                    this.empresa.productos.push(producto);
-                }
-                this.producto = {};
-            },error => {this.alertService.error(error); this.loading = false; });
-        }
-    }
-
-    public selProducto(producto:any){
+    public openModal(template: TemplateRef<any>, producto:any) {
         this.producto = producto;
+        if(!this.producto.fecha) {
+            this.producto.fecha = this.apiService.date();
+        }
+        this.modalRef = this.modalService.show(template);        
     }
 
-    public delProducto(id:number) {
+    public onSubmit(){
+        this.loading = true;
+        this.producto.empresa_id = this.empresa.id;
+        this.apiService.store('empresa/producto', this.producto).subscribe(producto => {
+            this.loading = false;
+            if (!this.producto.id) { 
+                this.empresa.productos.push(producto);
+            }
+            this.modalRef.hide();
+            this.producto = {};
+        },error => {this.alertService.error(error); this.loading = false; });
+    }
+
+    public eliminar(producto:any) {
         if (confirm('¿Desea eliminar el Registro?')) {
-            this.apiService.delete('empresa/producto/', id) .subscribe(data => {
+            this.apiService.delete('empresa/producto/', producto.id) .subscribe(data => {
                 for (let i = 0; i < this.empresa.productos.length; i++) { 
                     if (this.empresa.productos[i].id == data.id )
                         this.empresa.productos.splice(i, 1);

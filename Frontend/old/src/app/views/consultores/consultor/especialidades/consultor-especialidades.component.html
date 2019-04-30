@@ -1,0 +1,36 @@
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row" *ngIf="consultor.id">
+  <div class="col-md-8 col-md-offset-2">
+   <table class="table table-hover">
+       <thead>
+           <tr>
+               <th>Nombre</th>
+               <th class="text-center"><i class="fa fa-cog"></i></th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor=" let especialidad of consultor?.especialidades">
+               <td>{{ especialidad.especialidad }} <i class="fa fa-angle-right"></i> {{ especialidad.nombre }}</td>
+               <td class="text-center" width="100">
+                   <a (click)="delete(especialidad.id)" class="btn btn-danger"> <i class="fa fa-minus"></i></a>
+               </td>
+           </tr>
+           <tr>
+               <td>
+                <input [(ngModel)]="especialidad.nombre"
+                   [typeahead]="especialidades"
+                    typeaheadOptionField="nombre"
+                    typeaheadGroupField="especialidad"
+                    typeaheadWaitMs="500"
+                    [typeaheadMinLength]="0"
+                    [typeaheadScrollable]="true"
+                    [typeaheadOptionsInScrollableView]="7"
+                   (typeaheadOnSelect)="onSelect($event)"
+                   class="form-control" name="nombre" autocomplete="off">       
+                </td>
+           </tr>
+       </tbody>
+   </table>
+  </div>
+</div>
+</form>

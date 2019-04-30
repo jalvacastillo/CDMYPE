@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AlertService } from '../../../services/alert.service';
 import { ApiService } from '../../../services/api.service';
-import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-noticias',
@@ -10,7 +9,7 @@ import { Data } from '../../../models/data';
 })
 export class NoticiasComponent implements OnInit {
 
-    public noticias:Data;
+    public noticias:any = [];
 	public noticia:any = {};
     public buscador:any = '';
     public loading = false;

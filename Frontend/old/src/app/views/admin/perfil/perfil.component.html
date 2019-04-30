@@ -1,0 +1,167 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Perfil <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Perfil</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn" *ngIf="usuario.id">
+
+<div class="row">
+
+    
+    <div class="col-sm-3">
+
+      
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+          <img *ngIf="usuario.avatar" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/team/' + usuario.avatar }}" alt="User profile picture">
+          
+          <div class="col-xs-12 text-center margin">
+              <input type="file" name="file" id="file" class="inputfile" [ngModel]="avatar" (change)="uploadFile(usuario, $event)">
+              <label for="file">Cambiar foto</label>
+          </div>
+          
+          <h3 class="profile-username text-center">{{ usuario.nombre }}</h3>
+          <p class="text-muted text-center">{{ usuario.tipo }}</p>
+          
+          <!-- <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Clientes</b> <a class="pull-right">1,322</a>
+            </li>
+            <li class="list-group-item">
+              <b>Compras</b> <a class="pull-right">543</a>
+            </li>
+            <li class="list-group-item">
+              Registrado <a class="pull-right">{{ usuario.created_at | date:'dd-MM-y' }}</a>
+            </li>
+          </ul> -->
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <form name="form" (ngSubmit)="onSubmit()">
+    <div class="col-sm-9">
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#settings" data-toggle="tab">Cuenta</a></li>
+          <li><a href="#activity" data-toggle="tab">Información</a></li>
+          <!-- <li><a href="#timeline" data-toggle="tab">Estadisticas</a></li> -->
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane" id="settings">
+                    <div class="form-group ">
+                        <label for="name">* Nombre:</label>
+                        <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="name" placeholder="Nombre" required autofocus>
+                    </div>
+                    <div class="form-group ">
+                        <label for="email">* Correo:</label>
+                        <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email" placeholder="Correo" required>
+                    </div>
+                    <div class="form-group ">
+                        <label for="password">* Contraseña:</label>
+                        <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password">
+                    </div>
+              
+              <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+              <button [disabled]="loading" class="btn btn-primary pull-right">
+                  <span *ngIf="!loading">Guardar</span>
+                  <span *ngIf="loading">Guardando...</span>
+              </button>
+            </div>
+            <div class="tab-pane" id="activity">
+                <div class="form-group col-md-6">
+                    <label for="titulo">* Titulo:</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.titulo" name="titulo" placeholder="Administrador de empresas" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cargo">* Cargo:</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.cargo" name="cargo" placeholder="Asesor Empresarial" required autofocus>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="descripcion">* Descripción:</label>
+                    <textarea name="descripcion" class="form-control" cols="30" rows="3" [(ngModel)]="usuario.descripcion"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="url_facebook">* Facebook:</label>
+                    <input type="url" class="form-control" [(ngModel)]="usuario.url_facebook" name="url_facebook" placeholder="La url de tu perfil" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="url_linkedin">* Linkedin:</label>
+                    <input type="url" class="form-control" [(ngModel)]="usuario.url_linkedin" name="url_linkedin" placeholder="La url de tu perfil" required autofocus>
+                </div>
+                <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+                <button [disabled]="loading" class="btn btn-primary pull-right">
+                    <span *ngIf="!loading">Guardar</span>
+                    <span *ngIf="loading">Guardando...</span>
+                </button>
+            </div>
+
+            <!-- <div class="tab-pane" id="timeline">
+
+            <ul class="timeline timeline-inverse">
+
+              <li class="time-label">
+                <span class="bg-red">
+                  10 Feb. 2014
+                </span>
+              </li>
+              <li>
+                <i class="fa fa-envelope bg-blue"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                  <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                  <div class="timeline-body">
+                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                    quora plaxo ideeli hulu weebly balihoo...
+                  </div>
+                  <div class="timeline-footer">
+                    <a class="btn btn-primary btn-xs">Read more</a>
+                    <a class="btn btn-danger btn-xs">Delete</a>
+                  </div>
+                </div>
+              </li>
+              
+              <li>
+                <i class="fa fa-user bg-aqua"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                  <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                </div>
+              </li>
+              
+              <li>
+                <i class="fa fa-clock-o bg-gray"></i>
+              </li>
+            </ul>
+            </div> -->
+
+          
+        </div>
+      </div>
+    </div>
+
+    </form>
+
+</div>
+
+</section>
+
+<section class="content" *ngIf="!usuario.name">
+    <div class="row">
+        <div class="text-muted text-center thumbler">
+          <br><br>
+          <i class="fa fa-flask fa-5x"></i>
+          <br><br>
+        </div>
+    </div>
+</section>
+
+</div>  

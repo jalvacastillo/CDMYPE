@@ -1,0 +1,207 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Servicio <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li class="active">Edición</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="onSubmit()">
+            <div class="box box-primary">
+                <div class="box-title text-center"> <h4>Información</h4> </div>
+                
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label for="nombre">* Nombre:</label>
+                        <input type="text" class="form-control" [(ngModel)]="servicio.nombre" name="nombre" placeholder="Nombre" required autofocus>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="tipo">Tipo:</label>
+                        <select class="form-control" [(ngModel)]="servicio.tipo" name="tipo">
+                            <option value="Asesoría">Asesoría</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="categoria">Categoria:</label>
+                        <select class="form-control" [(ngModel)]="servicio.categoria" name="categoria">
+                            <option value="TIC">TIC</option>
+                            <option value="EFE">EFE</option>
+                            <option value="Financiero">Financiero</option>
+                            <option value="Empresarial">Empresarial</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="descripcion">* Descripción:</label>
+                        <input type="text" class="form-control" [(ngModel)]="servicio.descripcion" name="descripcion" placeholder="Descripción" required>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label for="duracion">Asesores:</label>
+                        <div style="display: block;">
+                            <span *ngFor=" let asesor of servicio?.asesores">
+                                <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
+                            </span>
+                            <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + 'img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                    <button [disabled]="loading" class="btn btn-primary pull-right">
+                        <span *ngIf="!loading">Guardar</span>
+                        <span *ngIf="loading">Guardando...</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    <div style="margin: 50px 0px;"></div>
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="agregarAccion()" autocomplete="off">
+            <div class="box box-primary">
+                <div class="box-title text-center"> <h4>Acciones</h4> </div>
+                <div class="box-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Indicadores</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="servicio.acciones?.length < 1">
+                                    <span class="label label-info">No tiene acciones registradas</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let accion of servicio?.acciones">
+                                
+                                <td>{{ accion.nombre }}</td>
+                                <td>{{ accion.descripcion }}</td>
+                                <td>
+                                    <span class="badge badge-info" *ngFor="let indicador of accion.indicadores">{{ indicador.indicador }}</span>
+                                </td>
+                                <td width="100" class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="openModalAccion(mAccion, accion)" tooltip="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-default" (click)="eliminarAccion(accion)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i></a>
+                                    </div> 
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <button (click)="openModalAccion(mAccion, {})" class="btn btn-default" tooltip="Guardar">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div> 
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </form>
+        
+        </div>
+    </div>
+</section>
+
+</div>
+
+
+<ng-template #mAsesores>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <h2 class="text-center no-margin">Asesores</h2>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <table class="table table-hover">
+                <tbody>
+                    <tr *ngFor=" let asesor of asesores">
+                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
+                        <td>{{ asesor.nombre }}</td>
+                        <td class="text-center">
+                            <button (click)="agregarAsesor(asesor)" class="btn btn-primary" [disabled]="loading">
+                                <span *ngIf="!loading">Agregar</span>
+                                <span *ngIf="loading">Agregando</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </div>
+</ng-template>
+
+<ng-template #mAccion>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <h2 class="text-center no-margin">Accion</h2>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" name="nombre" [(ngModel)]="accion.nombre" placeholder="Nombre">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" class="form-control" name="descripcion" [(ngModel)]="accion.descripcion" placeholder="Descripción">
+            </div>
+            <div class="col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Indicadores</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let indicador of accion.indicadores">
+                            <td>{{ indicador.indicador }}</td>
+                            <td><button (click)="eliminarIndicador(indicador)" class="btn btn-danger"><i class="fa fa-minus"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" [(ngModel)]="indicador.indicador" (keyup.enter)="agregarIndicador()" placeholder="Indicador"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+  </div>
+</ng-template>

@@ -11,6 +11,7 @@ import { PaginationComponent } from './parts/pagination/pagination.component';
 import { DescargarExcelComponent } from './parts/descargar-excel/descargar-excel.component';
 
 import { BuscadorEmpresasComponent } from './modals/buscador-empresas/buscador-empresas.component';
+import { BuscadorEmpresariosComponent } from './modals/buscador-empresarios/buscador-empresarios.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { BuscadorEmpresasComponent } from './modals/buscador-empresas/buscador-e
     HeaderComponent,
     PaginationComponent,
     BuscadorEmpresasComponent,
+    BuscadorEmpresariosComponent,
     DescargarExcelComponent
   ],
   exports: [
@@ -32,6 +34,7 @@ import { BuscadorEmpresasComponent } from './modals/buscador-empresas/buscador-e
     HeaderComponent,
     PaginationComponent,
     BuscadorEmpresasComponent,
+    BuscadorEmpresariosComponent,
     DescargarExcelComponent
   ]
 })

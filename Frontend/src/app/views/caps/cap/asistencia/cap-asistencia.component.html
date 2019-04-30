@@ -1,0 +1,41 @@
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12">
+                <a *ngIf="cap_id" target="_blank" href="{{ apiService.baseUrl + '/cap/asistencia/' + cap_id }}" class="btn btn-default"> Imprimir</a>        
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th class="text-center">Asistio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" class="text-center" *ngIf="empresarios.length < 1">
+                            <span class="label label-info">No tiene empresarios registrados</span>
+                        </td>
+                        <td colspan="4" class="text-center" *ngIf="loading">
+                            <span class="label label-info">Cargando...</span>
+                        </td>
+                    </tr>
+
+                    <tr class="animated fadeIn" *ngFor=" let empresario of empresarios">
+                        <td>{{ empresario.nombre }}</td>
+                        <td>{{ empresario.empresa }}</td>
+                        <td class="text-center">
+                            <input type="checkbox" name="asistio{{empresario.id}}" [ngModel]="empresario.asistencia" (change)="update(empresario)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+</div>
+</form>

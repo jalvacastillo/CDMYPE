@@ -16,10 +16,9 @@ class CreateAtConsultoresTable extends Migration
             $table->integer('at_id');
             $table->integer('consultor_id');
             $table->datetime('fecha_oferta')->nullable();
-            $table->datetime('fecha_seleccion')->nullable();
-            $table->enum('estado', ['Enviado', 'Seleccionado'])->default('Enviado');
             $table->string('doc_oferta')->nullable();
-            $table->double('evaluacion')->nullable();
+            $table->datetime('fecha_seleccion')->nullable();
+            $table->boolean('seleccionado')->default(false);
             
             $table->timestamps();
         });

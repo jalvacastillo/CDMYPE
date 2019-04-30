@@ -1,33 +1,41 @@
 <?php
 
-namespace App\Models\Cap;
+namespace App\Models\Caps;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Asistencia extends Model {
 
-    use SoftDeletes;    
     protected $table = 'cap_asistencias';
-    public $errores;
     protected $fillable = [
-        'termino_id',
-        'cliente_id',
-        'invitado',
+        'cap_id',
+        'empresario_id',
+        // 'invitado',
         'asistencia'
     ];
     
-        
-    /* RELACIÓN */
+    public $appends = ['nombre', 'empresa'];
 
-        public function empresario() 
-        {
-            return $this->belongsTo('App\Models\Cliente\Empresario','empresario_id');
-        }
+    public function getNombreAttribute(){
+        return $this->empresario()->first()->nombre;
+    }
 
-        public function captermino() 
-        {
-            return $this->belongsTo('App\Models\Cap\Termino','captermino_id');
-        }
+    public function getEmpresaAttribute(){
+        $empresa = $this->empresario()->first()->empresas()->first();
+        if ($empresa)
+            return $empresa->empresa()->first()->nombre;
+        else
+            return null;
+    }
+
+    public function empresario() 
+    {
+        return $this->belongsTo('App\Models\Empresas\Empresario','empresario_id');
+    }
+
+    public function cap() 
+    {
+        return $this->belongsTo('App\Models\Caps\Cap','cap_id');
+    }
 
 }

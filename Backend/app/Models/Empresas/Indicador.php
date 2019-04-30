@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Models\Cliente;
+namespace App\Models\Empresas;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Carbon\Carbon;
-
 class Indicador extends Model {
 
-    protected $table = 'cliente_indicadores';    
+    protected $table = 'empresa_indicadores';    
     protected $fillable = array(
-        'asesor_id',
-        'cliente_id',
+        'fecha',
         'venta_nacional',
         'venta_expo',
         'empleo_hf',
@@ -20,24 +17,28 @@ class Indicador extends Model {
         'empleo_mt',
         'costos',
         'financiamiento',
-        'capital',
-        'mercados',
+        'capital_semilla',
+        'm_local',
+        'm_nacional',
+        'm_regional',
+        'm_internacional',
         'productos',
-        'tipo'
+        'usuario_id',
+        'empresa_id',
     );
 
-    protected $appends = ['asesor'];
+    protected $appends = ['usuario'];
 
-    public function getAsesorAttribute(){
-        return $this->asesor()->pluck('name')->first();
+    public function getUsuarioAttribute(){
+        return $this->usuario()->pluck('name')->first();
     }
     
     public function cliente(){
         return $this->belongsTo('App\Cliente\Cliente', 'cliente_id');
     }
 
-    public function asesor(){
-    	return $this->belongsTo('App\User', 'asesor_id');
+    public function usuario(){
+    	return $this->belongsTo('App\User', 'usuario_id');
     }
 
 }

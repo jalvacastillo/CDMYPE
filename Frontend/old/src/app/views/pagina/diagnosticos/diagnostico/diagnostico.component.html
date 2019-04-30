@@ -1,0 +1,177 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Diagnostico <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#">Diagnosticos</a></li>
+        <li class="active">Edición</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="onSubmit()">
+            <div class="box box-primary">
+                
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label for="nombre">* Nombre:</label>
+                        <input type="text" class="form-control" [(ngModel)]="diagnostico.nombre" name="nombre" placeholder="Nombre" required autofocus>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="categoria">Categoria:</label>
+                        <select class="form-control" [(ngModel)]="diagnostico.categoria" name="categoria">
+                        	<option value="TIC">TIC</option>
+                            <option value="EFE">EFE</option>
+                        	<option value="Financiero">Financiero</option>
+                            <option value="Empresarial">Empresarial</option>
+                        	<option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" class="form-control" [(ngModel)]="diagnostico.descripcion" name="descripcion" placeholder="xxxx-x">
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                    <button [disabled]="loading" class="btn btn-primary pull-right">
+                        <span *ngIf="!loading">Guardar</span>
+                        <span *ngIf="loading">Guardando...</span>
+                    </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin: 50px 0px;"></div>
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="agregarAccion()" autocomplete="off">
+            <div class="box box-primary">
+                <div class="box-title text-center"> <h4>Preguntas <small class="badge badge-info">{{ diagnostico.preguntas?.length }}</small></h4> </div>
+                <div class="box-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nombre</th>
+                                <th class="text-center">Categoria</th>
+                                <th class="text-center">Valores</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="diagnostico.preguntas?.length < 1">
+                                    <span class="label label-info">No tiene preguntas registradas</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let pregunta of diagnostico?.preguntas">
+                                
+                                <td class="text-center"><img  class="img-circle" *ngIf="pregunta.avatar" src="{{apiService.baseUrl + 'img/usuarios/' + pregunta.avatar }}" height="50px"/></td>
+                                <td>{{ pregunta.nombre }}</td>
+                                <td class="text-center">
+                                    {{ pregunta.categoria }} <i class="fa fa-angle-right"></i> {{ pregunta.subcategoria }}
+                                </td>
+                                <td class="text-center">
+                                    <span *ngFor="let valor of pregunta?.valores">
+                                        {{ valor.nombre }}, 
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="openModalPregunta(mPregunta, pregunta)" tooltip="Ver detalle">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>  
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+        </div>
+    </div>
+</section>
+
+<ng-template #mPregunta>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <h3>Pregunta</h3>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <form name="form" (ngSubmit)="onSubmitPregunta()" autocomplete="off">
+            <div class="form-group col-md-7">
+                <label for="nombre">* Nombre:</label>
+                <input type="text" class="form-control" [(ngModel)]="pregunta.nombre" name="nombre" placeholder="Nombre" required autofocus>
+            </div>
+            <div class="form-group col-md-5">
+                <label for="categoria">Categoria:</label>
+                <select [(ngModel)]="pregunta.subcategoria_id" class="form-control" name="subcategoria_id">
+                   <optgroup *ngFor="let categoria of categorias" label="{{ categoria.nombre }}">
+                        <option *ngFor="let subcategoria of categoria.subcategorias" [ngValue]="subcategoria.id">
+                        {{ subcategoria.nombre }}
+                        </option>
+                   </optgroup>
+                </select>
+            </div>
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            </form>
+            <div class="col-xs-12">
+                <form name="form" (ngSubmit)="agregarValor()" autocomplete="off">
+                    <div class="box-title text-center"> <h4>Valores</h4> </div>
+                    <div class="box-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th class="text-center"><i class="fa fa-cog"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center" *ngIf="pregunta.valores?.length < 1">
+                                        <span class="label label-info">No tiene valores registradas</span>
+                                    </td>
+                                </tr>
+                                <tr *ngFor="let valor of pregunta.valores">
+                                    <td>{{ valor.nombre }}</td>
+                                    <td class="text-center"><button (click)="eliminarValor(valor)" class="btn btn-danger"><i class="fa fa-minus"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" class="form-control" name="valor.nombre" [(ngModel)]="valor.nombre" (keyup.enter)="agregarValor()" placeholder="Valor"></td>
+                                    <td class="text-center">
+                                        <div class="btn-group" role="group">
+                                            <button (click)="openModalValor(mValor, {})" class="btn btn-default" tooltip="Guardar">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+  </div>
+</ng-template>

@@ -1,3 +1,5 @@
+<div class="container">
+
 <section class="content-header">
     <h1> Consultor <small>Edición</small> </h1>
     <ol class="breadcrumb">
@@ -8,7 +10,6 @@
 
 <section class="content animated fadeIn">
 
-<div class="container">
     <div class="row">
 
         
@@ -25,6 +26,7 @@
 
                 <h3 class="text-center">{{ consultor.nombre }}</h3>
                 <p class="text-center">{{ consultor.tipo }}</p>
+                <p class="text-center"><rating [(ngModel)]="consultor.evaluacion" tooltip="{{consultor.evaluacion}}" [max]="5" [readonly]="true"></rating></p>
                 <!-- <div class="text-right checkbox pull-right">
                     <label>Web: <input type="checkbox" [(ngModel)]="consultor.web" name="web"></label>
                 </div> -->
@@ -63,5 +65,5 @@
         </div>
 
     </div>
-</div>
 </section>
+</div>

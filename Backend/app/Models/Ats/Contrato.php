@@ -10,6 +10,7 @@ class Contrato extends Model {
     protected $fillable = [
         'at_id',
         'duracion',
+        'tipo_duracion',
         'inicio',
         'fin',
         'pago',
@@ -34,15 +35,14 @@ class Contrato extends Model {
             return ($hoy > $vencimiento);
         }
 
-	/* RELACIÓN */
 
-        public function terminos()
-        {
-            return $this->belongsTo('App\Models\At\Termino','attermino_id');
-        }
-        public function ampliacion(){
-            return $this->hasOne('App\Models\At\Ampliacion', 'attermino_id');
-        }
+    public function at()
+    {
+        return $this->belongsTo('App\Models\Ats\At','at_id');
+    }
+    public function ampliacion(){
+        return $this->hasOne('App\Models\Ats\Ampliacion', 'at_id');
+    }
 
 
 }

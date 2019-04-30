@@ -10,16 +10,15 @@ class Consultor extends Model {
     protected $fillable = [
         'cap_id',
         'consultor_id',
+        'seleccionado',
         'fecha_oferta',
         'fecha_seleccion',
-        'estado',
         'doc_oferta',
-        'evaluacion'
     ];
     
-    protected $appends = ['consultor', 'tema', 'especialidad'];
+    protected $appends = ['nombre', 'tema', 'especialidad'];
         
-    public function getConsultorAttribute(){
+    public function getNombreAttribute(){
         return $this->consultor()->pluck('nombre')->first();
     }
 
@@ -28,8 +27,9 @@ class Consultor extends Model {
     }
 
     public function getEspecialidadAttribute(){
-        return $this->cap()->first()->especialidad;
+        return $this->consultor()->first()->especialidad;
     }
+
   
     public function capContratos() 
     {

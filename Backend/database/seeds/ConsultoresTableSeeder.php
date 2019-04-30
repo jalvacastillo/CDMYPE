@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Consultores\Consultor;
+use App\Models\Consultores\Nota;
 
 class ConsultoresTableSeeder extends Seeder
 {
@@ -430,7 +431,18 @@ Residencial Cumbres de San Francisco, Calle Viena No. 42-C','sexo' => 'Hombre','
 
                 $table->save();
 
+                for ($j = 0; $j < 5; $j++) { 
+
+                  $table = new Nota;
+                  $table->consultor_id   = $consultores[$i]['id'];
+                  $table->descripcion    = 'Una nota';
+                  $table->evaluacion     = $faker->numberBetween(1,5);
+                  $table->save();
+
+                }
+
             }
-            
+
+
     }
 }

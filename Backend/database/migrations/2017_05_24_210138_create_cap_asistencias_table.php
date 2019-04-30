@@ -13,9 +13,8 @@ class CreateCapAsistenciasTable extends Migration
             
             $table->increments('id');
 
-            $table->integer('termino_id')->nullable();
-            $table->integer('cliente_id')->nullable();
-            $table->string('invitado')->nullable();
+            $table->integer('cap_id')->nullable();
+            $table->integer('empresario_id')->nullable();
             $table->boolean('asistencia')->nullable();
                         
             $table->softDeletes();

@@ -8,13 +8,12 @@ class Consultor extends Model {
 
     protected $table = 'at_consultores';
     protected $fillable = [
-        'consultor_id',
         'at_id',
+        'consultor_id',
+        'seleccionado',
         'fecha_oferta',
         'fecha_seleccion',
-        'estado',
-        'doc_oferta',
-        'evaluacion'
+        'doc_oferta'
     ];
 
     protected $appends = ['nombre','especialidad', 'tema'];

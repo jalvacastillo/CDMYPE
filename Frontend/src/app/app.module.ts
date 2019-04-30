@@ -1,25 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app.routing.module';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 
-import { AlertService } from './services/alert.service';
-import { AuthService } from './services/auth.service';
-import { ApiService } from './services/api.service';
 import { SharedModule } from './shared/shared.module';
+import { PipesModule } from './pipes/pipes.module';
+
+import { NotifierModule } from 'angular-notifier';
+import { AlertService } from './services/alert.service';
+import { ApiService } from './services/api.service';
 
 import { AuthModule } from './auth/auth.module';
 import { DashModule } from './views/dash/dash.module';
-import { AdminsModule } from './views/admin/admin.module';
+import { AdminModule } from './views/admin/admin.module';
 import { EmpresasModule } from './views/empresas/empresas.module';
 import { ConsultoresModule } from './views/consultores/consultores.module';
 import { AtsModule } from './views/ats/ats.module';
+import { CapsModule } from './views/caps/caps.module';
 import { PaginaModule } from './views/pagina/pagina.module';
 
 
@@ -29,19 +31,22 @@ import { PaginaModule } from './views/pagina/pagina.module';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing,
+    HttpClientModule,
+    AppRoutingModule,
+    NotifierModule.withConfig({position: {horizontal:{ position:'middle' } }}),
     AuthModule,
-    AdminsModule,
+    SharedModule,
+    PipesModule,
+    AdminModule,
     SharedModule,
     DashModule,
     EmpresasModule,
     ConsultoresModule,
     AtsModule,
+    CapsModule,
     PaginaModule
   ],
-  providers: [AuthGuard, AdminGuard, AlertService, AuthService, ApiService],
+  providers: [AuthGuard, AdminGuard, AlertService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

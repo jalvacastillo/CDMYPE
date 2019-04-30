@@ -63,9 +63,36 @@ Route::get('/contactos',  'HomeController@contactos')->name('contactos');
 Route::get('/cuenta',  'UsuarioController@index')->name('usuario')->middleware('auth');
     Route::post('/cuenta',  'UsuarioController@store')->middleware('auth');
 
-Route::get('/oferta-at/{id}',   'DashController@oferta');
-Route::post('/oferta-at/{id}',  'At\ConsultorController@oferta');
 
+Route::get('at/tdr/{id}',               'Ats\AtsController@tdrPDF')->name('atTdrPDF');
+Route::get('at/contrato/{id}',          'Ats\ContratosController@contratoPDF')->name('atContratoPDF');
+Route::get('at/acta/{id}',              'Ats\ActasController@actaPDF')->name('atActaPDF');
+Route::get('at/ampliacion/{id}',        'Ats\AmpliacionesController@ampliacionPDF')->name('atAmpliacionPDF');
+Route::get('at/pago-aporte/{id}',       'Ats\ActasController@aportePDF')->name('atAportePDF');
+Route::get('at/recibo-aporte/{id}',     'Ats\ActasController@reciboPDF')->name('atReciboPDF');
+Route::get('at/acta-recepcion/{id}',    'Ats\ActasController@recepcionPDF')->name('atRecepcionPDF');
+
+Route::get('cap/tdr/{id}',               'Caps\CapsController@tdrPDF')->name('capTdrPDF');
+Route::get('cap/contrato/{id}',          'Caps\ContratosController@contratoPDF')->name('capContratoPDF');
+Route::get('cap/asistencia/{id}',        'Caps\EmpresariosController@asistenciaPDF')->name('capAsitenciaPDF');
+Route::get('cap/ampliacion/{id}',        'Caps\AmpliacionesController@ampliacionPDF')->name('capAmpliacionPDF');
+Route::get('cap/pago-aporte/{id}',       'Caps\ActasController@aportePDF')->name('capAportePDF');
+Route::get('cap/recibo-aporte/{id}',     'Caps\ActasController@reciboPDF')->name('capReciboPDF');
+Route::get('cap/acta-recepcion/{id}',    'Caps\ActasController@recepcionPDF')->name('capRecepcionPDF');
+
+Route::get('/oferta-at/{at}/{consultor}',   'Ats\ConsultoresController@oferta')->name('subirOfertaAt');
+Route::post('/oferta-at',                   'Ats\ConsultoresController@guardarOferta')->name('guardarOfertaAt');
+
+Route::get('/oferta-cap/{cap}/{consultor}',   'Caps\ConsultoresController@oferta')->name('subirOfertaCap');
+Route::post('/oferta-cap',                   'Caps\ConsultoresController@guardarOferta')->name('guardarOfertaCap');
+
+Route::get('formato/{doc}', function($doc){
+        return Redirect::to('formatos/'. $doc);
+})->name('formatos');
+
+Route::get('at/informes/{doc}', function($doc){
+        return Redirect::to('informes/'. $doc);
+})->name('informes');
 
 
 Auth::routes();

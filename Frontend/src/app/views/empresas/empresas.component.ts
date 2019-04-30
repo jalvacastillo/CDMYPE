@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AlertService } from '../../services/alert.service';
 import { ApiService } from '../../services/api.service';
-import { Data } from '../../models/data';
 
 @Component({
   selector: 'app-empresas',
@@ -10,7 +9,7 @@ import { Data } from '../../models/data';
 })
 export class EmpresasComponent implements OnInit {
 
-    public empresas:Data;
+    public empresas:any = [];
 	public empresa:any = {};
     public buscador:any = '';
     public loading: boolean = false;
@@ -22,9 +21,11 @@ export class EmpresasComponent implements OnInit {
     }
 
     public loadAll() {
+        this.loading = true;
         this.apiService.getAll('empresas').subscribe(empresas => { 
             this.empresas = empresas;
-        }, error => {this.alertService.error(error); });
+            this.loading = false;
+        }, error => {this.alertService.error(error); this.loading = true;});
     }
 
     public search(text:any){

@@ -10,7 +10,7 @@ class Alumnos extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        for($i = 1; $i <= 50 ; $i++)
+        for($i = 1; $i <= 10 ; $i++)
         {
             $user = new User;
             $user->name         = $faker->name;

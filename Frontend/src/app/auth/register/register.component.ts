@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
-import { AuthService } from '../../services/auth.service';
+import { ApiService } from '../../services/api.service';
 
 declare let $;
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit {
 
- public user: any = {};
+    public user: any = {};
     public loading = false;
     public saludo:string;
 
-    constructor( private authService: AuthService, private router: Router, private alertService: AlertService) { }
+    constructor( private apiService: ApiService, private router: Router, private alertService: AlertService) { }
 
     ngOnInit() {
+        sessionStorage.removeItem('auth_user');
+        sessionStorage.removeItem('token');
     }
 
     register() {
         this.loading = true;
-        this.authService.register(this.user)
+        this.apiService.register(this.user)
         .subscribe(
             data => {
                 this.alertService.success("Gracias por registrarse.");

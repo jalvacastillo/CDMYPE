@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cap extends Model {
 
-    protected $table = 'cap_terminos';
+    protected $table = 'caps';
     protected $fillable = [
         'encabezado',
         'tema',
@@ -16,10 +16,9 @@ class Cap extends Model {
         'obj_especifico',
         'productos',
         'lugar',
-        'fecha',
-        'fecha_lim',
-        'hora_ini',
-        'hora_fin',
+        'fecha_limite',
+        'fecha_ini',
+        'fecha_fin',
         'nota',
         'estado',
         'especialidad_id',
@@ -27,7 +26,7 @@ class Cap extends Model {
         'informe'
     ];
 
-    protected $appends = ['especialidad', 'asesor', 'consultor'];
+    protected $appends = ['especialidad', 'asesor'];
         
 
     public function getEspecialidadAttribute(){
@@ -38,40 +37,38 @@ class Cap extends Model {
         return $this->asesor()->pluck('name')->first();
     }
 
-    public function getConsultorAttribute(){
-        $consultor = $this->consultor()->first();
-        if ($consultor) {
-            return $consultor->consultor;
-        }
+    public function asesor()
+    {
+        return $this->belongsTo('App\User', 'usuario_id');
     }
 
-        public function asesor()
-        {
-            return $this->belongsTo('App\User');
-        }
+    public function especialidad()
+    {
+        return $this->belongsTo('App\Models\Subespecialidad');
+    }
 
-        public function especialidad()
-        {
-            return $this->belongsTo('App\Models\Especialidad');
-        }
+    public function ofertantes()
+    {
+        return $this->hasMany('App\Models\Caps\Consultor','cap_id')->where('doc_oferta', "!=", "");
+    }
 
-        public function consultor()
-        {
+    public function consultor()
+    {
 
-            return $this->hasOne('App\Models\Caps\Consultor','cap_id')->where('estado', '=', 'Seleccionado');
-        }
+        return $this->hasOne('App\Models\Caps\Consultor','cap_id')->where('seleccionado', true);
+    }
 
-        public function contrato(){
-            return $this->hasOne('App\Models\Caps\Contrato', 'cap_id');
-        }
+    public function contrato(){
+        return $this->hasOne('App\Models\Caps\Contrato', 'cap_id');
+    }
 
-        public function asistencia(){
-            return $this->hasOne('App\Models\Caps\Asistencia', 'cap_id');
-        }
+    public function asistencia(){
+        return $this->hasOne('App\Models\Caps\Asistencia', 'cap_id');
+    }
 
-        public function envios(){
-            return $this->hasMany('App\Models\Caps\CapacitacionEnvios', 'capacitacion_id');
-        }
+    public function envios(){
+        return $this->hasMany('App\Models\Caps\CapacitacionEnvios', 'capacitacion_id');
+    }
 
 
 }

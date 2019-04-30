@@ -11,9 +11,11 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { AtsComponent } from './ats.component';
 import { AtComponent } from './at/at.component';
 import { AtTdrComponent } from './at/tdr/at-tdr.component';
+import { AtEmpresaComponent } from './at/empresa/at-empresa.component';
 import { AtConsultoresComponent } from './at/consultores/at-consultores.component';
 import { AtContratoComponent } from './at/contrato/at-contrato.component';
 import { AtActaComponent } from './at/acta/at-acta.component';
+import { AtInformeComponent } from './at/informe/at-informe.component';
 
 @NgModule({
   imports: [
@@ -28,18 +30,22 @@ import { AtActaComponent } from './at/acta/at-acta.component';
   declarations: [
   	AtsComponent,
     AtComponent,
+    AtEmpresaComponent,
     AtTdrComponent,
     AtConsultoresComponent,
     AtContratoComponent,
-    AtActaComponent
+    AtActaComponent,
+    AtInformeComponent
   ],
   exports: [
   	AtsComponent,
     AtComponent,
+    AtEmpresaComponent,
     AtTdrComponent,
     AtConsultoresComponent,
     AtContratoComponent,
-    AtActaComponent
+    AtActaComponent,
+    AtInformeComponent
   ]
 })
 export class AtsModule { }

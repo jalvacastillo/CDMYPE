@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AlertService } from '../../../services/alert.service';
 import { ApiService } from '../../../services/api.service';
-import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-testimonios',
@@ -10,7 +9,7 @@ import { Data } from '../../../models/data';
 })
 export class TestimoniosComponent implements OnInit {
 
-	public testimonios:Data;
+	public testimonios:any = [];
     public paginacion = [];
     public buscador:string;
 

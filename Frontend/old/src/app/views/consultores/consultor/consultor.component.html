@@ -1,0 +1,67 @@
+<section class="content-header">
+    <h1> Consultor <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Consultor</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+<div class="container">
+    <div class="row">
+
+        
+        <div class="col-sm-12">
+
+          
+          <div class="box box-primary" style="min-height: 100px;">
+            <div class="box-body box-profile">
+                <div class="imagen-upload">
+                    <img *ngIf="consultor?.avatar" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/team/' + consultor.avatar }}" style="margin: auto;">
+                    <input type="file" name="avatar" id="file" class="inputfile" (change)="uploadFile(consultor, $event)">
+                    <label for="file"></label>
+                </div>
+
+                <h3 class="text-center">{{ consultor.nombre }}</h3>
+                <p class="text-center">{{ consultor.tipo }}</p>
+                <!-- <div class="text-right checkbox pull-right">
+                    <label>Web: <input type="checkbox" [(ngModel)]="consultor.web" name="web"></label>
+                </div> -->
+
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="col-sm-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#info" data-toggle="tab">Información</a></li>
+              <li><a href="#cuenta" data-toggle="tab" *ngIf="consultor.usuario">Cuenta</a></li>
+              <li><a href="#especialidades" data-toggle="tab">Especialidades</a></li>
+              <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="info">
+                    <app-consultor-info *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-info>
+                </div>
+
+                <div class="tab-pane fade" id="cuenta" *ngIf="consultor.usuario">
+                   <app-consultor-cuenta *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-cuenta>                   
+                </div>
+
+                <div class="tab-pane fade" id="especialidades">
+                   <app-consultor-especialidades *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-especialidades>
+                </div>  
+
+                <div class="tab-pane fade" id="historial">
+                   <app-consultor-historial *ngIf="consultor.id" [consultor] = "consultor"></app-consultor-historial>
+                </div>          
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>
+</section>

@@ -1,7 +1,7 @@
-<app-header *ngIf="authService.autenticated()"></app-header>
-
+<app-header *ngIf="apiService.autenticated()"></app-header>
+<notifier-container></notifier-container>
 <div class="main">
     <router-outlet></router-outlet>
 </div>
 
-<app-footer *ngIf="authService.autenticated()"></app-footer>
+<app-footer *ngIf="apiService.autenticated()"></app-footer>

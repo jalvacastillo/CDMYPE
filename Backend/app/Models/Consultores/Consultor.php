@@ -27,39 +27,39 @@ class Consultor extends Model {
         'usuario_id'
     ];
 
-    protected $appends = ['avatar','especialidad'];
+    protected $appends = ['avatar','especialidad', 'evaluacion'];
     
     
-        public function getAtAttribute(){
-            return $this->atConsultores()->where('estado','Seleccionado')->count();
+    public function getEvaluacionAttribute(){
+        $notas = $this->notas()->get();
+        
+        if ($notas->count() > 0)
+            $nota =  $notas->sum('evaluacion') / $notas->count();
+        else
+            $nota = null;
+        
+        return $nota;
+    }
+
+    public function getAtAttribute(){
+        return $this->caps()->where('seleccionado', true)->count();
+    }
+
+    public function getCapAttribute(){
+        return $this->caps()->where('seleccionado', true)->count();
+    }
+
+    public function getEspecialidadAttribute(){
+        
+        $especialidad = $this->especialidades()->first();
+
+        if ($especialidad) {
+            return $especialidad->especialidad;
+        } else {
+            return null;
         }
-
-        public function getEspecialidadAttribute(){
-            
-            $especialidad = $this->especialidades()->first();
-
-            if ($especialidad) {
-                return $especialidad->especialidad;
-            } else {
-                return null;
-            }
-            
-        }
-
-        public function getCapAttribute(){
-            return $this->capConsultores()->where('estado','Seleccionado')->count();
-        }
-
-        public function getPasoAttribute(){
-
-            if($this->cap > 0 || $this->at > 0)
-                return 3;
-            elseif($this->especialidades != '[]')
-                return 2;
-
-            return 2;
-
-        }
+        
+    }
 
     /* Relaciones */
 
@@ -75,6 +75,11 @@ class Consultor extends Model {
         public function ats() 
         {
             return $this->hasMany('App\Models\Ats\Consultor', 'consultor_id');
+        }
+
+        public function notas() 
+        {
+            return $this->hasMany('App\Models\Consultores\Nota', 'consultor_id');
         }
 
         public function especialidades() 

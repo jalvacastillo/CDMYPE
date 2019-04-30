@@ -11,11 +11,12 @@ class CreateEmpresaProyectosTable extends Migration {
         Schema::create('empresa_proyectos',function($table){
             $table->increments('id');
             
+            $table->string('nombre');
+            $table->date('inicio');
+            $table->date('fin');
+            $table->text('descripcion');
             $table->integer('asesor_id');
             $table->integer('empresa_id');
-            $table->string('nombre');
-            $table->date('fecha_fin');
-            $table->text('impacto');
             
             $table->timestamps();
         });

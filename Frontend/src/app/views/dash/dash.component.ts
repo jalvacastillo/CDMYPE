@@ -4,15 +4,6 @@ import { ChartsModule } from 'ng2-charts';
 import { AlertService } from '../../services/alert.service';
 import { ApiService } from '../../services/api.service';
 
-export interface Data{
-    productos:number;
-    clientes:number;
-    ventas:number;
-    compras:number;
-    galones:number;
-    meta_galones:number;
-}
-
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.component.html',
@@ -20,7 +11,7 @@ export interface Data{
 })
 export class DashComponent implements OnInit {
 
-	public datos:Data;
+	public datos:any = [];
 	public select:string;
 
 	constructor( 

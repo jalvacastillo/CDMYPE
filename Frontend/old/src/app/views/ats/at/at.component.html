@@ -1,0 +1,60 @@
+
+
+<div class="container">
+<section class="content-header">
+    <h1> Asistencias Técnicas <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Asistencias Técnicas</li>
+    </ol>
+</section>
+    
+<section class="content animated fadeIn">
+    <div class="row">
+        <!-- <div class="col-sm-12">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{{ at.tema }}</h3>
+                <p class="text-center">{{ at.created_at | date:'dd/mm/yyyy' }}</p>
+            </div>
+          </div>
+        </div> -->
+        
+        
+        <div class="col-sm-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs nav-justified">
+              <li class="active"><a href="#empresa" data-toggle="tab">Paso 1 <br> <b>Empresa</b></a></li>
+              <li><a href="#tdr" data-toggle="tab">Paso 2 <br> <b>Termino</b></a></li>
+              <li><a href="#consultores" data-toggle="tab">Paso 3 <br> <b>Ofertas</b></a></li>
+              <li><a href="#contrato" data-toggle="tab">Paso 4 <br> <b>Contrato</b></a></li>
+              <li><a href="#acta" data-toggle="tab">Paso 5 <br> <b>Acta</b></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="empresa">
+                    <app-at-empresa *ngIf="at.id" [at] = "at"></app-at-empresa>
+                </div>
+
+                <div class="tab-pane fade" id="tdr">
+                    <app-at-tdr *ngIf="at.id" [at] = "at"></app-at-tdr>
+                </div>
+
+                <div class="tab-pane fade" id="consultores">
+                   <app-at-consultores *ngIf="at.id" [at] = "at"></app-at-consultores>
+                   
+                </div>
+
+                <div class="tab-pane fade" id="contrato">
+                   <app-at-contrato *ngIf="at.id" [at] = "at"></app-at-contrato>
+                </div>  
+
+                <div class="tab-pane fade" id="acta">
+                   <app-at-acta *ngIf="at.id" [at] = "at"></app-at-acta>
+                </div>          
+            </div>
+          </div>
+        </div>
+
+    </div>
+</section>
+</div>

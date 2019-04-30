@@ -13,10 +13,10 @@ class CreateEmpresaAccionesTable extends Migration {
             
             $table->integer('proyecto_id');
             $table->text('actividad');
-            $table->enum('responsable', ['Asesor', 'Empresa', 'Consultor', 'Estudiante']);
+            $table->string('responsable');
             $table->date('inicio');
             $table->date('fin');
-            $table->enum('estado', ['Creado', 'Iniciado', 'Finalizado'])->default('Creado');
+            $table->boolean('completado')->default(false);
             
             $table->timestamps();
         });

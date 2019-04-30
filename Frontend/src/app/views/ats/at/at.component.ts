@@ -22,20 +22,21 @@ export class AtComponent implements OnInit {
 
 	ngOnInit() {
 	    
-	    this.route.params.subscribe(params => {
+	    const id = +this.route.snapshot.paramMap.get('id');
 	        
-	        if(isNaN(params['id'])){
-	            this.at = {};
-	            this.at.logo = 'default.png';
-	        }
-	        else{
-	            // Optenemos el at
-	            this.apiService.read('at/', params['id']).subscribe(at => {
-	               this.at = at;
-	            });
-	        }
-
-	    });
+        if(isNaN(id)){
+            this.at = {};
+            this.at.trabajo_local = "70";
+            this.at.aporte = "5.5";
+            this.at.tiempo_ejecucion = "4";
+            this.at.fecha = this.apiService.date();
+            this.at.financiamiento = 800;
+        }
+        else{
+            this.apiService.read('at/', id).subscribe(at => {
+               this.at = at;
+            });
+        }
 
 	}
 

@@ -1,0 +1,142 @@
+<div class="row animated fadeIn">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12">
+                      <button (click)="openModal(mindicador, {})" class="pull-right btn btn-primary" tooltip="Agregar">
+                          Agregar
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Usuario</th>
+                            <th class="text-center"><i class="fa fa-cog"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="text-center" *ngIf="empresa?.indicadores.length < 1">
+                                <span class="label label-info">No tiene indicadores registrados</span>
+                            </td>
+                        </tr>
+
+                        <tr class="animated fadeIn" *ngFor=" let indicador of empresa?.indicadores">
+                            
+                            <td>{{ indicador.fecha }}</td>
+                            <td class="hidden-xs">{{ indicador.usuario }}</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-default" (click)="openModal(mindicador, indicador)" tooltip="Editar">
+                                    <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-default" (click)="eliminar(indicador)" tooltip="Eliminar">
+                                    <i class="fa fa-trash"></i></a>
+                                </div>  
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #mindicador>
+  <div class="modal-header text-center">
+    <h3 class="modal-title">Indicador</h3>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(indicador)">
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label>Fecha:</label>
+                <input type="date" [(ngModel)]="indicador.fecha" name="indicador.fecha" class="form-control">
+            </div>
+            <div class="form-group col-sm-4">
+                <label>Venta Nacional:</label>
+                <div class="input-group">
+                <div class="input-group-addon">$</div>
+                    <input type="number" [(ngModel)]="indicador.venta_nacional" name="indicador.venta_nacional" class="form-control">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label>Venta Exportación:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" [(ngModel)]="indicador.venta_expo" name="indicador.venta_expo">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label>Costo Producción:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" [(ngModel)]="indicador.costos" name="indicador.costos">                                    
+                </div>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <label>Financiamiento:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" [(ngModel)]="indicador.financiamiento" name="indicador.financiamiento">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label>Capital Semilla:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" [(ngModel)]="indicador.capital_semilla" name="indicador.capital_semilla">
+                </div>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label>Empleados Hombre:</label>
+                <div class="input-group">
+                  <div class="input-group-addon">#</div>
+                    <input type="number" class="form-control" [(ngModel)]="indicador.ht" name="indicador.ht">
+                    <input type="number" class="form-control" [(ngModel)]="indicador.hf" name="indicador.hf">
+                </div>
+            </div>                    
+            <div class="form-group col-xs-6">
+                <label>Empleadas:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">#</div>
+                    <input type="number" class="form-control" [(ngModel)]="indicador.mt" name="indicador.mt">
+                    <input type="number" class="form-control" [(ngModel)]="indicador.mf" name="indicador.mf">
+                </div>
+            </div>
+            <label class="col-xs-12">Mercados Actuales:</label>
+            <div class="form-group col-xs-3">
+                <input type="checkbox" class="form-check" [(ngModel)]="indicador.m_local" name="indicador.m_local">Local
+            </div>
+            <div class="form-group col-xs-3">
+                <input type="checkbox" class="form-check" [(ngModel)]="indicador.m_regional" name="indicador.m_regional">Regional
+            </div>
+            <div class="form-group col-xs-3">
+                <input type="checkbox" class="form-check" [(ngModel)]="indicador.m_nacional" name="indicador.m_nacional">Nacional
+            </div>
+            <div class="form-group col-xs-3">
+                <input type="checkbox" class="form-check" [(ngModel)]="indicador.m_internacional" name="indicador.m_internacional">Internacional
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button [disabled]="!form.form.valid || loading" class="btn btn-primary btn-block">
+                 <span *ngIf="!loading">Guardar</span>
+                 <span *ngIf="loading">Guardando...</span>
+             </button>
+            </div>
+        </div>
+    </form>
+  </div>
+</ng-template>

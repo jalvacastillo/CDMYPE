@@ -15,10 +15,11 @@ class CreateAtContratosTable extends Migration
 
             $table->integer('at_id');
             $table->integer('duracion')->nullable();
+            $table->string('tipo_duracion')->default('Días');
             $table->date('inicio')->nullable();
             $table->date('fin')->nullable();
-            $table->double('pago')->nullable();
-            $table->double('aporte')->nullable();
+            $table->decimal('pago')->nullable();
+            $table->decimal('aporte')->nullable();
             $table->string('lugar_firma')->nullable();
             $table->timestamps();
         });

@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SumPipe implements PipeTransform {
 
-  	transform(items: any[], attr: string): any {
-  		if(items) {
-	        return items.reduce((a, b) => (	a * 1) + (b[attr] * 1), 0);
-  		}
+      transform(items: any[], attr: string): any {
+          if(items) {
+            return items.reduce((a, b) => (    a * 1) + (b[attr] * 1), 0);
+          }
     }
 }

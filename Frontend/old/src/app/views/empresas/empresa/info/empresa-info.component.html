@@ -1,0 +1,68 @@
+<form name="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="empresa.nombre">* Nombre:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.nombre" name="empresa.nombre" placeholder="Nombre">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="registro">NRC:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.registro" name="registro" placeholder="xxxx-x">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.nit">NIT:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.nit" name="empresa.nit" placeholder="xxxx-xxxxxx-xxx-x">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.dui">DUI:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.dui" name="empresa.dui" placeholder="xxxxxxx-x">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.sector">Sector:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.sector" name="empresa.sector" placeholder="Sector">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.telefono">Teléfono:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.telefono" name="empresa.telefono" placeholder="0000-0000">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.correo">Correo:</label>
+            <input type="email" class="form-control" [(ngModel)]="empresa.correo" name="empresa.correo" placeholder="info@empresa.com">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.municipio">Municipio:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.municipio" name="empresa.municipio" placeholder="Municipio">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.departamento">Departamento:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.departamento" name="empresa.departamento" placeholder="Departamento">
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="empresa.direccion">Dirección:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.direccion" name="empresa.direccion" placeholder="Dirección">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.actividad">Actividad:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.actividad" name="empresa.actividad" placeholder="Actividad">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.url_web">Página Web:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.url_web" name="empresa.url_web" placeholder="www.empresa.com">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.url_facebook">Página Facebook:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.url_facebook" name="empresa.url_facebook" placeholder="www.fb.com/empresa">
+        </div>
+        <div class="form-group col-sm-12">
+            <label for="descripcion">Descripción:</label>
+            <textarea class="form-control" [(ngModel)]="empresa.descripcion" rows="8" name="descripcion" placeholder="Descripción"></textarea>
+
+        </div>
+        <div class="col-xs-12">
+          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+          <button [disabled]="loading" class="btn btn-primary pull-right">
+              <span *ngIf="!loading">Guardar</span>
+              <span *ngIf="loading">Guardando...</span>
+          </button>
+        </div>
+    </div>
+</form>

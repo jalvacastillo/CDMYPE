@@ -1,0 +1,257 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Proyecto <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a [routerLink]="['/proyectos']">Proyectos</a></li>
+        <li class="active">Edición</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="onSubmit()">
+            <div class="box box-primary">
+                
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label for="nombre">* Nombre:</label>
+                        <input type="text" class="form-control" [(ngModel)]="proyecto.nombre" name="nombre" placeholder="Nombre" required autofocus>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" class="form-control" [(ngModel)]="proyecto.descripcion" name="descripcion" placeholder="xxxx-x">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="tipo">Tipo:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.tipo" name="tipo">
+                        	<option value="Pasantía">Pasantía</option>
+                            <option value="Hora Social">Horas Social</option>
+                            <option value="Investigación">Investigación</option>
+                        	<option value="Proyecto">Proyecto</option>
+                        	<option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="estado">Estado:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.estado" name="estado">
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Ejecución">Ejecución</option>
+                            <option value="Completado">Completado</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="categoria">Categoria:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.categoria" name="categoria">
+                        	<option value="TIC">TIC</option>
+                            <option value="EFE">EFE</option>
+                        	<option value="Financiero">Financiero</option>
+                            <option value="Empresarial">Empresarial</option>
+                        	<option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="especialidad_id">Especialidad:</label>
+                        <select class="form-control" [(ngModel)]="proyecto.especialidad" name="especialidad">
+                        	<option *ngFor="let esp of especialidades" [ngValue]="esp.nombre">{{ esp.nombre }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="finalizacion">Finalización:</label>
+                        <input type="date" class="form-control" [(ngModel)]="proyecto.finalizacion" name="finalizacion">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="duracion">Duración:</label>
+                        <input type="text" class="form-control" [(ngModel)]="proyecto.duracion" name="duracion">
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label for="duracion">Asesores:</label>
+                        <div style="display: block;">
+                            <span *ngFor=" let asesor of proyecto?.asesores">
+                                <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
+                            </span>
+                            <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + 'img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label for="duracion">Empresas:</label>
+                        <div style="display: block;">
+                            <span *ngFor=" let empresa of proyecto?.empresas">
+                                <a href="javascript::void(0);" (click)="quitarEmpresa(empresa)"><img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + 'img/empresas/' + empresa.logo }}" height="50px" tooltip="{{ empresa.nombre }}"/></a>
+                            </span>
+                            <a href="javascript::void(0);" (click)="openModalEmpresas(mEmpresas)"><img class="img-circle" src="{{apiService.baseUrl + 'img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <textarea id="compose-textarea" name="contenido"  class="form-control" style="height: 200px">{{ proyecto?.contenido }}</textarea>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+
+                    <button [disabled]="loading" class="btn btn-primary pull-right">
+                        <span *ngIf="!loading">Guardar</span>
+                        <span *ngIf="loading">Guardando...</span>
+                    </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin: 50px 0px;"></div>
+    <div class="row">
+        <div class="col-md-12">
+        
+        <form name="form" (ngSubmit)="agregarAccion()" autocomplete="off">
+            <div class="box box-primary">
+                <div class="box-title text-center"> <h4>Aplicaciones <small class="badge badge-info">{{ proyecto.aplicaciones?.length }}</small></h4> </div>
+                <div class="box-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nombre</th>
+                                <th class="text-center">Tipo</th>
+                                <th class="text-center">Estado</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="proyecto.aplicaciones?.length < 1">
+                                    <span class="label label-info">No tiene aplicaciones registradas</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let aplicacion of proyecto?.aplicaciones">
+                                
+                                <td class="text-center"><img  class="img-circle" *ngIf="aplicacion.avatar" src="{{apiService.baseUrl + 'img/usuarios/' + aplicacion.avatar }}" height="50px"/></td>
+                                <td>{{ aplicacion.nombre }}</td>
+                                <td class="text-center">{{ aplicacion.tipo }}</td>
+                                <td class="text-center">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : aplicacion?.estado == 'En Revisión', 'label-success' : aplicacion?.estado == 'Seleccionado'}" [popover]="popTemplate" [outsideClick]="true">
+                                        {{aplicacion.estado}}
+                                    </span>
+                                    <ng-template #popTemplate>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'En Revisión')">En Revisión</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'Seleccionado')">Seleccionado</button>
+                                    </ng-template>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="openModalAplicacion(mAplicacion, aplicacion)" tooltip="Ver detalle">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>  
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+        </div>
+    </div>
+</section>
+
+
+<ng-template #mAsesores>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <h2 class="text-center no-margin">Asesores</h2>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <table class="table table-hover">
+                <tbody>
+                    <tr *ngFor=" let asesor of asesores">
+                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
+                        <td>{{ asesor.nombre }}</td>
+                        <td class="text-center">
+                            <button (click)="agregarAsesor(asesor)" class="btn btn-primary" [disabled]="loading">
+                                <span *ngIf="!loading">Agregar</span>
+                                <span *ngIf="loading">Agregando</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </div>
+</ng-template>
+
+<ng-template #mEmpresas>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <h2 class="text-center no-margin">Empresa</h2>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <app-buscador-empresas></app-buscador-empresas>
+        </div>
+  </div>
+</ng-template>
+
+<ng-template #mAplicacion>
+  <div class="modal-header">
+    <div class="modal-title text-center">
+        <div class="col-xs-12 text-center">
+            <img class="img-circle" *ngIf="aplicacion.avatar" src="{{apiService.baseUrl + 'img/usuarios/' + aplicacion.avatar }}" height="50px"/>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <h3>{{ aplicacion.nombre }}</h3>
+            <p>{{ aplicacion.tipo }}</p>
+        </div>
+        <p class="text-center">
+            <span class="label label-pop" [ngClass]="{'label-danger' : aplicacion?.estado == 'Iniciado', 'label-success' : aplicacion?.estado == 'Seleccionado'}" [popover]="popTemplate" [outsideClick]="true">
+                {{aplicacion.estado}}
+            </span>
+            <ng-template #popTemplate>
+                <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'Iniciado')">Iniciado</button>
+                <button class="btn btn-default btn-xs" (click)="setEstado(aplicacion, 'Seleccionado')">Seleccionado</button>
+            </ng-template>
+        </p>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <p class="col-xs-12"><b>Nota:</b> {{ aplicacion.nota }}</p>
+            <p class="col-xs-6"><b>Sexo:</b> {{ aplicacion.detalle.sexo }}</p>
+            <p class="col-xs-6"><b>Municipio:</b> {{ aplicacion.detalle.municipio }}</p>
+            <p class="col-xs-6"><b>Celular:</b> {{ aplicacion.detalle.celular }}</p>
+            <p class="col-xs-6"><b>Empresa:</b> {{ aplicacion.detalle.empresa }}</p>
+            <p class="col-xs-6"><b>Carrera:</b> {{ aplicacion.detalle.carrera }}</p>
+            <p class="col-xs-6"><b>Correo:</b> {{ aplicacion.detalle.correo }}</p>
+            <p class="col-xs-6"><b>Direccion:</b> {{ aplicacion.detalle.direccion }}</p>
+            <p class="col-xs-6"><b>Descripcion:</b> {{ aplicacion.detalle.descripcion }}</p>
+            <p class="col-xs-6"><b>Municipio:</b> {{ aplicacion.detalle.municipio }}</p>
+            <p class="col-xs-6"><b>Telefono:</b> {{ aplicacion.detalle.telefono }}</p>
+            <p class="col-xs-6"><b>Facebook:</b> {{ aplicacion.detalle.url_facebook }}</p>
+            <p class="col-xs-6"><b>Twitter:</b> {{ aplicacion.detalle.url_twitter }}</p>
+            <p class="col-xs-6"><b>Linkedin:</b> {{ aplicacion.detalle.url_linkedin }}</p>
+        </div>
+  </div>
+</ng-template>

@@ -1,29 +1,116 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
 <form name="form" (ngSubmit)="onSubmit()">
-<div class="row" *ngIf="at.id">
-
-        <div class="form-group col-xs-12">
-             <label for="nombre"> * Lugar:</label>
-             <input type="text" class="form-control" name="at.contrato.lugar_firma" [(ngModel)]="at.contrato.lugar_firma" placeholder="Nombre" required autofocus />
+<div class="row">
+    <div class="form-group col-sm-12">
+         <label for="nombre"> * Lugar:</label>
+         <input type="text" class="form-control" name="contrato.lugar_firma" [(ngModel)]="contrato.lugar_firma" placeholder="Nombre" required autofocus />
+    </div>
+     <div class="form-group col-sm-6">
+         <label for="inicio"> Fecha Inicio:</label>
+         <input type="date" class="form-control" name="contrato.inicio" [(ngModel)]="contrato.inicio" placeholder="Nombre"/>
+     </div>
+     <div class="form-group col-sm-6">
+         <label for="fin"> Fecha Fin:</label>
+         <input type="date" class="form-control" name="contrato.fin" [(ngModel)]="contrato.fin" placeholder="Nombre"/>
+     </div>
+     <div class="form-group col-sm-6">
+        <label for="nit"> Duración:</label>
+        <div class="row">
+            <div class="col-xs-6" style="padding-right: 0px;">
+                <input type="number" class="form-control" name="contrato.duracion" [(ngModel)]="contrato.duracion"/>
+            </div>
+            <div class="col-xs-6" style="padding-left: 0px;">
+                <select name="tipo" [(ngModel)]="contrato.tipo_duracion" class="form-control">
+                    <option value="Días">Días</option>
+                    <option value="Semanas">Semanas</option>
+                    <option value="Meses">Meses</option>
+                </select>
+            </div>  
         </div>
-         <div class="form-group col-xs-12 col-sm-6">
-             <label for="empresa"> Fecha:</label>
-             <input type="date" class="form-control" name="at.contrato.fecha_inicio" [(ngModel)]="at.contrato.fecha_inicio" placeholder="Nombre"/>
+     </div>
+     <div class="form-group col-sm-6">
+         <label for="nombre"> Pago:</label>
+         <input type="number" class="form-control" name="contrato.pago" [(ngModel)]="contrato.pago"/>
+     </div>
+     <div class="form-group col-sm-6">
+         <label for="nombre"> % Empresarial:</label>
+         <div class="input-group">
+            <input type="number" class="form-control" name="contrato.aporte" [(ngModel)]="contrato.aporte"/>
+            <span class="input-group-addon">{{ contrato.pago * contrato.aporte / 100 | currency:'USD':'symbol':'1.2'  }}</span>
          </div>
-         <div class="form-group col-xs-12 col-sm-6">
-             <label for="nit"> Duración:</label>
-             <input type="number" class="form-control" name="at.contrato.duracion" [(ngModel)]="at.contrato.duracion"/>
+     </div>
+     <div class="form-group col-sm-6">
+         <label for="nombre"> % CDMYPE:</label>
+         <div class="input-group">
+            <input type="number" class="form-control" name="contrato.aporte" value="{{ (100 - contrato.aporte) | number:'2.2'}}"/>
+            <span class="input-group-addon">{{ contrato.pago * (100 - contrato.aporte) / 100 | currency:'USD':'symbol':'1.2'  }}</span>
          </div>
-         <div class="form-group col-xs-12 col-sm-4">
-             <label for="nombre"> Pago:</label>
-             <input type="number" class="form-control" name="at.contrato.pago" [(ngModel)]="at.contrato.pago"/>
-         </div>
-         <div class="form-group col-xs-12 col-sm-4">
-             <label for="nombre"> % CDMYPE:</label>
-             <input type="number" class="form-control" name="at.contrato.aporte" [(ngModel)]="at.contrato.aporte"/>
-         </div>
-         <div class="form-group col-xs-12 col-sm-4">
-             <label for="nombre"> % Empresarial:</label>
-             <input type="number" class="form-control" name="at.contrato.aporte" [(ngModel)]="at.contrato.aporte"/>
-         </div>
+     </div>
+     <div class="col-xs-12">
+       <a *ngIf="contrato.id" target="_blank" href="{{ apiService.baseUrl + '/at/contrato/' + contrato.id }}" class="btn btn-default"> Imprimir</a>
+       <a (click)="openModal(mAmpliacion)" class="btn btn-default"> Ampliación</a>
+       <button [disabled]="loading" class="btn btn-primary pull-right">
+           <span *ngIf="!loading">Guardar</span>
+           <span *ngIf="loading">Guardando...</span>
+       </button>
+     </div>
 </div>
 </form>
+</div>
+</div>
+
+
+<ng-template #mAmpliacion>
+ <div class="modal-header">
+   <div class="modal-title text-center"> <h2>Ampliacion</h2> </div>
+   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+    <form name="form" (ngSubmit)="onSubmitAmpliacion(consultor)">
+       <div class="row">
+           <div class="form-group col-md-12">
+               <label for="fecha">* Fecha:</label>
+               <input type="date" class="form-control" [(ngModel)]="ampliacion.fecha" name="fecha">
+           </div>
+           <div class="form-group col-md-6">
+               <label for="solicitante">* Solicitante:</label>
+               <select class="form-control" [(ngModel)]="ampliacion.solicitante" name="solicitante">
+                    <option value="Empresario">Empresario</option>
+                    <option value="Consultor">Consultor</option>
+               </select>
+           </div>
+           <div class="form-group col-md-6">
+              <label for="tiempo"> Tiempo:</label>
+              <div class="row">
+                  <div class="col-xs-6" style="padding-right: 0px;">
+                      <input type="number" class="form-control" name="tiempo_ampliacion" [(ngModel)]="ampliacion.tiempo_ampliacion"/>
+                  </div>
+                  <div class="col-xs-6" style="padding-left: 0px;">
+                      <select name="periodo" [(ngModel)]="ampliacion.periodo" class="form-control">
+                          <option value="Días">Días</option>
+                          <option value="Semanas">Semanas</option>
+                          <option value="Meses">Meses</option>
+                      </select>
+                  </div>  
+              </div>
+           </div>
+           
+           <div class="form-group col-md-12">
+               <label for="razonamiento">Razonamiento:</label>
+               <textarea name="razonamiento" cols="30" rows="4" [(ngModel)]="ampliacion.razonamiento" class="form-control"></textarea>
+           </div>
+
+           <div class="col-xs-12">
+            <a *ngIf="ampliacion.id" target="_blank" href="{{ apiService.baseUrl + '/at/ampliacion/' + ampliacion.id }}" class="btn btn-default"> Imprimir</a>
+             <button [disabled]="loading" class="btn btn-primary pull-right">
+                 <span *ngIf="!loading">Guardar</span>
+                 <span *ngIf="loading">Guardando...</span>
+             </button>
+           </div>
+       </div>
+    </form>
+ </div>
+</ng-template>

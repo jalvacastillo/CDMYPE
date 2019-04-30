@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Models\Cliente;
+namespace App\Models\Empresas;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Accion extends Model {
 
-    use SoftDeletes;
-    protected $table = 'cliente_acciones';
+    protected $table = 'empresa_acciones';
     protected $fillable = [
         'proyecto_id',
         'actividad',
         'responsable',
         'inicio',
         'fin',
-        'estado'
+        'completado'
     ];
 
 
     public function proyecto()
     {
-        return $this->belongsTo('App\Models\Cliente\Proyecto','proyecto_id');
+        return $this->belongsTo('App\Models\Empresas\Proyecto','proyecto_id');
     }
 
 

@@ -1,0 +1,21 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6 col-md-offset-3">
+     
+      <a *ngIf="cap.id" target="_blank" href="{{ apiService.baseUrl + '/cap/tdr/' + cap.id }}" class="btn btn-default btn-block"> TDR</a>
+      <a *ngIf="contrato.id" target="_blank" href="{{ apiService.baseUrl + '/cap/contrato/' + contrato.id }}" class="btn btn-default btn-block"> Contrato</a>
+      <a *ngIf="cap.id" target="_blank" href="{{ apiService.baseUrl + '/cap/acta-recepcion/' + cap.id }}" class="btn btn-default btn-block"> Acta recepcion </a>
+      <a *ngIf="cap.informe" target="_blank" href="{{ apiService.baseUrl + '/cap/at/informes/' + cap.informe }}" class="btn btn-default btn-block"> Informe </a>
+      
+      <br>
+      <br>
+      <form name="form" (ngSubmit)="onSubmitFile(consultor)">
+         <div class="row">
+             <div class="form-group col-md-12">
+                 <label for="informe">Informe:</label>
+                 <input type="file" name="img" (change)="setFile($event)" accept="application/pdf">
+             </div>
+         </div>
+      </form>
+
+    </div>
+</div>

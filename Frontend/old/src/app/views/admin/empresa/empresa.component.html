@@ -1,0 +1,166 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Empresa <small> Información</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Empresa</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn" *ngIf="empresa.nombre">
+
+<div class="row">
+
+    
+    <div class="col-md-3">
+
+      
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+            <img class="profile-user-img img-responsive img-circle" src="/assets/img/empresas/{{empresa.logo}}" alt="User profile picture">
+            <h3 class="profile-username text-center">{{ empresa.nombre }}</h3>
+
+          <ul class="list-group list-group">
+            <li class="list-group-item">
+                <p class="text-center">Estado del empresa</p>
+                <progressbar class="progress active" tooltip="Completa toda la información de tu empresa." [value]="empresa.nivel" [type]="empresa.nivel == 100 ? 'success' : 'warning'">
+                  {{empresa.nivel }} %
+                </progressbar>
+            </li>
+            <li class="list-group-item">
+              Registrado <a class="pull-right">{{ empresa.created_at | date:'dd-MM-yyyy' }}</a>
+            </li>
+            <li class="list-group-item">
+              Vencimiento <a class="pull-right">{{ empresa.vencimiento | date:'dd-MM-yyyy' }}</a>
+            </li>
+            <li class="list-group-item">
+              Plan <a class="pull-right">{{ empresa.plan }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="col-md-9">
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#settings" data-toggle="tab">Información</a></li>
+          <li><a href="#activity" data-toggle="tab">Precio de Examenes</a></li>
+          <li><a href="#timeline" data-toggle="tab">Plan</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane" id="settings">
+                <div class="row">
+                    <form name="form" (ngSubmit)="onSubmit()">
+                        <div class="form-group col-sm-6">
+                            <label for="nombre">* Nombre:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.nombre" name="nombre" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="doctor">Doctor:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.nombre_doctor" name="doctor" placeholder="doctor">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="jvplc">JVPLC:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.jvplc" name="jvplc" placeholder="Codigo de autorización">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="inscripcion">Inscripción:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.inscripcion" name="inscripcion" placeholder="inscripcion">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" class="form-control" [(ngModel)]="empresa.telefono" name="telefono" placeholder="xxxx-xxxx">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="correo">Correo:</label>
+                            <input type="email" class="form-control" [(ngModel)]="empresa.correo" name="correo" placeholder="info@miempresa.com">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.direccion" name="direccion" placeholder="direccion">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="municipio">Municipio:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.municipio" name="municipio" placeholder="municipio">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="departamento">Departamento:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.departamento" name="departamento" placeholder="departamento">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="pais">Pais:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.pais" name="pais" placeholder="pais">
+                        </div>
+                        
+                        <div class="col-xs-12">
+                            <button [disabled]="loading" class="btn btn-primary pull-right">
+                                <span *ngIf="!loading">Guardar</span>
+                                <span *ngIf="loading">Guardando...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane" id="activity">
+                <div class="row">
+                    <form name="form" (ngSubmit)="onSubmit()">
+                        <div class="form-group col-sm-4">
+                            <label for="pago_orina">Orina:</label>
+                            <input type="number" class="form-control" [(ngModel)]="empresa.pago_orina" name="pago_orina" placeholder="0.0">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="pago_heces">Heces:</label>
+                            <input type="number" class="form-control" [(ngModel)]="empresa.pago_heces" name="pago_heces" placeholder="0.0">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="pago_hemograma">Hemograma:</label>
+                            <input type="number" class="form-control" [(ngModel)]="empresa.pago_hemograma" name="pago_hemograma" placeholder="0.0">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="pago_diversos">Diversos:</label>
+                            <input type="number" class="form-control" [(ngModel)]="empresa.pago_diverso" name="pago_diversos" placeholder="0.0">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="pago_quimica">Quimica:</label>
+                            <input type="number" class="form-control" [(ngModel)]="empresa.pago_quimica" name="pago_quimica" placeholder="0.0">
+                        </div>
+                        <div class="col-xs-12">
+                            <button [disabled]="loading" class="btn btn-primary pull-right">
+                                <span *ngIf="!loading">Guardar</span>
+                                <span *ngIf="loading">Guardando...</span>
+                            </button>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="timeline">
+                <div class="row text-center">
+                    <h4>Ponte en contacto con nosotros para ver formas de pago.</h4>
+                    <a href="http://websis.me/contactos" class="btn btn-primary" target="_blank">Página web</a>
+                    <a href="http://facebook.com/jalvacastillo" class="btn btn-default" target="_blank">Desarrollador</a>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+</div>
+
+</section>
+
+<section class="content" *ngIf="!empresa.nombre">
+    <div class="row">
+        <div class="text-muted text-center thumbler">
+          <br><br>
+          <i class="fa fa-flask fa-5x"></i>
+          <br><br>
+        </div>
+    </div>
+</section>
+
+</div>

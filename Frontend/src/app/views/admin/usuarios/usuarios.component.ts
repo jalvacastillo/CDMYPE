@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AlertService } from '../../../services/alert.service';
 import { ApiService } from '../../../services/api.service';
-import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,7 +10,7 @@ import { Data } from '../../../models/data';
 
 export class UsuariosComponent implements OnInit {
 
-		public usuarios:Data
+		public usuarios:any = [];
 	    public buscador:any = '';
 	    public loading:boolean = false;
 

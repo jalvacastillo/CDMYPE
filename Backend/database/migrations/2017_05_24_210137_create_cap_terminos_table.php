@@ -9,7 +9,7 @@ class CreateCapTerminosTable extends Migration
 
     public function up()
     {
-        Schema::create('cap_terminos', function (Blueprint $table) {
+        Schema::create('caps', function (Blueprint $table) {
             
             $table->increments('id');
 
@@ -26,7 +26,7 @@ class CreateCapTerminosTable extends Migration
             $table->date('fecha_limite');
             $table->string('nota')->nullable();
             $table->string('estado'); //, ['Creada', 'Enviada', 'Contratada', 'Finalizada'
-            $table->integer('asesor_id');
+            $table->integer('usuario_id');
             $table->integer('especialidad_id');
             $table->string('informe')->nullable();
 
@@ -36,6 +36,6 @@ class CreateCapTerminosTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('cap_terminos');
+        Schema::dropIfExists('caps');
     }
 }

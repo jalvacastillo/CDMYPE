@@ -1,10 +1,10 @@
-import { Component, OnInit, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { fromEvent, timer } from 'rxjs';
 
 import { ApiService } from '../../../services/api.service';
 import { AlertService } from '../../../services/alert.service';
-import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-buscador-empresas',
@@ -14,39 +14,34 @@ export class BuscadorEmpresasComponent implements OnInit {
 
 	@Input() empresa: any = {};
 	@Output() empresaSelect = new EventEmitter();
-	modalRef: BsModalRef;
-
-	public empresas:Data;
-	public loading:boolean;
-
+    public empresas: any = [];
+    public searching = false;
 
 	constructor( 
-	    private apiService: ApiService, private alertService: AlertService,
-	    private modalService: BsModalService
+	    private apiService: ApiService, private alertService: AlertService 
 	) { }
 
-	ngOnInit() {
-	}
-
-	openModal(template: TemplateRef<any>) {
-        this.modalRef = this.modalService.show(template);
+    ngOnInit() {
+        const input = document.getElementById('example');
+        const example = fromEvent(input, 'keyup').pipe(map(i => (<HTMLTextAreaElement>i.currentTarget).value));
+        const debouncedInput = example.pipe(debounceTime(500));
+        const subscribe = debouncedInput.subscribe(val => { this.searchEmpresa(); });
     }
 
-	searchEmpresa(){
-		this.loading = true;
-		if(this.empresa.nombre && this.empresa.nombre.length > 1) {
-			this.apiService.read('empresas/buscar/', this.empresa.nombre).subscribe(empresas => {
-			   	this.empresas = empresas;
-				this.loading = false;
-			}, error => {this.alertService.error(error._body); this.loading = false;});
-		}else if (!this.empresa.nombre  || this.empresa.nombre.length < 1){this.loading = false; this.empresa = {}; this.empresas.total = 0; }
-	}
+    searchEmpresa(){
+        if(this.empresa.nombre && this.empresa.nombre.length > 1) {
+            this.searching = true;
+            this.apiService.read('empresas/buscar/', this.empresa.nombre).subscribe(empresas => {
+               this.empresas = empresas;
+               this.searching = false;
+            }, error => {this.alertService.error(error);this.searching = false;});
+        }else if (!this.empresa.nombre  || this.empresa.nombre.length < 1 ){ this.searching = false; this.empresa = {}; this.empresas.total = 0; }
+    }
 
-	selectProveedor(empresa){
-		this.empresa = empresa;
-		this.empresaSelect.emit({empresa: this.empresa});
-		this.empresas.total = 0;
-		this.modalRef.hide()
+	public selectEmpresa(empresa:any){
+        this.empresas = [];
+        this.empresa = {};
+	    this.empresaSelect.emit({empresa: empresa});
 	}
 
 }

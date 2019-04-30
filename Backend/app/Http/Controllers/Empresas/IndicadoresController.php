@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Empresas;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Empresas\IndicadorRequest;
 use Illuminate\Http\Request;
 use App\Models\Empresas\Indicador;
 
@@ -11,8 +10,14 @@ class IndicadoresController extends Controller
 {
     
 
-    public function store(IndicadorRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'empresa_id'        => 'required',
+            'venta_nacional'    => 'required',
+            'usuario_id'        => 'required',
+        ]);
+
         if($request->id){
             $indicador = Indicador::findOrFail($request->id);
         }

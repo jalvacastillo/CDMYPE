@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-descargar-excel',

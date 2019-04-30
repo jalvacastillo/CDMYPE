@@ -1,39 +1,23 @@
 <?php
 
-namespace App\Models\Cliente;
+namespace App\Models\Empresas;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Carbon\Carbon;
-
 class Proyecto extends Model {
 
-    protected $table = 'empresas_proyectos';
+    protected $table = 'empresa_proyectos';
     protected $fillable = array(
-        'asesor_id',
-        'cliente_id',
         'nombre',
-        'fecha_fin',
-        'impacto'
+        'inicio',
+        'fin',
+        'descripcion',
+        'asesor_id',
+        'empresa_id',
     );
     
-//custom attributes
-        // public function getActividadesCompletasAttribute(){
-        //     return $this->actividades()->where('completo', '=', '1')->count();
-        // }
-
-        // public function getTotalActividadesAttribute(){
-        //     return $this->actividades()->count();
-        // }
-
-        // public function getAvanceAttribute(){
-        //     if($this->getActividadesCompletasAttribute() == 0 || $this->getTotalActividadesAttribute() == 0 )
-        //         return 0;
-        //     return (( $this->getActividadesCompletasAttribute() / $this->getTotalActividadesAttribute()) * 100);
-        // }
-
-    public function cliente(){
-        return $this->belongsTo('App\Models\Cliente', 'cliente_id');
+    public function empresa(){
+        return $this->belongsTo('App\Models\Empresas\Empresa', 'empresa_id');
     }
     
     public function asesor(){
@@ -41,7 +25,7 @@ class Proyecto extends Model {
     }
 
     public function acciones(){
-        return $this->hasMany('App\Models\Cliente\Accion', 'proyecto_id');
+        return $this->hasMany('App\Models\Empresas\Accion', 'proyecto_id');
     }
 
 

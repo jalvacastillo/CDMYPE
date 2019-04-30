@@ -1,0 +1,79 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Empresa <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Empresa</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+
+        
+        <div class="col-sm-12">
+
+          <div class="box box-primary" style="min-height: 246px;">
+            <div class="box-body box-profile">
+                <div class="imagen-upload" title="Cambiar logo">
+                    <img *ngIf="empresa?.logo" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/empresas/' + empresa.logo }}" style="margin: auto;"  title="Cambiar logo">
+                    <input type="file" name="logo" id="file" class="inputfile" (change)="uploadFile(empresa, $event)" title="Cambiar logo">
+                    <label for="file"></label>
+                </div>
+
+                <h3 class="text-center">{{ empresa.nombre }}</h3>
+                <!-- <p class="text-center">{{ empresa.created_at | date:'dd/MM/yyyy hh:mm:ss a' }}</p> -->
+                <p class="text-center"><span class="label {{ empresa.atendido ? 'label-success' : 'label-danger' }}">{{ empresa.atendido ? 'Atendido' : 'No Atendido' }}</span></p>
+                <div class="text-right checkbox pull-right">
+                    <label>Catalogo: <input type="checkbox" [(ngModel)]="empresa.catalogo" name="catalogo"></label>
+                </div>
+
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="col-sm-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li><a href="#info" data-toggle="tab">Empresa</a></li>
+              <li><a href="#empresarios" data-toggle="tab">Empresarios</a></li>
+              <li><a href="#indicadores" data-toggle="tab">Indicadores</a></li>
+              <li><a href="#productos" data-toggle="tab">Productos</a></li>
+              <li class="active"><a href="#proyectos" data-toggle="tab">Proyectos</a></li>
+              <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="info">
+                    <app-empresa-info *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-info>
+                </div>
+
+                <div class="tab-pane fade" id="empresarios">
+                   <app-empresa-empresarios *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-empresarios>
+                </div>
+
+                <div class="tab-pane fade" id="indicadores">
+                   <app-empresa-indicadores *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-indicadores>
+                </div>
+
+                <div class="tab-pane fade" id="productos">
+                   <app-empresa-productos *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-productos>
+                </div>  
+
+                <div class="tab-pane fade in active" id="proyectos">
+                   <app-empresa-proyectos *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-proyectos>
+                </div>
+
+                <div class="tab-pane fade" id="historial">
+                   <!-- <app-empresa-ordenes *ngIf="empresa.id" [empresa_id] = "empresa.id"></app-empresa-ordenes> -->
+                </div>          
+            </div>
+          </div>
+        </div>
+
+    </div>
+</section>
+
+</div>

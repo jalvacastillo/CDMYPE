@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Models\Cap;
+namespace App\Models\Caps;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contrato extends Model {
 
-    use SoftDeletes;
-    
     protected $table = 'cap_contratos';
     protected $fillable = [
-        'termino_id',
+        'cap_id',
         'lugar',
         'pago',
         'firma'
     ];
+
+    public function cap()
+    {
+        return $this->belongsTo('App\Models\Caps\Cap','cap_id');
+    }
 
 
 }

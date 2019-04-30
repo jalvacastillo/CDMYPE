@@ -3,7 +3,7 @@
 <section class="content-header">
     <h1> Asistencias Técnicas <small>Listado</small> </h1>
     <ol class="breadcrumb">
-        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Asistencias Técnicas</li>
     </ol>
 </section>
@@ -23,7 +23,7 @@
                             <div class="input-group-btn">
                                 <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
-                                <a [routerLink]="['/at/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/at/nuevo" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -32,12 +32,14 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">Fecha</th>
                                 <th>Tema</th>
                                 <th class="hidden-xs">Empresa</th>
-                                <th class="hidden-xs">Encargado</th>
                                 <th class="hidden-xs">Especialidad</th>
-                                <th class="hidden-xs">Estado</th>
+                                <th class="hidden-xs">Encargado</th>
+                                <th class="text-center">Inicio</th>
+                                <th class="text-center">Fin</th>
+                                <th>Consultor</th>
+                                <th class="hidden-xs text-center">Estado</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
                             </tr>
                         </thead>
@@ -46,21 +48,26 @@
                                 <td colspan="8" class="text-center" *ngIf="ats?.total < 1">
                                     <span class="label label-info">No tiene ats registrados</span>
                                 </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
                             </tr>
 
                             <tr class="animated fadeIn" *ngFor=" let at of ats?.data">
                                 
-                                <td class="text-center">{{ at.created_at | date:'dd-MM-yyyy' }}</td>
-                                <td>{{ at.tema | truncate:30 }}</td>
+                                <td><a routerLink="/at/{{ at.id }}" tooltip="Editar">{{ at.tema | truncate:30 }}</a></td>
                                 <td class="text-center">
                                     <span *ngFor=" let empresa of at?.empresas">
-                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + 'img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
+                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + '/img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
                                     </span>
                                 </td>
-                                <td class="text-center">
-                                    <img class="img-circle" *ngIf="at.asesor?.avatar" src="{{apiService.baseUrl + 'img/team/' + at.asesor.avatar }}" height="30px" tooltip="{{ at.asesor.nombre }}"/>
-                                </td>
                                 <td>{{ at.especialidad }}</td>
+                                <td class="text-center">
+                                    <img class="img-circle" *ngIf="at.asesor?.avatar" src="{{apiService.baseUrl + '/img/team/' + at.asesor.avatar }}" height="30px" tooltip="{{ at.asesor.name }}"/>
+                                </td>
+                                <td class="text-center" width="100">{{ at.inicio | date:'dd-MM-yyyy' }}</td>
+                                <td class="text-center" width="100">{{ at.fin | date:'dd-MM-yyyy' }}</td>
+                                <td><a *ngIf="at.consultor" routerLink="/consultor/{{ at.consultor.consultor_id }}" tooltip="Editar">{{ at.consultor.nombre }}</a></td>
                                 <td class="text-center">
                                     <span class="label label-pop" [ngClass]="{'label-danger' : at?.estado == 'Creada', 'label-warning' : at?.estado == 'Contratada', 'label-success' : at?.estado == 'Finalizada', 'label-info' : at?.estado == 'Enviada'}" [popover]="popTemplate" [outsideClick]="true">
                                         {{at.estado}}
@@ -74,8 +81,8 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
-                                        <a class="btn btn-default" [routerLink]="['/at/', at.id]" tooltip="Editar">
-                                        <i class="fa fa-arrow-right"></i>
+                                        <a class="btn btn-default" routerLink="/at/{{ at.id }}" tooltip="Editar">
+                                            <i class="fa fa-arrow-right"></i>
                                         </a>
                                         <!-- <a class="btn btn-default" [routerLink]="['/at/ventas/', at.id]" tooltip="Historial"> -->
                                         <!-- <i class="fa fa-arrow-right"></i> -->

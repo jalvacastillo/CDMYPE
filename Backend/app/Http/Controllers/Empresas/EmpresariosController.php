@@ -18,6 +18,14 @@ class EmpresariosController extends Controller
 
     }
 
+    public function all() {
+       
+        $empresarios = Empresario::orderBy('id','dsc')->get();
+
+        return Response()->json($empresarios, 200);
+
+    }
+
 
     public function read($id) {
 

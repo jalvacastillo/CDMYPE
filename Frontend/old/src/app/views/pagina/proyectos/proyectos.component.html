@@ -1,0 +1,104 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Proyectos <small>Listado</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Proyectos</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <span class="label label-default" *ngIf="proyectos?.total">Registros: {{proyectos?.total}}</span>
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">
+                        <form name="form" (ngSubmit)="search()">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search()">
+                        </form>
+                            <div class="input-group-btn">
+                                <button (click)="search()" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a [routerLink]="['/proyecto/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Creado</th>
+                                <th>Nombre</th>
+                                <th class="hidden-xs">Tipo</th>
+                                <th class="text-center">Estado</th>
+                                <th class="hidden-xs text-center">Empresas</th>
+                                <th class="hidden-xs text-center">Encargados</th>
+                                <th class="hidden-xs text-center">Aplicaciones</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="proyectos?.total < 1 && !loading">
+                                    <span class="label label-info">No tiene proyectos registrados</span>
+                                </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let proyecto of proyectos?.data">
+                                
+                                <td class="text-center">{{ proyecto.created_at | date:'dd-MM-yyyy' }}</td>
+                                <td>{{ proyecto.nombre }}</td>
+                                <td class="hidden-xs">{{ proyecto.tipo }}</td>
+                                <td class="text-center">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : proyecto?.estado == 'Inactivo', 'label-warning' : proyecto?.estado == 'Ejecución', 'label-success' : proyecto?.estado == 'Finalizado', 'label-info' : proyecto?.estado == 'Activo'}" [popover]="popTemplate" [outsideClick]="true">
+                                        {{proyecto.estado}}
+                                    </span>
+                                    <ng-template #popTemplate>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(proyecto, 'Inactivo')">Inactivo</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(proyecto, 'Activo')">Activo</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(proyecto, 'Ejecución')">Ejecución</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(proyecto, 'Completado')">Completado</button>
+                                    </ng-template>
+                                </td>
+                                <td class="text-center">
+                                    <span *ngFor=" let empresa of proyecto?.empresas">
+                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + 'img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <span *ngFor=" let asesor of proyecto?.asesores">
+                                        <img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="30px" tooltip="{{ asesor.nombre }}"/>
+                                    </span>
+                                </td>
+                                <td class="text-center">{{ proyecto.total_aplicaciones }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" [routerLink]="['/proyecto/', proyecto.id]" tooltip="Detalle">
+                                        <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        <a class="btn btn-default" (click)="delete(proyecto.id)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i></a>
+                                    </div>  
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center" *ngIf="proyectos?.last_page > 1">
+                        <app-pagination [items]="proyectos" (setPagination)="setPagination($event)"></app-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>

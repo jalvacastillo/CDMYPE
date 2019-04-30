@@ -2,46 +2,46 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="form-group">
-                <label> * Empresa:</label>
-                <!-- <input class="form-control" type="text" name="empresa" [(ngModel)]="search" placeholder="Buscar" autofocus> -->
+                <label> * Tema:</label>
+                <input type="text" class="form-control" name="tema" [(ngModel)]="at.tema" placeholder="Nombre" required />
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="form-group">
                 <label> * Empresario:</label>
-         </div>
-        </div>
-        <div class="col-xs-12 col-sm-12">
-            <div class="form-group">
-                <label> * Tema:</label>
-                <input type="text" class="form-control" name="tema" [(ngModel)]="at.tema" placeholder="Nombre" required />
+                <select class="form-control" [(ngModel)]="at.empresario_id" name="empresario_id">
+                    <option *ngFor="let emp of empresarios" [ngValue]="emp.id">{{ emp.nombre }}</option>
+                </select>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="obj_general"> Objetivo General:</label>
-            <textarea class="form-control previsualizar" name="obj_general" [(ngModel)]="at.obj_general" cols="30" rows="3"></textarea>
+            <textarea class="form-control" name="obj_general" [(ngModel)]="at.obj_general" cols="30" rows="3"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="obj_especifico"> Objetivo Especifico:</label>
-                <textarea class="form-control previsualizar" name="obj_especifico" [(ngModel)]="at.obj_especifico" cols="30" rows="3"></textarea>
+                <textarea class="form-control" name="obj_especifico" [(ngModel)]="at.obj_especifico" cols="30" rows="3"></textarea>
             </div>
         </div>
         
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="productos"> Productos:</label>
-            <textarea class="form-control previsualizar" name="productos" [(ngModel)]="at.productos" cols="30" rows="3"></textarea>
+                <textarea class="form-control" name="productos" [(ngModel)]="at.productos" cols="30" rows="3"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label> Especialidad:</label>
                 <select class="form-control" [(ngModel)]="at.especialidad_id" name="especialidad_id">
-                    <option *ngFor="let esp of especialidades" [ngValue]="esp.id">{{ esp.nombre }}</option>
+                    <optgroup *ngFor="let esp of especialidades" label="{{esp.nombre}}">
+                        <option *ngFor="let sub of esp.subespecialidades" [ngValue]="sub.id">{{ sub.nombre }}</option>
+                      </optgroup>
                 </select>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
@@ -53,7 +53,7 @@
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label> Trabajo Local:</label>
-                <input type="text" class="form-control" name="trabajo_local" [(ngModel)]="at.trabajo_local" placeholder="Lugar, Calle etc..." />
+                <input type="text" class="form-control" name="trabajo_local" [(ngModel)]="at.trabajo_local"/>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
@@ -76,7 +76,7 @@
         </div>
 
         <div class="col-xs-12">
-          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+          <a *ngIf="at.id" target="_blank" href="{{ apiService.baseUrl + '/at/tdr/' + at.id }}" class="btn btn-default"> Imprimir</a>
           <button [disabled]="loading" class="btn btn-primary pull-right">
               <span *ngIf="!loading">Guardar</span>
               <span *ngIf="loading">Guardando...</span>

@@ -23,21 +23,26 @@ class Empresario extends Model {
         'departamento',
         'usuario_id'
     );
+
+    public $appends = ['empresa'];
     
+    public function getEmpresaAttribute(){
+        return $this->empresas()->first() ? $this->empresas()->first()->empresa->nombre : null;
+    }
 
-        public function empresas() 
-        {
-            return $this->hasMany('App\Models\Empresas\Empresa','empresario_id');
-        }
+    public function empresas() 
+    {
+        return $this->hasMany('App\Models\Empresas\EmpresaEmpresario','empresario_id');
+    }
 
-        public function asistencias() 
-        {
-            return $this->hasMany('App\Models\Asistencia','empresario_id');
-        }
+    public function asistencias() 
+    {
+        return $this->hasMany('App\Models\Asistencia','empresario_id');
+    }
 
-        public function eventos(){
-            return $this->hasMany('App\Models\EventoEmpresarios', 'empresario_id');
-        }
+    public function eventos(){
+        return $this->hasMany('App\Models\EventoEmpresarios', 'empresario_id');
+    }
 
     
 }

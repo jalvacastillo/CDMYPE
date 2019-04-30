@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../../../services/alert.service';
 import { ApiService } from '../../../../services/api.service';
@@ -9,7 +9,7 @@ import { ApiService } from '../../../../services/api.service';
 })
 export class AtActaComponent implements OnInit {
 
-	@Input() at:any = {};
+    public acta:any = {};
     public loading:boolean = false;
 
 	constructor( 
@@ -18,12 +18,24 @@ export class AtActaComponent implements OnInit {
         ) { }
 
 	ngOnInit() {
-
+        const id = +this.route.snapshot.paramMap.get('id');
+            
+        if(isNaN(id)){
+            this.acta = {};
+        }
+        else{
+            this.loading = true;
+            this.apiService.read('at/acta/', id).subscribe(acta => {
+               this.acta = acta;
+                this.loading = false;
+            },error => {this.alertService.error(error); this.loading = false; });
+        }
 	}
 
     public onSubmit(){
         this.loading = true;
-        this.apiService.store('at/acta', this.at.acta).subscribe(acta => {
+        this.apiService.store('at/acta', this.acta).subscribe(acta => {
+            this.acta = acta;
             this.loading = false;
         },error => {this.alertService.error(error); this.loading = false; });
     }

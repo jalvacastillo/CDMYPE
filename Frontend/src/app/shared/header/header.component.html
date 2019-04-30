@@ -18,9 +18,11 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
 
-                <li routerLinkActive="active"><a [routerLink]="['/empresas']">Empresas</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['/ats']">ATs</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/empresas']">Clientes</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['/consultores']">Consultores</a></li>              
+                <li routerLinkActive="active"><a [routerLink]="['/ats']">ATs</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/caps']">CAPs</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/salidas']">Salidas</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Página web <i class="caret"></i></a>
                   <ul class="dropdown-menu">
@@ -54,14 +56,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown user user-menu">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ apiService.baseUrl + 'img/team/' + usuario.avatar }}" class="user-image" alt="User Image">
+                    <img src="{{ apiService.baseUrl + '/img/team/' + usuario.avatar }}" class="user-image" alt="User Image">
                     <span class="hidden-xs">{{ usuario.name }}</span>
                     <i class="caret"></i>
                   </a>
                   <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                      <img src="{{ apiService.baseUrl + 'img/team/' + usuario.avatar }}" class="img-circle" alt="User Image">
+                      <img src="{{ apiService.baseUrl + '/img/team/' + usuario.avatar }}" class="img-circle" alt="User Image">
                       <p style="color: black;">
                         {{ usuario.name }}
                         <small>{{usuario.tipo }}</small>

@@ -19,15 +19,14 @@ class At extends Model {
         'aporte',
         'estado',
         'especialidad_id',
-        'asesor_id',
         'informe',
-        'fecha_aprobacion'
+        'fecha_aprobacion',
+        'empresario_id',
+        'asesor_id',
     ];
 
 
-    protected $appends = ['especialidad'];
-    // protected $appends = ['empresa','especialidad', 'asesor', 'consultor', 'inicio', 'fin'];
-
+    protected $appends = ['especialidad', 'inicio', 'fin'];
 
     public function getInicioAttribute()
     {
@@ -53,7 +52,7 @@ class At extends Model {
 
     public function asesor()
     {
-        return $this->belongsTo('App\Models\Pagina\Equipo', 'asesor_id');
+        return $this->belongsTo('App\User', 'asesor_id');
     }
 
     public function empresas()
@@ -63,26 +62,22 @@ class At extends Model {
 
     public function empresario()
     {
-        return $this->belongsTo('App\Models\Empresas\Empresario');
+        return $this->belongsTo('App\Models\Empresas\Empresario', 'empresario_id');
     }
 
     public function especialidad()
     {
-        return $this->belongsTo('App\Models\Subespecialidad');
+        return $this->belongsTo('App\Models\Subespecialidad', 'especialidad_id');
     }
 
     public function consultor()
     {
-        return $this->hasOne('App\Models\Ats\Consultor','at_id')->where('estado', '=', 'Seleccionado');
+        return $this->hasOne('App\Models\Ats\Consultor','at_id')->where('seleccionado', true);
     }
    
     public function ofertantes()
     {
         return $this->hasMany('App\Models\Ats\Consultor','at_id')->where('doc_oferta', "!=", "");
-    }
-    public function consultores()
-    {
-        return $this->hasMany('App\Models\Ats\Consultor','at_id');
     }
 
     public function contrato(){

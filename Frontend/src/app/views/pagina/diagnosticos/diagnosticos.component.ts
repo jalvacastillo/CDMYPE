@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../../services/alert.service';
 import { ApiService } from '../../../services/api.service';
-import { Data } from '../../../models/data';
-
 
 @Component({
   selector: 'app-diagnosticos',
@@ -10,7 +8,7 @@ import { Data } from '../../../models/data';
 })
 export class DiagnosticosComponent implements OnInit {
 
-    public diagnosticos:Data;
+    public diagnosticos:any = [];
     public buscador:any = '';
     public loading = false;
 

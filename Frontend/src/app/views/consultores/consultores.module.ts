@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 import { ConsultoresComponent } from './consultores.component';
 import { ConsultorComponent } from './consultor/consultor.component';
@@ -18,6 +19,7 @@ import { ConsultorCuentaComponent } from './consultor/cuenta/consultor-cuenta.co
     CommonModule,
     FormsModule,  
     RouterModule,
+    RatingModule.forRoot(),
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot()
   ],

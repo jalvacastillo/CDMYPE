@@ -1,0 +1,102 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Actividades <small>Listado</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Actividades</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <span class="label label-default" *ngIf="actividades?.total">Registros: {{actividades?.total}}</span>
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">
+                        <form name="form" (ngSubmit)="search()">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search()">
+                        </form>
+                            <div class="input-group-btn">
+                                <button (click)="search()" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a [routerLink]="['/actividad/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Creado</th>
+                                <th>Nombre</th>
+                                <th class="hidden-xs">Tipo</th>
+                                <th class="text-center">Estado</th>
+                                <th class="hidden-xs text-center">Encargados</th>
+                                <th class="hidden-xs text-center">Cupos</th>
+                                <th class="hidden-xs text-center">Aplicaciones</th>
+                                <th class="hidden-xs text-center">Disponibles</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="actividades?.total < 1 && !loading">
+                                    <span class="label label-info">No tiene actividades registrados</span>
+                                </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let actividad of actividades?.data">
+                                
+                                <td class="text-center">{{ actividad.created_at | date:'dd-MM-yyyy' }}</td>
+                                <td>{{ actividad.nombre }}</td>
+                                <td class="hidden-xs">{{ actividad.tipo }}</td>
+                                <td class="text-center">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : actividad?.estado == 'Inactivo', 'label-warning' : actividad?.estado == 'Ejecución', 'label-success' : actividad?.estado == 'Finalizado', 'label-info' : actividad?.estado == 'Activo'}" [popover]="popTemplate" [outsideClick]="true">
+                                        {{actividad.estado}}
+                                    </span>
+                                    <ng-template #popTemplate>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(actividad, 'Inactivo')">Inactivo</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(actividad, 'Activo')">Activo</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(actividad, 'Ejecución')">Ejecución</button>
+                                        <button class="btn btn-default btn-xs" (click)="setEstado(actividad, 'Completado')">Completado</button>
+                                    </ng-template>
+                                </td>
+                                <td class="text-center">
+                                    <span *ngFor=" let asesor of actividad?.asesores">
+                                        <img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="30px" tooltip="{{ asesor.nombre }}"/>
+                                    </span>
+                                </td>
+                                <td class="text-center">{{ actividad.cupo }}</td>
+                                <td class="text-center">{{ actividad.total_aplicaciones }}</td>
+                                <td class="text-center">{{ actividad.cupo - actividad.total_aplicaciones }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" [routerLink]="['/actividad/', actividad.id]" tooltip="Detalle">
+                                        <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        <a class="btn btn-default" (click)="delete(actividad.id)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i></a>
+                                    </div>  
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center" *ngIf="actividades?.last_page > 1">
+                        <app-pagination [items]="actividades" (setPagination)="setPagination($event)"></app-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>

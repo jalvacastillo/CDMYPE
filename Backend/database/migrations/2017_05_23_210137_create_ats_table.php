@@ -24,9 +24,10 @@ class CreateAtsTable extends Migration
             $table->double('aporte');
             $table->string('estado');
             $table->integer('especialidad_id');
-            $table->integer('asesor_id')->nullable();
             $table->string('informe')->nullable();
             $table->date('fecha_aprobacion')->nullable();
+            $table->integer('empresario_id')->nullable();
+            $table->integer('asesor_id')->nullable();
             
             $table->timestamps();
         });

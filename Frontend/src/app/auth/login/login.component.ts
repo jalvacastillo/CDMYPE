@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
-import { AuthService } from '../../services/auth.service';
+import { ApiService } from '../../services/api.service';
+
 declare let $;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
     public loading = false;
     public saludo:string;
 
-    constructor( private authService: AuthService, private router: Router, private alertService: AlertService) { }
+    constructor( private apiService: ApiService, private router: Router, private alertService: AlertService) { }
 
     ngOnInit() {
         var hours = new Date().getHours();
@@ -29,12 +31,12 @@ export class LoginComponent implements OnInit {
             this.saludo = 'Buenos días';
         }
 
-        this.authService.logout();
+        this.apiService.logout();
     }
 
     login() {
         this.loading = true;
-        this.authService.login(this.user)
+        this.apiService.login(this.user)
         .subscribe(
             data => {
                 // this.alertService.success("Bienvenido");

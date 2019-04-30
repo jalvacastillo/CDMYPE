@@ -1,0 +1,40 @@
+<form name="form" (ngSubmit)="onSubmit()">
+<div class="row">
+        
+    <div class="col-xs-12">
+        <app-buscador-empresarios (empresarioSelect)="selectEmpresario($event)"></app-buscador-empresarios>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th class="text-center"><i class="fa fa-cog"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" class="text-center" *ngIf="empresarios.length < 1">
+                            <span class="label label-info">No tiene empresarios registrados</span>
+                        </td>
+                        <td colspan="4" class="text-center" *ngIf="loading">
+                            <span class="label label-info">Cargando...</span>
+                        </td>
+                    </tr>
+
+                    <tr class="animated fadeIn" *ngFor=" let empresario of empresarios">
+                        <td>{{ empresario.nombre }}</td>
+                        <td>{{ empresario.empresa }}</td>
+                        <td class="text-center">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-default" (click)="eliminar(empresario)" tooltip="Eliminar">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+</div>
+</form>
