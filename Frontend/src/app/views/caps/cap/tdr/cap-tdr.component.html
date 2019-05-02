@@ -40,20 +40,20 @@
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="obj_general"> Objetivo General:</label>
-            <textarea class="form-control" name="obj_general" [(ngModel)]="cap.obj_general" cols="30" rows="3"></textarea>
+            <textarea class="form-control previsualizar" name="obj_general" [(ngModel)]="cap.obj_general" cols="30" rows="3"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="obj_especifico"> Objetivo Especifico:</label>
-                <textarea class="form-control" name="obj_especifico" [(ngModel)]="cap.obj_especifico" cols="30" rows="3"></textarea>
+                <textarea class="form-control previsualizar" name="obj_especifico" [(ngModel)]="cap.obj_especifico" cols="30" rows="3"></textarea>
             </div>
         </div>
         
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="productos"> Productos:</label>
-                <textarea class="form-control" name="productos" [(ngModel)]="cap.productos" cols="30" rows="3"></textarea>
+                <textarea class="form-control previsualizar" name="productos" [(ngModel)]="cap.productos" cols="30" rows="3"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
@@ -65,13 +65,20 @@
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label> Fecha Inicio:</label>
-                <input type="text" class="form-control" name="fecha_ini" [(ngModel)]="cap.fecha_ini"/>
+                <div class="input-group">
+                    <input style="width: 50%;" type="date" class="form-control" name="fecha_ini" id="fecha_ini" [value]="cap.fecha_ini | date:'yyyy-MM-dd'"/>
+                    <input style="width: 50%;" type="time" class="form-control" name="hora_ini" id="hora_ini" [value]=" cap.fecha_ini | date:'HH:mm' "/>
+                </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label> Fecha Fin:</label>
-                <input type="text" class="form-control" name="fecha_fin" [(ngModel)]="cap.fecha_fin"/>
+                <!-- <input type="text" class="form-control" name="fecha_fin" [(ngModel)]="cap.fecha_fin"/> -->
+                <div class="input-group">
+                    <input style="width: 50%;" type="date" class="form-control" name="fecha_fin" id="fecha_fin" [value]="cap.fecha_fin | date:'yyyy-MM-dd'"/>
+                    <input style="width: 50%;" type="time" class="form-control" name="hora_fin" id="hora_fin" [value]=" cap.fecha_fin | date:'HH:mm' "/>
+                </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">

@@ -32,6 +32,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Nombre</th>
                                 <th>Cargo</th>
                                 <th class="text-center">Tipo</th>
@@ -50,7 +51,9 @@
                             </tr>
 
                             <tr *ngFor=" let equipo of equipos?.data">
-                                
+                                <td class="text-center">
+                                    <img class="img-circle" *ngIf="equipo?.avatar" src="{{apiService.baseUrl + '/img/team/' + equipo.avatar }}" height="30px" tooltip="{{ equipo.name }}"/>
+                                </td>
                                 <td>{{equipo.nombre}}</td>
                                 <td>{{equipo.cargo}}</td>
                                 <td class="text-center">{{equipo.tipo}}</td>

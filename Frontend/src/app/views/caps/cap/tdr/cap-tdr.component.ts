@@ -25,7 +25,7 @@ export class CapTdrComponent implements OnInit {
 
 	ngOnInit() {
 		
-		$('.previsualizar').click(function(e) {$("#texto").val($(this).val()); $("#myModalBandera").val($(this).attr("name")); var nombre = $('#myModalBandera').val(); $("#titulo").text($("label[for=" + nombre + "]").text()); $('#myModal').modal('show'); });
+		$('.previsualizar').focus(function(e) {$("#texto").val($(this).val()); $("#texto").focus(); $("#myModalBandera").val($(this).attr("name")); var nombre = $('#myModalBandera').val(); $("#titulo").text($("label[for=" + nombre + "]").text()); $('#myModal').modal('show'); setTimeout(()=>{ $("#texto").focus(); }, 500) });
 
 		this.apiService.getAll('especialidades').subscribe(especialidades => {
 		    this.especialidades = especialidades;                   
@@ -36,13 +36,15 @@ export class CapTdrComponent implements OnInit {
 		});
 	}
 
-	public ocultar(){var text = $("#texto").val(); var nombre = $('#myModalBandera').val(); $("textarea[name=" + nombre + "]").val(text); $('#myModal').modal('hide') }
+	public ocultar(){var text = $("#texto").val(); var nombre = $('#myModalBandera').val(); this.cap[nombre] = text; $('#myModal').modal('hide') }
 
 	public onSubmit() {
 	    this.loading = true;
 	    // Guardamos al at
-	    this.cap.asesor_id = this.apiService.auth_user().id;
-	    this.cap.estado = 'Creada';
+	    this.cap.fecha_ini = $('#fecha_ini').val() + ' ' + $('#hora_ini').val();
+	    this.cap.fecha_fin = $('#fecha_fin').val() + ' ' + $('#hora_fin').val();
+
+	    this.cap.usuario_id = this.apiService.auth_user().id;
 	    this.apiService.store('cap', this.cap).subscribe(cap => {
 	    	if(!this.cap.id) {
 	    		this.router.navigate(['/cap/'+ cap.id]);

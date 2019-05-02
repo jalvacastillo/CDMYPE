@@ -11,43 +11,44 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" [routerLink]="['/']"> Dashboard </a>
+            <a class="navbar-brand" routerLink="/"> Dashboard </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
 
-                <li routerLinkActive="active"><a [routerLink]="['/empresas']">Clientes</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['/consultores']">Consultores</a></li>              
-                <li routerLinkActive="active"><a [routerLink]="['/ats']">ATs</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['/caps']">CAPs</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['/salidas']">Salidas</a></li>
+                <li routerLinkActive="active"><a routerLink="/empresas">Clientes</a></li>
+                <li routerLinkActive="active"><a routerLink="/consultores">Consultores</a></li>              
+                <li routerLinkActive="active"><a routerLink="/ats">ATs</a></li>
+                <li routerLinkActive="active"><a routerLink="/caps">CAPs</a></li>
+                <li routerLinkActive="active"><a routerLink="/salidas">Salidas</a></li>
+                <li routerLinkActive="active"><a routerLink="/materiales">Materiales</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Página web <i class="caret"></i></a>
                   <ul class="dropdown-menu">
                     <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/servicios']">Servicios</a>
+                        <a routerLink="/servicios">Servicios</a>
                     </li>
                     <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/noticias']">Noticias</a>
+                        <a routerLink="/noticias">Noticias</a>
                     </li>
                     <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/resultados']">Resultados</a>
-                    </li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/proyectos']">Proyectos</a>
-                    </li>
-                    <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/actividades']">Actividades</a>
+                        <a routerLink="/resultados">Resultados</a>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/testimonios']">Testimonios</a>
+                        <a routerLink="/proyectos">Proyectos</a>
                     </li>
                     <li class="dropdown-item" routerLinkActive="active">
-                        <a [routerLink]="['/equipos']">Equipo</a>
+                        <a routerLink="/actividades">Actividades</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-item" routerLinkActive="active">
+                        <a routerLink="/testimonios">Testimonios</a>
+                    </li>
+                    <li class="dropdown-item" routerLinkActive="active">
+                        <a routerLink="/equipos">Equipo</a>
                     </li>
                     </ul>
                 </li>                  
@@ -71,21 +72,21 @@
                     </li>
                     <li class="user-body" *ngIf="usuario.tipo == 'Administrador'">
                         <div class="col-xs-4 text-center no-padding">
-                          <a class="btn bg-default btn-block" [routerLink]="['/admin/empresa']">Empresa</a>
+                          <a class="btn bg-default btn-block" routerLink="/admin/empresa">Empresa</a>
                         </div>
                         <div class="col-xs-4 text-center no-padding">
-                          <a class="btn bg-default btn-block" [routerLink]="['/admin/reportes']">Reportes</a>
+                          <a class="btn bg-default btn-block" routerLink="/admin/reportes">Reportes</a>
                         </div>
                         <div class="col-xs-4 text-center no-padding">
-                          <a class="btn bg-default btn-block" [routerLink]="['/admin/usuarios']">Usuarios</a>
+                          <a class="btn bg-default btn-block" routerLink="/admin/usuarios">Usuarios</a>
                         </div>
                     </li>
                     <li class="user-footer">
                       <div class="pull-left">
-                        <a [routerLink]="['/admin/perfil']" class="btn btn-default btn-flat">Perfil</a>
+                        <a routerLink="/equipo/{{ usuario.id }}" class="btn btn-default btn-flat">Perfil</a>
                       </div>
                       <div class="pull-right">
-                        <a [routerLink]="['/login']" class="btn btn-default btn-flat">Salir</a>
+                        <a routerLink="/login" class="btn btn-default btn-flat">Salir</a>
                       </div>
                     </li>
                   </ul>

@@ -35,11 +35,11 @@
                                 <th>Tema</th>
                                 <th class="hidden-xs">Empresa</th>
                                 <th class="hidden-xs">Especialidad</th>
+                                <th class="hidden-xs text-center">Estado</th>
                                 <th class="hidden-xs">Encargado</th>
                                 <th class="text-center">Inicio</th>
                                 <th class="text-center">Fin</th>
                                 <th>Consultor</th>
-                                <th class="hidden-xs text-center">Estado</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
                             </tr>
                         </thead>
@@ -63,13 +63,7 @@
                                 </td>
                                 <td>{{ at.especialidad }}</td>
                                 <td class="text-center">
-                                    <img class="img-circle" *ngIf="at.asesor?.avatar" src="{{apiService.baseUrl + '/img/team/' + at.asesor.avatar }}" height="30px" tooltip="{{ at.asesor.name }}"/>
-                                </td>
-                                <td class="text-center" width="100">{{ at.inicio | date:'dd-MM-yyyy' }}</td>
-                                <td class="text-center" width="100">{{ at.fin | date:'dd-MM-yyyy' }}</td>
-                                <td><a *ngIf="at.consultor" routerLink="/consultor/{{ at.consultor.consultor_id }}" tooltip="Editar">{{ at.consultor.nombre }}</a></td>
-                                <td class="text-center">
-                                    <span class="label label-pop" [ngClass]="{'label-danger' : at?.estado == 'Creada', 'label-warning' : at?.estado == 'Contratada', 'label-success' : at?.estado == 'Finalizada', 'label-info' : at?.estado == 'Enviada'}" [popover]="popTemplate" [outsideClick]="true">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : at?.estado == 'Creada', 'label-warning' : at?.estado == 'Enviada', 'label-success' : at?.estado == 'Finalizada', 'label-info' : at?.estado == 'Contratada'}" [popover]="popTemplate" [outsideClick]="true">
                                         {{at.estado}}
                                     </span>
                                     <ng-template #popTemplate>
@@ -79,6 +73,12 @@
                                         <button class="btn btn-default btn-xs" (click)="setEstado(at, 'Finalizada')">Finalizada</button>
                                     </ng-template>
                                 </td>
+                                <td class="text-center">
+                                    <img class="img-circle" *ngIf="at.asesor?.avatar" src="{{apiService.baseUrl + '/img/team/' + at.asesor.avatar }}" height="30px" tooltip="{{ at.asesor.name }}"/>
+                                </td>
+                                <td class="text-center" width="100">{{ at.inicio | date:'dd-MM-yyyy' }}</td>
+                                <td class="text-center" width="100">{{ at.fin | date:'dd-MM-yyyy' }}</td>
+                                <td><a *ngIf="at.consultor" routerLink="/consultor/{{ at.consultor.consultor_id }}" tooltip="Editar">{{ at.consultor.nombre }}</a></td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
                                         <a class="btn btn-default" routerLink="/at/{{ at.id }}" tooltip="Editar">

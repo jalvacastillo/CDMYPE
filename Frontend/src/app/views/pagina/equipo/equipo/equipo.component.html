@@ -1,3 +1,4 @@
+<div class="container">
 <section class="content-header">
     <h1> Equipo <small>Edición</small> </h1>
     <ol class="breadcrumb">
@@ -8,7 +9,6 @@
 
 <section class="content animated fadeIn">
 
-<div class="container">
     <div class="row">
 
         
@@ -18,12 +18,12 @@
           <div class="box box-primary" style="min-height: 100px;">
             <div class="box-body box-profile">
                 <div class="imagen-upload">
-                    <img *ngIf="equipo?.avatar" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + 'img/team/' + equipo.avatar }}" style="margin: auto;">
+                    <img *ngIf="equipo?.avatar" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + '/img/team/' + equipo.avatar }}" style="margin: auto;">
                     <!-- <input type="file" name="avatar" id="file" class="inputfile" (change)="uploadFile(equipo, $event)"> -->
                     <label for="file"></label>
                 </div>
 
-                <h3 class="text-center">{{ equipo.nombre }}</h3>
+                <h3 class="text-center" style="margin-top: 0px;">{{ equipo.nombre }}</h3>
                 <p class="text-center">{{ equipo.cargo }}</p>
                 <div class="text-right checkbox pull-right">
                     <label>Web: <input type="checkbox" [(ngModel)]="equipo.web" name="web"></label>
@@ -37,13 +37,14 @@
         <div class="col-sm-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#info" data-toggle="tab">Información</a></li>
+              <li><a href="#info" data-toggle="tab">Información</a></li>
               <li><a href="#cuenta" data-toggle="tab">Cuenta</a></li>
-              <li><a href="#productos" data-toggle="tab">Productos</a></li>
+              <li class="active"><a href="#metas" data-toggle="tab">Metas</a></li>
+              <li><a href="#empresas" data-toggle="tab">Empresas</a></li>
               <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="info">
+                <div class="tab-pane fade" id="info">
                     <app-equipo-info *ngIf="equipo.id" [equipo] = "equipo"></app-equipo-info>
                 </div>
 
@@ -51,8 +52,11 @@
                    <app-equipo-cuenta *ngIf="equipo.id" [equipo] = "equipo"></app-equipo-cuenta>                   
                 </div>
 
-                <div class="tab-pane fade" id="productos">
-                   <!-- <app-equipo-productos *ngIf="equipo.id" [equipo] = "equipo"></app-equipo-productos> -->
+                <div class="tab-pane fade in active" id="metas">
+                   <app-equipo-metas *ngIf="equipo.id" [equipo] = "equipo"></app-equipo-metas>
+                </div> 
+                <div class="tab-pane fade" id="empresas">
+                   <app-equipo-empresas *ngIf="equipo.id" [equipo] = "equipo"></app-equipo-empresas>
                 </div>  
 
                 <div class="tab-pane fade" id="historial">
@@ -63,5 +67,5 @@
         </div>
 
     </div>
-</div>
 </section>
+</div>

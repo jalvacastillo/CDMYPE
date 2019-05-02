@@ -1,0 +1,87 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Materiales <small>Listado</small> </h1>
+    <ol class="breadcrumb">
+        <li><a routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Materiales</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <span class="label label-default" *ngIf="materiales?.total">Registros: {{materiales?.total}}</span>
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">
+                        <form name="form" (ngSubmit)="search(buscador)">
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" [(ngModel)]="buscador" (keyup)="search(buscador)">
+                        </form>
+                            <div class="input-group-btn">
+                                <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a routerLink="/material/nueva" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th class="text-center">Asesor</th>
+                                <th>Descripción</th>
+                                <th class="text-center">Especialidad</th>
+                                <th class="text-center">Recursos</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="materiales?.total < 1">
+                                    <span class="label label-info">No tiene materiales registrados</span>
+                                </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let material of materiales?.data">
+                                
+                                <td>{{material.nombre}}</td>
+                                <td class="text-center">
+                                    <img class="img-circle" *ngIf="material.asesor?.avatar" src="{{apiService.baseUrl + '/img/team/' + material.asesor.avatar }}" height="30px" tooltip="{{ material.asesor.name }}"/>
+                                </td>
+                                <td>{{material.descripcion}}</td>
+                                <td class="text-center">{{material.especialidad }}</td>
+                                <td class="text-center">{{ material.total_recursos }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-default" routerLink="/material/{{ material.id }}" tooltip="Editar">
+                                        <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        <!-- <a class="btn btn-default" [routerLink]="['/materiales/compras/', materiales.id]" tooltip="Historial"> -->
+                                        <!-- <i class="fa fa-arrow-right"></i> -->
+                                        <!-- </a> -->
+                                        <!-- <a class="btn btn-default" (click)="delete(materiales.id)" tooltip="Eliminar"> -->
+                                        <!-- <i class="fa fa-trash"></i></a> -->
+                                    </div>  
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center" *ngIf="materiales?.last_page > 1">
+                        <app-pagination [items]="materiales" (setPagination)="setPagination($event)"></app-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>

@@ -3,7 +3,7 @@
 <section class="content-header">
     <h1> Actividades <small>Listado</small> </h1>
     <ol class="breadcrumb">
-        <li><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Actividades</li>
     </ol>
 </section>
@@ -23,7 +23,7 @@
                             <div class="input-group-btn">
                                 <button (click)="search()" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
-                                <a [routerLink]="['/actividad/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/actividad/nuevo" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 </td>
                                 <td class="text-center">
                                     <span *ngFor=" let asesor of actividad?.asesores">
-                                        <img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="30px" tooltip="{{ asesor.nombre }}"/>
+                                        <img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + '/img/team/' + asesor.avatar }}" height="30px" tooltip="{{ asesor.nombre }}"/>
                                     </span>
                                 </td>
                                 <td class="text-center">{{ actividad.cupo }}</td>
@@ -79,7 +79,7 @@
                                 <td class="text-center">{{ actividad.cupo - actividad.total_aplicaciones }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
-                                        <a class="btn btn-default" [routerLink]="['/actividad/', actividad.id]" tooltip="Detalle">
+                                        <a class="btn btn-default" routerLink="/actividad/{{ actividad.id }} " tooltip="Detalle">
                                         <i class="fa fa-arrow-right"></i>
                                         </a>
                                         <a class="btn btn-default" (click)="delete(actividad.id)" tooltip="Eliminar">

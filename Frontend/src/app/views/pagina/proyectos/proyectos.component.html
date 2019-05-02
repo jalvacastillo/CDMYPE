@@ -3,7 +3,7 @@
 <section class="content-header">
     <h1> Proyectos <small>Listado</small> </h1>
     <ol class="breadcrumb">
-        <li><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Proyectos</li>
     </ol>
 </section>
@@ -23,7 +23,7 @@
                             <div class="input-group-btn">
                                 <button (click)="search()" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
-                                <a [routerLink]="['/proyecto/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/proyecto/nuevo" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -70,18 +70,18 @@
                                 </td>
                                 <td class="text-center">
                                     <span *ngFor=" let empresa of proyecto?.empresas">
-                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + 'img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
+                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + '/img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
                                     </span>
                                 </td>
                                 <td class="text-center">
                                     <span *ngFor=" let asesor of proyecto?.asesores">
-                                        <img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="30px" tooltip="{{ asesor.nombre }}"/>
+                                        <img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + '/img/team/' + asesor.avatar }}" height="30px" tooltip="{{ asesor.nombre }}"/>
                                     </span>
                                 </td>
                                 <td class="text-center">{{ proyecto.total_aplicaciones }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
-                                        <a class="btn btn-default" [routerLink]="['/proyecto/', proyecto.id]" tooltip="Detalle">
+                                        <a class="btn btn-default" routerLink="/proyecto/{{ proyecto.id }}" tooltip="Detalle">
                                         <i class="fa fa-arrow-right"></i>
                                         </a>
                                         <a class="btn btn-default" (click)="delete(proyecto.id)" tooltip="Eliminar">

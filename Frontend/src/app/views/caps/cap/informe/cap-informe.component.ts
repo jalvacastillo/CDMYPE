@@ -51,6 +51,9 @@ export class CapInformeComponent implements OnInit {
             var d = new Date();
             formData.append('id', this.cap.id);
             formData.append('empresario_id', this.cap.empresario_id);
+            formData.append('tema', this.cap.tema);
+            formData.append('encabezado', this.cap.encabezado);
+            formData.append('categoria', this.cap.categoria);
             formData.append('asesor_id', this.cap.asesor_id);
             formData.append('informe', d.getTime() + ' - ' + this.file.name);
 

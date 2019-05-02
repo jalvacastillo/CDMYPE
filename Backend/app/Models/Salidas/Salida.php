@@ -3,11 +3,9 @@
 namespace App\Models\Salidas;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Salida extends Model {
 
-    use SoftDeletes;
     protected $fillable = [
         'fecha',
         'hora_salida',
@@ -22,17 +20,16 @@ class Salida extends Model {
     protected $appends = ['encargado'];
 
     public function getEncargadoAttribute(){
-        return $this->user()->pluck('name')->first();
+        return $this->encargado()->pluck('nombre')->first();
     }
 
+    public function encargado()
+    {
+        return $this->belongsTo('App\Models\Pagina\Equipo', 'encargado_id');
+    }
 
-     public function user()
-     {
-        return $this->belongsTo('App\User', 'encargado_id');
-     }
-
-     public function asesores(){
-        return $this->hasMany('App\Models\Salidas\Asesor');
-     }
+    public function asesores(){
+        return $this->hasMany('App\Models\Salidas\Asesor', 'salida_id');
+    }
 }
 

@@ -25,11 +25,9 @@ export class CapComponent implements OnInit {
 	        
         if(isNaN(id)){
             this.cap = {};
-            this.cap.trabajo_local = "70";
-            this.cap.aporte = "5.5";
-            this.cap.tiempo_ejecucion = "4";
-            this.cap.fecha = this.apiService.date();
-            this.cap.financiamiento = 800;
+            this.cap.fecha_limite = this.apiService.date();
+            this.cap.fecha_ini = this.apiService.datetime();
+            this.cap.fecha_fin = this.apiService.datetime();
         }
         else{
             this.apiService.read('cap/', id).subscribe(cap => {

@@ -49,12 +49,9 @@ export class AtsComponent implements OnInit {
 
     }
 
-    public activar(empresa:any){
-        this.loading = true;
-        this.empresa = empresa;
-        this.empresa.catalogo = !this.empresa.catalogo;
-        this.apiService.store('empresa', this.empresa).subscribe(empresa => {
-            this.empresa = empresa;
+    public setEstado(at:any, estado:any){
+        at.estado = estado;
+        this.apiService.store('at', at).subscribe(at => {
             this.alertService.success("Guardado");
             this.loading = false;
         },error => {this.alertService.error(error); this.loading = false; });

@@ -49,9 +49,9 @@ export class AtConsultoresComponent implements OnInit {
     }
 
     public onSubmitFile(consultor:any) {
-        this.loading = true;
 
         if(this.file) {
+            this.loading = true;
             let formData:FormData = new FormData();
             formData.append('file', this.file);
             var d = new Date();

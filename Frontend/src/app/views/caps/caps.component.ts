@@ -49,12 +49,9 @@ export class CapsComponent implements OnInit {
 
     }
 
-    public activar(empresa:any){
-        this.loading = true;
-        this.empresa = empresa;
-        this.empresa.catalogo = !this.empresa.catalogo;
-        this.apiService.store('empresa', this.empresa).subscribe(empresa => {
-            this.empresa = empresa;
+    public setEstado(cap:any, estado:any){
+        cap.estado = estado;
+        this.apiService.store('cap', cap).subscribe(cap => {
             this.alertService.success("Guardado");
             this.loading = false;
         },error => {this.alertService.error(error); this.loading = false; });

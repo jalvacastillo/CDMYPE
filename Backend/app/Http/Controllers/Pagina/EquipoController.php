@@ -19,8 +19,16 @@ class EquipoController extends Controller
 
     public function read($id) {
 
-        $equipo = Equipo::where('id', $id)->with('usuario')->firstOrFail();
+        $equipo = Equipo::where('id', $id)->with('usuario', 'metas')->firstOrFail();
         return Response()->json($equipo, 200);
+
+    }
+
+    public function all() {
+       
+        $equipos = Equipo::orderBy('id','dsc')->get();
+
+        return Response()->json($equipos, 200);
 
     }
 

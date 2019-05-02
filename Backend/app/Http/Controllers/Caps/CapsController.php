@@ -35,7 +35,7 @@ class CapsController extends Controller
             'tema'        => 'required',
             'encabezado'        => 'required',
             'categoria'        => 'required',
-            'asesor_id'        => 'required',
+            'usuario_id'        => 'required',
         ]);
 
         if($request->id)

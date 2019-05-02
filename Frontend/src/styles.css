@@ -16,6 +16,9 @@
     margin: 0px;
 }
 
+.popover-content{
+    width: 400px;
+}
 .mr{
     margin-left: 20px;
 }

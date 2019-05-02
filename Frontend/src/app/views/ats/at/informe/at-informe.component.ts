@@ -47,9 +47,9 @@ export class AtInformeComponent implements OnInit {
     }
 
     public onSubmit() {
-        this.loading = true;
 
         if(this.file) {
+            this.loading = true;
             let formData:FormData = new FormData();
             formData.append('file', this.file);
             var d = new Date();

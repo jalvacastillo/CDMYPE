@@ -14,16 +14,13 @@ class CreateSalidasTable extends Migration {
 			$table->date('fecha');
 			$table->time('hora_salida');
 			$table->time('hora_regreso');
-			$table->string('lugar', 25);
+			$table->string('lugar');
 			$table->text('justificacion');
 			$table->text('objetivo');
-			$table->integer('encargado_id');
-			$table->enum('estado', ['Aprobado','Rechazado','Cancelado'])->default('Aprobado');
+			$table->string('estado')->default('Creado');
 			$table->text('observacion')->nullable();
+			$table->integer('encargado_id');
 			
-			$table->integer('cdmype_id')->default(1);
-
-			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

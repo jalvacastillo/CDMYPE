@@ -24,12 +24,12 @@
         <div class="col-sm-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs nav-justified">
-              <li class="active"><a href="#tdr" data-toggle="tab">Paso 2 <br> <b>Termino</b></a></li>
-              <li><a href="#empresas" data-toggle="tab">Paso 1 <br> <b>Empresas</b></a></li>
-              <li><a href="#consultores" data-toggle="tab">Paso 3 <br> <b>Ofertas</b></a></li>
-              <li><a href="#contrato" data-toggle="tab">Paso 4 <br> <b>Contrato</b></a></li>
-              <li><a href="#acta" data-toggle="tab">Paso 5 <br> <b>Acta</b></a></li>
-              <li><a href="#informe" data-toggle="tab">Paso 6 <br> <b>Informe</b></a></li>
+              <li class="active"><a href="#tdr" data-toggle="tab">Paso 1 <br> <b>Termino</b></a></li>
+              <li *ngIf="at.id"><a href="#empresas" data-toggle="tab">Paso 2 <br> <b>Empresas</b></a></li>
+              <li *ngIf="at.id"><a href="#consultores" data-toggle="tab">Paso 3 <br> <b>Ofertas</b></a></li>
+              <li *ngIf="at.id"><a href="#contrato" data-toggle="tab">Paso 4 <br> <b>Contrato</b></a></li>
+              <li *ngIf="at.id"><a href="#acta" data-toggle="tab">Paso 5 <br> <b>Acta</b></a></li>
+              <li *ngIf="at.id"><a href="#informe" data-toggle="tab">Paso 6 <br> <b>Informe</b></a></li>
             </ul>
             <div class="tab-content">
 

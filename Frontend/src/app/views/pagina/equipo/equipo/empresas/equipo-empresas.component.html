@@ -1,0 +1,99 @@
+<div class="row animated fadeIn">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12">
+                      <button (click)="openModal(mproyecto, {})" class="pull-right btn btn-primary" tooltip="Agregar">
+                          Agregar
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Empresa</th>
+                            <th>Nombre</th>
+                            <th class="text-center">Inicio</th>
+                            <th class="text-center">Fin</th>
+                            <th class="text-center"><i class="fa fa-cog"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-center" *ngIf="empresas.length < 1">
+                                <span class="label label-info">No tiene empresas registrados</span>
+                            </td>
+                            <td colspan="5" class="text-center" *ngIf="loading">
+                                <span class="label label-info">Cargando...</span>
+                            </td>
+                        </tr>
+
+                        <tr class="animated fadeIn" *ngFor="let proyecto of empresas">
+                            <td>
+                                {{ proyecto.empresa.nombre }}
+                                <!-- <img class="img-circle" *ngIf="proyecto.empresa" src="{{apiService.baseUrl + '/img/empresas/' + proyecto.empresa?.logo }}" height="30px" tooltip="{{ proyecto.empresa?.nombre }}"/> -->
+                            </td>
+                            <td>{{ proyecto.nombre }}</td>
+                            <td class="text-center">{{ proyecto.inicio | date:'dd-MM-yyyy' }}</td>
+                            <td class="text-center">{{ proyecto.fin | date:'dd-MM-yyyy' }}</td>
+
+                            <td class="text-center" width="100">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-default" (click)="openModal(mproyecto, proyecto)" tooltip="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-default" (click)="eliminar(proyecto)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #mproyecto>
+  <div class="modal-header text-center">
+    <h3 class="modal-title">Proyecto</h3>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(proyecto)">
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label>Nombre:</label>
+                <input type="text" class="form-control" [(ngModel)]="proyecto.nombre" name="proyecto.nombre" placeholder="Nombre" required focus="true">
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Inicio:</label>
+                <input type="date" class="form-control" [(ngModel)]="proyecto.inicio" name="proyecto.inicio">
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Fin:</label>
+                <input type="date" class="form-control" [(ngModel)]="proyecto.fin" name="proyecto.fin">
+            </div>
+            <div class="form-group col-sm-12">
+                <label>Descripción:</label>
+                <input type="text" class="form-control" [(ngModel)]="proyecto.descripcion" name="proyecto.descripcion" placeholder="Descripción">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button [disabled]="!form.form.valid || loading" class="btn btn-primary btn-block">
+                 <span *ngIf="!loading">Guardar</span>
+                 <span *ngIf="loading">Guardando...</span>
+             </button>
+            </div>
+        </div>
+    </form>
+  </div>
+</ng-template>

@@ -12,10 +12,18 @@
 // Usuarios
 
     Route::get('/equipos',         		'Pagina\EquipoController@index');
+    Route::get('/equipos/all',             'Pagina\EquipoController@all');
     Route::get('/equipos/buscar/{text}','Pagina\EquipoController@search');
     Route::post('/equipo',         		'Pagina\EquipoController@store');
     Route::get('/equipo/{id}',     		'Pagina\EquipoController@read');
     Route::delete('/equipo/{id}',  		'Pagina\EquipoController@delete');
     Route::post('/equipo-avatar',  		'Pagina\EquipoController@avatar');
+
+    Route::get('/asesor/empresas/{id}', 'Asesores\EmpresasController@empresas');
+
+    Route::post('asesor/meta',        'Pagina\MetasController@store');
+    Route::delete('asesor/meta/{id}', 'Pagina\MetasController@delete');
+    
+    Route::get('asesores/metas',        'Pagina\MetasController@index');
 
 ?>

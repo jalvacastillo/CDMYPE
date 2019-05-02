@@ -34,11 +34,11 @@
                             <tr>
                                 <th>Tema</th>
                                 <th class="hidden-xs">Especialidad</th>
+                                <th class="text-center">Estado</th>
                                 <th class="hidden-xs">Encargado</th>
                                 <th class="text-center">Fecha</th>
                                 <th class="text-center">Hora</th>
                                 <th>Consultor</th>
-                                <th class="hidden-xs text-center">Estado</th>
                                 <th class="text-center"><i class="fa fa-cog"></i></th>
                             </tr>
                         </thead>
@@ -57,13 +57,7 @@
                                 <td><a routerLink="/cap/{{ cap.id }}" tooltip="Editar">{{ cap.tema | truncate:30 }}</a></td>
                                 <td>{{ cap.especialidad }}</td>
                                 <td class="text-center">
-                                    <img class="img-circle" *ngIf="cap.asesor?.avatar" src="{{apiService.baseUrl + '/img/team/' + cap.asesor.avatar }}" height="30px" tooltip="{{ cap.asesor.name }}"/>
-                                </td>
-                                <td class="text-center" width="100">{{ cap.fecha_ini | date:'dd-MM-yyyy hh:mm a' }}</td>
-                                <td class="text-center" width="100">{{ cap.fecha_fin | date:'dd-MM-yyyy hh:mm a' }}</td>
-                                <td><a *ngIf="cap.consultor" routerLink="/consultor/{{ cap.consultor.consultor_id }}" tooltip="Editar">{{ cap.consultor.nombre }}</a></td>
-                                <td class="text-center">
-                                    <span class="label label-pop" [ngClass]="{'label-danger' : cap?.estado == 'Creada', 'label-warning' : cap?.estado == 'Contratada', 'label-success' : cap?.estado == 'Finalizada', 'label-info' : cap?.estado == 'Enviada'}" [popover]="popTemplate" [outsideClick]="true">
+                                    <span class="label label-pop" [ngClass]="{'label-danger' : cap?.estado == 'Creada', 'label-warning' : cap?.estado == 'Enviada', 'label-success' : cap?.estado == 'Finalizada', 'label-info' : cap?.estado == 'Contratada'}" [popover]="popTemplate" [outsideClick]="true">
                                         {{cap.estado}}
                                     </span>
                                     <ng-template #popTemplate>
@@ -73,6 +67,12 @@
                                         <button class="btn btn-default btn-xs" (click)="setEstado(at, 'Finalizada')">Finalizada</button>
                                     </ng-template>
                                 </td>
+                                <td class="text-center">
+                                    <img class="img-circle" *ngIf="cap.asesor?.avatar" src="{{apiService.baseUrl + '/img/team/' + cap.asesor.avatar }}" height="30px" tooltip="{{ cap.asesor.name }}"/>
+                                </td>
+                                <td class="text-center" width="100">{{ cap.fecha_ini | date:'dd-MM-yyyy hh:mm a' }}</td>
+                                <td class="text-center" width="100">{{ cap.fecha_fin | date:'dd-MM-yyyy hh:mm a' }}</td>
+                                <td><a *ngIf="cap.consultor" routerLink="/consultor/{{ cap.consultor.consultor_id }}" tooltip="Editar">{{ cap.consultor.nombre }}</a></td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
                                         <a class="btn btn-default" routerLink="/cap/{{ cap.id }}" tooltip="Editar">

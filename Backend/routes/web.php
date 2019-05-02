@@ -86,13 +86,14 @@ Route::post('/oferta-at',                   'Ats\ConsultoresController@guardarOf
 Route::get('/oferta-cap/{cap}/{consultor}',   'Caps\ConsultoresController@oferta')->name('subirOfertaCap');
 Route::post('/oferta-cap',                   'Caps\ConsultoresController@guardarOferta')->name('guardarOfertaCap');
 
+Route::get('/salida/{firma}/{ano}/{mes}', 'Salidas\SalidasController@pdf')->name('salidasPdf');
+
 Route::get('formato/{doc}', function($doc){
         return Redirect::to('formatos/'. $doc);
 })->name('formatos');
 
-Route::get('at/informes/{doc}', function($doc){
-        return Redirect::to('informes/'. $doc);
-})->name('informes');
+Route::get('at/informes/{doc}', function($doc){ return Redirect::to('informes/'. $doc); })->name('informes');
+Route::get('cap/informes/{doc}', function($doc){ return Redirect::to('informes/'. $doc); })->name('informes');
 
 
 Auth::routes();

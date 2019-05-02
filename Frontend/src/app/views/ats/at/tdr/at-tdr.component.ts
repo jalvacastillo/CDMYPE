@@ -25,7 +25,7 @@ export class AtTdrComponent implements OnInit {
 
 	ngOnInit() {
 		
-		$('.previsualizar').click(function(e) {$("#texto").val($(this).val()); $("#myModalBandera").val($(this).attr("name")); var nombre = $('#myModalBandera').val(); $("#titulo").text($("label[for=" + nombre + "]").text()); $('#myModal').modal('show'); });
+		$('.previsualizar').click(function(e) {$("#texto").val($(this).val()); $("#myModalBandera").val($(this).attr("name")); var nombre = $('#myModalBandera').val(); $("#titulo").text($("label[for=" + nombre + "]").text()); $('#myModal').modal('show'); setTimeout(()=>{ $("#texto").focus(); }, 500) });
 
 		this.apiService.getAll('especialidades').subscribe(especialidades => {
 		    this.especialidades = especialidades;                   
@@ -36,13 +36,12 @@ export class AtTdrComponent implements OnInit {
 		});
 	}
 
-	public ocultar(){var text = $("#texto").val(); var nombre = $('#myModalBandera').val(); $("textarea[name=" + nombre + "]").val(text); $('#myModal').modal('hide') }
+	public ocultar(){var text = $("#texto").val(); var nombre = $('#myModalBandera').val(); this.at[nombre] = text; $('#myModal').modal('hide') }
 
 	public onSubmit() {
 	    this.loading = true;
 	    // Guardamos al at
 	    this.at.asesor_id = this.apiService.auth_user().id;
-	    this.at.estado = 'Creada';
 	    this.apiService.store('at', this.at).subscribe(at => {
 	    	if(!this.at.id) {
 	    		this.router.navigate(['/at/'+ at.id]);

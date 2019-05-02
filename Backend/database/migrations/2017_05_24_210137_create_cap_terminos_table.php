@@ -25,7 +25,7 @@ class CreateCapTerminosTable extends Migration
             $table->datetime('fecha_fin');
             $table->date('fecha_limite');
             $table->string('nota')->nullable();
-            $table->string('estado'); //, ['Creada', 'Enviada', 'Contratada', 'Finalizada'
+            $table->string('estado')->default('Creada');
             $table->integer('usuario_id');
             $table->integer('especialidad_id');
             $table->string('informe')->nullable();

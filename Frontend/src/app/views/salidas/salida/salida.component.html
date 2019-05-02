@@ -1,0 +1,75 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Salida <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Salida</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+          
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+                <form name="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="fecha"> Fecha:</label>
+                            <div class="form-inline">
+                              <input type="date" class="form-control" name="fecha" [(ngModel)]="salida.fecha" style="width: 50%;" />
+                              <input type="time" class="form-control" name="hora_salida" [(ngModel)]="salida.hora_salida" style="width: 25%;"/>
+                              <input type="time" class="form-control" name="hora_regreso" [(ngModel)]="salida.hora_regreso" style="width: 25%;"/>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="lugar"> * Lugar:</label>
+                            <input type="text" class="form-control" name="lugar" [(ngModel)]="salida.lugar" placeholder="Lugar" required autofocus />
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="encargado_id"> Encargado:</label>
+                            <select class="form-control" [(ngModel)]="salida.encargado_id" name="encargado_id">
+                                <option *ngFor="let asesor of asesores" [ngValue]="asesor.id">{{ asesor.nombre }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="objetivo"> Objetivo:</label>
+                            <textarea class="form-control" name="objetivo" [(ngModel)]="salida.objetivo" rows="5"></textarea>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="justificacion"> Justificación:</label>
+                            <textarea class="form-control" name="justificacion" [(ngModel)]="salida.justificacion" rows="5"></textarea>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="observacion"> Observación:</label>
+                            <input type="text" class="form-control" name="observacion" [(ngModel)]="salida.observacion" rows="2"/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="observacion"> Asesores:</label>
+                            <div class="input-group">
+                                <label class="col-xs-3" *ngFor="let asesor of asesores">
+                                  <input type="checkbox" name="agregar{{asesor.id}}" [(ngModel)]="asesor.agregar"> {{ asesor.nombre }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+                          <button [disabled]="loading" class="btn btn-primary pull-right">
+                              <span *ngIf="!loading">Guardar</span>
+                              <span *ngIf="loading">Guardando...</span>
+                          </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+          </div>
+        </div>
+        
+    </div>
+</section>
+</div>

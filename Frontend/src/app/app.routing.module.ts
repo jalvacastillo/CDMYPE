@@ -46,6 +46,12 @@ import { AtComponent } from './views/ats/at/at.component';
 import { CapsComponent } from './views/caps/caps.component';
 import { CapComponent } from './views/caps/cap/cap.component';
 
+import { SalidasComponent } from './views/salidas/salidas.component';
+import { SalidaComponent } from './views/salidas/salida/salida.component';
+
+import { MaterialesComponent } from './views/materiales/materiales.component';
+import { MaterialComponent } from './views/materiales/material/material.component';
+
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 
@@ -88,6 +94,14 @@ const routes: Routes = [
     { path: 'diagnostico/:id', component: DiagnosticoComponent, canActivate: [AuthGuard] },
 
     
+    // Salidas
+    { path: 'salidas', component: SalidasComponent, canActivate: [AuthGuard] },
+    { path: 'salida/:id', component: SalidaComponent, canActivate: [AuthGuard] },
+
+    // Materiales
+    { path: 'materiales', component: MaterialesComponent, canActivate: [AuthGuard] },
+    { path: 'material/:id', component: MaterialComponent, canActivate: [AuthGuard] },
+
     // Ats
     { path: 'ats', component: AtsComponent, canActivate: [AuthGuard] },
     { path: 'at/:id', component: AtComponent, canActivate: [AuthGuard] },

@@ -22,7 +22,9 @@ import { EmpresasModule } from './views/empresas/empresas.module';
 import { ConsultoresModule } from './views/consultores/consultores.module';
 import { AtsModule } from './views/ats/ats.module';
 import { CapsModule } from './views/caps/caps.module';
+import { SalidasModule } from './views/salidas/salidas.module';
 import { PaginaModule } from './views/pagina/pagina.module';
+import { MaterialesModule } from './views/materiales/materiales.module';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { PaginaModule } from './views/pagina/pagina.module';
     ConsultoresModule,
     AtsModule,
     CapsModule,
-    PaginaModule
+    SalidasModule,
+    PaginaModule,
+    MaterialesModule
   ],
   providers: [AuthGuard, AdminGuard, AlertService, ApiService],
   bootstrap: [AppComponent]

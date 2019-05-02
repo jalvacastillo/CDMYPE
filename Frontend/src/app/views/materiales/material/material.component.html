@@ -1,0 +1,139 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Material <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Material</li>
+    </ol>
+</section>
+
+<section class="content animated fadeIn">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+          
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+                <form name="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="nombre"> * Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" [(ngModel)]="material.nombre" placeholder="Nombre" required autofocus />
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="especialidad_id"> Especialidad:</label>
+                            <select class="form-control" [(ngModel)]="material.especialidad_id" name="especialidad_id">
+                                <optgroup *ngFor="let esp of especialidades" label="{{esp.nombre}}">
+                                    <option *ngFor="let sub of esp.subespecialidades" [ngValue]="sub.id">{{ sub.nombre }}</option>
+                                  </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="descripcion"> Descripcion:</label>
+                            <textarea class="form-control" name="descripcion" [(ngModel)]="material.descripcion" rows="2"></textarea>
+                        </div>
+                        <div class="col-xs-12">
+                          <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
+                          <button [disabled]="loading" class="btn btn-primary pull-right">
+                              <span *ngIf="!loading">Guardar</span>
+                              <span *ngIf="loading">Guardando...</span>
+                          </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+          </div>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row animated fadeIn">
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                  <button (click)="openModal(mrecurso, {})" class="pull-right btn btn-primary" tooltip="Agregar">
+                                      Agregar
+                                  </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Archivo</th>
+                                        <th class="text-center"><i class="fa fa-cog"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center" *ngIf="material?.recursos?.length < 1">
+                                            <span class="label label-info">No tiene recursos registrados</span>
+                                        </td>
+                                        <td colspan="5" class="text-center" *ngIf="loading">
+                                            <span class="label label-info">Cargando...</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="animated fadeIn" *ngFor="let recurso of material?.recursos">
+                                        <td>{{ recurso.nombre }}</td>
+                                        <td><a target="_blank" href="{{ apiService.baseUrl + '/materiales/' + recurso.archivo }}" class="btn btn-default"><i class="fa fa-file"></i></a></td>
+                                        <td class="text-center" width="100">
+                                            <div class="btn-group" role="group">
+                                                <a class="btn btn-default" (click)="eliminar(recurso)" tooltip="Eliminar">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #mrecurso>
+              <div class="modal-header text-center">
+                <h3 class="modal-title">Recurso</h3>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmitFile(recurso)">
+
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label>Nombre:</label>
+                            <input type="text" class="form-control" [(ngModel)]="recurso.nombre" name="recurso.nombre" placeholder="Nombre" required focus="true">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="informe">Informe:</label>
+                            <input type="file" name="img" (change)="setFile($event)" accept="application/pdf" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button [disabled]="!form.form.valid || loading" class="btn btn-primary btn-block">
+                             <span *ngIf="!loading">Guardar</span>
+                             <span *ngIf="loading">Guardando...</span>
+                         </button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </ng-template>
+
+        </div>
+    </div>
+</section>
+</div>

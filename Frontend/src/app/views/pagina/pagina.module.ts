@@ -8,11 +8,14 @@ import { TooltipModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { SharedModule } from '../../shared/shared.module';
+import { PipesModule } from '../../pipes/pipes.module';
 
 import { EquiposComponent } from './equipo/equipos.component';
 import { EquipoComponent } from './equipo/equipo/equipo.component';
 import { EquipoInfoComponent } from './equipo/equipo/info/equipo-info.component';
 import { EquipoCuentaComponent } from './equipo/equipo/cuenta/equipo-cuenta.component';
+import { EquipoEmpresasComponent } from './equipo/equipo/empresas/equipo-empresas.component';
+import { EquipoMetasComponent } from './equipo/equipo/metas/equipo-metas.component';
 
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioComponent } from './servicios/servicio/servicio.component';
@@ -42,6 +45,7 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     FormsModule,
     RouterModule,
     SharedModule,
+    PipesModule,
     PopoverModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot()
@@ -51,6 +55,8 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     EquipoComponent,
     EquipoInfoComponent,
     EquipoCuentaComponent,
+    EquipoEmpresasComponent,
+    EquipoMetasComponent,
     ServiciosComponent,
     ServicioComponent,
     NoticiasComponent,
@@ -72,6 +78,8 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     EquipoComponent,
     EquipoInfoComponent,
     EquipoCuentaComponent,
+    EquipoEmpresasComponent,
+    EquipoMetasComponent,
     ServiciosComponent,
     ServicioComponent,
     NoticiasComponent,

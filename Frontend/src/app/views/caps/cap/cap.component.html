@@ -25,11 +25,11 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs nav-justified">
               <li class="active"><a href="#tdr" data-toggle="tab">Paso 1 <br> <b>Termino</b></a></li>
-              <li><a href="#consultores" data-toggle="tab">Paso 2 <br> <b>Ofertas</b></a></li>
-              <li><a href="#convocatoria" data-toggle="tab">Paso 3 <br> <b>Convocatoria</b></a></li>
-              <li><a href="#contrato" data-toggle="tab">Paso 4 <br> <b>Contrato</b></a></li>
-              <li><a href="#asistencia" data-toggle="tab">Paso 5 <br> <b>Asistencia</b></a></li>
-              <li><a href="#informe" data-toggle="tab">Paso 6 <br> <b>Informe</b></a></li>
+              <li *ngIf="cap.id"><a href="#consultores" data-toggle="tab">Paso 2 <br> <b>Ofertas</b></a></li>
+              <li *ngIf="cap.id"><a href="#convocatoria" data-toggle="tab">Paso 3 <br> <b>Convocatoria</b></a></li>
+              <li *ngIf="cap.id"><a href="#contrato" data-toggle="tab">Paso 4 <br> <b>Contrato</b></a></li>
+              <li *ngIf="cap.id"><a href="#asistencia" data-toggle="tab">Paso 5 <br> <b>Asistencia</b></a></li>
+              <li *ngIf="cap.id"><a href="#informe" data-toggle="tab">Paso 6 <br> <b>Informe</b></a></li>
             </ul>
             <div class="tab-content">
 

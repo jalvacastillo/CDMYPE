@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xs-4">
+      <div class="panel panel-warning">
+          <div class="panel-heading" *ngIf="metas">{{ metas | sum:'empresas' }}</div>
+          <div class="panel-body">Actual</div>
+      </div>
+  </div>
+  <div class="col-xs-4">
+      <div class="panel panel-success">
+          <div class="panel-heading" *ngIf="metas">
+            <span *ngFor="let m of meses">
+              <span *ngIf="m.mes == mes">
+                {{ m.meta}}
+                <span *ngIf="m.empresas >= m.meta">Completado</span>
+                <span class="badge pull-right" *ngIf="m.empresas < m.meta">Faltan ({{m.meta - m.empresas}})</span>
+              </span>
+            </span>
+          </div>
+          <div class="panel-body">Del Mes</div>
+      </div>
+  </div>
+  <div class="col-xs-4">
+      <div class="panel panel-info">
+          <div class="panel-heading" *ngIf="metas">{{ metas | sum:'meta' }}</div>
+          <div class="panel-body">Total</div>
+      </div>        
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3" *ngFor="let mes of meses">
+    <div class="well" style="padding: 10px;">
+      <form (ngSubmit)="onSubmitMeta(mes)">
+        <h4 class="text-center no-margin">{{mes.nombre}}</h4>
+        <h5 class="text-center" [ngClass]="{'text-danger' : mes.empresas < mes.meta, 'text-success' : mes.empresas >= mes.meta}" *ngIf="mes.empresas">{{ mes.empresas }}</h5>
+        <h5 class="text-center" *ngIf="!mes.empresas"> -- </h5>
+        <input type="number" [(ngModel)]="mes.meta" name="meta" class="form-control text-center" placeholder="Meta">
+      </form>
+    </div>
+  </div>
+</div>

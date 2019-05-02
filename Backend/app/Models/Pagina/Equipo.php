@@ -32,4 +32,12 @@ class Equipo extends Model
         return $this->belongsTo('App\User', 'usuario_id');
     }
 
+    public function proyectos(){
+        return $this->hasMany('App\Models\Empresas\Proyecto', 'asesor_id');
+    }
+
+    public function metas(){
+        return $this->hasMany('App\Models\Pagina\Meta', 'asesor_id');
+    }
+
 }
