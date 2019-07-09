@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Empresas;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Empresas\EmpresaRequest;
+use Illuminate\Http\Request;
 use App\Models\Empresas\Empresa;
 
 class EmpresasController extends Controller
@@ -27,13 +27,26 @@ class EmpresasController extends Controller
 	}
 
 
-	public function store(EmpresaRequest $request)
+	public function store(Request $request)
 	{
-		if($request->id){
-			$empresa = Empresa::findOrFail($request->id);
-		}
-		else{
-			$empresa = new Empresa;
+
+		$request->validate([
+		    // 'file'        => 'required',
+		    'logo'        => 'required',
+		    'nombre'        => 'required',
+		]);
+
+		if($request->id)
+		    $empresa = Empresa::findOrFail($request->id);
+		else
+		    $empresa = new Empresa;
+		
+		if ($request->hasFile('file')) {
+		        
+		    $file = $request->file;
+		    $ruta = public_path() . '/img/empresas';
+		    if ($empresa->logo) { \File::delete($ruta . $empresa->logo); }
+		    $file->move($ruta, $request->logo);
 		}
 		
 		$empresa->fill($request->all());

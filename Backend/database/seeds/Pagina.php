@@ -21,6 +21,7 @@ class Pagina extends Seeder
         $table->categoria   = 'Casos de Éxito';
         $table->tipo        = 'Ventas';
         $table->img         = 'BG2.jpg';
+        $table->activo      = true;
         $table->asesor_id   = 2;
 
         $table->save();
@@ -33,6 +34,7 @@ class Pagina extends Seeder
         $table->categoria   = 'Casos de Éxito';
         $table->tipo        = 'Costos';
         $table->img         = 'sapitos.jpg';
+        $table->activo      = true;
         $table->asesor_id   = 2;
 
         $table->save();
@@ -45,6 +47,7 @@ class Pagina extends Seeder
         $table->categoria   = 'Casos de Éxito';
         $table->tipo        = 'Compras';
         $table->img         = 'espumillas.jpg';
+        $table->activo      = true;
         $table->asesor_id   = 2;
 
         $table->save();

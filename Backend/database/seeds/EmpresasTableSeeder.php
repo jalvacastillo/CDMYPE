@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Empresas\Empresa;
+use App\Models\Empresas\Producto;
 use App\Models\Empresas\Nota;
 use App\Models\Empresas\EmpresaEmpresario;
 use App\Models\Empresas\Proyecto;
@@ -1074,6 +1075,11 @@ class EmpresasTableSeeder extends Seeder
                 
                 $table->descripcion = $empresas[$i]['descripcion'];
                 $table->actividad   = $empresas[$i]['actividad'];
+                
+                $table->catalogo   = true;
+                $table->correo   = $faker->email;
+                $table->url_facebook   = $faker->url;
+                $table->url_web   = $faker->url;
 
                 $table->save();
 
@@ -1083,6 +1089,18 @@ class EmpresasTableSeeder extends Seeder
                   $table->empresa_id   = $empresas[$i]['id'];
                   $table->descripcion    = 'Una nota';
                   $table->evaluacion     = $faker->numberBetween(1,5);
+                  $table->save();
+
+                }
+
+                for ($j = 0; $j < 5; $j++) { 
+
+                  $table = new Producto;
+                  $table->empresa_id   = $empresas[$i]['id'];
+                  $table->nombre        = $faker->name;
+                  $table->img       = 'default.jpg';
+                  $table->precio        = $faker->numberBetween(1,50);
+                  $table->descripcion    = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, quos.';
                   $table->save();
 
                 }

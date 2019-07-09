@@ -938,8 +938,8 @@ class CapConsultoresSeeder extends Seeder
             $table->consultor_id    = $capconsultores[$i]['consultor_id'];
             $table->consultor_id    = $capconsultores[$i]['consultor_id'];
             $table->cap_id          = $capconsultores[$i]['captermino_id'];
-            // $table->fecha_oferta    = $capconsultores[$i]['created_at'];
-            // $table->fecha_seleccion = $capconsultores[$i]['created_at'];
+            $table->fecha_oferta    = $capconsultores[$i]['updated_at'];
+            $table->fecha_seleccion = $capconsultores[$i]['updated_at'];
             $table->seleccionado          = $capconsultores[$i]['seleccionado'];
             $table->doc_oferta      = $capconsultores[$i]['doc_oferta'];
             // $table->updated_at         = $capconsultores[$i]['updated_at'];

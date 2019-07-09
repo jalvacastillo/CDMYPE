@@ -21,20 +21,22 @@
             <ul class="social-icons">
               <li>
                 <a class="facebook" href="https://www.facebook.com/CDMYPEILOBASCO/" target="blank">
-                  <i class="fa fa-facebook"></i>
+                  <i class="fab fa-facebook"></i>
                 </a>
               </li>
               <li>
-                <a class="twitter" href="https://twitter.com/CDMYPEUNICAES" target="blank">
-                  <i class="fa fa-twitter"></i>
+                <a class="twitter" href="https://twitter.com/CDMYPEILOBASCO" target="blank">
+                  <i class="fab fa-twitter"></i>
                 </a>
               </li>
-             {{--  <li>
-                <a class="instgram" href="#"><i class="fa fa-instagram"></i></a>
-              </li> --}}
+              <li>
+                <a class="instagram" href="https://instagram.com/CDMYPEILOBASCO" target="blank">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
               <li>
                 <a class="youtube" href="https://www.youtube.com/channel/UCtsUESmY8YIGzecsaLZI28A" target="blank">
-                  <i class="fa fa-youtube"></i>
+                  <i class="fab fa-youtube"></i>
                 </a>
               </li>
             </ul>

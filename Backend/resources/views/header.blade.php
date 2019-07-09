@@ -8,7 +8,7 @@
               <ul class="contact-details">
                 <li><a href="#"><i class="fa fa-map-marker"></i> Km. 51 1/2 Cantón Agua Zarca, Cabañas, El Salvador</a>
                 </li>
-                <li><a href="mailto:cdmype.unicaes@gmail.com"><i class="fa fa-envelope-o"></i> cdmype.unicaes@gmail.com</a>
+                <li><a href="mailto:cdmype.unicaes@gmail.com"><i class="fa fa-envelope"></i> cdmype.unicaes@gmail.com</a>
                 </li>
                 <li><a href="tel:+5032378-1500"><i class="fa fa-phone"></i> 2378-1500 Ext: (136) </a>
                 </li>
@@ -17,13 +17,13 @@
             <div class="col-md-4">
               <ul class="social-list">
                 <li>
-                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/CDMYPEILOBASCO/"><i class="fa fa-facebook"></i></a>
+                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/CDMYPEILOBASCO/"><i class="fab fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/CDMYPEUNICAES"><i class="fa fa-twitter"></i></a>
+                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/CDMYPEUNICAES"><i class="fab fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a class="youtube itl-tooltip" data-placement="bottom" title="youtube" href="https://www.youtube.com/channel/UCtsUESmY8YIGzecsaLZI28A"><i class="fa fa-youtube"></i></a>
+                  <a class="youtube itl-tooltip" data-placement="bottom" title="youtube" href="https://www.youtube.com/channel/UCtsUESmY8YIGzecsaLZI28A"><i class="fab fa-youtube"></i></a>
                 </li>
               </ul>
             </div>

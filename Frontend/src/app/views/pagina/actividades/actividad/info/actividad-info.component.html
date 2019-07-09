@@ -33,12 +33,15 @@
             <select class="form-control" [(ngModel)]="actividad.categoria" name="categoria">
                 <option value="Formación">Formación</option>
                 <option value="Comercialización">Comercialización</option>
+                <option value="Otro">Otro</option>
             </select>
         </div>
         <div class="form-group col-sm-3">
             <label for="especialidad_id">Especialidad:</label>
-            <select class="form-control" [(ngModel)]="actividad.especialidad" name="especialidad">
-                <option *ngFor="let esp of especialidades" [ngValue]="esp.nombre">{{ esp.nombre }}</option>
+            <select class="form-control" [(ngModel)]="actividad.especialidad_id" name="especialidad_id">
+                <optgroup *ngFor="let esp of especialidades" label="{{esp.nombre}}">
+                    <option *ngFor="let sub of esp.subespecialidades" [ngValue]="sub.id">{{ sub.nombre }}</option>
+                  </optgroup>
             </select>
         </div>
         <div class="form-group col-sm-3">
@@ -54,13 +57,13 @@
             <input type="number" class="form-control" [(ngModel)]="actividad.cupo" name="cupo" placeholder="0" required>
         </div>
 
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-3" *ngIf="actividad.id">
             <label for="duracion">Asesores:</label>
             <div style="display: block;">
                 <span *ngFor=" let asesor of actividad?.asesores">
-                    <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
+                    <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + '/img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
                 </span>
-                <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + 'img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
+                <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + '/img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
             </div>
         </div>
 
@@ -91,7 +94,7 @@
             <table class="table table-hover">
                 <tbody>
                     <tr *ngFor=" let asesor of asesores">
-                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
+                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + '/img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
                         <td>{{ asesor.nombre }}</td>
                         <td class="text-center">
                             <button (click)="agregarAsesor(asesor)" class="btn btn-primary" [disabled]="loading">

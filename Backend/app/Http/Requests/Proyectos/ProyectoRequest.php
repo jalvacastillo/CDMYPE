@@ -32,7 +32,7 @@ class ProyectoRequest extends FormRequest
             'finalizacion'  => 'required',
             'estado'        => 'required',
             'duracion'      => 'required',
-            'especialidad'  => 'required'
+            'especialidad_id'  => 'required'
         ];
     }
 }

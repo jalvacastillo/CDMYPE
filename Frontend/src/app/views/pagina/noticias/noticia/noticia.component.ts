@@ -73,4 +73,8 @@ export class NoticiaComponent implements OnInit {
         },error => {this.alertService.error(error._body); this.loading = false;});
 	}
 
+    setFile(event:any) {
+        this.file = event.target.files[0];
+    }
+
 }

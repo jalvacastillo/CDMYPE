@@ -11,7 +11,7 @@ export class ApiService {
     public baseUrl: string = 'http://localhost:8000';
     // public baseUrl: string = 'http://192.168.1.2/Wgas/Backend/public';
     // public baseUrl: string = 'http://localhost/Wgas/Backend/public';
-    // public baseUrl: string = 'http://wgas.websis.me';
+    // public baseUrl: string = 'https://cdmypeunicaesilobasco.com';
     // public baseUrl: string = 'http://localhost:8000';
     public apiUrl: string = this.baseUrl + '/api/';
 

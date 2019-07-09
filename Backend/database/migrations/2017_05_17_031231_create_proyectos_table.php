@@ -23,7 +23,7 @@ class CreateProyectosTable extends Migration
             $table->string('tipo');
             $table->string('categoria');
             $table->string('estado');
-            $table->string('especialidad');
+            $table->string('especialidad_id');
             $table->date('finalizacion');
             $table->string('duracion');
             $table->text('contenido');

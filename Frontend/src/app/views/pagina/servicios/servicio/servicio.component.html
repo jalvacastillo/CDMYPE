@@ -48,9 +48,9 @@
                         <label for="duracion">Asesores:</label>
                         <div style="display: block;">
                             <span *ngFor=" let asesor of servicio?.asesores">
-                                <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
+                                <a href="javascript::void(0);" (click)="quitarAsesor(asesor)"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + '/img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></a>
                             </span>
-                            <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + 'img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
+                            <a href="javascript::void(0);" (click)="openModalAsesores(mAsesores)"><img class="img-circle" src="{{apiService.baseUrl + '/img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
                         </div>
                     </div>
 
@@ -149,7 +149,7 @@
             <table class="table table-hover">
                 <tbody>
                     <tr *ngFor=" let asesor of asesores">
-                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + 'img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
+                        <td class="text-center"><img class="img-circle" *ngIf="asesor.avatar" src="{{apiService.baseUrl + '/img/team/' + asesor.avatar }}" height="50px" tooltip="{{ asesor.nombre }}"/></td>
                         <td>{{ asesor.nombre }}</td>
                         <td class="text-center">
                             <button (click)="agregarAsesor(asesor)" class="btn btn-primary" [disabled]="loading">

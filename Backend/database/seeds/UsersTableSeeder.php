@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 1;
+            $user->web = false;
             $user->nombre = 'Carmen Mercado';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Administración de Empresas.';
@@ -45,6 +46,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 4;
+            $user->web = true;
             $user->nombre = 'Aminta Rodas';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Administración de Empresas.';
@@ -65,6 +67,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 15;
+            $user->web = true;
             $user->nombre = 'Jesus Alvarado';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero en Sistemas Informáticos.';
@@ -88,6 +91,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 5;
+            $user->web = true;
             $user->nombre = 'Ingrid Hernandez';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Mercadeo y Publicidad.';
@@ -108,6 +112,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 6;
+            $user->web = true;
             $user->nombre = 'Natalia Calderon';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciada en Economía.';
@@ -128,6 +133,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 3;
+            $user->web = true;
             $user->nombre = 'Walter Cuellar';
             $user->tipo = 'Asesor';
             $user->titulo = 'Licenciado en Administración de Empresas.';
@@ -148,6 +154,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 12;
+            $user->web = true;
             $user->nombre = 'Gustavo Jovel';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
@@ -168,6 +175,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 7;
+            $user->web = true;
             $user->nombre = 'Rhina Molina';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
@@ -188,6 +196,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 8;
+            $user->web = false;
             $user->nombre = 'Raul Escalante';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';
@@ -208,6 +217,7 @@ class UsersTableSeeder extends Seeder
             $user->save();
             $user = new Equipo;
             $user->id = 2;
+            $user->web = false;
             $user->nombre = 'Rene Sanabria';
             $user->tipo = 'Asesor';
             $user->titulo = 'Ingeniero Agrónomo en Desarrollo Rural.';

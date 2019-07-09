@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Actividades;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Actividades\ActividadRequest;
+use Illuminate\Http\Request;
 use App\Models\Actividades\Actividad;
 
 class ActividadesController extends Controller
@@ -26,39 +26,51 @@ class ActividadesController extends Controller
 
     public function read($id) {
 
-        $proyecto = Actividad::where('id', $id)->with('asesores')
+        $actividad = Actividad::where('id', $id)->with('asesores')
                                 ->with(array('aplicaciones' => function($query) {
                                     $query->orderBy('estado', 'desc');
                                 }))
                                 ->firstOrFail();
-        return Response()->json($proyecto, 200);
+        return Response()->json($actividad, 200);
             
     }
 
-    public function store(ActividadRequest $request)
+    public function store(Request $request)
     {
 
-        if($request->id){
-            $proyecto = Actividad::findOrFail($request->id);
-        }
-        else{
-            $proyecto = new Actividad;
+        $request->validate([
+            'img'        => 'required',
+            'nombre'        => 'required',
+        ]);
+
+        if($request->id)
+            $actividad = Actividad::findOrFail($request->id);
+        else
+            $actividad = new Actividad;
+
+
+        if ($request->hasFile('file')) {
+                
+            $file = $request->file;
+            $ruta = public_path() . '/img/actividades';
+            if ($actividad->img) { \File::delete($ruta . $actividad->img); }
+            $file->move($ruta, $request->img);
         }
 
         
-        $proyecto->fill($request->all());
-        $proyecto->save();
+        $actividad->fill($request->all());
+        $actividad->save();
 
-        return Response()->json($proyecto, 200);
+        return Response()->json($actividad, 200);
 
     }
 
     public function delete($id)
     {
-        $proyecto = Actividad::findOrFail($id);
-        $proyecto->delete();
+        $actividad = Actividad::findOrFail($id);
+        $actividad->delete();
 
-        return Response()->json($proyecto, 201);
+        return Response()->json($actividad, 201);
 
     }
 }

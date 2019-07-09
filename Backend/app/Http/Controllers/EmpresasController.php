@@ -9,9 +9,10 @@ class EmpresasController extends Controller
 {
         
     public function empresas(){
+        $parametro = '';
         $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')->with('empresarios')->paginate(12);
         // $empresas = Empresa::orderBy('id','asc')->with('empresarios')->paginate(12);
-        return view('empresas.index', compact('empresas'));   
+        return view('empresas.index', compact('empresas', 'parametro'));   
     }
 
     public function empresa($slug, $id){
@@ -22,24 +23,15 @@ class EmpresasController extends Controller
 
     public function filtrar(Request $request){
 
-        // return $request->parametro;
+        $parametro = $request->parametro;
 
         $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')
-                            ->orwhere('nombre', 'like', '%' . $request->parametro .'%')
-                            ->orwhere('sector', 'like', '%' . $request->parametro .'%')
-                            ->orwhere('municipio', 'like', '%' . $request->parametro .'%')
+                            ->where('nombre', 'like', '%' . $parametro .'%')
+                            ->orwhere('sector', 'like', '%' . $parametro .'%')
+                            ->orwhere('municipio', 'like', '%' . $parametro .'%')
                             ->with('empresarios')->paginate(12);
-
-        // $empresas = Empresa::where('catalogo', 1)->orderBy('id','asc')
-        //                     ->when($request->sector, function($query) use ($request){
-        //                         return $query->where('sector', $request->sector);
-        //                     })
-        //                     ->when($request->municipio, function($query) use ($request){
-        //                         return $query->where('municipio', $request->municipio);
-        //                     })
-        //                     ->with('empresarios')->paginate(12);
                             
-        return view('empresas.index', compact('empresas'));   
+        return view('empresas.index', compact('empresas', 'parametro'));   
     }
     // Guia
 

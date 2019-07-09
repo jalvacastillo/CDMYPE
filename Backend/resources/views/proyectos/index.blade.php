@@ -64,7 +64,7 @@
                         <div class="row">
                         <div class="media col-sm-3 hidden-xs">
                           <figure class="pull-left">
-                              <img class="media-object img-rounded img-responsive"  src="{{ asset('img/empresas/'. $proyecto->empresas()->first()->logo) }}" alt="" >
+                              <img class="media-object img-rounded img-responsive"  src="{{ asset('/img/empresas/'. ($proyecto->empresas()->first()->logo ? $proyecto->empresas()->first()->logo : 'default.png')) }}" alt="" >
                           </figure>
                         </div>
                         <div class="col-sm-6">

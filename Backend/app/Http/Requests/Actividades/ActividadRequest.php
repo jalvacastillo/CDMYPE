@@ -32,7 +32,7 @@ class ActividadRequest extends FormRequest
             'inicio'        => 'required',
             'fin'           => 'required',
             'estado'        => 'required',
-            'especialidad'  => 'required'
+            'especialidad_id'  => 'required'
         ];
     }
 }

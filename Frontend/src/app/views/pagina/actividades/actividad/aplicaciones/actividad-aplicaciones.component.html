@@ -18,7 +18,7 @@
 
             <tr class="animated fadeIn" *ngFor=" let aplicacion of actividad?.aplicaciones">
                 
-                <td class="text-center"><img  class="img-circle" *ngIf="aplicacion.avatar" src="{{apiService.baseUrl + 'img/usuarios/' + aplicacion.avatar }}" height="50px"/></td>
+                <td class="text-center"><img  class="img-circle" *ngIf="aplicacion.avatar" src="{{apiService.baseUrl + '/img/usuarios/' + 'default.jpg'}}" height="50px"/></td>
                 <td>{{ aplicacion.nombre }}</td>
                 <td class="text-center">{{ aplicacion.tipo }}</td>
                 <td class="text-center">
@@ -46,7 +46,7 @@
   <div class="modal-header">
     <div class="modal-title text-center">
         <div class="col-xs-12 text-center">
-            <img class="img-circle" *ngIf="aplicacion.avatar" src="{{apiService.baseUrl + 'img/usuarios/' + aplicacion.avatar }}" height="50px"/>
+            <img class="img-circle" *ngIf="aplicacion.avatar" src="{{apiService.baseUrl + '/img/usuarios/' + 'default.jpg' }}" height="50px"/>
         </div>
 
         <div class="col-xs-12 text-center">

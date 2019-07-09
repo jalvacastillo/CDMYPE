@@ -54,7 +54,7 @@
                                 <td>{{ noticia.titulo }}</td>
                                 <td class="text-center">{{ noticia.categoria }}</td>
                                 <td class="text-center hidden-xs">
-                                    <img class="img-circle" *ngIf="noticia.avatar" src="{{apiService.baseUrl + 'img/team/' + noticia.avatar }}" height="30px"/>
+                                    <img class="img-circle" *ngIf="noticia.avatar" src="{{apiService.baseUrl + '/img/team/' + noticia.avatar }}" height="30px"/>
                                 </td>
                                 <td class="text-center hidden-xs">
                                     <input type="checkbox" name="activo{{noticia.id}}" [(ngModel)]="noticia.activo" (click)="activar(noticia)">

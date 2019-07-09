@@ -37,9 +37,15 @@
                             </select>
                         </div>
                         
-                        <p class="col-md-6 col-md-offset-3">Realizar diagnosticos</p>
-                        <p class="col-md-6 col-md-offset-3">Generar resultado</p>
-                        <p class="col-md-6 col-md-offset-3">Mostrar acciones y servicios</p>
+                        <h3 class="col-md-6 col-md-offset-3">Realizar diagnosticos</h3>
+                        <h3 class="col-md-6 col-md-offset-3">Generar resultado</h3>
+                        <h3 class="col-md-6 col-md-offset-3">Mostrar acciones y servicios
+                        <br>
+                        <br>
+                        <br>
+                        </h3>
+                        
+
 
                         <div class="col-md-6 col-md-offset-3">
                             <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>

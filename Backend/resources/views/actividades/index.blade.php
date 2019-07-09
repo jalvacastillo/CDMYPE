@@ -79,15 +79,15 @@
                           <p class="row">
                             <div class="col-xs-6">
                             <b>Inicia:</b> <br>
-                            {{ strftime('%A, %e de %B del %Y', strtotime($actividad->inicio)) }}
+                            {{ \Carbon\Carbon::parse($actividad->inicio)->formatLocalized('%a, %e de %B %Y') }}
                             <br>
-                            {{ strftime('%I:%M:%S %p', strtotime($actividad->inicio)) . ((strftime('%H:%M:%S', strtotime($actividad->inicio)) % 86400) < 43200 ? 'AM' : 'PM') }} 
+                            {{ \Carbon\Carbon::parse($actividad->inicio)->format('h:i a') }}
                             </div>
                             <div class="col-xs-6">
                               <b>Finaliza:</b> <br>
-                            {{ strftime('%A, %e de %B del %Y', strtotime($actividad->fin)) }}
+                            {{ \Carbon\Carbon::parse($actividad->fin)->formatLocalized('%a, %e de %B %Y') }}
                             <br>
-                            {{ strftime('%I:%M:%S %p', strtotime($actividad->fin)) . ((strftime('%I:%M:%S', strtotime($actividad->fin)) % 86400) < 43200 ? 'AM' : 'PM') }} 
+                            {{ \Carbon\Carbon::parse($actividad->fin)->format('h:i a') }}
                             </div>
                           </p>
                         </div>

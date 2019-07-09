@@ -1,7 +1,7 @@
 
 var app = angular.module('app', ['ui.bootstrap', 'ngSanitize'])
-// app.constant('config', { 'url': 'https://amazing.websis.me' })
-app.constant('config', { 'url': 'http://localhost:8000' })
+app.constant('config', { 'url': 'https://cdmypeunicaesilobasco.com' })
+// app.constant('config', { 'url': 'http://localhost:8000' })
 
 .factory('RequestInterceptor', ['CSRF_TOKEN', function(CSRF_TOKEN) {
     var requestInterceptor = {request: function(config) {

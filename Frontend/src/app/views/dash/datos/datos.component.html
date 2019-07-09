@@ -3,9 +3,9 @@
         <div class="inner">
             <h3>
                 <span class="animated fadeIn" *ngIf="datos?.productos">{{datos?.productos}}</span>
-                <span class="animated fadeIn" *ngIf="!datos?.productos">0</span>
+                <span class="animated fadeIn" *ngIf="!datos?.productos">187</span>
             </h3>
-            <p>Productos</p>
+            <p>Empresas</p>
         </div>
         <div class="icon">
             <i class="fa fa-users"></i>
@@ -18,9 +18,9 @@
         <div class="inner">
             <h3>
                 <span class="animated fadeIn" *ngIf="datos?.clientes">{{datos?.clientes}}</span>
-                <span class="animated fadeIn" *ngIf="!datos?.clientes">0</span>
+                <span class="animated fadeIn" *ngIf="!datos?.clientes">570</span>
             </h3>
-          <p>Clientes</p>
+          <p>Asesorías</p>
         </div>
         <div class="icon">
           <i class="fa fa-list"></i>
@@ -33,11 +33,11 @@
     <div class="small-box bg-green">
         <div class="inner">
             <h3 class="animated fadeIn" *ngIf="datos?.ventas">{{datos?.ventas | currency:'USD':true:'1.2'}}</h3>
-            <h3 class="animated fadeIn" *ngIf="!datos?.ventas">$0.00</h3>
-            <p>Ventas</p>
+            <h3 class="animated fadeIn" *ngIf="!datos?.ventas">66</h3>
+            <p>Alumnos</p>
         </div>
         <div class="icon">
-            <i class="fa fa-money"></i>
+            <i class="fa fa-users"></i>
         </div>
         <!-- <a [routerLink]="['/reportes']" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a> -->
     </div>
@@ -47,11 +47,11 @@
     <div class="small-box bg-red">
         <div class="inner">
             <h3 class="animated fadeIn" *ngIf="datos?.compras">{{datos?.compras | currency:'USD':true:'1.2'}}</h3>
-            <h3 class="animated fadeIn" *ngIf="!datos?.compras">$0.00</h3>
-            <p>Compras</p>
+            <h3 class="animated fadeIn" *ngIf="!datos?.compras">320</h3>
+            <p>Eventos</p>
         </div>
         <div class="icon">
-            <i class="fa fa-money"></i>
+            <i class="fa fa-users"></i>
         </div>
         <!-- <a [routerLink]="['/reportes']" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a> -->
     </div>

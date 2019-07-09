@@ -90,7 +90,7 @@ export class MaterialComponent implements OnInit {
 
     }
 
-    setFile(event:any, imagen:any, orden:any) {
+    setFile(event:any) {
         this.file = event.target.files[0];
     }
 

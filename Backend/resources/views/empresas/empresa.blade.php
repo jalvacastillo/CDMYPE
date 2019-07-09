@@ -33,36 +33,39 @@
                   <cite title="{{ $empresa->sector }}"> {{ $empresa->sector }} </i></cite>
                   <br>
                   <p> <span class="label label-info">{{ $empresa->actividad }}</span> </p>
-                  <a href="mailto:{{ $empresa->correo }}" class="btn btn-primary" title="Enviar un correo eléctronico"><i class="fa fa-envelope"></i></a>
-                  <a href="tel:{{ $empresa->telefono }}" class="btn btn-primary" title="LLamar por teléfono"><i class="fa fa-phone"></i></a>
+                  <p>Contactar</p>
+                  <a href="mailto:{{ $empresa->correo }}" class="btn btn-default" title="Enviar un correo eléctronico"><i class="fa fa-envelope"></i></a>
+                  <a href="tel:{{ $empresa->telefono }}" class="btn btn-warning" title="LLamar por teléfono"><i class="fa fa-phone"></i></a>
+                  <a href="https://api.whatsapp.com/send?phone={{ $empresa->telefono }}" class="btn btn-success" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                  <a href="https://www.messenger.com/t/{{ $empresa->messenger }}" class="btn btn-primary" title="Messenger"><i class="fab fa-facebook-messenger"></i></a>
               </div>
               <div class="col-sm-12">
                   <br><h3>Contactos:</h3><br>
-                <ul class="list-group">
+                <div class="list-group">
                   @if ($empresa->correo)
-                  <li class="list-group-item col-md-4" href="#">
+                  <a class="list-group-item col-md-12" href="#">
                     <p class="m-0"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> {{ $empresa->correo }}</p>
-                  </li>
+                  </a>
                   @endif
-                  <li class="list-group-item col-md-4" href="#">
-                    <p class="m-0"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> {{ $empresa->municipio }}</p>
-                  </li>
+                  <a class="list-group-item col-md-12" href="#">
+                    <p class="m-0"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> {{ $empresa->municipio }}</p>
+                  </a>
                   @if ($empresa->telefono)
-                  <li class="list-group-item col-md-4" href="#">
+                  <a class="list-group-item col-md-12" href="#">
                     <p class="m-0"><i class="fa fa-phone fa-fw" aria-hidden="true"></i> {{ $empresa->telefono }}</p>
-                  </li>
+                  </a>
                   @endif
                   @if ($empresa->url_web)
-                    <li class="list-group-item col-md-4" target="_blank" href="{{ $empresa->url_web }}">
-                      <p class="m-0"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> {{ $empresa->url_web }}</p>
-                    </li>
+                    <a class="list-group-item col-md-12" target="_blank" href="{{ $empresa->url_web }}">
+                      <p class="m-0"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> Página web</p>
+                    </a>
                   @endif
                   @if ($empresa->url_facebook)
-                    <li class="list-group-item col-md-4" target="_blank" href="{{ $empresa->url_facebook }}">
-                      <p class="m-0"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> {{ $empresa->url_facebook }}</p>
-                    </li>
+                    <a class="list-group-item col-md-12" target="_blank" href="{{ $empresa->url_facebook }}">
+                      <p class="m-0"><i class="fab fa-facebook fa-fw" aria-hidden="true"></i>Facebook</p>
+                    </a>
                   @endif
-                </ul>
+                </div>
               </div>
               <div class="col-sm-12">
                 <br><h3>Descripción:</h3><br>
@@ -95,10 +98,20 @@
 
               </div>
 
-              <div class="col-xs-12 text-center">
-                  <a href="mailto:{{ $empresa->correo }}" class="btn btn-primary" title="Enviar un correo eléctronico"><i class="fa fa-envelope"></i></a>
-                  <a href="tel:{{ $empresa->telefono }}" class="btn btn-primary" title="LLamar por teléfono"><i class="fa fa-phone"></i></a>
+              <div class="col-sm-12 text-center">
+                <br><h3>Contactar:</h3><br>
+                <ul class="list-group">
+                  <li class="list-group-item" href="#">
+                    <br>
+                    <a href="mailto:{{ $empresa->correo }}" class="btn btn-default" title="Enviar un correo eléctronico"><i class="fa fa-envelope"></i></a>
+                    <a href="tel:{{ $empresa->telefono }}" class="btn btn-warning" title="LLamar por teléfono"><i class="fa fa-phone"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone={{ $empresa->telefono }}" class="btn btn-success" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.messenger.com/t/{{ $empresa->messenger }}" class="btn btn-primary" title="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                    <br><br><br>
+                  </li>
+                </ul>
               </div>
+
           </div>
 
         </div>

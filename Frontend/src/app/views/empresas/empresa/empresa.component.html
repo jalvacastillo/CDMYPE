@@ -15,11 +15,11 @@
         
         <div class="col-sm-12">
 
-          <div class="box box-primary" style="min-height: 246px;">
+          <div class="box box-primary" style="min-height: 246px;" *ngIf="empresa.id">
             <div class="box-body box-profile">
                 <div class="imagen-upload" title="Cambiar logo">
                     <img *ngIf="empresa?.logo" width="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + '/img/empresas/' + empresa.logo }}" style="margin: auto;"  title="Cambiar logo">
-                    <input type="file" name="logo" id="file" class="inputfile" (change)="uploadFile(empresa, $event)" title="Cambiar logo">
+                    <input type="file" name="logo" id="file" class="inputfile" (change)="setFile($event)" title="Cambiar logo">
                     <label for="file"></label>
                 </div>
 

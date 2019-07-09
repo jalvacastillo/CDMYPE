@@ -22,7 +22,7 @@ class CreateActividadesTable extends Migration
             $table->string('tipo');
             $table->string('categoria');
             $table->string('estado');
-            $table->string('especialidad');
+            $table->string('especialidad_id');
             $table->text('contenido');
             $table->integer('cupo');
             $table->datetime('inicio');

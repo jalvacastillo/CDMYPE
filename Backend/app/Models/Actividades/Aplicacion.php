@@ -19,11 +19,11 @@ class Aplicacion extends Model
     protected $appends = ['nombre', 'avatar', 'detalle', 'tipo', 'fecha', 'hora'];
 
     public function getNombreAttribute(){
-        return $this->usuario()->first()->name;
+        return $this->usuario()->first() ? $this->usuario()->first()->name : '';
     }
 
     public function getAvatarAttribute(){
-        return $this->usuario()->first()->avatar;
+        return $this->usuario()->first() ? $this->usuario()->first()->avatar : '';
     }
 
     function getFechaAttribute()
@@ -38,15 +38,15 @@ class Aplicacion extends Model
 
 
     public function getDetalleAttribute(){
-        if ($this->usuario()->first()->tipo == 'Alumno') {
+        if ($this->usuario()->first() && $this->usuario()->first()->tipo == 'Alumno') {
             return $this->usuario()->first()->alumno()->first();
-        }else if ($this->usuario()->first()->tipo == 'Consultor'){
+        }else if ($this->usuario()->first() && $this->usuario()->first()->tipo == 'Consultor'){
             return $this->usuario()->first()->consultor()->first();
         }
     }
 
     public function getTipoAttribute(){
-        return $this->usuario()->first()->tipo;
+        return $this->usuario()->first() ? $this->usuario()->first()->tipo : '';
     }
 
     public function usuario(){

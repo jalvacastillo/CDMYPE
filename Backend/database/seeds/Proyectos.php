@@ -23,14 +23,14 @@ class Proyectos extends Seeder
             $table->tipo            = $faker->randomElement(['Pasantía', 'Hora Social', 'Investigación', 'Proyecto', 'Otro']);
             $table->categoria       = $faker->randomElement(['TIC', 'EFE', 'Financiero', 'Empresarial', 'Otro']);
             $table->estado          = $faker->randomElement(['Inactivo', 'Activo', 'Ejecución', 'Finalizado']);
-            $table->especialidad    = 'Mercadeo';
+            $table->especialidad_id = $faker->numberBetween(1,10);
             $table->finalizacion    = $faker->date;
             $table->duracion        = '5 Semanas';
             $table->contenido       = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quasi aperiam perferendis eaque velit laboriosam, doloribus dolore, consequatur maxime adipisci delectus error tempora iure odio pariatur, voluptatem ea incidunt deleniti!' ;
             $table->save();
 
             $table = new Asesor;
-            $table->asesor_id       = $faker->numberBetween(1,5);
+            $table->asesor_id       = $faker->numberBetween(1,13);
             $table->proyecto_id     = $i;
             $table->save();
 
@@ -44,7 +44,7 @@ class Proyectos extends Seeder
                 $table = new Aplicacion;
                 $table->proyecto_id = $i;
                 $table->estado      = $j == 5 ? 'Seleccionado' : 'En Revisión';
-                $table->usuario_id  = $faker->numberBetween(10,25);
+                $table->usuario_id  = $faker->numberBetween(1,13);
                 $table->nota        = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus voluptatem doloremque temporibus, doloribus eum animi optio, laborum excepturi. Officiis aliquam, totam repellendus, nemo perspiciatis quis! Cumque quos, sequi sint debitis.';
                 $table->save();
 

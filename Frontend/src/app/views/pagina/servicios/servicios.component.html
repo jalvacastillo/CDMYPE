@@ -53,7 +53,7 @@
                             <tr class="animated fadeIn" *ngFor=" let servicio of servicios?.data">
                                 
                                 <td class="text-center">
-                                    <img *ngIf="servicio.img" src="{{apiService.baseUrl + 'img/servicios/' + servicio.img }}" height="50px"/>
+                                    <img *ngIf="servicio.img" src="{{apiService.baseUrl + '/img/servicios/' + servicio.img }}" height="50px"/>
                                 </td>
                                 <td>{{ servicio.nombre }}</td>
                                 <td class="text-center">{{ servicio.tipo }}</td>

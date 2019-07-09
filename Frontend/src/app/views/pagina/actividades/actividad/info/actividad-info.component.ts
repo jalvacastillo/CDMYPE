@@ -42,6 +42,9 @@ export class ActividadInfoComponent implements OnInit {
 	    this.actividad.contenido = $("#compose-textarea").val();
 
 	    this.apiService.store('actividad', this.actividad).subscribe(actividad => {
+	    	if(this.actividad.id) {
+	    		this.router.navigate(['actividad/' + actividad.id])
+	    	}
 	        this.alertService.success("Guardado");
 	        this.loading = false;
 	    },error => {this.alertService.error(error._body); this.loading = false; });

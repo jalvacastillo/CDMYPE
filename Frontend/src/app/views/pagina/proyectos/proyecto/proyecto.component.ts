@@ -64,6 +64,9 @@ export class ProyectoComponent implements OnInit {
         this.proyecto.contenido = $("#compose-textarea").val();
 
         this.apiService.store('proyecto', this.proyecto).subscribe(proyecto => {
+            if(this.proyecto.id) {
+                this.router.navigate(['proyecto/' + proyecto.id])
+            }
             this.alertService.success("Guardado");
             this.loading = false;
         },error => {this.alertService.error(error._body); this.loading = false; });
@@ -118,7 +121,7 @@ export class ProyectoComponent implements OnInit {
             this.modalRef = this.modalService.show(template);
         }
 
-        public agregarAccion(template: TemplateRef<any>) {
+        public openModalAccion(template: TemplateRef<any>) {
             this.modalRef = this.modalService.show(template);
         }
 

@@ -17,7 +17,7 @@ class Actividad extends Model
         'tipo',
         'categoria',
         'estado',
-        'especialidad',
+        'especialidad_id',
         'cupo',
         'inicio',
         'fin'
@@ -25,7 +25,17 @@ class Actividad extends Model
 
     protected $dates = ['inicio', 'fin'];
 
-    protected $appends = ['total_aplicaciones'];
+    protected $appends = ['total_aplicaciones', 'especialidad'];
+
+    public function getEspecialidadAttribute()
+    {
+        return $this->especialidad()->pluck('nombre')->first();
+    }
+
+    public function especialidad()
+    {
+        return $this->belongsTo('App\Models\Subespecialidad', 'especialidad_id');
+    }
 
     public function getTotalAplicacionesAttribute(){
         return $this->aplicaciones()->count();

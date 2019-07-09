@@ -67,7 +67,10 @@
 <div class="container" id="contenido">
     <div class="row">
         <div class="col-xs-12" >
+          <p>
+            
           {!! $proyecto->contenido !!}
+          </p>
         </div>
     </div>
 </div>

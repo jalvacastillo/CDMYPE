@@ -50,6 +50,11 @@ class At extends Model {
         return $this->especialidad()->pluck('nombre')->first();
     }
 
+    public function especialidad()
+    {
+        return $this->belongsTo('App\Models\Subespecialidad', 'especialidad_id');
+    }
+    
     public function asesor()
     {
         return $this->belongsTo('App\User', 'asesor_id');
@@ -65,10 +70,6 @@ class At extends Model {
         return $this->belongsTo('App\Models\Empresas\Empresario', 'empresario_id');
     }
 
-    public function especialidad()
-    {
-        return $this->belongsTo('App\Models\Subespecialidad', 'especialidad_id');
-    }
 
     public function consultor()
     {

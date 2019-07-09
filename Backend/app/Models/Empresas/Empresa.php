@@ -36,7 +36,9 @@ class Empresa extends Model {
     protected $appends = ['aporte', 'atendido', 'evaluacion'];
 
 
-        /* Atributos personalizados */
+        public function getCatalogoAttribute($value){
+            return $value == 1 ? true : false;
+        }
 
         public function getEvaluacionAttribute(){
             $notas = $this->notas()->get();
@@ -53,6 +55,7 @@ class Empresa extends Model {
             $atendido = $this->proyectos()->whereYear('inicio', date('Y'))->get();
             return $atendido->count() > 0 ? true : false;
         }
+
 
         public function getPasoAttribute(){
 
@@ -226,6 +229,6 @@ class Empresa extends Model {
         }
 
         public function proyectos(){
-            return $this->hasMany('App\Models\Empresas\proyecto', 'empresa_id');
+            return $this->hasMany('App\Models\Empresas\Proyecto', 'empresa_id');
         }
 }

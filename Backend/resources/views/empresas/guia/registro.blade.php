@@ -30,9 +30,13 @@
                 <form ng-submit="submit()" method="post">
                         
                         
-                        <p class="col-md-6 col-md-offset-3">Registro</p>
-                        <p class="col-md-6 col-md-offset-3">F1</p>
-                        <p class="col-md-6 col-md-offset-3">Hacer cita</p>
+                        <h3 class="col-md-6 col-md-offset-3">Registro</h3>
+                        <h3 class="col-md-6 col-md-offset-3">F1</h3>
+                        <h3 class="col-md-6 col-md-offset-3">Hacer cita
+                          <br>
+                        <br>
+                        <br>
+                        </h3>
 
                         <div class="col-md-6 col-md-offset-3">
                             <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>

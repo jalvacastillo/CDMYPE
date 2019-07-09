@@ -72,7 +72,7 @@ class AtConsultoresSeeder extends Seeder
             // array('id' => '61','seleccionado' => false,'doc_oferta' => '','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '8','consultor_id' => '41','deleted_at' => NULL,'created_at' => '2014-09-16 20:09:49','updated_at' => '2014-09-16 20:09:49'),
             // array('id' => '62','seleccionado' => false,'doc_oferta' => '','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '8','consultor_id' => '42','deleted_at' => NULL,'created_at' => '2014-09-16 20:09:51','updated_at' => '2014-09-16 20:09:51'),
             // array('id' => '63','seleccionado' => false,'doc_oferta' => '','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '8','consultor_id' => '43','deleted_at' => NULL,'created_at' => '2014-09-16 20:09:53','updated_at' => '2014-09-16 20:09:53'),
-            array('id' => '64','seleccionado' => true,'doc_oferta' => 'F7_FORMATO_OFERTA_TÉCNICA_Y_ECONÓMICA (4).docx','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '1','consultor_id' => '55','deleted_at' => NULL,'created_at' => '0000-00-00 00:00:00','updated_at' => '2015-01-15 20:16:37'),
+            array('id' => '64','seleccionado' => true,'doc_oferta' => 'F7_FORMATO_OFERTA_TÉCNICA_Y_ECONÓMICA (4).docx','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '1','consultor_id' => '55','deleted_at' => NULL,'created_at' => '2015-01-15 20:16:37','updated_at' => '2015-01-15 20:16:37'),
             // array('id' => '65','seleccionado' => false,'doc_oferta' => '','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '1','consultor_id' => '57','deleted_at' => NULL,'created_at' => '0000-00-00 00:00:00','updated_at' => '0000-00-00 00:00:00'),
             // array('id' => '66','seleccionado' => false,'doc_oferta' => '','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '1','consultor_id' => '58','deleted_at' => NULL,'created_at' => '0000-00-00 00:00:00','updated_at' => '0000-00-00 00:00:00'),
             // array('id' => '67','seleccionado' => false,'doc_oferta' => '','fecha_oferta' => '0000-00-00','fecha_seleccion' => '0000-00-00','attermino_id' => '1','consultor_id' => '59','deleted_at' => NULL,'created_at' => '0000-00-00 00:00:00','updated_at' => '0000-00-00 00:00:00'),
@@ -4500,13 +4500,13 @@ class AtConsultoresSeeder extends Seeder
 
 
         for ($i = 0; $i < count($atconsultores); $i++) { 
-            $dateTime = strtotime($atconsultores[$i]['created_at']);
+            
             $table = new Consultor;
             $table->id              = $atconsultores[$i]['id'];
             $table->consultor_id    = $atconsultores[$i]['consultor_id'];
             $table->at_id          = $atconsultores[$i]['attermino_id'];
-            $table->fecha_oferta    = date('Y-m-d', $dateTime);
-            $table->fecha_seleccion = date('Y-m-d', $dateTime);
+            $table->fecha_oferta    = $atconsultores[$i]['updated_at'] ? $atconsultores[$i]['updated_at'] : '';
+            $table->fecha_seleccion = $atconsultores[$i]['updated_at'] ? $atconsultores[$i]['updated_at'] : '';
             $table->seleccionado          = $atconsultores[$i]['seleccionado'];
             $table->doc_oferta      = $atconsultores[$i]['doc_oferta'];
             // $table->created_at         = $atconsultores[$i]['created_at'];

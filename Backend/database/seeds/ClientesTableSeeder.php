@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Cliente\Cliente;
+use App\Models\Empresas\Empresa;
 
 class ClientesTableSeeder extends Seeder
 {
@@ -405,7 +405,7 @@ $clientes = array(
 
 
         for ($i = 0; $i < count($clientes); $i++) { 
-            $table = new Cliente;
+            $table = new Empresa;
             $table->id              = $clientes[$i]['id'];
             $table->tipo            = $clientes[$i]['tipo'];
             $table->empresa_id      = $clientes[$i]['empresa_id'];

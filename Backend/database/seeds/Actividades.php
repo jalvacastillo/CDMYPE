@@ -21,7 +21,7 @@ class Actividades extends Seeder
             $table->tipo            = $faker->randomElement(['Capacitación', 'Taller', 'Webinar', 'Seminario', 'Curso', 'Evento']);
             $table->categoria       = $faker->randomElement(['Formación', 'Comercialización']);
             $table->estado          = $faker->randomElement(['Inactivo', 'Activo', 'Ejecución', 'Finalizado']);
-            $table->especialidad    = 'Mercadeo';
+            $table->especialidad_id = $faker->numberBetween(1,10);
             $table->contenido       = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quasi aperiam perferendis eaque velit laboriosam, doloribus dolore, consequatur maxime adipisci delectus error tempora iure odio pariatur, voluptatem ea incidunt deleniti!' ;
             $table->inicio          = $faker->dateTimeBetween('-1 days', '+ 5 days');
             $table->fin             = $faker->dateTimeBetween('-1 days', '+ 5 days');
@@ -38,7 +38,7 @@ class Actividades extends Seeder
                 $table = new Aplicacion;
                 $table->actividad_id = $i;
                 $table->estado       = $j == 5 ? 'Seleccionado' : 'En Revisión';
-                $table->usuario_id   = $faker->numberBetween(10,25);
+                $table->usuario_id   = $faker->numberBetween(1,13);
                 $table->nota         = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus voluptatem doloremque temporibus, doloribus eum animi optio, laborum excepturi. Officiis aliquam, totam repellendus, nemo perspiciatis quis! Cumque quos, sequi sint debitis.';
                 $table->save();
 
