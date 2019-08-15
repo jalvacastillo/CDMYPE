@@ -12,6 +12,7 @@ import { DescargarExcelComponent } from './parts/descargar-excel/descargar-excel
 
 import { BuscadorEmpresasComponent } from './modals/buscador-empresas/buscador-empresas.component';
 import { BuscadorEmpresariosComponent } from './modals/buscador-empresarios/buscador-empresarios.component';
+import { SearchProyectsComponent }  from './modals/search-proyects/search-proyects.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { BuscadorEmpresariosComponent } from './modals/buscador-empresarios/busc
     PaginationComponent,
     BuscadorEmpresasComponent,
     BuscadorEmpresariosComponent,
-    DescargarExcelComponent
+    DescargarExcelComponent,
+    SearchProyectsComponent
   ],
   exports: [
   	FooterComponent,
@@ -35,7 +37,8 @@ import { BuscadorEmpresariosComponent } from './modals/buscador-empresarios/busc
     PaginationComponent,
     BuscadorEmpresasComponent,
     BuscadorEmpresariosComponent,
-    DescargarExcelComponent
+    DescargarExcelComponent,
+    SearchProyectsComponent
   ]
 })
 export class SharedModule { }

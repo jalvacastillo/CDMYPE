@@ -3,7 +3,7 @@
 <section class="content-header">
     <h1> Empresas <small>Listado</small> </h1>
     <ol class="breadcrumb">
-        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Empresas</li>
     </ol>
 </section>
@@ -23,7 +23,7 @@
                             <div class="input-group-btn">
                                 <button (click)="search(buscador)" class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
                                 <a (click)="loadAll()" class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
-                                <a [routerLink]="['/empresa/nuevo']" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/empresa/nuevo" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>

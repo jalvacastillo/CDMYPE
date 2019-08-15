@@ -17,18 +17,17 @@
             <div class="box box-primary">
                 
                 <div class="box-body">
-                    <div class="col-xs-12 text-center img-thumbnail file-upload">
-                        <img *ngIf="noticia.img && !preview" src="{{ apiService.baseUrl + 'img/noticias/' + noticia.img }}" height="100">
-                        <img *ngIf="!noticia.img && !preview" src="{{ apiService.baseUrl + 'img/noticias/default.jpg' }}" height="100">
-                        <img *ngIf="url_img_preview && preview" src="{{ url_img_preview }}" height="100">
-                        <input type="file" name="img" (change)="setFile($event)" accept="image/png, image/jpeg">
-                    </div>
-
-                    <div class="form-group col-md-8">
-                        <label for="nombre">* Titulo:</label>
+                    <div class="image-upload col-md-6" title="Cambiar imagen">     
+                    <img *ngIf="noticia?.img" src="{{ apiService.baseUrl + '/img/noticias/' + noticia.img }}" height="200">
+                    <input type="file" name="img" id="file" (change)="setFile($event)" accept="image/png, image/jpeg">
+                   
+                </div>
+                 
+                  <div class="form-group col-md-5">
+                        <label for="nombre">Titulo:</label>
                         <input type="text" class="form-control" [(ngModel)]="noticia.titulo" name="nombre" placeholder="Nombre" required autofocus>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-5">
                         <label for="categoria">Categoria:</label>
                         <select name="categoria" class="form-control" [(ngModel)]="noticia.categoria">
                             <option value="Tips">Tips</option>
@@ -38,7 +37,19 @@
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-5">
+                        <label for="tipo">Tipo:</label>
+                        <select class="form-control" [(ngModel)]="noticia.tipo" name="tipo">
+                            <option value="Financiero">Financiero</option>
+                            <option value="Empresarial">Empresarial</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Redes Sociales">Redes Sociales</option>
+                            <option value="Marketing Digital">Marketing Digital</option>
+                            <option value="Empresialidad Femenina">Empresialidad Femenina</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12"><br>
                         <label for="descripcion">Descripción:</label>
                         <input type="text" class="form-control" [(ngModel)]="noticia.descripcion" name="descripcion" placeholder="Descripción">
                     </div>

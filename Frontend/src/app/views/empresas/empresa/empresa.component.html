@@ -34,21 +34,19 @@
             </div>
           </div>
         </div>
-        
-        
         <div class="col-sm-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li><a href="#info" data-toggle="tab">Empresa</a></li>
-              <li><a href="#empresarios" data-toggle="tab">Empresarios</a></li>
-              <li><a href="#indicadores" data-toggle="tab">Indicadores</a></li>
-              <li><a href="#productos" data-toggle="tab">Productos</a></li>
-              <li class="active"><a href="#proyectos" data-toggle="tab">Proyectos</a></li>
-              <li><a href="#historial" data-toggle="tab">Historial de servicios</a></li>
+              <li  class="active" ><a href="#info" data-toggle="tab">Empresa</a></li>
+              <li><a href="#empresarios" *ngIf="empresa.id" data-toggle="tab">Empresarios</a></li>
+              <li><a href="#indicadores" *ngIf="empresa.id" data-toggle="tab">Indicadores</a></li>
+              <li><a href="#productos" *ngIf="empresa.id" data-toggle="tab">Productos</a></li>
+              <li><a href="#proyectos" *ngIf="empresa.id" data-toggle="tab">Proyectos</a></li>
+              <li><a href="#historial" *ngIf="empresa.id" data-toggle="tab">Historial de servicios</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade" id="info">
-                    <app-empresa-info *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-info>
+                <div class="tab-pane fade in active" id="info">
+                    <app-empresa-info [empresa] = "empresa"></app-empresa-info>
                 </div>
 
                 <div class="tab-pane fade" id="empresarios">
@@ -63,7 +61,7 @@
                    <app-empresa-productos *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-productos>
                 </div>  
 
-                <div class="tab-pane fade in active" id="proyectos">
+                <div class="tab-pane fade" id="proyectos">
                    <app-empresa-proyectos *ngIf="empresa.id" [empresa] = "empresa"></app-empresa-proyectos>
                 </div>
 

@@ -26,7 +26,7 @@ class ActividadesController extends Controller
 
     public function read($id) {
 
-        $actividad = Actividad::where('id', $id)->with('asesores')
+        $actividad = Actividad::where('id', $id)->with('asesores')->with('especialidad')
                                 ->with(array('aplicaciones' => function($query) {
                                     $query->orderBy('estado', 'desc');
                                 }))

@@ -11,7 +11,7 @@ class CreateEmpresaProductosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('empresa_id');
-			$table->string('img')->default('default.jpg');
+			$table->string('img');
 			$table->string('nombre');
 			$table->decimal('precio', 10, 2)->nullable();
 			$table->text('descripcion')->nullable();

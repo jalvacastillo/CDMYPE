@@ -32,7 +32,7 @@ class EmpresasController extends Controller
 
 		$request->validate([
 		    // 'file'        => 'required',
-		    'logo'        => 'required',
+		   // 'logo'        => 'required',
 		    'nombre'        => 'required',
 		]);
 

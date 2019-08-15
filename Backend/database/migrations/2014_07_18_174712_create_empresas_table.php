@@ -11,9 +11,9 @@ class CreateEmpresasTable extends Migration {
         Schema::create('empresas',function($table){
             $table->increments('id');
 
-            $table->string('nombre', 100)->nullable();
-            $table->string('estado');
-            $table->string('procedencia');
+            $table->string('nombre', 100);
+            $table->string('estado')->nullable();
+            $table->string('procedencia')->nullable();
             $table->string('nit', 20)->nullable();
             $table->string('iva', 25)->nullable();
             $table->string('constitucion')->nullable();

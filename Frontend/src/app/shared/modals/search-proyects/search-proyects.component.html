@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="form-group col-sm-12">
+        <label for="cantidad">Proyecto:</label>
+        <form autocomplete="off" class="buscador">
+            <input id="proyecto" type="text" name="proyecto.nombre" class="form-control" placeholder="Buscar proyecto" [(ngModel)]="proyecto.nombre" focus="true" id="example">
+            <ul class="list-group info">
+              <a href="javascript:void(0);" class="list-group-item text-primary" *ngIf="searching"> Buscando... </a>
+              <a href="javascript:void(0);" class="list-group-item text-warning" *ngIf="!searching && proyectos?.data?.length == 0"> Ningun registro encontrado </a>
+            </ul>
+            <ul class="list-group opciones" *ngIf="proyectos?.total > 0">
+              <a href="javascript:void(0);" class="list-group-item" (click)="selectProyecto(proyecto)" *ngFor=" let proyecto of proyectos?.data">
+                {{proyecto.nombre}} - <small>{{proyecto.empresa}}</small>
+              </a>
+            </ul>
+        </form>
+    </div>
+    </div>

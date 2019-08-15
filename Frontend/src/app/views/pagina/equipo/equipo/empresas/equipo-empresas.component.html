@@ -4,9 +4,9 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-12">
-                      <button (click)="openModal(mproyecto, {})" class="pull-right btn btn-primary" tooltip="Agregar">
-                          Agregar
-                      </button>
+                            <button (click)="openModal(mproyecto, {}, {})" class="pull-right btn btn-primary" tooltip="Agregar proyectos">
+                                    Agregar
+                                </button>
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                     <thead>
                         <tr>
                             <th>Empresa</th>
-                            <th>Nombre</th>
+                            <th>Nombre del proyecto</th>
                             <th class="text-center">Inicio</th>
                             <th class="text-center">Fin</th>
                             <th class="text-center"><i class="fa fa-cog"></i></th>
@@ -34,19 +34,22 @@
                         <tr class="animated fadeIn" *ngFor="let proyecto of empresas">
                             <td>
                                 {{ proyecto.empresa.nombre }}
-                                <!-- <img class="img-circle" *ngIf="proyecto.empresa" src="{{apiService.baseUrl + '/img/empresas/' + proyecto.empresa?.logo }}" height="30px" tooltip="{{ proyecto.empresa?.nombre }}"/> -->
-                            </td>
+                               </td>
                             <td>{{ proyecto.nombre }}</td>
                             <td class="text-center">{{ proyecto.inicio | date:'dd-MM-yyyy' }}</td>
                             <td class="text-center">{{ proyecto.fin | date:'dd-MM-yyyy' }}</td>
 
-                            <td class="text-center" width="100">
+                            <td class="text-center" width="150">
                                 <div class="btn-group" role="group">
+                                    
                                     <a class="btn btn-default" (click)="openModal(mproyecto, proyecto)" tooltip="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a class="btn btn-default" (click)="eliminar(proyecto)" tooltip="Eliminar">
                                         <i class="fa fa-trash"></i>
+                                    </a>
+                                    <a class="btn btn-default" (click)="openModal(maccion, proyecto, accion)" tooltip="Lista de acciones">
+                                        <i class="fa fa-th-list"></i>
                                     </a>
                                 </div>
                             </td>
@@ -70,9 +73,8 @@
 
         <div class="row">
             <div class="form-group col-sm-12">
-                <label>Nombre:</label>
-                <input type="text" class="form-control" [(ngModel)]="proyecto.nombre" name="proyecto.nombre" placeholder="Nombre" required focus="true">
-            </div>
+                <app-buscador-empresas (empresaSelect)="selectEmpresa($event)"></app-buscador-empresas>
+                
             <div class="form-group col-sm-6">
                 <label>Inicio:</label>
                 <input type="date" class="form-control" [(ngModel)]="proyecto.inicio" name="proyecto.inicio">
@@ -86,6 +88,7 @@
                 <input type="text" class="form-control" [(ngModel)]="proyecto.descripcion" name="proyecto.descripcion" placeholder="Descripción">
             </div>
         </div>
+        </div>
         <div class="row">
             <div class="col-xs-12">
                 <button [disabled]="!form.form.valid || loading" class="btn btn-primary btn-block">
@@ -96,4 +99,62 @@
         </div>
     </form>
   </div>
+</ng-template>
+
+<ng-template #maccion>
+    <div class="modal-header">
+        <div class="col-sm-12">
+                <h5 class="modal-title text-bold text-center">{{ proyecto.nombre }}</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); proyecto = {};"> <span aria-hidden="true">&times;</span> </button><br>
+    </div>
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="saveAccion(accion)">
+    <div class="form-group col-sm-6">
+        <label>Actividad:</label>
+        <input type="text" class="form-control" [(ngModel)]="accion.actividad" name="accion.actividad">
+    </div>
+        <div class="form-group col-sm-6">
+                <label>Responsable:</label>
+            <select class="form-control" [(ngModel)]="accion.responsable" name="responsable" selected="Asesor">
+                    <option value="Asesor" selected="selected">Asesor</option>
+                    <option value="Alumno">Alumno</option>
+                    <option value="Empresario">Empresario</option> 
+           </select>
+            </div> 
+                <div class="form-group col-sm-6">
+                        <label>Inicio:</label>
+                        <input type="date" class="form-control" [(ngModel)]="accion.inicio" name="accion.inicio">
+                </div>
+                <div class="form-group col-sm-6">
+                        <label>Fin:</label>
+                        <input type="date" class="form-control" [(ngModel)]="accion.fin" name="accion.fin">
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button [disabled]="!form.form.valid || loading" class="btn btn-primary btn-block">
+                         <span *ngIf="!loading">Guardar</span>
+                         <span *ngIf="loading">Guardando...</span>
+                     </button>
+                    </div>
+                   
+    </div>
+</form>
+</div>  
+    <div class="modal-body">
+         
+        <ul class="list-group">
+            <li class="list-group-item">
+                
+            </li>
+            <li class="list-group-item" *ngIf="proyecto?.acciones?.length < 1 && !loading">
+                No tiene Acciones registradas
+            </li>
+            <li class="list-group-item {{ accion.completado ? 'list-group-item-success' : '' }}" *ngFor=" let accion of proyecto?.acciones">
+                <a (click)="editAccion(accion)" class="btn btn-sm btn-link"><i class="fa fa-pencil-square-o"></i></a>
+                <a (click)="deleteAccion(accion)" class="btn btn-sm btn-link"><i class="fa fa-trash"></i></a>
+                <a class="btn btn-sm btn-link"><input type="checkbox" name="accion.completado" [(ngModel)]="accion.completado" (click)="compleated(accion)"></a>
+                
+                {{ accion.actividad }}
+            </li>
+        </ul>
+    </div>
 </ng-template>

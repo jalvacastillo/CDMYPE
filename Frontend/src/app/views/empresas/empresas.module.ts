@@ -15,6 +15,7 @@ import { EmpresaEmpresariosComponent } from './empresa/empresarios/empresa-empre
 import { EmpresaIndicadoresComponent } from './empresa/indicadores/empresa-indicadores.component';
 import { EmpresaProyectosComponent } from './empresa/proyectos/empresa-proyectos.component';
 import { EmpresaProductosComponent } from './empresa/productos/empresa-productos.component';
+import { HistoralComponent } from './empresa/historal/historal.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { EmpresaProductosComponent } from './empresa/productos/empresa-productos
     EmpresaEmpresariosComponent,
     EmpresaProductosComponent,
     EmpresaIndicadoresComponent,
-    EmpresaProyectosComponent
+    EmpresaProyectosComponent,
+    HistoralComponent
   ],
   exports: [
   	EmpresasComponent,

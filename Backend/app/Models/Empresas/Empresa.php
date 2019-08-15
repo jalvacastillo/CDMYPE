@@ -15,15 +15,15 @@ class Empresa extends Model {
         'procedencia',
         'nit',
         'iva',
-        'ubicacion',
-        'fundacion',
-        'contabilidad',
+        'constitucion',
+        'direccion',  
         'municipio',
         'departamento',
-        'direccion',
-        'constitucion',
-        'tamano',
+        'ubicacion', 
+        'fundacion',
+        'contabilidad',
         'sector',
+        'tamano',
         'descripcion',
         'actividad',
         'logo',
@@ -44,7 +44,7 @@ class Empresa extends Model {
             $notas = $this->notas()->get();
             
             if ($notas->count() > 0)
-                $nota =  $notas->sum('evaluacion') / $notas->count();
+                $nota =  $notas->avg('evaluacion');
             else
                 $nota = null;
             

@@ -44,5 +44,14 @@ class ProyectosController extends Controller
 
     }
 
+    public function search($txt, $id) {
+
+        $proyectos = Proyecto::with('asesores')->where('nombre', 'like' ,'%' . $txt . '%')
+        ->wherehas(function ($query) use ($id){$query->where('asesores.asesor_id', $id);})->get();
+		return Response()->json($proyectos, 200);
+    
+        //$empresas = Proyecto::orderBy('id','dsc')->with('empresa')->where('asesor_id', $id)->get()
+	}
+
 
 }

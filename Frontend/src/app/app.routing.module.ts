@@ -16,6 +16,7 @@ import { DashComponent } from './views/dash/dash.component';
 
 import { EmpresasComponent } from './views/empresas/empresas.component';
 import { EmpresaComponent } from './views/empresas/empresa/empresa.component';
+import { EmpresaInfoComponent } from './views/empresas/empresa/info/empresa-info.component';
 
 import { ConsultoresComponent } from './views/consultores/consultores.component';
 import { ConsultorComponent } from './views/consultores/consultor/consultor.component';
@@ -70,6 +71,7 @@ const routes: Routes = [
     
     { path: 'empresas', component: EmpresasComponent, canActivate: [AuthGuard] },
     { path: 'empresa/:id', component: EmpresaComponent, canActivate: [AuthGuard] },
+    
     
     { path: 'consultores', component: ConsultoresComponent, canActivate: [AuthGuard] },
     { path: 'consultor/:id', component: ConsultorComponent, canActivate: [AuthGuard] },

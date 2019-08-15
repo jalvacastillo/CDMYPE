@@ -21,6 +21,8 @@
 
     Route::get('/asesor/empresas/{id}', 'Asesores\EmpresasController@empresas');
 
+    Route::get('/asesor/acciones/{id}', 'Asesores\AccionesController@acciones');
+
     Route::post('asesor/meta',        'Pagina\MetasController@store');
     Route::delete('asesor/meta/{id}', 'Pagina\MetasController@delete');
     

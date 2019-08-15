@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Pagina;
 
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Pagina\NoticiaRequest;
+
 use App\Models\Pagina\Noticia;
 
 class NoticiasController extends Controller
@@ -24,19 +24,28 @@ class NoticiasController extends Controller
 
     }
 
-    public function store(NoticiaRequest $request)
+    public function store(Request $request)
     {
-        if($request->id){
+
+        $request->validate([
+            'titulo'        => 'required|max:255',
+            'slug'          => 'required',
+            'descripcion'   => 'required',
+            'file'          => 'mimes:jpeg,png,jpg|max:40000',
+            'img'           => 'required',
+            'categoria'     => 'required',
+            'asesor_id'     => 'required'
+        ]);
+
+        if($request->id)
             $noticia = Noticia::findOrFail($request->id);
-        }
-        else{
+        else
             $noticia = new Noticia;
-        }
 
         if ($request->hasFile('file')) {
                 
             $file = $request->file;
-            $ruta = public_path() . '/imgs/noticias';
+            $ruta = public_path() . '/img/noticias';
             if ($noticia->img) { \File::delete($ruta . $noticia->img); }
             $file->move($ruta, $request->img);
         } 

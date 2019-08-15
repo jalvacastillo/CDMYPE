@@ -35,7 +35,7 @@ export class UsuarioComponent implements OnInit {
 	        this.loading = false;
 	        this.router.navigate(['/admin/usuarios']);
 	    },error => {
-	        this.alertService.error(error._body);
+	        this.alertService.error(error);
 	        this.loading = false;
 	    });
 	}

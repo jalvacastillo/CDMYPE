@@ -17,6 +17,7 @@
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Descripción</th>
+                            <th class="text-center">Foto</th>
                             <th class="text-center"><i class="fa fa-cog"></i></th>
                         </tr>
                     </thead>
@@ -29,8 +30,15 @@
 
                         <tr class="animated fadeIn" *ngFor="let producto of empresa?.productos">
                             <td>{{ producto.nombre }}</td>
-                            <td>{{ producto.precio | currency:'USD':'true':'1.2'}}</td>
+                            <td>{{ producto.precio | currency:'USD'}}</td>
                             <td>{{ producto.descripcion }}</td>
+                            <td class="text-center" width="100">
+                                    <div class="imagen-upload" title="Agregar foto">
+                                            <img *ngIf="producto?.img" width="45" class="img-responsive" src="{{ apiService.baseUrl + '/img/empresas/productos/' + producto.img }}" style="margin: auto;"  title="Agregar foto">
+                                            <input type="file" name="imagen{{producto.id}}" id="img" class="inputfile" (change)="setPhotoP($event)" title="Agregar foto">
+                                            <label for="file"></label>
+                                    </div>       
+                            </td>
                             <td class="text-center" width="100">
                                 <div class="btn-group" role="group">
                                     <a class="btn btn-default" (click)="openModal(mproducto, producto)" tooltip="Editar">

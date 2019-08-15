@@ -58,7 +58,7 @@
     <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(indicador)">
 
         <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-4">
                 <label>Fecha:</label>
                 <input type="date" [(ngModel)]="indicador.fecha" name="indicador.fecha" class="form-control">
             </div>
@@ -103,16 +103,16 @@
                 <label>Empleados Hombre:</label>
                 <div class="input-group">
                   <div class="input-group-addon">#</div>
-                    <input type="number" class="form-control" [(ngModel)]="indicador.ht" name="indicador.ht">
-                    <input type="number" class="form-control" [(ngModel)]="indicador.hf" name="indicador.hf">
+                    <input type="number" placeholder="Temporales" tooltip="Temporales" class="form-control" [(ngModel)]="indicador.empleo_ht" name="indicador.empleo_ht">
+                    <input type="number" placeholder="Fijos" tooltip="Fijos" class="form-control" [(ngModel)]="indicador.empleo_hf" name="indicador.empleo_hf">
                 </div>
             </div>                    
             <div class="form-group col-xs-6">
                 <label>Empleadas:</label>
                 <div class="input-group">
                     <div class="input-group-addon">#</div>
-                    <input type="number" class="form-control" [(ngModel)]="indicador.mt" name="indicador.mt">
-                    <input type="number" class="form-control" [(ngModel)]="indicador.mf" name="indicador.mf">
+                    <input type="number" placeholder="Temporales" class="form-control" [(ngModel)]="indicador.empleo_mt" name="indicador.empleo_mt">
+                    <input type="number" placeholder="Fijas" class="form-control" [(ngModel)]="indicador.empleo_mf" name="indicador.empleo_mf">
                 </div>
             </div>
             <label class="col-xs-12">Mercados Actuales:</label>

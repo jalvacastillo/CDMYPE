@@ -22,5 +22,4 @@
     Route::get('/equipo/{id}',           'Pagina\EquipoController@read');
     Route::delete('/equipo/{id}',        'Pagina\EquipoController@delete');
 
-
 ?>

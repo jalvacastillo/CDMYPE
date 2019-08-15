@@ -71,5 +71,6 @@ class EquipoController extends Controller
         return Response()->json($equipos, 200);
 
     }
+    
 
 }

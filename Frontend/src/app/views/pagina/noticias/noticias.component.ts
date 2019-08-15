@@ -38,11 +38,11 @@ export class NoticiasComponent implements OnInit {
 
     public delete(id:number) {
         if (confirm('¿Desea eliminar el Registro?')) {
-            this.apiService.delete('paciente/', id) .subscribe(data => {
-                 this.noticias.data.forEach( item => {
-                    if (item.id == data.id )
-                        item.pop();
-                });
+            this.apiService.delete('noticia/', id) .subscribe(data => {
+                for (let i = 0; i < this.noticias.length; i++) { 
+                    if (this.noticias[i].id == data.id )
+                        this.noticias.splice(i, 1);
+                }
             }, error => {this.alertService.error(error); });
                    
         }

@@ -39,8 +39,9 @@ export class BuscadorEmpresasComponent implements OnInit {
     }
 
 	public selectEmpresa(empresa:any){
+        this.empresa.nombre = empresa.nombre;
         this.empresas = [];
-        this.empresa = {};
+        // this.empresa = {};
 	    this.empresaSelect.emit({empresa: empresa});
 	}
 

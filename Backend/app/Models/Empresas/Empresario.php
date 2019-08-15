@@ -11,16 +11,16 @@ class Empresario extends Model {
     protected $table = 'empresarios';
     protected $fillable = array(
         'nombre',
-        'nit',
         'dui',
-        'edad',
+        'nit',
         'sexo',
-        'correo',
+        'edad',
         'telefono',
         'celular',
         'direccion',
         'municipio',
         'departamento',
+        'correo',
         'usuario_id'
     );
 

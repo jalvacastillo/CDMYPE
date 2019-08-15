@@ -26,8 +26,6 @@ export class NoticiaComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-
-
         this.route.params.subscribe(params => {
             
             if(isNaN(params['id'])){
@@ -35,46 +33,50 @@ export class NoticiaComponent implements OnInit {
                 this.noticia.asesor_id = this.apiService.auth_user().id;
             }
             else{
-                this.apiService.read('noticia/', params['id']).subscribe(noticia => {
-                   this.noticia = noticia;
-                    var editor = $("#compose-textarea").wysihtml5();
+                this.apiService.read('noticia/', params['id']).subscribe(data => {
+                   this.noticia = data;
 	            });
-	        }
+            }
 
-	    });
+            var editor = $("#compose-textarea").wysihtml5();
 
+        });
+        
+        this.noticia.img = ('default.jpg');
+        this.loading = false;
 	}
 
 	public onSubmit() {
 	    this.loading = true;
-
+        
 	    let formData:FormData = new FormData();
 	    formData.append('titulo', this.noticia.titulo);
 	    formData.append('contenido', $("#compose-textarea").val());
         formData.append('categoria', this.noticia.categoria);
+        formData.append('tipo', this.noticia.tipo);
         formData.append('asesor_id', this.apiService.auth_user().id);
 	    formData.append('descripcion', this.noticia.descripcion);
         formData.append('slug', this.apiService.slug(this.noticia.titulo));
+        
 	    if (this.noticia.id){
-	        formData.append('id', this.noticia.id);
-	        formData.append('img', this.noticia.img);
+	        formData.append('id', this.noticia.id);	       
 	    }
-
 	    if(this.file) {
 	        var d = new Date();
 	        formData.append('file', this.file);
 	        formData.append('img', d.getTime() + ' - ' + this.file.name);
 	    }
-       
-        this.apiService.upload('noticia', formData).subscribe(data => {
+        this.apiService.upload('noticia', formData).subscribe(noticia => {
+            this.noticia = noticia;
             this.loading = false;
             this.alertService.success('Guardado');
 
-        },error => {this.alertService.error(error._body); this.loading = false;});
+        },error => {this.alertService.error(error); this.loading = false;});
 	}
-
     setFile(event:any) {
         this.file = event.target.files[0];
+        
+        
     }
 
 }

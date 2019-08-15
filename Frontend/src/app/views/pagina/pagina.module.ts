@@ -17,6 +17,7 @@ import { EquipoCuentaComponent } from './equipo/equipo/cuenta/equipo-cuenta.comp
 import { EquipoEmpresasComponent } from './equipo/equipo/empresas/equipo-empresas.component';
 import { EquipoMetasComponent } from './equipo/equipo/metas/equipo-metas.component';
 
+
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioComponent } from './servicios/servicio/servicio.component';
 
@@ -37,6 +38,8 @@ import { TestimonioComponent } from './testimonios/testimonio/testimonio.compone
 
 import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
 import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.component';
+import { AccionesComponent } from './equipo/equipo/acciones/acciones.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   imports: [
@@ -48,7 +51,8 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     PipesModule,
     PopoverModule.forRoot(),
     ModalModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ProgressbarModule.forRoot()
   ],
   declarations: [
     EquiposComponent,
@@ -71,7 +75,8 @@ import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.com
     TestimoniosComponent,
     TestimonioComponent,
     DiagnosticosComponent,
-    DiagnosticoComponent
+    DiagnosticoComponent,
+    AccionesComponent
   ],
   exports: [
     EquiposComponent,

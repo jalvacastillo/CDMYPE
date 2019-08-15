@@ -4,9 +4,9 @@
 
     Route::get('/proyectos',                'Proyectos\ProyectosController@index');
     Route::get('/proyecto/{id}',            'Proyectos\ProyectosController@read');
-    Route::get('/proyectos/buscar/{text}',  'Proyectos\ProyectosController@search');
     Route::post('/proyecto',                'Proyectos\ProyectosController@store');
     Route::delete('/proyecto/{id}',         'Proyectos\ProyectosController@delete');
+    Route::get('/proyecto/search/{text}/{id}',   'Proyectos\ProyectosController@search');  
 
 // Asesores
 

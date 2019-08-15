@@ -15,7 +15,7 @@ export class EmpresaProductosComponent implements OnInit {
 	@Input() empresa:any = {};
     public producto:any = {};
     public loading:boolean = false;
-
+    public file:File;
     modalRef: BsModalRef;
 
 	constructor( 
@@ -23,7 +23,10 @@ export class EmpresaProductosComponent implements OnInit {
             private route: ActivatedRoute, private router: Router, private modalService: BsModalService
         ) { }
 
-	ngOnInit() {
+	ngOnInit() { 
+        this.router.routeReuseStrategy.shouldReuseRoute = function (){
+        return false;
+    };
 
 	}
 
@@ -35,14 +38,23 @@ export class EmpresaProductosComponent implements OnInit {
         this.modalRef = this.modalService.show(template);        
     }
 
+    setPhotoP(event:any) {
+        console.log('si');
+        this.file = event.target.files[0];
+        // this.onSubmit();
+    }
+
     public onSubmit(){
         this.loading = true;
         this.producto.empresa_id = this.empresa.id;
+        this.producto.img = 'default.jpg';
+
         this.apiService.store('empresa/producto', this.producto).subscribe(producto => {
             this.loading = false;
             if (!this.producto.id) { 
                 this.empresa.productos.push(producto);
             }
+           
             this.modalRef.hide();
             this.producto = {};
         },error => {this.alertService.error(error); this.loading = false; });

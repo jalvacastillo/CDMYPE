@@ -35,6 +35,7 @@
                                 <th class="text-center">Publicado</th>
                                 <th>Titulo</th>
                                 <th class="text-center">Categoria</th>
+                                <th class="text-center">Tipo</th>
                                 <th class="hidden-xs text-center">Autor</th>
                                 <th class="hidden-xs text-center">Activo</th>
                                 <th class="text-center">Vistas</th>
@@ -53,6 +54,7 @@
                                 <td class="text-center">{{ noticia.created_at | date:'dd-MM-yyyy' }}</td>
                                 <td>{{ noticia.titulo }}</td>
                                 <td class="text-center">{{ noticia.categoria }}</td>
+                                <td class="text-center">{{ noticia.tipo }}</td>
                                 <td class="text-center hidden-xs">
                                     <img class="img-circle" *ngIf="noticia.avatar" src="{{apiService.baseUrl + '/img/team/' + noticia.avatar }}" height="30px"/>
                                 </td>

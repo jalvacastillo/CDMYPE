@@ -22,6 +22,10 @@ class Accion extends Model {
         return $this->belongsTo('App\Models\Empresas\Proyecto','proyecto_id');
     }
 
+    public function asesoria()
+    {
+        return $this->hasMany('App\Models\Empresas\Asesoria','accion_id');
+    }
 
 
 

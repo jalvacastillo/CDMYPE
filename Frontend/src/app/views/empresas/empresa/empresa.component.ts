@@ -42,6 +42,7 @@ export class EmpresaComponent implements OnInit {
 
         if(this.file) {
             this.loading = true;
+            
             let formData:FormData = new FormData();
             formData.append('file', this.file);
             var d = new Date();

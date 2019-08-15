@@ -227,6 +227,14 @@ class UsersTableSeeder extends Seeder
             $user->avatar = 'rene.jpg';
             $user->usuario_id = 2;
             $user->save();
+
+            $user = new User;
+            $user->name = 'Arnold Lainez';
+            $user->email = 'arnoldlr2018@gmail.com';
+            $user->avatar = '';
+            $user->password = Hash::make('admin');
+            $user->tipo = 'Administrador';
+            $user->save();
             
     }
 }
