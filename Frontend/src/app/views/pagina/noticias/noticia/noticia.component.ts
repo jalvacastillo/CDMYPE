@@ -51,8 +51,9 @@ export class NoticiaComponent implements OnInit {
         for (var key in this.noticia) {
             formData.append(key, this.noticia[key]);
         }
+        formData.append('slug', this.apiService.slug(this.noticia.titulo)); 
         
-	    if (this.noticia.id){
+        if (this.noticia.id){
             formData.append('id', this.noticia.id);
             formData.append('img', this.noticia.img);     
 	    }
