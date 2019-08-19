@@ -29,7 +29,7 @@ class NoticiasController extends Controller
 
         $request->validate([
             'titulo'        => 'required|max:255',
-            'slug'          => 'required',
+            'slug'          => 'required|unique:noticias,slug,'. $request->id,
             'descripcion'   => 'required',
             'file'          => 'mimes:jpeg,png,jpg|max:40000',
             'img'           => 'required',

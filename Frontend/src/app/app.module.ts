@@ -14,6 +14,8 @@ import { PipesModule } from './pipes/pipes.module';
 import { NotifierModule } from 'angular-notifier';
 import { AlertService } from './services/alert.service';
 import { ApiService } from './services/api.service';
+import { QuillModule } from 'ngx-quill';
+
 
 import { AuthModule } from './auth/auth.module';
 import { DashModule } from './views/dash/dash.module';
@@ -48,7 +50,8 @@ import { MaterialesModule } from './views/materiales/materiales.module';
     CapsModule,
     SalidasModule,
     PaginaModule,
-    MaterialesModule
+    MaterialesModule,
+    QuillModule
   ],
   providers: [AuthGuard, AdminGuard, AlertService, ApiService],
   bootstrap: [AppComponent]

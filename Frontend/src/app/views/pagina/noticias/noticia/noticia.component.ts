@@ -3,6 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService } from '../../../../services/alert.service';
 import { ApiService } from '../../../../services/api.service';
+import { HtmlParser } from '@angular/compiler';
+
+
 
 declare var $: any;
 
@@ -15,7 +18,7 @@ export class NoticiaComponent implements OnInit {
 	public noticia: any = {};
     public loading = false;
 
-    // Img Upload
+     // Img Upload
     public file:File;
     public preview = false;
     public url_img_preview:string;
@@ -27,39 +30,31 @@ export class NoticiaComponent implements OnInit {
 
 	ngOnInit() {
         this.route.params.subscribe(params => {
-            
             if(isNaN(params['id'])){
                 this.noticia = {};
-                this.noticia.asesor_id = this.apiService.auth_user().id;
+                this.noticia.asesor_id = this.apiService.auth_user().id;  
             }
             else{
                 this.apiService.read('noticia/', params['id']).subscribe(data => {
-                   this.noticia = data;
+                   this.noticia = data;  
 	            });
             }
 
-            var editor = $("#compose-textarea").wysihtml5();
-
-        });
-        
+        });     
         this.noticia.img = ('default.jpg');
         this.loading = false;
 	}
-
 	public onSubmit() {
 	    this.loading = true;
         
-	    let formData:FormData = new FormData();
-	    formData.append('titulo', this.noticia.titulo);
-	    formData.append('contenido', $("#compose-textarea").val());
-        formData.append('categoria', this.noticia.categoria);
-        formData.append('tipo', this.noticia.tipo);
-        formData.append('asesor_id', this.apiService.auth_user().id);
-	    formData.append('descripcion', this.noticia.descripcion);
-        formData.append('slug', this.apiService.slug(this.noticia.titulo));
+        let formData:FormData = new FormData();
+        for (var key in this.noticia) {
+            formData.append(key, this.noticia[key]);
+        }
         
 	    if (this.noticia.id){
-	        formData.append('id', this.noticia.id);	       
+            formData.append('id', this.noticia.id);
+            formData.append('img', this.noticia.img);     
 	    }
 	    if(this.file) {
 	        var d = new Date();
@@ -75,8 +70,6 @@ export class NoticiaComponent implements OnInit {
 	}
     setFile(event:any) {
         this.file = event.target.files[0];
-        
-        
     }
-
+    
 }

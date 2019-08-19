@@ -9,6 +9,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../pipes/pipes.module';
+import { QuillModule } from 'ngx-quill';
 
 import { EquiposComponent } from './equipo/equipos.component';
 import { EquipoComponent } from './equipo/equipo/equipo.component';
@@ -50,6 +51,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     SharedModule,
     PipesModule,
     PopoverModule.forRoot(),
+    QuillModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     ProgressbarModule.forRoot()
