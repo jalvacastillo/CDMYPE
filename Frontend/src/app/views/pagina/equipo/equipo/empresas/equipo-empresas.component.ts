@@ -33,24 +33,27 @@ export class EquipoEmpresasComponent implements OnInit {
             this.apiService.read('asesor/empresas/', id).subscribe(empresas => {
             this.empresas = empresas;
             });
-           
-        
 	}
 
     public openModal(template: TemplateRef<any>, proyecto:any) {
         this.proyecto = proyecto;
         this.modalRef = this.modalService.show(template);        
     }
-
+    public selectEmpresa(event){
+        console.log(event);
+        this.empresas.empresa_id = event.empresa.id;
+     
+    }
     public onSubmit(){
         this.loading = true;
-        this.proyecto.empresa_id = this.empresas.id;
+        this.proyecto.empresa_id = this.empresas.empresa_id;
         this.proyecto.asesor_id = this.apiService.auth_user().id;
-        this.apiService.store('empresa/proyecto', this.proyecto).subscribe(proyecto => {
+        this.apiService.store('empresa/proyecto', this.proyecto) .subscribe(proyecto => {
             this.loading = false;
             this.proyecto.asesor = this.apiService.auth_user();
             if (!this.proyecto.id) {
-                this.empresas.push(this.proyecto);
+                this.empresas.push(proyecto);  
+               
             }
             this.modalRef.hide();
         },error => {this.alertService.error(error); this.loading = false; });
@@ -67,13 +70,7 @@ export class EquipoEmpresasComponent implements OnInit {
         }
 
     }
-    public selectEmpresa(event){
-        console.log(event);
-        this.empresas.empresa_id = event.empresa.id;
-        //this.proyecto.empresa = event.empresa.nombre;
-       
-    }
-
+    
     //Proyectos - Acciones *******************************************************
 
     public saveAccion(accion:any){
@@ -108,7 +105,6 @@ export class EquipoEmpresasComponent implements OnInit {
                    
         }
     }
-
     public editAccion(accion:any){
         this.accion = accion;
     }
