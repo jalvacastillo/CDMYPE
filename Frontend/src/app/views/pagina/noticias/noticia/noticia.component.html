@@ -18,7 +18,7 @@
                 
                 <div class="box-body">
                     <div class="image-upload col-md-6" title="Cambiar imagen">     
-                    <img *ngIf="noticia?.img" src="{{ apiService.baseUrl + '/img/noticias/' + noticia.img }}" height="200" width="350">
+                    <img *ngIf="noticia?.img" src="{{ apiService.baseUrl + '/img/noticias/' + noticia.img }}" width="60%" height="60%">
                     <input type="file" name="img" id="file" (change)="setFile($event)" accept="image/png, image/jpeg">
                    
                 </div>
@@ -54,11 +54,8 @@
                         <input type="text" class="form-control" [(ngModel)]="noticia.descripcion" name="descripcion" placeholder="Descripción">
                     </div>
 
-                    <form class="form-group col-md-12">
-                    <!-- <textarea  id="compose-textarea" name="contenido" ng-bind-html="thisCanBeusedInsideNgBindHtml"class="form-control" style="height: 400px">{{ noticia?.contenido }}</textarea> -->
-                   
+                    <form class="form-group col-md-12">                   
                     <quill-editor name="contenido" [(ngModel)]="noticia.contenido"></quill-editor>
-                    
                     </form>
                 </div>
                

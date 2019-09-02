@@ -56,9 +56,9 @@ public saveAsesoria(asesoria:any){
   asesoria.accion_id = this.accion.id;
   this.loading = true;
   console.log(asesoria);
-  this.apiService.store('asesoria', asesoria).subscribe(data => {
+  this.apiService.store('asesoria', asesoria) .subscribe(data => {
       if(!this.asesoria.id)
-      this.accion.asesorias.push(data);
+      this.accion.asesoria.push(data);
       this.asesoria = {};
       this.loading = false;
   }, error => {this.alertService.error(error); this.loading = false;});
@@ -67,7 +67,7 @@ public saveAsesoria(asesoria:any){
 public deleteAsesoria(asesoria:any){
   if (confirm('¿Desea eliminar el Registro?')) {
       this.apiService.delete('asesoria/', asesoria.id) .subscribe(asesoria => {
-          for (let i = 0; i < this.accion.asesorias.length; i++) { 
+          for (let i = 0; i < this.accion.asesoria.length; i++) { 
               if (this.accion.asesoria[i].id == asesoria.id ){
                   this.accion.asesoria.splice(i, 1);
                  

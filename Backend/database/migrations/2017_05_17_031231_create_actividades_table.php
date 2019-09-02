@@ -22,11 +22,13 @@ class CreateActividadesTable extends Migration
             $table->string('tipo');
             $table->string('categoria');
             $table->string('estado');
-            $table->string('especialidad_id');
+            $table->integer('especialidad_id');
             $table->text('contenido');
             $table->integer('cupo');
-            $table->datetime('inicio');
-            $table->datetime('fin');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             
             $table->softDeletes();
             $table->timestamps();

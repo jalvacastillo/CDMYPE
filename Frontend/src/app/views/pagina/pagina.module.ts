@@ -11,13 +11,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { QuillModule } from 'ngx-quill';
 
+
 import { EquiposComponent } from './equipo/equipos.component';
 import { EquipoComponent } from './equipo/equipo/equipo.component';
 import { EquipoInfoComponent } from './equipo/equipo/info/equipo-info.component';
 import { EquipoCuentaComponent } from './equipo/equipo/cuenta/equipo-cuenta.component';
 import { EquipoEmpresasComponent } from './equipo/equipo/empresas/equipo-empresas.component';
 import { EquipoMetasComponent } from './equipo/equipo/metas/equipo-metas.component';
-
 
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioComponent } from './servicios/servicio/servicio.component';
@@ -41,6 +41,10 @@ import { DiagnosticosComponent } from './diagnosticos/diagnosticos.component';
 import { DiagnosticoComponent } from './diagnosticos/diagnostico/diagnostico.component';
 import { AccionesComponent } from './equipo/equipo/acciones/acciones.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
+
+
 
 @NgModule({
   imports: [
@@ -54,7 +58,9 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     QuillModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    TimepickerModule.forRoot()
+   
   ],
   declarations: [
     EquiposComponent,

@@ -16,7 +16,6 @@ export class EquipoEmpresasComponent implements OnInit {
     @Input() equipo:any = {};
     public empresas:any = [];
     public proyecto:any = {};
-    public proyectos:any = [];
     public accion:any = {};
     public loading:boolean = false;
     
@@ -52,8 +51,7 @@ export class EquipoEmpresasComponent implements OnInit {
             this.loading = false;
             this.proyecto.asesor = this.apiService.auth_user();
             if (!this.proyecto.id) {
-                this.empresas.push(proyecto);  
-               
+                this.empresas.push(proyecto);   
             }
             this.modalRef.hide();
         },error => {this.alertService.error(error); this.loading = false; });
@@ -94,10 +92,10 @@ export class EquipoEmpresasComponent implements OnInit {
 
     public deleteAccion(accion:any){
         if (confirm('¿Desea eliminar el Registro?')) {
-            this.apiService.delete('proyecto/requerimiento/tarea/', accion.id) .subscribe(accion => {
+            this.apiService.delete('accion/', accion.id) .subscribe(accion => {
                 for (let i = 0; i < this.proyecto.acciones.length; i++) { 
-                    if (this.proyecto.accion[i].id == accion.id ){
-                        this.proyecto.accion.splice(i, 1);
+                    if (this.proyecto.acciones[i].id == accion.id ){
+                        this.proyecto.acciones.splice(i, 1);
                        
                     }
                 }

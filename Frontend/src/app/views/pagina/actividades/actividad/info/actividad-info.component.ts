@@ -6,7 +6,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../../../../services/alert.service';
 import { ApiService } from '../../../../../services/api.service';
-
+import { DateTimePickerComponent } from 'ngx-datetime-picker';
+ 
 declare var $: any;
 
 @Component({
@@ -18,9 +19,10 @@ export class ActividadInfoComponent implements OnInit {
 	@Input() actividad:any = {};
 	public asesores:any[] = [];
     public asesor:any = {};
-    public especialidades: any[] = [];
+    public especialidades: any[];
 	public loading = false;
-
+	
+	public seconds: DateTimePickerComponent;
     modalRef: BsModalRef;
 
 
@@ -31,23 +33,26 @@ export class ActividadInfoComponent implements OnInit {
 
 	ngOnInit() {
 		this.apiService.getAll('especialidades').subscribe(especialidades => {
-		    this.especialidades = especialidades;                   
+			this.especialidades = especialidades; 
+
+			
 		});
 
-		var editor = $("#compose-textarea").wysihtml5();
+		
 	}
 
 	public onSubmit() {
-	    this.loading = true;
-	    this.actividad.contenido = $("#compose-textarea").val();
-
+		this.loading = true;
+		
 	    this.apiService.store('actividad', this.actividad).subscribe(actividad => {
 	    	if(this.actividad.id) {
 	    		this.router.navigate(['actividad/' + actividad.id])
-	    	}
+	    	}else{
+				this.actividad = actividad;
+			}
 	        this.alertService.success("Guardado");
 	        this.loading = false;
-	    },error => {this.alertService.error(error._body); this.loading = false; });
+	    },error => {this.alertService.error(error); this.loading = false; });
 
 	}
 

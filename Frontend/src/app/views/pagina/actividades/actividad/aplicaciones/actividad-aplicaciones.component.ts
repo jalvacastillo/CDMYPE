@@ -53,5 +53,11 @@ export class ActividadAplicacionesComponent implements OnInit {
         }
 
     }
+    public setEstado(aplicacion:any, estado:string){
+        aplicacion.estado = estado;
+        this.apiService.store('aplicacion', aplicacion).subscribe(aplicacion => { 
+            this.alertService.success('Actualizado');
+        }, error => {this.alertService.error(error); });
+    }
 
 }

@@ -60,7 +60,7 @@
         <div class="modal-header">
             <div class="col-sm-12">
                     <h5 class="modal-title text-bold text-center">{{ accion.actividad }}</h5>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); proyecto = {};"> <span aria-hidden="true">&times;</span> </button><br>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); accion = {};"> <span aria-hidden="true">&times;</span> </button><br>
         </div>
         <form #form="ngForm" autocomplete="off" (ngSubmit)="saveAsesoria(asesoria)">
         <div class="form-group col-sm-6">
@@ -89,13 +89,13 @@
                 <li class="list-group-item">
                     
                 </li>
-                <li class="list-group-item" *ngIf="accion?.asesorias?.length < 1 && !loading">
+                <li class="list-group-item" *ngIf="accion?.asesoria?.length < 1 && !loading">
                     No tiene Asesorias registradas
                 </li>
-                <li *ngFor=" let asesoria of accion?.asesorias">
+                <li class="list-group-item" *ngFor="let asesoria of accion?.asesoria">
                     <a (click)="editAsesoria(asesoria)" class="btn btn-sm btn-link"><i class="fa fa-pencil-square-o"></i></a>
                     <a (click)="deleteAsesoria(asesoria)" class="btn btn-sm btn-link"><i class="fa fa-trash"></i></a>
-                    
+                   
                     {{ asesoria.descripcion }}
                 </li>
             </ul>

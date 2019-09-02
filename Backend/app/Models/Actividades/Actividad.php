@@ -19,8 +19,10 @@ class Actividad extends Model
         'estado',
         'especialidad_id',
         'cupo',
-        'inicio',
-        'fin'
+        'fecha_inicio',
+        'fecha_fin',
+        'hora_inicio',
+        'hora_fin'
     ];
 
     protected $dates = ['inicio', 'fin'];
