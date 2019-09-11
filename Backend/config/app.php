@@ -181,6 +181,7 @@ return [
         App\Providers\PaginaProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Ken\FlashMe\FlashMeServiceProvider::class,
 
          // Backend
         Barryvdh\Cors\ServiceProvider::class,

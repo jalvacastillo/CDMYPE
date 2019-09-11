@@ -39,8 +39,15 @@ class ActividadesController extends Controller
     {
 
         $request->validate([
-            'img'        => 'required',
-            'nombre'        => 'required',
+            'img'           =>'required',
+            'nombre'        =>'required',
+            'descripcion'   =>'required',
+            'tipo'          =>'required',
+            'categoria'     =>'required',
+            'estado'        =>'required',
+            'cupo'          =>'required',
+            'fecha_inicio'  =>'required',
+            'fecha_fin'     =>'required',
         ]);
 
         if($request->id)

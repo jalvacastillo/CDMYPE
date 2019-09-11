@@ -28,6 +28,7 @@
       #contenido blockquote {padding: 10px 20px; margin: 20px; }
       #contenido ul, #contenido ol {list-style: inherit !important; margin-top: inherit !important; margin-bottom: inherit !important; }
   </style>
+  
 
 @endsection
 
@@ -57,8 +58,8 @@
       
       <div class="post-bottom clearfix">
         <div class="post-share" style="float: none;">
-          <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/actividad/' . $actividad->slug) }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"><i class="fa fa-facebook"></i></a>
-          <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+          <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/actividad/' . $actividad->slug) }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"><i class="fab fa-facebook"></i></a>
+          <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
           <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
         </div>
       </div>
@@ -101,42 +102,57 @@
             <p>Puedes ver el estado de tus aplicaciones en tu <b><a href="{{ route('usuario') }}">cuenta</a></b></p>
           </div>
         @else
-          @guest
-            <div ng-controller="AuthCtrl">
-              <p class="text-center">Para participar primero tienes que 
-                <a ng-click="login()">Iniciar sesión</a> o 
-                <a ng-click="register()">Crear una cuenta</a>
-               </p>
-            </div>
-          @endguest
-          @auth
+
           <div ng-controller="ActividadesCtrl">
           <h3 class="text-center">Confirma tus datos para participar:</h3>
 
-          {{-- <form class="form" method="POST" action="{{ route('aplicarActividad', [str_slug($actividad->nombre), encrypt($actividad->id) ]) }}">
+          <form class="form">
             {{ csrf_field() }}
             <div class="form-group">
+              <div class="col-md-12">
                 <p><b>Nombre:</b></p>
-                <p>{{ $usuario->name }}</p>
+                <input type="text" class="form-control" ng-model="aplicacion.nombre">
+                <br></div>
+            <div class="col-md-6">
+                <p><b>Sexo:</b></p>
+                <select name="sexo" class="form-control" ng-Model="aplicacion.sexo">
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                </select>
             </div>
-            <div class="form-group">
+            <div class="col-md-6">
+                <p><b>Empresa:</b></p>
+                <input type="text" class="form-control" ng-model="aplicacion.empresa">
+                <br></div>
+            <div class="col-md-6">
                 <p><b>Correo:</b></p>
-                <p>{{ $usuario->email }}</p>
-            </div>
-            <div class="form-group">
-                <p><b>Telefono:</b></p>
-                <p>{{ $usuario->detalle->telefono }}</p>
-            </div>
-            <input type="hidden" class="form-control" name="actividad_id" value="{{ $actividad->id }}">
-            <div class="form-group">
+                <input type="text" class="form-control" ng-model="aplicacion.correo">
+                </div>
+            <div class="col-md-6">
+                <p><b>Teléfono:</b></p>
+                <input type="text" class="form-control" ng-model="aplicacion.telefono">
+                <br></div>
+            <div class="col-md-6">
+                <p><b>Municipio:</b></p>
+                <input type="text" class="form-control" ng-model="aplicacion.municipio">
+                </div>
+            <div class="col-md-6">
+                <p><b>Departamento:</b></p>
+                <input type="text" class="form-control" ng-model="aplicacion.departamento">
+                <br></div>
+            <input type="hidden" class="form-control" id="actividad_id"  value="{{ $actividad->id }}">
+            <div class="col-md-12">
                   <p><b>Nota:</b></p>
-                  <textarea name="nota" class="form-control" cols="30" rows="3" placeholder="Opcional"></textarea>
+                  <textarea name="nota" ng-model="aplicacion.nota" class="form-control" cols="30" rows="3" placeholder="Opcional"></textarea><br>
             </div>
-          </form> --}}
+          </form>
             <input type="hidden" id="actividad_id" value="{{ $actividad->id }}">
-            <button ng-click="aplicar()" class="btn btn-primary">Aplicar</button>
+            <div class="col-md-12">
+            <button ng-click="aplicar()" class="btn btn-primary">Aplicar</button><br>
+
           </div>
-          @endauth
+          </div>  
+          </div>
         @endif
     </div>
     </div>

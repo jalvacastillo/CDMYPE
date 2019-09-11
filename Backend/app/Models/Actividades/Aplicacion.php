@@ -10,21 +10,19 @@ class Aplicacion extends Model
     protected $table = 'actividad_aplicaciones';
     protected $fillable = [
         'actividad_id',
-        'tipo',
+        'nombre',
+        'sexo',
+        'empresa',
+        'correo',
+        'telefono',
+        'municipio',
+        'departamento',
         'estado',
-        'nota',
-        'usuario_id'
+        'nota', 
     ];
 
-    protected $appends = ['nombre', 'avatar', 'detalle', 'tipo', 'fecha', 'hora'];
+    protected $appends = ['fecha', 'hora'];
 
-    public function getNombreAttribute(){
-        return $this->usuario()->first() ? $this->usuario()->first()->name : '';
-    }
-
-    public function getAvatarAttribute(){
-        return $this->usuario()->first() ? $this->usuario()->first()->avatar : '';
-    }
 
     function getFechaAttribute()
     {
@@ -34,23 +32,6 @@ class Aplicacion extends Model
     function getHoraAttribute()
     {
          return Carbon::parse($this->created_at)->format('h:i:s a');
-    }
-
-
-    public function getDetalleAttribute(){
-        if ($this->usuario()->first() && $this->usuario()->first()->tipo == 'Alumno') {
-            return $this->usuario()->first()->alumno()->first();
-        }else if ($this->usuario()->first() && $this->usuario()->first()->tipo == 'Consultor'){
-            return $this->usuario()->first()->consultor()->first();
-        }
-    }
-
-    public function getTipoAttribute(){
-        return $this->usuario()->first() ? $this->usuario()->first()->tipo : '';
-    }
-
-    public function usuario(){
-        return $this->belongsTo('App\User', 'usuario_id');
     }
 
     public function actividad(){

@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\AplicacionActividad;
 use App\User;
 
+
 class ActividadesController extends Controller
 {
     
     public function actividades(){
-        $actividades = Actividad::where('estado', '!=', 'Inactivo')->orderBy('inicio','asc')->paginate(8);
+        $actividades = Actividad::where('estado', '!=', 'Inactivo')->orderBy('fecha_inicio','asc')->paginate(8);
         return view('actividades.index', compact('actividades'));
     }
 
@@ -81,35 +82,35 @@ class ActividadesController extends Controller
 
     public function aplicacion(Request $request){
 
-        $usuario = Auth::user();
-
-        $request['usuario_id'] = $usuario->id;
         $request['estado'] = 'En Revisión';
         
         $request->validate([
-            'actividad_id'   => 'required',
-            'estado'   => 'required',
-            'usuario_id'    => 'required',
+            'actividad_id'  => 'required',
+            'estado'        => 'required',
+            'nombre'        => 'required',
+            'sexo'          => 'required',
+            'empresa'       => 'required',
+            'municipio'     => 'required',
+            'departamento'  => 'required',
+
+
         ]);
 
-        $aplicacion = Aplicacion::where('actividad_id', $request->actividad_id)->where('usuario_id', $usuario->id)->first();
-
-        if (!$aplicacion) {
+        if($request->id){
+            $aplicacion = Aplicacion::findOrFail($request->id);
+        }
+        else{
             $aplicacion = new Aplicacion;
-            $aplicacion->fill($request->all());
-            $aplicacion->save();
         }
+        $aplicacion->fill($request->all());
+        $aplicacion->save();
 
-        Mail::to($usuario->email)->send(new AplicacionActividad($aplicacion));
-        foreach ($aplicacion->actividad()->first()->asesores as $asesor) {
-            Mail::to($asesor->asesor()->first()->correo)->send(new AplicacionActividad($aplicacion));
+
+        if ($request->ajax()) {     
+            return Response()->json($aplicacion, 200); 
         }
-
-        if ($request->ajax()) {
-            return response()->json(['msj' => 'ok!']);
-        }
-
-        return view('actividades.actividad', compact('actividad', 'usuario', 'aplicacion'));  
+        //return view('actividades.actividad', compact('actividad', 'usuario', 'aplicacion')); 
+        
     }
 
     public function contactosfrm(Request $request){

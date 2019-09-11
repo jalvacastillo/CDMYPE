@@ -54,17 +54,14 @@
         {{-- <div id="content"> --}}
           <div class="container">
             <div class="row col-xs-12 text-center" style="margin: 15px 0px;">
-              <div class="btn-group">
-                <a href="{{ route('actividades') }}" class="btn btn-default {{ Route::is('actividades') ? 'active' : null }}">Listado</a>
-                <a href="{{ route('actividadesCalendario') }}"class="btn btn-default {{ Route::is('actividadesCalendario') ? 'active' : null }}">Calendario</a>
-              </div>
+              
             </div>
             <div class="page-content" id="pasantias">
 
-                <div class="row list-group">
+                <div class="row list-group col-md-12">
                 
                 @foreach($actividades as $actividad)
-                    <div class="list-group-item col-md-8 col-md-offset-2" style="margin-bottom: 15px;">
+                    <div class="list-group-item col-md-offset-2" style="margin-bottom: 15px;">
                         <div class="row">
                         <div class="media col-sm-2 hidden-xs">
                           <figure class="pull-left">

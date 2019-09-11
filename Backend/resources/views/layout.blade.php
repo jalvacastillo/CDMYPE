@@ -50,10 +50,11 @@
   <script type="text/javascript" src="{{ asset('js/jquery.textillate.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.lettering.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
+  <!-- <script type="text/javascript" src="{{ asset('js/jquery.nicescroll.min.js') }}"></script> -->
   <script type="text/javascript" src="{{ asset('js/jquery.parallax.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/mediaelement-and-player.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.slicknav.js') }}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
     @yield('header')
 

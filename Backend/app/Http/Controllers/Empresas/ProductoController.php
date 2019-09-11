@@ -11,6 +11,14 @@ class ProductoController extends Controller
     
     public function store(ProductoRequest $request)
     {
+        $request->validate([
+			'empresa_id'    =>'required',
+			'nombre' 		=>'required',
+			'precio' 	    =>'required',
+			'descripcion' 	=>'required',
+			
+		]);
+
         if($request->id){
             $producto = Producto::findOrFail($request->id);
         }

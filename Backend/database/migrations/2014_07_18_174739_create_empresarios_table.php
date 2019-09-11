@@ -12,9 +12,9 @@ class CreateEmpresariosTable extends Migration {
             $table->increments('id');
 
             $table->string('nombre', 50);
-            $table->string('dui',20)->unique()->nullable();
-            $table->string('nit',30)->unique()->nullable();
-            $table->string('sexo')->nullable();
+            $table->string('dui',20)->unique();
+            $table->string('nit',30)->unique();
+            $table->string('sexo');
             $table->integer('edad')->nullable();
             $table->string('telefono', 30)->nullable();
             $table->string('celular',30)->nullable();

@@ -13,8 +13,14 @@ class CreateActividadAplicacionesTable extends Migration
             $table->increments('id');
             
             $table->integer('actividad_id');
+            $table->string('nombre');
+            $table->string('sexo');
+            $table->string('empresa');
+            $table->string('correo');
+            $table->string('telefono');
+            $table->string('municipio');
+            $table->string('departamento');
             $table->string('estado');
-            $table->integer('usuario_id');
             $table->text('nota')->nullable();
 
             $table->timestamps();

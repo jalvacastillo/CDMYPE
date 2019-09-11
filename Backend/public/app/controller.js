@@ -1,7 +1,8 @@
 
 var app = angular.module('app', ['ui.bootstrap', 'ngSanitize'])
-app.constant('config', { 'url': 'https://cdmypeunicaesilobasco.com' })
-// app.constant('config', { 'url': 'http://localhost:8000' })
+// app.constant('config', { 'url': 'https://cdmypeunicaesilobasco.com' })
+app.constant('config', { 'url': 'http://localhost:8000' })
+
 
 .factory('RequestInterceptor', ['CSRF_TOKEN', function(CSRF_TOKEN) {
     var requestInterceptor = {request: function(config) {
@@ -120,38 +121,29 @@ app.controller('ActividadesCtrl', [ '$scope', '$http', 'config', '$uibModal', fu
     $scope.aplicacion = {};
     $scope.loading = false;
 
-    $scope.aplicar = function () {
-        var modalInstance = $uibModal.open({
-          animation: true,
-          templateUrl: '/app/views/aplicar-actividad.html',
-          controller: function($scope, aplicacion){
-                $scope.aplicacion = aplicacion;
-                $scope.loading = false;
-                 console.log('si');
-                $scope.submit = function(){
-                    console.log($scope.aplicacion);
-                    console.log($('#actividad_id').val());
-                    $scope.loading = true;
-                    $scope.aplicacion.actividad_id = $('#actividad_id').val();
-                    $http.post(config.url + '/actividad/aplicacion', $scope.aplicacion, {headers: {'Content-Type': 'application/json'}}).
-                    then(function(data){
-                        $scope.loading = false;
-                        $scope.msj = data.data.msj;
-                        $scope.aplicacion = {};
-                        console.log(data);
-                        location.reload();
-                    }, function(data){
-                        $scope.loading = false;
-                        $scope.alert =  data.data.error;
-                        console.log(data);
-                    });
-                }
+    
 
-                $scope.cancel = function () { modalInstance.dismiss('cancel'); };
-          },
-          resolve: { 
-                aplicacion: function () { return $scope.aplicacion; }
+    $scope.aplicacion.actividad_id = document.getElementById('actividad_id').value;
+
+    $scope.aplicar = function () {
+
+        console.log($scope.aplicacion);
+        
+        $http.post(config.url + '/actividad/aplicacion', $scope.aplicacion, {headers: {'Content-Type': 'application/json'}}).
+        then(function(data){
+
+            if(data.status == 200){
+               swal("Listo", "Aplicación enviada !", "success", {timer: 6000, buttons:true});
+               $scope.aplicacion = {};
+            }else{
+                swal("Error", "No se han podido enviar los datos !", "success", {timer: 6000, buttons:true});
             }
+            
+            console.log(data);
+
+        }, function(data){
+            
+           
         });
 
     };

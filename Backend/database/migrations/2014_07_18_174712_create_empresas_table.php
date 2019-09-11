@@ -12,19 +12,19 @@ class CreateEmpresasTable extends Migration {
             $table->increments('id');
 
             $table->string('nombre', 100);
-            $table->string('estado')->nullable();
+            $table->string('estado');
             $table->string('procedencia')->nullable();
-            $table->string('nit', 20)->nullable();
+            $table->string('nit', 20);
             $table->string('iva', 25)->nullable();
-            $table->string('constitucion')->nullable();
-            $table->string('direccion', 250)->nullable();
-            $table->string('municipio', 30)->nullable();
-            $table->string('departamento', 30)->nullable();
+            $table->string('constitucion');
+            $table->string('direccion', 250);
+            $table->string('municipio', 30);
+            $table->string('departamento', 30);
             $table->string('ubicacion')->nullable();
             $table->date('fundacion')->nullable();
             $table->boolean('contabilidad')->default(false);
-            $table->string('sector')->nullable();
-            $table->string('tamano')->nullable();
+            $table->string('sector');
+            $table->string('tamano');
             
             $table->text('descripcion')->nullable();
             $table->string('actividad', 3000)->nullable();

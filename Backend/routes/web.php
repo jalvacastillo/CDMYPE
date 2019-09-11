@@ -49,6 +49,7 @@ Route::get('/actividades',  'ActividadesController@actividades')->name('activida
     Route::post('/actividades/actividad', 'ActividadesController@filtrar'    )->name('filtrarActividades');
 
     Route::get('/actividades/calendario', 'ActividadesController@calendario')->name('actividadesCalendario');
+    
 
 // Noticias
 Route::get('/noticias',                     'NoticiasController@noticias')->name('noticias');

@@ -35,12 +35,18 @@ class Actividades extends Seeder
             $table->actividad_id     = $i;
             $table->save();
 
-            for($j = 1; $j <= 5 ; $j++)
+            for($j = 1; $j <= 7 ; $j++)
             {
                 $table = new Aplicacion;
                 $table->actividad_id = $i;
-                $table->estado       = $j == 5 ? 'Seleccionado' : 'En Revisión';
-                $table->usuario_id   = $faker->numberBetween(1,13);
+                $table->nombre          = $faker->name;
+                $table->sexo            = $faker->realText(10,2);
+                $table->empresa  = $faker->name;
+                $table->correo   = $faker->email;
+                $table->telefono   = $faker->phoneNumber; 
+                $table->municipio  = $faker->realText(10,2);
+                $table->departamento    = $faker->realText(10,2);
+                $table->estado       = ($j % 2) == 0 ? 'No confirmado' : 'Confirmado';
                 $table->nota         = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus voluptatem doloremque temporibus, doloribus eum animi optio, laborum excepturi. Officiis aliquam, totam repellendus, nemo perspiciatis quis! Cumque quos, sequi sint debitis.';
                 $table->save();
 
