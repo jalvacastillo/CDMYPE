@@ -62,7 +62,8 @@ export class NoticiaComponent implements OnInit {
 	        var d = new Date();
 	        formData.append('file', this.file);
 	        formData.append('img', d.getTime() + ' - ' + this.file.name);
-	    }
+        }
+        this.noticia.img = this.file;
         this.apiService.upload('noticia', formData).subscribe(noticia => {
             this.noticia = noticia;
             this.loading = false;
