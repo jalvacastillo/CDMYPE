@@ -29,7 +29,7 @@ class Empresa extends Model {
         'tamano',
         'descripcion',
         'actividad',
-        'logo',
+        'img',
         'url_facebook',
         'correo',
         'url_web',

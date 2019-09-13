@@ -14,6 +14,7 @@ export class EmpresaComponent implements OnInit {
 	public empresario: any = {};
     public loading = false;
     public file:File;
+    public url_img_preview: any;
 
 	constructor( 
 	    private apiService: ApiService, private alertService: AlertService,
@@ -37,29 +38,32 @@ export class EmpresaComponent implements OnInit {
 	}
 
 	public onSubmit() {
+        console.log('si');
+        
+        this.loading = true;
+        let formData:FormData = new FormData();
 
-        if(this.file) {
-            this.loading = true;
-            
-            let formData:FormData = new FormData();
-            formData.append('file', this.file);
-            var d = new Date();
-            formData.append('id', this.empresa.id);
-            formData.append('nombre', this.empresa.nombre);
-            let logo = d.getTime() + ' - ' + this.file.name;
-            formData.append('logo', logo);
-
-            this.apiService.upload('empresa', formData).subscribe(data => {
-                this.empresa.logo = logo;
-                this.alertService.success('Guardado')
-            },error => {this.alertService.error(error); this.loading = false;});
+        for (var key in this.empresa) {
+            formData.append(key, this.empresa[key] );
         }
+        console.log(formData);
+        
+            this.apiService.upload('empresa', formData).subscribe(data => {
+                this.loading = false;
+            },error => {this.alertService.error(error); this.loading = false; });
 
     }
 
     setFile(event:any) {
-        this.file = event.target.files[0];
-        this.onSubmit();
+        this.empresa.file = event.target.files[0];
+        if (this.empresa.file) {
+            var reader = new FileReader();
+            
+            reader.onload = () => { this.url_img_preview = reader.result;console.log(this.url_img_preview); };
+            
+            reader.readAsDataURL(this.empresa.file);
+            this.onSubmit();
+        } 
     }
 
 }

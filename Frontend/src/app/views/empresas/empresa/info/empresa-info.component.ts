@@ -21,7 +21,9 @@ export class EmpresaInfoComponent implements OnInit {
 		
 	}
 	public onSubmit() {
-	    this.loading = true;
+		this.loading = true;
+		console.log('si');
+		
 	    // Guardamos al empresa
 	    this.apiService.store('empresa', this.empresa).subscribe(empresa => {
 			this.loading = false;

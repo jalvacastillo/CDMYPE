@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Empresas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Empresas\Empresa;
+use Illuminate\Support\Facades\Storage;
 
 class EmpresasController extends Controller
 {
@@ -31,10 +32,9 @@ class EmpresasController extends Controller
 	{
 
 		$request->validate([
-		    // 'file'       =>'required',
-		   // 'logo'        =>'required',
+		    'file'       =>'required',
 			'nombre'        =>'required',
-			'nit' 			=>'required',
+			
 			'direccion'		=>'required',
 			'municipio' 	=>'required',
 			'departamento'  =>'required',
@@ -46,15 +46,14 @@ class EmpresasController extends Controller
 		else
 		    $empresa = new Empresa;
 		
-		if ($request->hasFile('file')) {
-		        
-		    $file = $request->file;
-		    $ruta = public_path() . '/img/empresas';
-		    if ($empresa->logo) { \File::delete($ruta . $empresa->logo); }
-		    $file->move($ruta, $request->logo);
-		}
-		
-		$empresa->fill($request->all());
+			$empresa->fill($request->all());
+			if ($request->hasFile('file')) {
+				if ($request->id && $empresa->img) {
+					Storage::delete($empresa->img);
+				}
+			   $nombre = $request->file->store('empresas');
+			   $empresa->img = $nombre;
+			}
 		$empresa->save();
 
 		return Response()->json($empresa, 200);
