@@ -49,7 +49,7 @@ export class EmpresaProyectosComponent implements OnInit {
             this.loading = false;
             this.proyecto.asesor = this.apiService.auth_user();
             if (!this.proyecto.id) {
-                this.empresa.proyectos.push(this.proyecto);
+                this.empresa.proyectos.push(proyecto);
             }
             this.modalRef.hide();
         },error => {this.alertService.error(error); this.loading = false; });

@@ -1063,6 +1063,9 @@ class EmpresasTableSeeder extends Seeder
                 $table->nombre          = $empresas[$i]['nombre'];
                 $table->estado          = 'Cliente';
                 $table->procedencia     = 'CDMYPE';
+                $table->nrc             = $faker->numberBetween(1,13);
+                $table->dui             = $faker->numberBetween(1,13);
+                $table->telefono        = $faker->numberBetween(1,13);
                 $table->nit             = $empresas[$i]['nit'];
                 $table->iva             = $empresas[$i]['registro_iva'];
                 $table->constitucion    = $empresas[$i]['constitucion'];
@@ -1098,7 +1101,7 @@ class EmpresasTableSeeder extends Seeder
                   $table = new Producto;
                   $table->empresa_id   = $empresas[$i]['id'];
                   $table->nombre        = $faker->name;
-                  $table->img       = 'default.jpg';
+                  $table->img       = 'empresas/productos/default.jpg';
                   $table->precio        = $faker->numberBetween(1,50);
                   $table->descripcion    = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, quos.';
                   $table->save();

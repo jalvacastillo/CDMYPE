@@ -34,15 +34,11 @@ class EmpresasController extends Controller
 		    // 'file'       =>'required',
 		   // 'logo'        =>'required',
 			'nombre'        =>'required',
-			'estado' 		=>'required',
-			'procedencia' 	=>'required',
 			'nit' 			=>'required',
-			'iva' 			=>'required',
 			'direccion'		=>'required',
 			'municipio' 	=>'required',
 			'departamento'  =>'required',
-			'sector'  		=>'required',
-			'tamano'  		=>'required',
+			
 		]);
 
 		if($request->id)

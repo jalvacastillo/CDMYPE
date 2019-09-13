@@ -15,6 +15,7 @@ class CreateEmpresasTable extends Migration {
             $table->string('estado');
             $table->string('procedencia')->nullable();
             $table->string('nit', 20);
+            $table->string('nrc');
             $table->string('iva', 25)->nullable();
             $table->string('constitucion');
             $table->string('direccion', 250);
@@ -25,10 +26,10 @@ class CreateEmpresasTable extends Migration {
             $table->boolean('contabilidad')->default(false);
             $table->string('sector');
             $table->string('tamano');
-            
+            $table->string('telefono', 20);
             $table->text('descripcion')->nullable();
             $table->string('actividad', 3000)->nullable();
-
+            $table->string('dui');
             $table->string('logo')->default('default.png');
             $table->string('correo')->nullable();
             $table->string('url_facebook')->nullable();

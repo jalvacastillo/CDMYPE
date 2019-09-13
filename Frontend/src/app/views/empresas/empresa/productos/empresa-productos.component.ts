@@ -15,8 +15,9 @@ export class EmpresaProductosComponent implements OnInit {
 	@Input() empresa:any = {};
     public producto:any = {};
     public loading:boolean = false;
-    public file:File;
+    public file2:File;
     modalRef: BsModalRef;
+    public url_img_preview: any;
 
 	constructor( 
             private apiService: ApiService, private alertService: AlertService,
@@ -25,9 +26,9 @@ export class EmpresaProductosComponent implements OnInit {
 
 	ngOnInit() { 
         this.router.routeReuseStrategy.shouldReuseRoute = function (){
-        return false;
-    };
-
+            return false;
+        };
+        
 	}
 
     public openModal(template: TemplateRef<any>, producto:any) {
@@ -35,21 +36,32 @@ export class EmpresaProductosComponent implements OnInit {
         if(!this.producto.fecha) {
             this.producto.fecha = this.apiService.date();
         }
+        if (!this.producto.img)
+            this.producto.img = 'empresas/productos/default.jpg';
         this.modalRef = this.modalService.show(template);        
     }
 
-    setPhotoP(event:any) {
-        console.log('si');
-        this.file = event.target.files[0];
-        // this.onSubmit();
+    setFile2(event:any) {
+        this.producto.file = event.target.files[0];
+        console.log(this.producto.file);
+        if (this.producto.file) {
+            var reader = new FileReader();
+            
+            reader.onload = () => { this.url_img_preview = reader.result;console.log(this.url_img_preview); };
+            
+            reader.readAsDataURL(this.producto.file);
+        } 
     }
 
     public onSubmit(){
         this.loading = true;
-        this.producto.empresa_id = this.empresa.id;
-        this.producto.img = 'default.jpg';
+        let formData:FormData = new FormData();
 
-        this.apiService.store('empresa/producto', this.producto).subscribe(producto => {
+        this.producto.empresa_id = this.empresa.id;
+        for (var key in this.producto) {
+            formData.append(key, this.producto[key]);
+        }
+        this.apiService.upload('empresa/producto', formData).subscribe(producto => {
             this.loading = false;
             if (!this.producto.id) { 
                 this.empresa.productos.push(producto);

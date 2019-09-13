@@ -31,13 +31,13 @@
                             </td>
                         </tr>
 
-                        <tr class="animated fadeIn" *ngFor="let proyecto of empresas">
+                        <tr class="animated fadeIn" *ngFor="let empresa of empresas">
                             <td>
-                                {{ proyecto.empresa.nombre }}
+                                {{ empresa.nombre }}
                                </td>
-                            <td>{{ proyecto.nombre }}</td>
-                            <td class="text-center">{{ proyecto.inicio | date:'dd-MM-yyyy' }}</td>
-                            <td class="text-center">{{ proyecto.fin | date:'dd-MM-yyyy' }}</td>
+                            <td>{{ empresa.nombre }}</td>
+                            <td class="text-center">{{ empresa.inicio | date:'dd-MM-yyyy' }}</td>
+                            <td class="text-center">{{ empresa.fin | date:'dd-MM-yyyy' }}</td>
 
                             <td class="text-center" width="150">
                                 <div class="btn-group" role="group">

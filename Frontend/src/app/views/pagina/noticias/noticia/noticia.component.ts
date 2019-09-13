@@ -21,7 +21,7 @@ export class NoticiaComponent implements OnInit {
      // Img Upload
     public file:File;
     public preview = false;
-    public url_img_preview:string;
+    public url_img_preview:any;
 
 	constructor( 
 	    private apiService: ApiService, private alertService: AlertService,
@@ -37,6 +37,7 @@ export class NoticiaComponent implements OnInit {
             else{
                 this.apiService.read('noticia/', params['id']).subscribe(data => {
                    this.noticia = data;  
+                  
 	            });
             }
 
@@ -70,7 +71,15 @@ export class NoticiaComponent implements OnInit {
         },error => {this.alertService.error(error); this.loading = false;});
 	}
     setFile(event:any) {
-        this.file = event.target.files[0];
+        this.noticia.file = event.target.files[0];
+        console.log(this.noticia.file);
+        if (this.noticia.file) {
+            var reader = new FileReader();
+            
+            reader.onload = () => { this.url_img_preview = reader.result;console.log(this.url_img_preview); };
+            
+            reader.readAsDataURL(this.noticia.file);
+        } 
     }
     
 }

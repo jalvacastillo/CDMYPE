@@ -80,7 +80,7 @@
                   <br><h3>Productos:</h3><br>
                   <div class="row list-group">
                     @foreach ($empresa->productos as $producto)
-                    <div class="col-xs-3 text-center">
+                    <div class="col-xs-3 text-center" style="padding-top: 40px;">
                       <div class="list-group-item">
                         <img src="{{ asset('/img/empresas/productos/'. $producto->img) }}" alt="{{ $producto->nombre }}">
                         <p><b>{{ $producto->nombre }}</b></p>

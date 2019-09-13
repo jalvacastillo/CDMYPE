@@ -6,7 +6,11 @@
         </div>
         <div class="form-group col-sm-6 col-md-3">
             <label for="registro">NRC:</label>
-            <input type="text" class="form-control" [(ngModel)]="empresa.registro" name="registro" placeholder="xxxx-x">
+            <input type="text" class="form-control" [(ngModel)]="empresa.nrc" name="nrc" placeholder="xxxx-x">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.iva">IVA:</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.iva" name="iva" placeholder="">
         </div>
         <div class="form-group col-sm-6 col-md-3">
             <label for="empresa.nit">NIT:</label>
@@ -25,10 +29,6 @@
             <input type="text" class="form-control" [(ngModel)]="empresa.telefono" name="empresa.telefono" placeholder="0000-0000">
         </div>
         <div class="form-group col-sm-6 col-md-3">
-            <label for="empresa.correo">Correo:</label>
-            <input type="email" class="form-control" [(ngModel)]="empresa.correo" name="empresa.correo" placeholder="info@empresa.com">
-        </div>
-        <div class="form-group col-sm-6 col-md-3">
             <label for="empresa.municipio">Municipio:</label>
             <input type="text" class="form-control" [(ngModel)]="empresa.municipio" name="empresa.municipio" placeholder="Municipio">
         </div>
@@ -39,6 +39,10 @@
         <div class="form-group col-sm-6">
             <label for="empresa.direccion">Dirección:</label>
             <input type="text" class="form-control" [(ngModel)]="empresa.direccion" name="empresa.direccion" placeholder="Dirección">
+        </div>
+        <div class="form-group col-sm-6 col-md-3">
+            <label for="empresa.correo">Correo:</label>
+            <input type="email" class="form-control" [(ngModel)]="empresa.correo" name="empresa.correo" placeholder="info@empresa.com">
         </div>
         <div class="form-group col-sm-6 col-md-3">
             <label for="empresa.actividad">Actividad:</label>

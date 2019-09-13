@@ -33,10 +33,8 @@
                             <td>{{ producto.precio | currency:'USD'}}</td>
                             <td>{{ producto.descripcion }}</td>
                             <td class="text-center" width="100">
-                                    <div class="imagen-upload" title="Agregar foto">
-                                            <img *ngIf="producto?.img" width="45" class="img-responsive" src="{{ apiService.baseUrl + '/img/empresas/productos/' + producto.img }}" style="margin: auto;"  title="Agregar foto">
-                                            <input type="file" name="imagen{{producto.id}}" id="img" class="inputfile" (change)="setPhotoP($event)" title="Agregar foto">
-                                            <label for="file"></label>
+                                    <div class="" title="Agregar foto">
+                                    <img width="45" class="img-responsive" src="{{ apiService.baseUrl + '/img/' + producto.img }}" style="margin: auto;"  title="Agregar foto">
                                     </div>       
                             </td>
                             <td class="text-center" width="100">
@@ -59,7 +57,7 @@
 
 <ng-template #mproducto>
   <div class="modal-header text-center">
-    <h3 class="modal-title">Indicador</h3>
+    <h3 class="modal-title">Nuevo Producto</h3>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -79,7 +77,16 @@
             <div class="form-group col-sm-12">
                 <label>Descripción:</label>
                 <input type="text" class="form-control" [(ngModel)]="producto.descripcion" name="producto.descripcion" placeholder="Descripción">
-            </div>
+            </div> 
+            <div class="form-group col-sm-12">
+            <label>Foto:</label>
+            <div class="imagen-upload" title="Agregar foto">
+                    <img *ngIf="producto?.img && !url_img_preview" width="75" class="img-responsive" src="{{ apiService.baseUrl + '/img/' + producto.img }}" style="margin: auto;"  title="Agregar foto">
+                    <img *ngIf="url_img_preview" src="{{ url_img_preview }}" height="60%" width="60%">
+                    <input type="file" name="imagen2" id="file2" class="inputfile" (change)="setFile2($event)" title="Agregar foto">
+                    <label for="file2"></label>
+            </div> 
+        </div>
         </div>
         <div class="row">
             <div class="col-xs-12">

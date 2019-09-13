@@ -9,7 +9,6 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './empresa.component.html'
 })
 export class EmpresaComponent implements OnInit {
-
 	public empresa: any = {};
 	public producto: any = {};
 	public empresario: any = {};
@@ -36,7 +35,6 @@ export class EmpresaComponent implements OnInit {
         }
 
 	}
-
 
 	public onSubmit() {
 

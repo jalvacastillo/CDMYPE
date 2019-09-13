@@ -28,10 +28,14 @@ export class EquipoEmpresasComponent implements OnInit {
         ) { }
 
 	ngOnInit() {
+        this.router.routeReuseStrategy.shouldReuseRoute = function (){
+            return false;
+        };
             const id = +this.route.snapshot.paramMap.get('id');
             this.apiService.read('asesor/empresas/', id).subscribe(empresas => {
             this.empresas = empresas;
             });
+           
 	}
 
     public openModal(template: TemplateRef<any>, proyecto:any) {
@@ -47,13 +51,14 @@ export class EquipoEmpresasComponent implements OnInit {
         this.loading = true;
         this.proyecto.empresa_id = this.empresas.empresa_id;
         this.proyecto.asesor_id = this.apiService.auth_user().id;
-        this.apiService.store('empresa/proyecto', this.proyecto) .subscribe(proyecto => {
+        this.apiService.store('empresa/proyecto', this.proyecto).subscribe(proyecto => {
             this.loading = false;
             this.proyecto.asesor = this.apiService.auth_user();
             if (!this.proyecto.id) {
                 this.empresas.push(proyecto);   
             }
             this.modalRef.hide();
+            this.proyecto = {};
         },error => {this.alertService.error(error); this.loading = false; });
     }
 
