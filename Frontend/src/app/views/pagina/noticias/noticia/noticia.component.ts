@@ -55,15 +55,16 @@ export class NoticiaComponent implements OnInit {
         formData.append('slug', this.apiService.slug(this.noticia.titulo)); 
         
         if (this.noticia.id){
+            this.noticia.img = this.noticia.file.name;
             formData.append('id', this.noticia.id);
             formData.append('img', this.noticia.img);     
 	    }
-	    if(this.file) {
+	    if(this.noticia.file) {
 	        var d = new Date();
 	        formData.append('file', this.file);
-	        formData.append('img', d.getTime() + ' - ' + this.file.name);
+	        formData.append('img', d.getTime() + ' - ' + this.noticia.file);
         }
-        this.noticia.img = this.file;
+        
         this.apiService.upload('noticia', formData).subscribe(noticia => {
             this.noticia = noticia;
             this.loading = false;

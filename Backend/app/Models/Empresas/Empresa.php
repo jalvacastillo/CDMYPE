@@ -34,6 +34,11 @@ class Empresa extends Model {
         'correo',
         'url_web',
         'catalogo',
+        'url_instagram',
+        'whatsapp',
+        'ubicacion_geo',
+        'longitud',
+        'latitud',
     ];
 
     protected $appends = ['aporte', 'atendido', 'evaluacion'];

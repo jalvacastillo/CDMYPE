@@ -32,9 +32,8 @@ class EmpresasController extends Controller
 	{
 
 		$request->validate([
-		    'file'       =>'required',
+		    //'file'       	=>'required',
 			'nombre'        =>'required',
-			
 			'direccion'		=>'required',
 			'municipio' 	=>'required',
 			'departamento'  =>'required',
@@ -51,7 +50,7 @@ class EmpresasController extends Controller
 				if ($request->id && $empresa->img) {
 					Storage::delete($empresa->img);
 				}
-			   $nombre = $request->file->store('empresas');
+			   $nombre = $request->file->store('/img');
 			   $empresa->img = $nombre;
 			}
 		$empresa->save();

@@ -34,7 +34,12 @@ class CreateEmpresasTable extends Migration {
             $table->string('correo')->nullable();
             $table->string('url_facebook')->nullable();
             $table->string('url_web')->nullable();
+            $table->string('url_instagram')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->boolean('catalogo')->default(0);
+            $table->boolean('ubicacion_geo')->default(0);
+            $table->string('longitud')->nullable();
+            $table->string('latitud')->nullable();
             
             $table->softDeletes();
             $table->timestamps();

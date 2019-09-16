@@ -32,6 +32,7 @@ export class EmpresaComponent implements OnInit {
             // Optenemos el empresa
             this.apiService.read('empresa/', id).subscribe(empresa => {
                this.empresa = empresa;
+               
             });
         }
 
@@ -52,6 +53,8 @@ export class EmpresaComponent implements OnInit {
                 this.loading = false;
             },error => {this.alertService.error(error); this.loading = false; });
 
+            if(!this.empresa.id)
+				this.router.navigate(['empresa' + this.empresa.id]);
     }
 
     setFile(event:any) {

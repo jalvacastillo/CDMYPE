@@ -37,7 +37,7 @@ export class EmpresaProductosComponent implements OnInit {
             this.producto.fecha = this.apiService.date();
         }
         if (!this.producto.img)
-            this.producto.img = 'empresas/productos/default.jpg';
+            this.producto.img = '/empresas/productos/default.jpg';
         this.modalRef = this.modalService.show(template);        
     }
 
@@ -65,6 +65,7 @@ export class EmpresaProductosComponent implements OnInit {
             this.loading = false;
             if (!this.producto.id) { 
                 this.empresa.productos.push(producto);
+            
             }
            
             this.modalRef.hide();

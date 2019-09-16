@@ -48,6 +48,13 @@
             <label for="empresa.actividad">Actividad:</label>
             <input type="text" class="form-control" [(ngModel)]="empresa.actividad" name="empresa.actividad" placeholder="Actividad">
         </div>
+        <div class="form-group col-sm-12">
+            <label for="descripcion">Descripción:</label>
+            <textarea class="form-control" [(ngModel)]="empresa.descripcion" rows="8" name="descripcion" placeholder="Descripción"></textarea>
+        </div>
+        <div class="form-group col-sm-12" style="border-bottom: 2px solid WhiteSmoke"><br>
+        <label>Datos electrónicos</label>
+        </div>
         <div class="form-group col-sm-6 col-md-3">
             <label for="empresa.url_web">Página Web:</label>
             <input type="text" class="form-control" [(ngModel)]="empresa.url_web" name="empresa.url_web" placeholder="www.empresa.com">
@@ -56,11 +63,27 @@
             <label for="empresa.url_facebook">Página Facebook:</label>
             <input type="text" class="form-control" [(ngModel)]="empresa.url_facebook" name="empresa.url_facebook" placeholder="www.fb.com/empresa">
         </div>
-        <div class="form-group col-sm-12">
-            <label for="descripcion">Descripción:</label>
-            <textarea class="form-control" [(ngModel)]="empresa.descripcion" rows="8" name="descripcion" placeholder="Descripción"></textarea>
-
-        </div>
+        <div class="form-group col-sm-6 col-md-3">
+                <label for="empresa.url_facebook">Url Instagram:</label>
+                <input type="text" class="form-control" [(ngModel)]="empresa.url_instagram" name="empresa.url_instagram" placeholder="www.ig.com/empresa">
+            </div>
+            <div class="form-group col-sm-6 col-md-3">
+                    <label for="empresa.url_facebook">WhatsApp:</label>
+                    <input type="text" class="form-control" [(ngModel)]="empresa.whatsapp" name="empresa.whatsapp" placeholder="0000-0000"><br>
+                </div>  
+                <div class="col-md-12 custom-control custom-checkbox">
+                    <label>Ubicación geográfica: 
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="empresa.ubicacion_geo" name="ubicacion_geo"> 
+                    </label><br>
+                    </div>
+                    <div class="form-group col-sm-6 col-md-3">
+                            <label for="empresa.url_facebook">Longitud:</label>
+                            <input type="text" class="form-control" [(ngModel)]="empresa.longitud" name="empresa.longitud" placeholder="2.51684987">
+                        </div>
+                        <div class="form-group col-sm-6 col-md-3">
+                                <label for="empresa.url_facebook">Latitud:</label>
+                                <input type="text" class="form-control" [(ngModel)]="empresa.latitud" name="empresa.latitud" placeholder="-80.1715648">
+                            </div>
         <div class="col-xs-12">
           <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
           <button [disabled]="loading" class="btn btn-primary pull-right">
