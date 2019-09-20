@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Actividades;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Actividades\Actividad;
+use Illuminate\Support\Facades\Storage;
 
 class ActividadesController extends Controller
 {
@@ -39,7 +40,8 @@ class ActividadesController extends Controller
     {
 
         $request->validate([
-            'img'           =>'required',
+            //'img'           =>'required',
+            //'file'          => 'mimes:jpeg,png,jpg|max:40000',
             'nombre'        =>'required',
             'descripcion'   =>'required',
             'tipo'          =>'required',
@@ -50,22 +52,23 @@ class ActividadesController extends Controller
             'fecha_fin'     =>'required',
         ]);
 
-        if($request->id)
+        if($request->id){
             $actividad = Actividad::findOrFail($request->id);
-        else
-            $actividad = new Actividad;
-
-
-        if ($request->hasFile('file')) {
-                
-            $file = $request->file;
-            $ruta = public_path() . '/img/actividades';
-            if ($actividad->img) { \File::delete($ruta . $actividad->img); }
-            $file->move($ruta, $request->img);
         }
-
+        else{
+            $actividad = new Actividad;
+            $actividad->img = 'actividades/default.jpg';
+        }
         
         $actividad->fill($request->all());
+
+            if ($request->hasFile('file')) {
+                if ($request->id && $actividad->img && ($actividad->img != 'actividades/default.jpg') ) {
+                    Storage::delete($actividad->img);
+                }
+               $nombre = $request->file->store('actividades');
+               $actividad->img = $nombre;
+            }
         $actividad->save();
 
         return Response()->json($actividad, 200);

@@ -17,7 +17,7 @@ export class ActividadComponent implements OnInit {
 
     // Img Upload
     public file:File;
-    public preview:any;
+    public url_img_preview:any;
 
     constructor( 
         private apiService: ApiService, private alertService: AlertService,
@@ -31,14 +31,17 @@ export class ActividadComponent implements OnInit {
             if(isNaN(params['id'])){
                 this.actividad.estado = 'Activo';
                 this.actividad.asesor_id = this.apiService.auth_user().id;
-                this.actividad.img = 'default.jpg';
+                this.actividad.fecha_inicio = this.apiService.date();
+                this.actividad.fecha_fin = this.apiService.date();
+                this.actividad.hora_inicio = '08:00';
+                this.actividad.hora_fin = '14:00';
             }
             else{
                this.apiService.read('actividad/', params['id']).subscribe(actividad => {
                    this.actividad = actividad;
                });
             }
-
+           
         });
 
 
@@ -51,32 +54,32 @@ export class ActividadComponent implements OnInit {
         }, error => {this.alertService.error(error); });
     }
 
-    public onSubmit() {
-
-        if(this.file) {
-            this.loading = true;
-            let formData:FormData = new FormData();
-            formData.append('file', this.file);
-            var d = new Date();
-            formData.append('id', this.actividad.id);
-            formData.append('nombre', this.actividad.nombre);
-            let img = d.getTime() + ' - ' + this.file.name;
-            formData.append('img', img);
-
-            this.apiService.upload('actividad', formData).subscribe(data => {
-                this.actividad.img = img;
-                this.alertService.success('Guardado')
-            },error => {this.alertService.error(error); this.loading = false;});
-        }
-
-    }
-
     setFile(event:any) {
-        this.file = event.target.files[0];
+        this.actividad.file = event.target.files[0];
+        
+        if (this.actividad.file) {
+            var reader = new FileReader();
+            
+            reader.onload = () => { this.url_img_preview = reader.result; };
+            
+            reader.readAsDataURL(this.actividad.file);
+            
+        }
         this.onSubmit();
     }
-    
+    public onSubmit() {
 
+        let formData:FormData = new FormData();
+        
+        for (var key in this.actividad) {
+            formData.append(key, this.actividad[key]);
+        } 
+        this.apiService.upload('actividad', formData).subscribe(actividad => {
+            this.loading = false;
+            this.alertService.success('Guardado');
 
+        },error => {this.alertService.error(error); this.loading = false;});
+
+    }
 }
 

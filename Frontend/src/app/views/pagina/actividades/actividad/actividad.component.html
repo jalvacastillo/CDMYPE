@@ -15,22 +15,20 @@
         
         <div class="col-sm-12">
 
-          
           <div class="box box-primary" style="min-height: 190px;" *ngIf="actividad.id">
-            <div class="box-body box-profile">
+            
                 <div class="imagen-upload">
-                    <img *ngIf="actividad.img" src="{{ apiService.baseUrl + '/img/actividades/' + actividad.img }}" height="100" style="margin: auto;">
-                    <input type="file" name="img" id="file" class="inputfile" (change)="setFile($event)" accept="image/png, image/jpeg">
-                    <label for="file"><i class="fa fa-search"></i></label>
+                  <img *ngIf="actividad?.img && !url_img_preview" src="{{ apiService.baseUrl + '/img/' + actividad.img }}" height="30%" width="30%">
+                  <img *ngIf="url_img_preview" src="{{ url_img_preview }}" height="30%" width="30%">
+                  <input type="file" name="img" id="file" class="inputfile" (change)="setFile($event)" accept="image/png, image/jpeg">
+                  <label for="file"></label>
                 </div>
-
+               
                 <h3 class="text-center">{{ actividad.nombre }}</h3>
                 <p class="text-center">{{ actividad.created_at | date:'dd/MM/yyyy hh:mm:ss a' }}</p>
-            </div>
+            
           </div>
         </div>
-        
-        
         <div class="col-sm-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">

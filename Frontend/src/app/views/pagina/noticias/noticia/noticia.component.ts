@@ -20,7 +20,6 @@ export class NoticiaComponent implements OnInit {
 
      // Img Upload
     public file:File;
-    public preview = false;
     public url_img_preview:any;
 
 	constructor( 
@@ -42,7 +41,7 @@ export class NoticiaComponent implements OnInit {
             }
 
         });     
-        this.noticia.img = ('default.jpg');
+        this.noticia.img = ('noticias/default.jpg');
         this.loading = false;
 	}
 	public onSubmit() {
@@ -53,17 +52,6 @@ export class NoticiaComponent implements OnInit {
             formData.append(key, this.noticia[key]);
         }
         formData.append('slug', this.apiService.slug(this.noticia.titulo)); 
-        
-        if (this.noticia.id){
-            this.noticia.img = this.noticia.file.name;
-            formData.append('id', this.noticia.id);
-            formData.append('img', this.noticia.img);     
-	    }
-	    if(this.noticia.file) {
-	        var d = new Date();
-	        formData.append('file', this.file);
-	        formData.append('img', d.getTime() + ' - ' + this.noticia.file);
-        }
         
         this.apiService.upload('noticia', formData).subscribe(noticia => {
             this.noticia = noticia;

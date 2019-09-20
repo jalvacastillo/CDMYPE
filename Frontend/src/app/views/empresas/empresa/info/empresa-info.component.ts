@@ -29,8 +29,6 @@ export class EmpresaInfoComponent implements OnInit {
 			this.loading = false;
 			if(!this.empresa.id){
 				this.router.navigate(['empresa/' + empresa.id]);
-			}else{
-				this.empresa.push(empresa);
 			}
 			this.loading = false;			
 		},error => {this.alertService.error(error); this.loading = false; });

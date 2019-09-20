@@ -45,9 +45,9 @@ export class ActividadesComponent implements OnInit {
             }, error => {this.alertService.error(error); this.loading = false;});
         }
     }
-    public setEstado(proyecto:any, estado:string){
-        proyecto.estado = estado;
-        this.apiService.store('proyecto', proyecto).subscribe(proyecto => { 
+    public setEstado(actividad:any, estado:string){
+        actividad.estado = estado;
+        this.apiService.store('actividad', actividad).subscribe(actividad => { 
             this.alertService.success('Actualizado');
         }, error => {this.alertService.error(error); });
     }

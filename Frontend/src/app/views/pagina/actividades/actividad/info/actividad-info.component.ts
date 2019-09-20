@@ -6,7 +6,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../../../../services/alert.service';
 import { ApiService } from '../../../../../services/api.service';
-import { DateTimePickerComponent } from 'ngx-datetime-picker';
  
 declare var $: any;
 
@@ -22,7 +21,6 @@ export class ActividadInfoComponent implements OnInit {
     public especialidades: any[];
 	public loading = false;
 	
-	public seconds: DateTimePickerComponent;
     modalRef: BsModalRef;
 
 
@@ -33,19 +31,15 @@ export class ActividadInfoComponent implements OnInit {
 
 	ngOnInit() {
 		this.apiService.getAll('especialidades').subscribe(especialidades => {
-			this.especialidades = especialidades; 
-
-			
+			this.especialidades = especialidades;
 		});
-
-		
 	}
 
 	public onSubmit() {
 		this.loading = true;
 		
 	    this.apiService.store('actividad', this.actividad).subscribe(actividad => {
-	    	if(this.actividad.id) {
+	    	if(!this.actividad.id) {
 	    		this.router.navigate(['actividad/' + actividad.id])
 	    	}else{
 				this.actividad = actividad;
@@ -98,7 +92,7 @@ export class ActividadInfoComponent implements OnInit {
 	        },error => {this.alertService.error(error._body); this.loading = false; });
 
 	    }
-
+		
 	
 
 

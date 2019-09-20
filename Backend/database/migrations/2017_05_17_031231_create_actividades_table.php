@@ -17,7 +17,7 @@ class CreateActividadesTable extends Migration
             $table->increments('id');
             
             $table->string('nombre');
-            $table->string('img')->default('default.jpg');
+            $table->string('img')->default('actividades/default.jpg');
             $table->text('descripcion');
             $table->string('tipo');
             $table->string('categoria');

@@ -30,7 +30,7 @@ class CreateEmpresasTable extends Migration {
             $table->text('descripcion')->nullable();
             $table->string('actividad', 3000)->nullable();
             $table->string('dui');
-            $table->string('img')->default('default.png');
+            $table->string('img')->default('empresas/default.png');
             $table->string('correo')->nullable();
             $table->string('url_facebook')->nullable();
             $table->string('url_web')->nullable();

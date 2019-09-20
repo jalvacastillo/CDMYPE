@@ -36,8 +36,10 @@ export class EmpresaProductosComponent implements OnInit {
         if(!this.producto.fecha) {
             this.producto.fecha = this.apiService.date();
         }
-        if (!this.producto.img)
-            this.producto.img = '/empresas/productos/default.jpg';
+        if(!this.producto.img){
+            this.producto.img = 'empresa/productos/default.jpg'; 
+        }
+        
         this.modalRef = this.modalService.show(template);        
     }
 
@@ -64,11 +66,10 @@ export class EmpresaProductosComponent implements OnInit {
         this.apiService.upload('empresa/producto', formData).subscribe(producto => {
             this.loading = false;
             if (!this.producto.id) { 
-                this.empresa.productos.push(producto);
-            
-            }
-           
+                this.empresa.productos.push(producto);      
+            }     
             this.modalRef.hide();
+            this.url_img_preview = null;
             this.producto = {};
         },error => {this.alertService.error(error); this.loading = false; });
     }

@@ -19,7 +19,7 @@
                 <div class="box-body">
                     <div class="imagen-upload col-md-6" title="Cambiar imagen"> 
                     
-                    <img *ngIf="noticia?.img && !url_img_preview" class="img-responsive" src="{{ apiService.baseUrl + '/img/noticias/' + noticia.img }}" height="60%" width="60%">
+                    <img *ngIf="noticia?.img && !url_img_preview" class="img-responsive" src="{{ apiService.baseUrl + '/img/' + noticia.img }}" height="60%" width="60%">
                     <img *ngIf="url_img_preview" src="{{ url_img_preview }}" height="60%" width="60%">
                     <input type="file" class="inputfile" name="img" id="file" (change)="setFile($event)" accept="image/png, image/jpeg">
                     <label for="file"></label>

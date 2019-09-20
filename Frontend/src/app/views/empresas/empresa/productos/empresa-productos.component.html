@@ -81,10 +81,10 @@
             <div class="form-group col-sm-12">
             <label>Foto:</label>
             <div class="imagen-upload" title="Agregar foto">
-                    <img *ngIf="producto?.img && !url_img_preview" width="75" class="img-responsive" src="{{ apiService.baseUrl + '/img/' + producto.img }}" style="margin: auto;"  title="Agregar foto">
-                    <img *ngIf="url_img_preview" src="{{ url_img_preview }}" height="60%" width="60%">
+                    <img *ngIf="producto?.img && !url_img_preview" width="30%" height="30%" class="img-responsive" src="{{ apiService.baseUrl + '/img/' + producto.img }}" style="margin: auto;"  title="Agregar foto">
+                    <img *ngIf="url_img_preview" src="{{ url_img_preview }}" height="30%" width="30%">
                     <input type="file" name="imagen2" id="file2" class="inputfile" (change)="setFile2($event)" title="Agregar foto">
-                    <label for="file2"></label>
+                    <label  for="file2"></label>
             </div> 
         </div>
         </div>

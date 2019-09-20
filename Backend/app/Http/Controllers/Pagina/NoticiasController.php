@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Pagina\Noticia;
-
+use Illuminate\Support\Facades\Storage;
 class NoticiasController extends Controller
 {
     public function index() {
@@ -42,15 +42,14 @@ class NoticiasController extends Controller
         else
             $noticia = new Noticia;
 
-        if ($request->hasFile('file')) {
-                
-            $file = $request->file;
-            $ruta = public_path() . '/img/noticias';
-            if ($noticia->img) { \File::delete($ruta . $noticia->img); }
-            $file->move($ruta, $request->img);
-        } 
-
-        $noticia->fill($request->all());
+            $noticia->fill($request->all());
+            if ($request->hasFile('file')) {
+                if ($request->id && $noticia->img) {
+                    Storage::delete($noticia->img);
+                }
+               $nombre = $request->file->store('noticias');
+               $noticia->img = $nombre;
+            }
         $noticia->save();
 
         return Response()->json($noticia, 200);

@@ -16,7 +16,7 @@ class Actividades extends Seeder
         {
             $table = new Actividad;
             $table->nombre          = $faker->realText(30,2);
-            $table->img             = 'default.jpg';
+            
             $table->descripcion     = $faker->text;
             $table->tipo            = $faker->randomElement(['Capacitación', 'Taller', 'Webinar', 'Seminario', 'Curso', 'Evento']);
             $table->categoria       = $faker->randomElement(['Formación', 'Comercialización']);

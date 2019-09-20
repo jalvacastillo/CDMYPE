@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Empresas;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Empresas\EmpresaRequest;
 use App\Models\Empresas\Empresa;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,11 +28,11 @@ class EmpresasController extends Controller
 	}
 
 
-	public function store(Request $request)
+	public function store(EmpresaRequest $request)
 	{
 
 		$request->validate([
-		    //'file'       	=>'required',
+			'file'          => 'mimes:jpeg,png,jpg|max:40000',
 			'nombre'        =>'required',
 			'direccion'		=>'required',
 			'municipio' 	=>'required',
@@ -42,15 +42,16 @@ class EmpresasController extends Controller
 
 		if($request->id)
 		    $empresa = Empresa::findOrFail($request->id);
-		else
-		    $empresa = new Empresa;
-		
+		else{
+			$empresa = new Empresa;
+			$empresa->img = 'img/empresas/default.png';
+		}
 			$empresa->fill($request->all());
 			if ($request->hasFile('file')) {
-				if ($request->id && $empresa->img) {
+				if ($request->id && $empresa->img && ($empresa->img != 'empresas/default.png')) {
 					Storage::delete($empresa->img);
 				}
-			   $nombre = $request->file->store('/img');
+			   $nombre = $request->file->store('empresas');
 			   $empresa->img = $nombre;
 			}
 		$empresa->save();

@@ -9,7 +9,7 @@ import { AlertService } from '../services/alert.service';
 export class ApiService {
 
     public baseUrl: string = 'http://localhost:8000';
-    // public baseUrl: string = 'https://cdmypeunicaesilobasco.com';
+    //public baseUrl: string = 'https://cdmypeunicaesilobasco.com';
     public apiUrl: string = this.baseUrl + '/api/';
 
     constructor(private http: HttpClient, private alertService: AlertService) { }

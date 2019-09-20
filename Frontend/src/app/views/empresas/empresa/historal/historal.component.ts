@@ -13,6 +13,8 @@ import { ApiService } from '../../../../services/api.service';
 })
 export class HistoralComponent implements OnInit {
 
+  public empresa: any = {};
+  public loading: boolean;
   constructor() { }
 
   ngOnInit() {
