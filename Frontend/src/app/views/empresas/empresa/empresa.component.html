@@ -18,8 +18,8 @@
           <div class="box box-primary" style="min-height: 246px;" *ngIf="empresa.id">
             <div class="box-body box-profile">
                 <div class="imagen-upload" title="Cambiar logo">
-                  <img *ngIf="empresa?.img && !url_img_preview" width="100" id="img" height="100" class="img-responsive img-circle" src="{{ apiService.baseUrl + '/img/' + empresa.img }}" style="margin: auto;"  title="Cambiar logo">
-                  <img *ngIf="url_img_preview" src="{{ url_img_preview }}" id="img" width="100" height="100">
+                  <img *ngIf="empresa?.img && !url_img_preview" width="150" id="img" height="150" class="img-responsive img-circle" src="{{ apiService.baseUrl + '/img/' + empresa.img }}" style="margin: auto;"  title="Cambiar logo">
+                  <img *ngIf="url_img_preview" src="{{ url_img_preview }}" id="img" width="150" height="150">
                   <input type="file" name="img" id="file" class="inputfile" (change)="setFile($event)" accept="image/png, image/jpeg" title="Cambiar logo">
                   <label for="file"></label>
                 </div>

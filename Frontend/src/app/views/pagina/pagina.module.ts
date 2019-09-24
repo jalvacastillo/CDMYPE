@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { FocusModule } from 'angular2-focus';
 import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { QuillModule } from 'ngx-quill';
@@ -57,6 +58,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     PopoverModule.forRoot(),
     QuillModule.forRoot(),
     ModalModule.forRoot(),
+    FocusModule.forRoot(),
     TooltipModule.forRoot(),
     ProgressbarModule.forRoot(),
     TimepickerModule.forRoot()

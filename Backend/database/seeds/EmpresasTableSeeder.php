@@ -19,25 +19,22 @@ class EmpresasTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        for ($i=1; $i < 100; $i++) { 
-          $table = new Proyecto;
-          $table->nombre      = $faker->name;
-          $table->inicio      = $faker->date;
-          $table->fin         = $faker->date;
-          $table->descripcion  = $faker->text;
-          $table->asesor_id  = $faker->numberBetween(1,10);
-          $table->empresa_id  = $faker->numberBetween(4,100);
-          $table->save();
+        // for ($i=1; $i < 100; $i++) { 
+        //   $table = new Proyecto;
+        //   $table->nombre      = $faker->name;
+        //   $table->descripcion  = $faker->text;
+        //   $table->asesor_id  = $faker->numberBetween(1,10);
+        //   $table->empresa_id  = $faker->numberBetween(4,100);
+        //   $table->save();
 
-          $table = new Accion;
-          $table->proyecto_id      = $i;
-          $table->actividad        = $faker->name;
-          $table->responsable      = 'Asesor';
-          $table->inicio      = $faker->date;
-          $table->fin         = $faker->date;
-          $table->completado  = $faker->numberBetween(1,0);
-          $table->save();
-        }
+        //   $table = new Accion;
+        //   $table->proyecto_id      = $i;
+        //   $table->actividad        = $faker->name;
+        //   $table->responsable      = 'Asesor';
+        //   $table->fin         = $faker->date;
+        //   $table->completado  = $faker->numberBetween(1,0);
+        //   $table->save();
+        // }
 
             $empresas = array(
               array('id' => '4','categoria' => 'Empresa','nombre' => 'KIBUTZ CAFETERÍA','descripcion' => 'Empresa creada como iniciativa de ex estudiantes de la Escuela de Alimentos para comercializar embutidos y otros alimentos en Cojutepeque y zonas aledañas.','municipio_id' => 'Cojutepeque','direccion' => 'Av. Santa Ana, Plaza Centro, 2do. Nivel.','nit' => '0710-040190-103-5','registro_iva' => '','constitucion' => 'Persona Juridica','clasificacion' => 'Micro','sector_economico' => 'Agroindustria Alimentaria','actividad' => 'Servicios de alimentación a domicilio y en local; elaboración de embutidos.','deleted_at' => NULL,'created_at' => '2014-08-28 23:02:16','updated_at' => '2014-09-04 19:38:06'),
@@ -1096,17 +1093,17 @@ class EmpresasTableSeeder extends Seeder
 
                 }
 
-                for ($j = 0; $j < 5; $j++) { 
+                // for ($j = 0; $j < 5; $j++) { 
 
-                  $table = new Producto;
-                  $table->empresa_id   = $empresas[$i]['id'];
-                  $table->nombre        = $faker->name;
-                  $table->img       = 'empresas/productos/default.jpg';
-                  $table->precio        = $faker->numberBetween(1,50);
-                  $table->descripcion    = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, quos.';
-                  $table->save();
+                //   $table = new Producto;
+                //   $table->empresa_id   = $empresas[$i]['id'];
+                //   $table->nombre        = $faker->name;
+                //   $table->img       = 'empresas/productos/default.jpg';
+                //   $table->precio        = $faker->numberBetween(1,50);
+                //   $table->descripcion    = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, quos.';
+                //   $table->save();
 
-                }
+                // }
             }
 
             for ($i = 0; $i < count($empresasempresarios); $i++) { 

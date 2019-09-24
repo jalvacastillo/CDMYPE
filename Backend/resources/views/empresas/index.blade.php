@@ -75,7 +75,7 @@
                       <div class="panel panel-default">
                         <div class="panel-body">
                           <div class="col-xs-12 text-center">
-                            <img style="height: 150px;" src="{{ asset('/img/empresas/'. $empresa->logo) }}" alt="Logo {{ $empresa->nombre }}" />
+                            <img style="height: 150px;" src="{{ asset('/img/'. $empresa->img) }}" alt="Img {{ $empresa->nombre }}" />
                           </div>
                           <div class="col-xs-12">
                             <h3 class="text-center text-truncate">{{ $empresa->nombre}}</h3>

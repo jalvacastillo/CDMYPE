@@ -60,7 +60,7 @@ class Empresa extends Model {
         }
 
         public function getAtendidoAttribute(){
-            $atendido = $this->proyectos()->whereYear('inicio', date('Y'))->get();
+            $atendido = $this->proyectos()->whereYear('created_at', date('Y'))->get();
             return $atendido->count() > 0 ? true : false;
         }
 

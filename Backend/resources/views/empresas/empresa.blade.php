@@ -28,7 +28,7 @@
 
           <div class="row well">
               <div class="col-sm-12 text-center">
-                  <img src="{{ asset('/img/empresas/'. $empresa->logo) }}" alt="Logo {{ $empresa->nombre }}" class="img-rounded img-responsive" style="margin: auto; margin-bottom: 30px; height: 150px; margin-top: -30px;" />
+                  <img src="{{ asset('/img/'. $empresa->img) }}" alt="Img {{ $empresa->nombre }}" class="img-rounded img-responsive" style="margin: auto; margin-bottom: 30px; height: 150px; margin-top: -30px;" />
                   <h2> {{ $empresa->nombre }}</h2>
                   <cite title="{{ $empresa->sector }}"> {{ $empresa->sector }} </i></cite>
                   <br>
@@ -82,7 +82,7 @@
                     @foreach ($empresa->productos as $producto)
                     <div class="col-xs-3 text-center" style="padding-top: 40px;">
                       <div class="list-group-item">
-                        <img src="{{ asset('/img/empresas/productos/'. $producto->img) }}" alt="{{ $producto->nombre }}">
+                        <img src="{{ asset('/img/'. $producto->img) }}" alt="{{ $producto->nombre }}">
                         <p><b>{{ $producto->nombre }}</b></p>
                         @if ($producto->precio)
                           <p class="text-justify m-0"><b>$ {{ number_format($producto->precio, 2, '.', ',') }}</b></p>

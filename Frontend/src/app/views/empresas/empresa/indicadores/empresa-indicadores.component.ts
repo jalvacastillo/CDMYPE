@@ -29,8 +29,10 @@ export class EmpresaIndicadoresComponent implements OnInit {
 
     public openModal(template: TemplateRef<any>, indicador:any) {
         this.indicador = indicador;
-        if(!this.indicador.fecha) {
+        if(!this.indicador.id) {
             this.indicador.fecha = this.apiService.date();
+            this.indicador.venta_nacional = 0;
+            this.indicador.venta_expo = 0;
         }
         this.modalRef = this.modalService.show(template);        
     }

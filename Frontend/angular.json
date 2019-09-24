@@ -27,7 +27,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "src/assets/css/AdminLTE.min.css",
-              // "node_modules/angular-notifier/styles.scss",
+              "node_modules/angular-notifier/styles.scss",
               "src/styles.css"
             ],
             "scripts": [

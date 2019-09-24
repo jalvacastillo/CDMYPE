@@ -9,8 +9,6 @@ class Proyecto extends Model {
     protected $table = 'empresa_proyectos';
     protected $fillable = array(
         'nombre',
-        'inicio',
-        'fin',
         'descripcion',
         'asesor_id',
         'empresa_id',

@@ -16,10 +16,10 @@ export class EquipoEmpresasComponent implements OnInit {
     @Input() equipo:any = {};
     public empresas:any = [];
     public proyecto:any = {};
+    public proyectos:any = [];
     public accion:any = {};
     public loading:boolean = false;
     
-
     modalRef: BsModalRef;
 
 	constructor( 
@@ -34,28 +34,33 @@ export class EquipoEmpresasComponent implements OnInit {
             const id = +this.route.snapshot.paramMap.get('id');
             this.apiService.read('asesor/empresas/', id).subscribe(empresas => {
             this.empresas = empresas;
-            });
-           
+            }); 
+
 	}
 
     public openModal(template: TemplateRef<any>, proyecto:any) {
         this.proyecto = proyecto;
-        this.modalRef = this.modalService.show(template);        
+        if(!this.proyecto.id){
+            this.proyecto.empresa = [];
+        }
+        this.accion.fin = this.apiService.date();
+        this.accion.responsable = 'Asesor';
+        this.modalRef = this.modalService.show(template);           
     }
     public selectEmpresa(event){
         console.log(event);
-        this.empresas.empresa_id = event.empresa.id;
-     
+        this.proyecto.empresa = event.empresa;
+        this.proyecto.empresa_id = event.empresa.id;
     }
     public onSubmit(){
         this.loading = true;
-        this.proyecto.empresa_id = this.empresas.empresa_id;
         this.proyecto.asesor_id = this.apiService.auth_user().id;
         this.apiService.store('empresa/proyecto', this.proyecto).subscribe(proyecto => {
             this.loading = false;
             this.proyecto.asesor = this.apiService.auth_user();
             if (!this.proyecto.id) {
-                this.empresas.push(proyecto);   
+                this.proyecto.id = proyecto.id;
+                this.empresas.push(this.proyecto);   
             }
             this.modalRef.hide();
             this.proyecto = {};
@@ -82,7 +87,7 @@ export class EquipoEmpresasComponent implements OnInit {
         console.log(accion);
         this.apiService.store('accion', accion).subscribe(data => {
             if(!this.accion.id)
-            this.proyecto.acciones.push(data);
+                this.proyecto.acciones.push(data);
             this.accion = {};
             this.loading = false;
         }, error => {this.alertService.error(error); this.loading = false;});

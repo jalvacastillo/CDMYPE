@@ -14,7 +14,7 @@ class CreateEmpresaAccionesTable extends Migration {
             $table->integer('proyecto_id');
             $table->text('actividad');
             $table->string('responsable');
-            $table->date('inicio');
+            $table->string('categoria');
             $table->date('fin');
             $table->boolean('completado')->default(false);
             

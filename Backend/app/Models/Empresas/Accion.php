@@ -11,7 +11,7 @@ class Accion extends Model {
         'proyecto_id',
         'actividad',
         'responsable',
-        'inicio',
+        'categoria',
         'fin',
         'completado'
     ];

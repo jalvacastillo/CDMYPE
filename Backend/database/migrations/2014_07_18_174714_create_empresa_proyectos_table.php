@@ -12,8 +12,6 @@ class CreateEmpresaProyectosTable extends Migration {
             $table->increments('id');
             
             $table->string('nombre');
-            $table->date('inicio');
-            $table->date('fin');
             $table->text('descripcion');
             $table->integer('asesor_id');
             $table->integer('empresa_id');

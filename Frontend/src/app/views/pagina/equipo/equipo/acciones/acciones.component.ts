@@ -34,6 +34,8 @@ export class AccionesComponent implements OnInit {
 
   public openModal(template: TemplateRef<any>, accion:any) {
     this.accion = accion;
+    this.accion.fin = this.apiService.date();
+    this.asesoria.fecha = this.apiService.date();
     this.modalRef = this.modalService.show(template);        
 }
 
@@ -70,6 +72,7 @@ public deleteAsesoria(asesoria:any){
           for (let i = 0; i < this.accion.asesoria.length; i++) { 
               if (this.accion.asesoria[i].id == asesoria.id ){
                   this.accion.asesoria.splice(i, 1);
+                  this.asesoria = {};
                  
               }
           }

@@ -24,7 +24,7 @@ class ProyectoAccionesController extends Controller
             'proyecto_id'        => 'required',
             'actividad'          => 'required',
             'responsable'        => 'required',
-            'inicio'             => 'required',
+            'categoria'          => 'required',
             'fin'                => 'required'
         ]);
 
