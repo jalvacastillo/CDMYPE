@@ -11,7 +11,7 @@ class EmpresasController extends Controller
 
     public function empresas($id) {
        
-        $empresas = Proyecto::orderBy('id','dsc')->with('empresa','acciones')->where('asesor_id', $id)->get();
+    $empresas = Proyecto::orderBy('id','dsc')->with('empresa','acciones')->where('asesor_id', $id)->get();
 
         return Response()->json($empresas, 200);
             

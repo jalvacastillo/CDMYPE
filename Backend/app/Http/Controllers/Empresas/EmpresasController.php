@@ -22,7 +22,11 @@ class EmpresasController extends Controller
 
 	public function read($id) {
 
-		$empresa = Empresa::where('id', $id)->with('empresarios.empresario','productos', 'indicadores', 'proyectos.acciones', 'proyectos.asesor')->firstOrFail();
+		$empresa = Empresa::where('id', $id)->with('empresarios.empresario','productos', 'indicadores', 'proyectos.asesor')
+			->with(array('proyectos.acciones' => function($query) {
+			        $query->orderBy('fin', 'DESC');
+			    }))
+		->firstOrFail();
 		return Response()->json($empresa, 200);
 
 	}
@@ -34,6 +38,7 @@ class EmpresasController extends Controller
 		$request->validate([
 			'file'          => 'mimes:jpeg,png,jpg|max:40000',
 			'nombre'        =>'required',
+			'nit' 			=>'required|unique:empresa,nit,'. $request->id,
 			'direccion'		=>'required',
 			'municipio' 	=>'required',
 			'departamento'  =>'required',
@@ -71,7 +76,7 @@ class EmpresasController extends Controller
 
 	public function search($txt) {
 
-		$empresas = Empresa::where('nombre', 'like' ,'%' . $txt . '%')->paginate(7);
+		$empresas = Empresa::where('nombre', 'like' ,'%' . $txt . '%')->orWhere('nit', '=', $txt)->paginate(7);
 		return Response()->json($empresas, 200);
 
 	}

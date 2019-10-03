@@ -17,6 +17,8 @@ class Actividad extends Model
         'tipo',
         'categoria',
         'estado',
+        'costo',
+        'ingreso',
         'especialidad_id',
         'cupo',
         'fecha_inicio',

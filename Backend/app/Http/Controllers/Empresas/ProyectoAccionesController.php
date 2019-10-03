@@ -63,6 +63,7 @@ class ProyectoAccionesController extends Controller
 		return Response()->json($acciones, 200);
 
 	}
+    
 
 
 }

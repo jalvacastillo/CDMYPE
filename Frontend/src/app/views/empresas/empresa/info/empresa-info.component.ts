@@ -27,6 +27,7 @@ export class EmpresaInfoComponent implements OnInit {
 	    // Guardamos al empresa
 	    this.apiService.store('empresa', this.empresa).subscribe(empresa => {
 			this.loading = false;
+			this.alertService.success('Guardado');
 			if(!this.empresa.id){
 				this.router.navigate(['empresa/' + empresa.id]);
 			}

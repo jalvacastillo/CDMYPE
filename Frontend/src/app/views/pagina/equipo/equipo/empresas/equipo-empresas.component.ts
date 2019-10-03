@@ -18,6 +18,7 @@ export class EquipoEmpresasComponent implements OnInit {
     public proyecto:any = {};
     public proyectos:any = [];
     public accion:any = {};
+    public id;
     public loading:boolean = false;
     
     modalRef: BsModalRef;
@@ -28,21 +29,22 @@ export class EquipoEmpresasComponent implements OnInit {
         ) { }
 
 	ngOnInit() {
-        this.router.routeReuseStrategy.shouldReuseRoute = function (){
-            return false;
-        };
-            const id = +this.route.snapshot.paramMap.get('id');
-            this.apiService.read('asesor/empresas/', id).subscribe(empresas => {
-            this.empresas = empresas;
-            }); 
-
+        this.id = +this.route.snapshot.paramMap.get('id');
+        this.load();
 	}
+
+    load(){
+        this.apiService.read('asesor/empresas/', this.id).subscribe(empresas => {
+            this.empresas = empresas;
+        });
+    }
 
     public openModal(template: TemplateRef<any>, proyecto:any) {
         this.proyecto = proyecto;
         if(!this.proyecto.id){
             this.proyecto.empresa = [];
         }
+        this.accion = {};
         this.accion.fin = this.apiService.date();
         this.accion.responsable = 'Asesor';
         this.modalRef = this.modalService.show(template);           
@@ -58,10 +60,12 @@ export class EquipoEmpresasComponent implements OnInit {
         this.apiService.store('empresa/proyecto', this.proyecto).subscribe(proyecto => {
             this.loading = false;
             this.proyecto.asesor = this.apiService.auth_user();
+            this.alertService.success('Guardado');
             if (!this.proyecto.id) {
                 this.proyecto.id = proyecto.id;
                 this.empresas.push(this.proyecto);   
             }
+
             this.modalRef.hide();
             this.proyecto = {};
         },error => {this.alertService.error(error); this.loading = false; });
@@ -84,20 +88,24 @@ export class EquipoEmpresasComponent implements OnInit {
     public saveAccion(accion:any){
         accion.proyecto_id = this.proyecto.id;
         this.loading = true;
-        console.log(accion);
         this.apiService.store('accion', accion).subscribe(data => {
             if(!this.accion.id)
                 this.proyecto.acciones.push(data);
             this.accion = {};
+            this.load();
             this.loading = false;
+            this.alertService.success('Guardado');
         }, error => {this.alertService.error(error); this.loading = false;});
     }
 
     public compleated(accion:any){
         accion.completado = !accion.completado;
         this.apiService.store('accion', accion).subscribe(data => {
-            accion = data;
+            this.accion = data;
+            this.load();
+            this.alertService.success('Guardado');
         }, error => {this.alertService.error(error); this.loading = false;});
+        
     }
 
     public deleteAccion(accion:any){
@@ -106,6 +114,7 @@ export class EquipoEmpresasComponent implements OnInit {
                 for (let i = 0; i < this.proyecto.acciones.length; i++) { 
                     if (this.proyecto.acciones[i].id == accion.id ){
                         this.proyecto.acciones.splice(i, 1);
+                        this.load();
                        
                     }
                 }
@@ -115,6 +124,7 @@ export class EquipoEmpresasComponent implements OnInit {
     }
     public editAccion(accion:any){
         this.accion = accion;
+        this.alertService.success('Guardado');
     }
 
 }

@@ -38,6 +38,9 @@ export class EquipoComponent implements OnInit {
 	    });
 
 	}
+    public load(){
+        
+    }
 
 
 	uploadFile(equipo, event) {

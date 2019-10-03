@@ -21,7 +21,7 @@ class AccionesController extends Controller
     }
     public function accion($id){
        
-        $acciones = Accion::with('proyecto')->where('proyecto_id', $id)->get();
+        $acciones = Accion::with('proyecto')->where('proyecto_id', $id)->orderBy('fin', 'DESC')->get();
 
         return Response()->json($acciones, 200);
             

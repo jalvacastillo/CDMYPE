@@ -15,7 +15,6 @@ class ProyectosController extends Controller
         $request->validate([
             'empresa_id'        => 'required',
             'asesor_id'         => 'required',
-            
             'nombre'            => 'required',
             'descripcion'       => 'required',
         ]);

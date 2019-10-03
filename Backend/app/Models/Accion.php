@@ -16,10 +16,7 @@ class Accion extends Model {
         'completado'
     ];
 
-    public function getCompletadoAttribute($value){
-        return $value == 1 ? true : false;
-    }
-    
+
     public function proyecto()
     {
         return $this->belongsTo('App\Models\Empresas\Proyecto','proyecto_id');
@@ -30,6 +27,6 @@ class Accion extends Model {
         return $this->hasMany('App\Models\Empresas\Asesoria','accion_id');
     }
 
-    
+
 
 }

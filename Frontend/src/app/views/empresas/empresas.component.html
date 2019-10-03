@@ -63,6 +63,9 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="eliminar(empresa)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                         <a class="btn btn-default" [routerLink]="['/empresa/', empresa.id]" tooltip="Detalles">
                                         <i class="fa fa-arrow-right"></i>
                                         </a>

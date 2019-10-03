@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace App\Models\Empresas;
 
@@ -43,7 +43,7 @@ class Empresa extends Model {
 
     protected $appends = ['aporte', 'atendido', 'evaluacion'];
 
-        public function getUbicacionGeoAttribute($value){
+	public function getUbicacionGeoAttribute($value){
             return $value == 1 ? true : false;
         }
 

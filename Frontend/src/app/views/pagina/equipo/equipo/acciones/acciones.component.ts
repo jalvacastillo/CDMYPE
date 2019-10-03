@@ -17,6 +17,7 @@ export class AccionesComponent implements OnInit {
     public proyectos:any = [];
     public accion:any = {};
     public asesoria:any = {};
+    public id;
    
     modalRef: BsModalRef;
 
@@ -25,9 +26,12 @@ export class AccionesComponent implements OnInit {
 
   ngOnInit() {
 
-    const id = +this.route.snapshot.paramMap.get('id');
-            
-        this.apiService.read('proyectos/accion/', id).subscribe(proyectos => {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.load();
+  }
+
+  public load(){
+     this.apiService.read('proyectos/accion/', this.id).subscribe(proyectos => {
            this.proyectos = proyectos;
         });
   }
@@ -49,7 +53,15 @@ public eliminar(accion:any) {
       }, error => {this.alertService.error(error); });
   }
 }
-
+public compleated(accion:any){
+        accion.completado = !accion.completado;
+        this.apiService.store('accion', accion).subscribe(data => {
+            this.accion = data;
+            this.load();
+            this.alertService.success('Guardado');
+        }, error => {this.alertService.error(error); this.loading = false;});
+        
+    }
 
 //Asesorias *****************************************************************
 
@@ -57,10 +69,11 @@ public eliminar(accion:any) {
 public saveAsesoria(asesoria:any){
   asesoria.accion_id = this.accion.id;
   this.loading = true;
-  console.log(asesoria);
   this.apiService.store('asesoria', asesoria) .subscribe(data => {
       if(!this.asesoria.id)
       this.accion.asesoria.push(data);
+    this.load();
+      this.alertService.success('Guardado');
       this.asesoria = {};
       this.loading = false;
   }, error => {this.alertService.error(error); this.loading = false;});

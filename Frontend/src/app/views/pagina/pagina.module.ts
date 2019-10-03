@@ -12,7 +12,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { QuillModule } from 'ngx-quill';
 
-
 import { EquiposComponent } from './equipo/equipos.component';
 import { EquipoComponent } from './equipo/equipo/equipo.component';
 import { EquipoInfoComponent } from './equipo/equipo/info/equipo-info.component';

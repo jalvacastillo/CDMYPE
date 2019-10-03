@@ -82,7 +82,7 @@ class ActividadesController extends Controller
 
     public function aplicacion(Request $request){
 
-        $request['estado'] = 'En Revisión';
+        $request['estado'] = 'No confirmado';
         
         $request->validate([
             'actividad_id'  => 'required',
