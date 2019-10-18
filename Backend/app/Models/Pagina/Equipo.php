@@ -39,5 +39,8 @@ class Equipo extends Model
     public function metas(){
         return $this->hasMany('App\Models\Pagina\Meta', 'asesor_id');
     }
+    public function vinculaciones(){
+        return $this->hasMany('App\Models\Vinculaciones\Vinculacion', 'asesor_id');
+    }
 
 }

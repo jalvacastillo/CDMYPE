@@ -11,6 +11,8 @@ import { EmpresaComponent } from './empresa/empresa.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { FormComponent } from './reportes/form/form.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -19,14 +21,16 @@ import { ReportesComponent } from './reportes/reportes.component';
     RouterModule,
     SharedModule,
     TooltipModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    QuillModule.forRoot()
   ],
   declarations: [
     PerfilComponent,
     EmpresaComponent,
     UsuariosComponent,
     UsuarioComponent,
-    ReportesComponent
+    ReportesComponent,
+    FormComponent
   ],
   exports: [
     PerfilComponent,

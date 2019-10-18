@@ -1,0 +1,84 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Coordinaciones <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    </ol>
+</section>
+<section class="content animated fadeIn">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+          
+         <div class="box">
+                <div class="box-header">
+                    
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">
+                       <form name="form" >
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" >
+                        </form>
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a  class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a routerLink="/coordinaciones/info" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tema</th>
+                                <th class="hidden-xs">Institución</th>
+                                <th class="hidden-xs">Tipo</th>
+                               
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="coordinaciones?.total < 1">
+                                    <span class="label label-info">No tiene coordinaciones registradas</span>
+                                </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let coordinacion of coordinaciones?.data">
+                                
+                                <td><a>{{ coordinacion.tema }}</a></td>
+                                <td class="hidden-xs">{{coordinacion.institucion}}</td>
+                                <td class="hidden-xs">{{coordinacion.tipo}}</td>
+                               
+                                <td class="text-center">
+                                    {{coordinacion.fecha}}
+                                </td>
+                                <td class="text-center">
+                                     <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="delete(coordinacion)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                        <a class="btn btn-default" [routerLink]="['/coordinaciones/info/', coordinacion.id]" tooltip="Detalles">
+                                        <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        
+                                    </div> 
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+</div>

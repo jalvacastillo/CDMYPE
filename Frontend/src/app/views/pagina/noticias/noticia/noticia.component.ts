@@ -20,7 +20,7 @@ export class NoticiaComponent implements OnInit {
 
      // Img Upload
     public file:File;
-    public url_img_preview:any;
+    public url_img_preview:any; 
 
 	constructor( 
 	    private apiService: ApiService, private alertService: AlertService,

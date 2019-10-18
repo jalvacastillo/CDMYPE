@@ -14,7 +14,7 @@ class ActividadesController extends Controller
 {
     
     public function actividades(){
-        $actividades = Actividad::where('estado', '!=', 'Inactivo')->orderBy('fecha_inicio','asc')->paginate(8);
+        $actividades = Actividad::where('estado', '!=', 'Inactivo')->where('public', 1)->orderBy('fecha_inicio','asc')->paginate(8);
         return view('actividades.index', compact('actividades'));
     }
 

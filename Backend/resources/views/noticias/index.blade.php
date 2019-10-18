@@ -21,7 +21,7 @@
                           <div class="post-head col-xs-4">
                             <a class="lightbox" title="{{ $noticia->titulo }}" href="{{ url('noticia', $noticia->slug) }}">
                               <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
-                              <img alt="" src=" {{ asset('/img/noticias/'.$noticia->img) }}">
+                              <img alt="" src=" {{ asset('/img/'.$noticia->img) }}">
                             </a>
                           </div>
                           <!-- Post Content -->

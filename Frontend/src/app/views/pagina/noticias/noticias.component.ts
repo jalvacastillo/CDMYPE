@@ -55,7 +55,7 @@ export class NoticiasComponent implements OnInit {
         this.noticia.activo = !this.noticia.activo;
         this.apiService.store('noticia', this.noticia).subscribe(noticia => {
             this.noticia = noticia;
-            this.alertService.success("Producto guardado");
+            this.alertService.success("Guardado");
             this.loading = false;
         },error => {
             this.alertService.error(error);

@@ -27,11 +27,15 @@ import { CapsModule } from './views/caps/caps.module';
 import { SalidasModule } from './views/salidas/salidas.module';
 import { PaginaModule } from './views/pagina/pagina.module';
 import { MaterialesModule } from './views/materiales/materiales.module';
+import { CoordinacionesModule } from './views/coordinaciones/coordinaciones.module';
+import { VinculacionesModule } from './views/vinculaciones/vinculaciones.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ import { MaterialesModule } from './views/materiales/materiales.module';
     SalidasModule,
     PaginaModule,
     MaterialesModule,
+    CoordinacionesModule,
+    VinculacionesModule,
     QuillModule
   ],
   providers: [AuthGuard, AdminGuard, AlertService, ApiService],

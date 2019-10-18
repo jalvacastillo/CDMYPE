@@ -19,7 +19,7 @@
 	<meta property="og:type"          content="{{ $noticia->categoria }}" />
 	<meta property="og:title"         content="{{ $noticia->titulo }}" />
 	<meta property="og:description"   content="{{ $noticia->descripcion }}" />
-	<meta property="og:image"         content="{{ asset('/img/noticias/'.$noticia->img) }}" />
+	<meta property="og:image"         content="{{ asset('/img/' .$noticia->img) }}" />
 
     <style>
         #contenido{text-align: justify; }
@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-            <img alt="" src=" {{ asset('/img/noticias/'.$noticia->img) }}" style="margin-bottom: 20px; height: 200px;">
+            <img alt="" src=" {{ asset('/img/'.$noticia->img) }}" style="margin-bottom: 20px; height: 200px;">
             <h1>{{ $noticia->titulo }}</h1>
             <div class="post-meta">
                 {{-- <p>Autor: <a href="{{ url('noticia', $noticia->slug) }}">{{ $noticia->asesor }}</a></p> --}}

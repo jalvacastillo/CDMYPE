@@ -11,8 +11,16 @@ import { PerfilComponent } from './views/admin/perfil/perfil.component';
 import { UsuariosComponent } from './views/admin/usuarios/usuarios.component';
 import { UsuarioComponent } from './views/admin/usuarios/usuario/usuario.component';
 import { ReportesComponent } from './views/admin/reportes/reportes.component';
+import { FormComponent } from './views/admin/reportes/form/form.component';
 
 import { DashComponent } from './views/dash/dash.component';
+import { CoordinacionesComponent } from './views/coordinaciones/coordinaciones.component';
+import { InfoComponent } from './views/coordinaciones/info/info.component';
+import { VinculacionesComponent } from './views/vinculaciones/vinculaciones.component';
+import { VinculacionComponent } from './views/vinculaciones/vinculacion/vinculacion.component';
+ 
+
+
 
 import { EmpresasComponent } from './views/empresas/empresas.component';
 import { EmpresaComponent } from './views/empresas/empresa/empresa.component';
@@ -63,6 +71,7 @@ const routes: Routes = [
     { path: 'admin/perfil', component: PerfilComponent, canActivate: [AuthGuard] },
     { path: 'admin/empresa', component: EmpresaComponent, canActivate: [AuthGuard, AdminGuard] },
     { path: 'admin/reportes', component: ReportesComponent, canActivate: [AuthGuard, AdminGuard] },
+    { path: 'admin/reporte/nuevo', component: FormComponent, canActivate: [AuthGuard, AdminGuard] },
     { path: 'admin/usuarios', component: UsuariosComponent, canActivate: [AuthGuard, AdminGuard] },
     { path: 'admin/usuario/nuevo', component: UsuarioComponent, canActivate: [AuthGuard, AdminGuard] },
     { path: 'admin/usuario/:id', component: PerfilComponent, canActivate: [AuthGuard, AdminGuard] },
@@ -71,7 +80,10 @@ const routes: Routes = [
     
     { path: 'empresas', component: EmpresasComponent, canActivate: [AuthGuard] },
     { path: 'empresa/:id', component: EmpresaComponent, canActivate: [AuthGuard] },
-    
+    { path: 'coordinaciones', component: CoordinacionesComponent, canActivate: [AuthGuard] },
+    { path: 'coordinaciones/info', component: InfoComponent, canActivate: [AuthGuard] },
+    { path: 'vinculaciones', component: VinculacionesComponent, canActivate: [AuthGuard] },
+    { path: 'vinculacion', component: VinculacionComponent, canActivate: [AuthGuard] },
     
     { path: 'consultores', component: ConsultoresComponent, canActivate: [AuthGuard] },
     { path: 'consultor/:id', component: ConsultorComponent, canActivate: [AuthGuard] },

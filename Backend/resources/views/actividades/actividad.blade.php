@@ -19,7 +19,7 @@
   <meta property="og:type"          content="{{ $actividad->categoria }}" />
   <meta property="og:title"         content="{{ $actividad->nombre }}" />
   <meta property="og:description"   content="{{ $actividad->descripcion }}" />
-  <meta property="og:image"         content="{{ asset('/img/actividads/'.$actividad->img) }}" />
+  <meta property="og:image"         content="{{ asset('/img/'.$actividad->img) }}" />
 
   <style>
       #contenido{text-align: justify; margin: 50px auto;}
@@ -37,7 +37,7 @@
 <div class="page-banner">
     <div class="container">
         <div class="row text-center">
-            <img src="{{ asset('img/actividades/'. $actividad->img) }}" alt="{{ $actividad->nombre }}" style="height:150px;">
+            <img src="{{ asset('/img/'. $actividad->img) }}" alt="{{ $actividad->nombre }}" style="height: 30%; width: 30%;">
             <h1>{{ $actividad->nombre }}</h1>
         </div>
     </div>
@@ -60,7 +60,7 @@
         <div class="post-share" style="float: none;">
           <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/actividad/' . $actividad->slug) }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"><i class="fab fa-facebook"></i></a>
           <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
-          <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
+          <a class="mail" href="#"><i class="fab fa-envelope"></i></a>
         </div>
       </div>
     </div>

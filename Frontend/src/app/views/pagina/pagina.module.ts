@@ -86,6 +86,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     DiagnosticosComponent,
     DiagnosticoComponent,
     AccionesComponent
+    
   ],
   exports: [
     EquiposComponent,

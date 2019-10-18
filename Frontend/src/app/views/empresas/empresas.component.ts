@@ -37,13 +37,14 @@ export class EmpresasComponent implements OnInit {
     public eliminar(empresa:any) {
         if (confirm('¿Desea eliminar el Registro?')) {
             this.apiService.delete('empresa/', empresa.id) .subscribe(data => {
-                for (let i = 0; i < this.empresa.empresas.length; i++) { 
-                    if (this.empresa.empresas[i].id == data.id )
-                        this.empresa.empresas.splice(i, 1);
+                for (let i = 0; i < this.empresas['data'].length; i++) { 
+                    if (this.empresas['data'][i].id == data.id )
+                        this.empresas['data'].splice(i, 1);
                 }
             }, error => {this.alertService.error(error); });
         }
     }
+    
 
     public activar(empresa:any){
         this.loading = true;

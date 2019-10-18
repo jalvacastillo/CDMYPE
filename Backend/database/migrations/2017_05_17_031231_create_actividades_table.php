@@ -26,7 +26,8 @@ class CreateActividadesTable extends Migration
             $table->text('contenido');
             $table->integer('cupo');
             $table->decimal('costo')->nullable();
-            $table->decimal('ingreso'->nullable();
+            $table->decimal('ingreso')->nullable();
+            $table->boolean('public')->default(false);
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->time('hora_inicio');

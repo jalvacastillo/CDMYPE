@@ -1,0 +1,86 @@
+<div class="container">
+
+<section class="content-header">
+    <h1> Vinculaciones <small>Edición</small> </h1>
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    </ol>
+</section>
+<section class="content animated fadeIn">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+          
+         <div class="box">
+                <div class="box-header">
+                    
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 350px;">   
+                       <form name="form" >
+                            <input type="text" name="search" class="form-control input-sm pull-right" placeholder="Buscar" >
+                        </form>
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-default" tooltip="Buscar"><i class="fa fa-search"></i></button>
+                                <a  class="btn btn-sm btn-success" tooltip="Actualizar"><i class="fa fa-refresh"></i></a>
+                                <a routerLink="/vinculacion" class="btn btn-sm btn-primary" tooltip="Crear"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Empresa</th>
+                                <th class="hidden-xs">Institución</th>
+                                <th class="hidden-xs">Tipo</th>
+                                <th class="hidden-xs">Asesor</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="text-center" *ngIf="vinculaciones?.total < 1">
+                                    <span class="label label-info">No tiene vinculaciones registradas</span>
+                                </td>
+                                <td colspan="8" class="text-center" *ngIf="loading">
+                                    <span class="label label-info">Cargando...</span>
+                                </td>
+                            </tr>
+
+                            <tr class="animated fadeIn" *ngFor=" let vinculacion of vinculaciones?.data">
+                                
+                                <td><a>{{ vinculacion.empresa.nombre }}</a></td>
+                                <td class="hidden-xs">{{vinculacion.institucion}}</td>
+                                <td class="hidden-xs">{{vinculacion.tipo}}</td>
+                               <td class="text-center hidden-xs">
+                                    <img class="img-circle" src="{{apiService.baseUrl + '/img/team/' + vinculacion.equipo.avatar}}" height="30px"/>
+                                </td>
+                                <td class="text-center">
+                                    {{vinculacion.fecha}}
+                                </td>
+                                <td class="text-center">
+                                     <div class="btn-group" role="group">
+                                        <a class="btn btn-default" (click)="delete(vinculacion)" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                        <a class="btn btn-default" [routerLink]="" tooltip="Detalles">
+                                        <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        
+                                    </div> 
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+</div>

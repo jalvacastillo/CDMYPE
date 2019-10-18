@@ -15,6 +15,7 @@ class Actividad extends Model
         'descripcion',
         'contenido',
         'tipo',
+        'public',
         'categoria',
         'estado',
         'costo',
@@ -30,6 +31,11 @@ class Actividad extends Model
     protected $dates = ['inicio', 'fin'];
 
     protected $appends = ['total_aplicaciones', 'especialidad'];
+
+
+    public function getPublicAttribute($value){
+            return $value == 1 ? true : false;
+    }
 
     public function getEspecialidadAttribute()
     {

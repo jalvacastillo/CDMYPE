@@ -26,9 +26,9 @@ export class ActividadesComponent implements OnInit {
         }, error => {this.alertService.error(error); this.loading = false;});
     }
 
-    public delete(proyecto) {
+    public delete(actividad: any) {
         if (confirm('¿Desea eliminar el Registro?')) {
-            this.apiService.delete('proyecto/', proyecto) .subscribe(data => {
+            this.apiService.delete('actividad/', actividad.id) .subscribe(data => {
                 for (let i = 0; i < this.actividades['data'].length; i++) { 
                     if (this.actividades['data'][i].id == data.id )
                         this.actividades['data'].splice(i, 1);
@@ -44,6 +44,12 @@ export class ActividadesComponent implements OnInit {
                 this.loading = false;
             }, error => {this.alertService.error(error); this.loading = false;});
         }
+    }
+    public activar(actividad:any){
+        actividad.public = !actividad.public;
+        this.apiService.store('actividad', actividad).subscribe(actividad => { 
+            this.alertService.success('Guardado');
+        }, error => {this.alertService.error(error); });
     }
     public setEstado(actividad:any, estado:string){
         actividad.estado = estado;

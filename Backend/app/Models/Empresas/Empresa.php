@@ -242,4 +242,7 @@ class Empresa extends Model {
         public function proyectos(){
             return $this->hasMany('App\Models\Empresas\Proyecto', 'empresa_id');
         }
+        public function vinculaciones(){
+            return $this->hasMany('App\Models\Vinculaciones\Vinculacion', 'empresa_id');
+        }
 }
