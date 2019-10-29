@@ -17,7 +17,7 @@ export class EquipoMetasComponent implements OnInit {
     public meses: any = {};
     public ano:any;
     public mes:any;
-    public loading = false;
+    public loading = false; 
 
     constructor( 
         public apiService: ApiService, private alertService: AlertService,

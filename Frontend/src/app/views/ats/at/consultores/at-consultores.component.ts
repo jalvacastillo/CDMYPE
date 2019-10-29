@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -12,6 +12,8 @@ import { ApiService } from '../../../../services/api.service';
 })
 export class AtConsultoresComponent implements OnInit {
 
+    @Input() at:any = {};
+  
 	public consultores:any = [];
     public consultoresList:any = [];
     public consultor:any = {};
@@ -50,16 +52,14 @@ export class AtConsultoresComponent implements OnInit {
 
     public onSubmitFile(consultor:any) {
 
-        if(this.file) {
             this.loading = true;
-            let formData:FormData = new FormData();
-            formData.append('file', this.file);
-            var d = new Date();
-            formData.append('consultor_id', consultor.consultor_id);
-            formData.append('doc_oferta', d.getTime() + ' - ' + this.file.name);
-            formData.append('fecha_oferta', this.apiService.datetime());
-            formData.append('at_id', this.route.snapshot.paramMap.get('id'));
+            
+            this.consultor.at_id = this.route.snapshot.paramMap.get('id');
 
+            let formData:FormData = new FormData();
+            for (var key in this.consultor) {
+            formData.append(key, this.consultor[key]);
+            }
             this.apiService.upload('at/consultor', formData).subscribe(data => {
                 if(!consultor.id) {
                     this.consultores.push(data);
@@ -67,8 +67,6 @@ export class AtConsultoresComponent implements OnInit {
                 this.loading = false;
                 this.modalRef.hide();
             },error => {this.alertService.error(error); this.loading = false;});
-        }
-
     }
 
     public onSubmit(consultor:any){
@@ -79,7 +77,8 @@ export class AtConsultoresComponent implements OnInit {
     }
 
     setFile(event:any, imagen:any, orden:any) {
-        this.file = event.target.files[0];
+        this.consultor.file = event.target.files[0];
+        this.at.file = event.target.files[0];
     }
 
 

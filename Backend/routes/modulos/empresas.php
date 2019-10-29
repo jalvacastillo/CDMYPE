@@ -20,8 +20,8 @@
 
 
 	Route::get('/empresarios',     	       'Empresas\EmpresariosController@index');
-    Route::get('/empresarios/all',             'Empresas\EmpresariosController@all');
-    Route::get('empresarios/buscar/{txt}',    'Empresas\EmpresariosController@search');
+    Route::get('/empresarios/all',         'Empresas\EmpresariosController@all');
+    Route::get('empresarios/buscar/{txt}', 'Empresas\EmpresariosController@search');
     Route::post('/empresario',             'Empresas\EmpresariosController@store');
 	Route::get('/empresario/{id}',         'Empresas\EmpresariosController@read');
 	Route::delete('/empresario/{id}',      'Empresas\EmpresariosController@delete');

@@ -22,6 +22,7 @@ class CreateAtsTable extends Migration
             $table->date('fecha');
             $table->double('financiamiento');
             $table->double('aporte');
+            $table->integer('consultor_id')->nullable();
             $table->string('estado')->default('Creada');
             $table->integer('especialidad_id');
             $table->string('informe')->nullable();

@@ -32,6 +32,6 @@ class AtTdrConsultores extends Mailable
      */
     public function build()
     {
-        return $this->subject("TDR - CDMYPE Ilobasco")->view('mails.tdr');
+        return $this->subject("TDR - CDMYPE Ilobasco")->view('mails.at-tdr');
     }
 }

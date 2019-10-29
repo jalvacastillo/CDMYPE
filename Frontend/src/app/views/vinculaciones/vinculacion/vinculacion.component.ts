@@ -26,9 +26,11 @@ export class VinculacionComponent implements OnInit {
    public onSubmit() {
         this.loading = true; 
         this.vinculacion.asesor_id = this.apiService.auth_user().id;
+
         if(this.url_img_preview){
 
         }else{this.vinculacion.img = null;}
+
         let formData:FormData = new FormData();
         for (var key in this.vinculacion) {
             formData.append(key, this.vinculacion[key]);

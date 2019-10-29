@@ -23,6 +23,8 @@ class At extends Model {
         'fecha_aprobacion',
         'empresario_id',
         'asesor_id',
+        'consultor_id',
+        
     ];
 
 
@@ -62,7 +64,7 @@ class At extends Model {
 
     public function empresas()
     {
-        return $this->hasMany('App\Models\Ats\Empresa');
+        return $this->hasMany('App\Models\Ats\Empresa', 'at_id');
     }
 
     public function empresario()
@@ -70,12 +72,11 @@ class At extends Model {
         return $this->belongsTo('App\Models\Empresas\Empresario', 'empresario_id');
     }
 
-
     public function consultor()
     {
-        return $this->hasOne('App\Models\Ats\Consultor','at_id')->where('seleccionado', true);
+        return $this->hasOne('App\Models\Ats\Consultor','consultor_id')->where('seleccionado', true);
     }
-   
+    
     public function ofertantes()
     {
         return $this->hasMany('App\Models\Ats\Consultor','at_id')->where('doc_oferta', "!=", "");

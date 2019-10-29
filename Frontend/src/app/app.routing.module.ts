@@ -28,6 +28,7 @@ import { EmpresaInfoComponent } from './views/empresas/empresa/info/empresa-info
 
 import { ConsultoresComponent } from './views/consultores/consultores.component';
 import { ConsultorComponent } from './views/consultores/consultor/consultor.component';
+import { ConsultorInfoComponent } from './views/consultores/consultor/info/consultor-info.component';
 
 import { EquiposComponent } from './views/pagina/equipo/equipos.component';
 import { EquipoComponent } from './views/pagina/equipo/equipo/equipo.component';
@@ -87,6 +88,7 @@ const routes: Routes = [
     
     { path: 'consultores', component: ConsultoresComponent, canActivate: [AuthGuard] },
     { path: 'consultor/:id', component: ConsultorComponent, canActivate: [AuthGuard] },
+    { path: 'consultor/nuevo', component: ConsultorInfoComponent, canActivate: [AuthGuard] },
 
     { path: 'equipos', component: EquiposComponent, canActivate: [AuthGuard] },
     { path: 'equipo/:id', component: EquipoComponent, canActivate: [AuthGuard] },

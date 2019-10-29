@@ -17,7 +17,8 @@ class Meta extends Model {
     protected $appends = ['empresas'];
 
     public function getEmpresasAttribute(){
-        $empresas = $this->asesor()->first()->proyectos()->whereYear('inicio', $this->ano)->whereMonth('inicio', $this->mes)->get();
+        $empresas = $this->asesor()->first()->proyectos()->first()->acciones()->->get();
+
         return $empresas->count();
     }
 

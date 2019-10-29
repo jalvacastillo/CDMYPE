@@ -34,6 +34,7 @@ export class AtActaComponent implements OnInit {
 
     public onSubmit(){
         this.loading = true;
+        this.acta.at_id = this.route.snapshot.paramMap.get('id');
         this.apiService.store('at/acta', this.acta).subscribe(acta => {
             this.acta = acta;
             this.loading = false;

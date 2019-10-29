@@ -43,6 +43,7 @@ export class AtContratoComponent implements OnInit {
 
     public onSubmit(){
         this.loading = true;
+        this.contrato.at_id = this.route.snapshot.paramMap.get('id');
         this.apiService.store('at/contrato', this.contrato).subscribe(contrato => {
             this.contrato = contrato;
             this.loading = false;

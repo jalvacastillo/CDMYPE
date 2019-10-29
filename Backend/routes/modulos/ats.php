@@ -15,6 +15,10 @@
     Route::post('at/consultor',        'Ats\ConsultoresController@store');
     Route::delete('at/consultor/{id}', 'Ats\ConsultoresController@delete');
 
+    Route::get('at/encargado/{id}',    'Ats\ConsultoresController@read');
+    Route::post('at/encargado',        'Ats\ConsultoresController@store');
+    Route::delete('at/encargado/{id}', 'Ats\ConsultoresController@delete');
+
     Route::get('at/contrato/{id}',    'Ats\ContratosController@read');
     Route::post('at/contrato',        'Ats\ContratosController@store');
     Route::delete('at/contrato/{id}', 'Ats\ContratosController@delete');

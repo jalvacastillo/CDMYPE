@@ -64,7 +64,7 @@
                         <td style="text-align:center; width:20px">{{ ++$key }}</td>
                         <td style="width:200px">{{ $empresario->nombre }}</td>
                         <td style="width:200px">
-                            {{ $empresario->empresa }}
+                            {{ $empresario->empresa }} 
                         </td>
                         <td style="text-align:center; width:70px">{{ $empresario->empresario->celular}}</td>
                         <td style="text-align:center; width:70px">{{ $empresario->empresario->dui }}</td>

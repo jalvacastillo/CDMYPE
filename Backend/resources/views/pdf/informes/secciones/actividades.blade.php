@@ -10,7 +10,7 @@
         @endforeach
         <br><br>
         @foreach ($informe->actividades as $act)
-            <h3>{{ $act->nombre }}</h3>
+            <h3>{{ $act->nombre }} categoría: {{$act->categoria}}</h3> 
             <p>{{$act->descripcion}}</p><br>
             @if (isset($act->img))
             <br>

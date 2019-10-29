@@ -29,6 +29,19 @@ class Indicador extends Model {
 
     protected $appends = ['usuario'];
 
+     public function getMLocalAttribute($value){
+        return $value == 1 ? true : false;
+    }
+    public function getMNacionalAttribute($value){
+        return $value == 1 ? true : false;
+    }
+    public function getMRegionalAttribute($value){
+        return $value == 1 ? true : false;
+    }
+    public function getMInternacionalAttribute($value){
+        return $value == 1 ? true : false;
+    }
+    
     public function getUsuarioAttribute(){
         return $this->usuario()->pluck('name')->first();
     }

@@ -36,7 +36,7 @@ class Consultor extends Model {
         }
         public function consultor() 
         {
-            return $this->belongsTo('App\Models\Consultores\Consultor');
+            return $this->belongsTo('App\Models\Consultores\Consultor', 'consultor_id');
         }
         public function atContratos() 
         {

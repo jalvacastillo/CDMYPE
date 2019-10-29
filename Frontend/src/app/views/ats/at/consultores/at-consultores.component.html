@@ -1,12 +1,12 @@
 <div class="row animated fadeIn">
-    <div class="col-xs-12">
+     <div class="col-xs-12">
       <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-12">
                       <button (click)="openModal(mConsultor, {})" class="pull-right btn btn-default" tooltip="Agregar">
-                          Agregar <i class="fa fa-plus"></i>
-                      </button>
+                          Consultor <i class="fa fa-plus"></i>
+                      </button>&nbsp
                       <button (click)="openModalCorreos(mCorreos)" class="pull-right btn btn-primary" tooltip="Envíar TDR" style="margin-right: 10px;">
                           Enviar <i class="fa fa-envelope"></i>
                       </button>
@@ -67,7 +67,7 @@
 
 <ng-template #mConsultor>
  <div class="modal-header">
-   <div class="modal-title text-center"> <h2>Consultor</h2> </div>
+   <div class="modal-title text-center"> <h2>Encargado</h2> </div>
    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
      <span aria-hidden="true">&times;</span>
    </button>
@@ -76,19 +76,18 @@
     <form name="form" (ngSubmit)="onSubmitFile(consultor)">
        <div class="row">
            <div class="form-group col-md-12">
-               <label for="nombre">* Nombre:</label>
+               <label for="nombre">Consultor:</label>
                <select class="form-control" [(ngModel)]="consultor.consultor_id" name="consultor_id">
                    <option *ngFor="let comp of consultoresList" [ngValue]="comp.id">{{ comp.nombre }}</option>
                </select>
            </div>
-           
            <div class="form-group col-md-12">
                <label for="direccion">Oferta:</label>
                <input type="file" name="img" (change)="setFile($event)" accept="application/pdf">
            </div>
            <div class="col-xs-12">
              <a href="javascript:window.history.back();" class="btn btn-default"> <i class="fa fa-angle-left"></i> Volver</a>
-             <button [disabled]="loading" class="btn btn-primary pull-right">
+             <button [disabled]="loading" (change)="onSubmitFile(consultor)" class="btn btn-primary pull-right">
                  <span *ngIf="!loading">Guardar</span>
                  <span *ngIf="loading">Guardando...</span>
              </button>
