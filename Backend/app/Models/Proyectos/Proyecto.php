@@ -9,7 +9,7 @@ class Proyecto extends Model
 {
     use SoftDeletes;
     protected $table = 'proyectos';
-    protected $dates = ['finalizacion'];
+    // protected $dates = ['finalizacion'];
     protected $fillable = [
         'nombre',
         'img',

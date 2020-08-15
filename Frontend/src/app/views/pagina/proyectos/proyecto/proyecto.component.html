@@ -58,8 +58,8 @@
                         <label for="especialidad_id">Especialidad:</label>
                         <select class="form-control" [(ngModel)]="proyecto.especialidad_id" name="especialidad_id">
                         	<optgroup *ngFor="let esp of especialidades" label="{{esp.nombre}}">
-                                <option *ngFor="let sub of esp.subespecialidades" [ngValue]="sub.id">{{ sub.nombre }}</option>
-                              </optgroup>
+                                <option *ngFor="let sub of esp.subespecialidades" [ngValue]="sub.id" [selected]="sub.id == proyecto.especialidad_id">{{ sub.nombre }}</option>
+                            </optgroup>
                         </select>
                     </div>
                     <div class="form-group col-sm-3">
@@ -85,7 +85,7 @@
                         <label for="duracion">Empresas:</label>
                         <div style="display: block;">
                             <span *ngFor=" let empresa of proyecto?.empresas">
-                                <a href="javascript::void(0);" (click)="quitarEmpresa(empresa)"><img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + '/img/empresas/' + empresa.logo }}" height="50px" tooltip="{{ empresa.nombre }}"/></a>
+                                <a href="javascript::void(0);" (click)="quitarEmpresa(empresa)"><img class="img-circle" *ngIf="empresa.img" src="{{apiService.baseUrl + '/img/' + empresa.img }}" height="50px" tooltip="{{ empresa.nombre }}"/></a>
                             </span>
                             <a href="javascript::void(0);" (click)="openModalEmpresas(mEmpresas)"><img class="img-circle" src="{{apiService.baseUrl + '/img/icons/plus-icon.jpg' }}" height="50px" tooltip="Agregar"/></a>
                         </div>
@@ -208,7 +208,7 @@
   </div>
   <div class="modal-body">
         <div class="row">
-            <app-buscador-empresas></app-buscador-empresas>
+            <app-buscador-empresas (empresaSelect)="agregarEmpresa($event)"></app-buscador-empresas>
         </div>
   </div>
 </ng-template>

@@ -43,7 +43,7 @@ class Empresa extends Model {
 
     protected $appends = ['aporte', 'atendido', 'evaluacion'];
 
-        public function getUbicacionGeoAttribute($value){
+    public function getUbicacionGeoAttribute($value){
             return $value == 1 ? true : false;
         }
 
@@ -213,7 +213,7 @@ class Empresa extends Model {
         }
 
 
-	/* Relaciones */
+    /* Relaciones */
 
         public function terminos()
         {
@@ -241,8 +241,5 @@ class Empresa extends Model {
 
         public function proyectos(){
             return $this->hasMany('App\Models\Empresas\Proyecto', 'empresa_id');
-        }
-        public function vinculaciones(){
-            return $this->hasMany('App\Models\Vinculaciones\Vinculacion', 'empresa_id');
         }
 }

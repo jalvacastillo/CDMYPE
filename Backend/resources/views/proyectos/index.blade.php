@@ -62,24 +62,21 @@
                 <div class="col-xs-6">
                     <div class="list-group-item" style="margin-bottom: 15px;">
                         <div class="row">
-                        <div class="media col-sm-3 hidden-xs">
-                          <figure class="pull-left">
-                              <img class="media-object img-rounded img-responsive"  src="{{ asset('/img/empresas/'. ($proyecto->empresas()->first()->logo ? $proyecto->empresas()->first()->logo : 'default.png')) }}" alt="" >
-                          </figure>
-                        </div>
-                        <div class="col-sm-6">
-                          <h2 class="list-group-item-heading"> {{ $proyecto->nombre }} </h2>
-                          <p class="label label-info">{{ $proyecto->tipo }}</p>
-                          <p class="label label-success">{{ $proyecto->especialidad }}</p>
-                          <p class="list-group-item-text"> {{ $proyecto->descripcion }} </p>
-                        </div>
-                        <div class="col-sm-3 text-center">
-                          <h4> {{ $proyecto->finalizacion }} <br><small>Fecha límite</small></h4>
-                          
-                          <h3> {{ $proyecto->duracion }} <br><small>Duración</small></h3>
-                          <br><br>
-                          <a href="{{ route('proyecto', [str_slug($proyecto->nombre), encrypt($proyecto->id) ]) }}" class="btn btn-primary btn-block"> Ver Más </a>
-                        </div>
+                          <div class="col-sm-12">
+                            <h2 class="list-group-item-heading"> {{ $proyecto->nombre }} </h2>
+                            <p class="label label-info">{{ $proyecto->tipo }}</p>
+                            <p class="label label-success">{{ $proyecto->especialidad }}</p>
+                            <p class="list-group-item-text"> {{ $proyecto->descripcion }} </p>
+                          </div>
+                          <div class="col-sm-6 text-muted">
+                            <h4> {{ \Carbon\Carbon::parse($proyecto->finalizacion)->format('d-m-Y') }} <br><small>Fecha límite</small></h4>
+                          </div>
+                          <div class="col-sm-6 text-muted">
+                            <h4> {{ $proyecto->duracion }} <br><small>Duración</small></h4>
+                          </div>
+                          <div class="col-sm-12 text-muted">
+                            <a href="{{ route('proyecto', [str_slug($proyecto->nombre), encrypt($proyecto->id) ]) }}" class="btn btn-primary btn-block"> Más Información </a>
+                          </div>
                         </div>
                     </div>
                 </div>

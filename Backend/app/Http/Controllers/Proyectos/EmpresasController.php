@@ -17,7 +17,7 @@ class EmpresasController extends Controller
             $empresa = Empresa::findOrFail($request->id);
         }
         else{
-            $empresa = new Proyecto;
+            $empresa = new Empresa;
         }
 
         

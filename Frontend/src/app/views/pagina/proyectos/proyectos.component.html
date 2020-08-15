@@ -70,7 +70,7 @@
                                 </td>
                                 <td class="text-center">
                                     <span *ngFor=" let empresa of proyecto?.empresas">
-                                        <img class="img-circle" *ngIf="empresa.logo" src="{{apiService.baseUrl + '/img/empresas/' + empresa.logo }}" height="30px" tooltip="{{ empresa.nombre }}"/>
+                                        <img class="img-circle" *ngIf="empresa.img" src="{{apiService.baseUrl + '/img/' + empresa.img }}" height="30px" tooltip="{{ empresa.nombre }}"/>
                                     </span>
                                 </td>
                                 <td class="text-center">

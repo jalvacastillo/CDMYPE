@@ -12,14 +12,14 @@ class Empresa extends Model
         'proyecto_id'
     ];
 
-    protected $appends = ['nombre', 'sector', 'logo'];
+    protected $appends = ['nombre', 'sector', 'img'];
 
     public function getNombreAttribute(){
         return $this->empresa()->pluck('nombre')->first();
     }
 
-    public function getLogoAttribute(){
-        return $this->empresa()->pluck('logo')->first();
+    public function getImgAttribute(){
+        return $this->empresa ? $this->empresa->img : 'default.png';
     }
 
     public function getSectorAttribute(){

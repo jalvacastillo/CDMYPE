@@ -121,6 +121,23 @@ export class ProyectoComponent implements OnInit {
             this.modalRef = this.modalService.show(template);
         }
 
+        public agregarEmpresa(event:any){
+            console.log(event);
+            let empresa:any = {};
+            this.loading = true;
+            empresa.proyecto_id = this.proyecto.id;
+            empresa.empresa_id = event.empresa.id;
+            this.apiService.store('proyecto/empresa', empresa).subscribe(data => {
+                this.proyecto.empresas.push(data);
+                for (let i = 0; i < this.proyecto.empresas.length; i++) { 
+                    if (this.proyecto.empresas[i].id == data.asesor_id )
+                        this.proyecto.empresas.splice(i, 1);
+                }
+                this.loading = false;
+            },error => {this.alertService.error(error._body); this.loading = false; });
+
+        }
+
         public openModalAccion(template: TemplateRef<any>) {
             this.modalRef = this.modalService.show(template);
         }

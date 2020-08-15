@@ -37,7 +37,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-              <img class="img-circle" src="{{ asset('img/empresas/'. $proyecto->empresas()->first()->logo) }}" alt="{{ $proyecto->empresas()->first()->nombre }}" style="height:150px;" data-toggle="tooltip" title="{{ $proyecto->empresas()->first()->nombre }}">
+              {{-- <img class="img-circle" src="{{ asset('img/'. $proyecto->empresas()->first()->img) }}" alt="{{ $proyecto->empresas()->first()->nombre }}" style="height:150px;" data-toggle="tooltip" title="{{ $proyecto->empresas()->first()->nombre }}"> --}}
               <h1>{{ $proyecto->nombre }}</h1>
               <p>Encargados: 
                 @foreach ($proyecto->asesores as $asesor)
@@ -85,37 +85,40 @@
             <p>revisa el estado de tus aplicaciones en tu <b><a href="{{ route('usuario') }}">cuenta</a></b></p>
           </div>
         @else
-          @guest
-          <div ng-controller="AuthCtrl">
-            <p class="text-center">Para aplicar primero tienes que <a ng-click="login()">iniciar sesión</a> o <a href="{{ route('register') }}">crear una cuenta</a>.</p>
-          </div>
-          @endguest
-          @auth
-          @if (Auth::user()->tipo != 'Administrador')
-          <h3 class="text-center">Confirma tus datos para aplicar:</h3>
-          <form class="form" method="POST" action="{{ route('aplicarProyecto', [str_slug($proyecto->nombre), encrypt($proyecto->id) ]) }}">
+          <div ng-controller="ActividadesCtrl">
+          <h3 class="text-center">Confirma tus datos para participar:</h3>
+
+          <form class="form">
             {{ csrf_field() }}
             <div class="form-group">
+              <div class="col-md-12">
                 <p><b>Nombre:</b></p>
-                <p>{{ $usuario->name }}</p>
-            </div>
-            <div class="form-group">
+                <input type="text" class="form-control" ng-model="aplicacion.nombre">
+                <br></div>
+
+            <div class="col-md-6">
                 <p><b>Correo:</b></p>
-                <p>{{ $usuario->email }}</p>
-            </div>
-            <div class="form-group">
-                <p><b>Telefono:</b></p>
-                <p>{{ $usuario->detalle->telefono }}</p>
-            </div>
-            <input type="hidden" class="form-control" name="proyecto_id" value="{{ $proyecto->id }}">
-            <div class="form-group">
+                <input type="text" class="form-control" ng-model="aplicacion.correo">
+                </div>
+            <div class="col-md-6">
+                <p><b>Teléfono:</b></p>
+                <input type="text" class="form-control" ng-model="aplicacion.telefono">
+                <br></div>
+            <div class="col-md-6">
+                <p><b>Dirección:</b></p>
+                <input type="text" class="form-control" ng-model="aplicacion.direccion">
+                <br></div>
+            <input type="hidden" class="form-control" id="actividad_id"  value="{{ $proyecto->id }}">
+            <div class="col-md-12">
                   <p><b>Nota:</b></p>
-                  <textarea name="nota" class="form-control" cols="30" rows="3" placeholder="Opcional"></textarea>
+                  <textarea name="nota" ng-model="aplicacion.nota" class="form-control" cols="30" rows="3" placeholder="Opcional"></textarea><br>
             </div>
-            <button type="submit" class="btn btn-primary">Aplicar</button>
+            <div class="col-md-12">
+            <button ng-click="aplicar()" class="btn btn-primary">Aplicar</button><br>
+            </div>
           </form>
-          @endif
-          @endauth
+
+          </div>
         @endif
     </div>
     </div>

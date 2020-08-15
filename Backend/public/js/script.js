@@ -109,6 +109,7 @@ $(document).ready(function ($) {
 		isPause,
 		tick,
 		percentTime;
+	
 	$('.touch-slider').each(function(){
 		var owl = jQuery(this),
 			sliderNav = $(this).attr('data-slider-navigation'),
