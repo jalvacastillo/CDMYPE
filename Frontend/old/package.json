@@ -23,7 +23,7 @@
     "@angular/router": "^4.4.6",
     "angular2-focus": "^1.1.2",
     "animate.css": "^3.6.1",
-    "bootstrap": "^3.4.0",
+    "bootstrap": "^3.4.1",
     "angular-notifier": "^4.1.1",
     "chart.js": "^2.7.2",
     "core-js": "^2.6.2",
